@@ -1,11 +1,4 @@
 # TVS评测工具说明
-
-**目录 (Table of Contents)**
-
-[TOCM]
-
-[TOC]
-
 ##1 背景
 TVS评测工具用于满足以下几种需求：
 - 外部厂商的产品、商务同学体验业务，包括完整链路体验及基础能力（ASR、NLP、TTS）体验。
@@ -17,7 +10,7 @@ TVS评测工具用于满足以下几种需求：
 腾讯叮当App包括ASR、NLP、Srv、TTS整个链路的完整体验，也覆盖音乐、新闻等当前TVS平台支持的所有领域。
 ### 2.2 TTS体验
 TTS的效果体验，请访问以下地址：
-           http://betashow.html5.qq.com/player.html?m=6
+    http://betashow.html5.qq.com/player.html?m=6
 注：
 （1）选中页面中的正文内容，可对需要合成的文本进行编辑。
 （2）点击页面顶部的Title“贝塔”，可切换不同发声人。
@@ -26,7 +19,7 @@ TTS的效果体验，请访问以下地址：
 ## 3 技术评测
 ### 3.1 ASR、NLP能力评测
 ### 3.1.1 ASRNLU_demo工具
-ASRNLU_demo工具支持Android运行环境，提供ASR、NLP批量数据的评测能力。接收wav、pcm批量文件作为输入，执行后输出包含：ASR识别文本、NLP结果数据的测试报告。
+app/ASRNLU_demo_xxxx.apk工具支持Android运行环境，提供ASR、NLP批量数据的评测能力。接收wav、pcm批量文件作为输入，执行后输出包含：ASR识别文本、NLP结果数据的测试报告。
 
 使用流程如下：
 （1）安装ASRNLU_demo.apk，
