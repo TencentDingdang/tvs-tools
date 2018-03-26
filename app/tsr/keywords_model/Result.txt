@@ -1,0 +1,6 @@
+smooth 7 (fg_noise remove add _snr; 1130 svd0.5 cnn32 lstm128)
+sensitivity   FRR(conexant_microsemi)   FRR(microsemi)   FAR(conexant)   FAR2(microsemi)    FAR3(music)    FAR4(conexant tv+music)
+0.571         5.02                      7.90             1.95            1.93               4.45           0.52
+0.557         5.94                      9.32             1.95            0.64               2.97           0.52
+0.5354        8.04                      12.81            1.95            0.00               2.22           0.52
+0.5276        10.00                     15.90            1.95            0.00               0.74           0.26
