@@ -10,7 +10,7 @@ TVS评测工具用于满足以下几种需求：
 完整链路体验，请使用腾讯叮当官方App。手机用户在应用宝、AppStore上搜索“腾讯叮当”，下载安装App后即可体验。
 腾讯叮当App包括ASR、NLP、Srv、TTS整个链路的完整体验，也覆盖音乐、新闻等当前TVS平台支持的所有领域。
 ### 2.2 TTS体验
-TTS的效果体验，请访问以下地址：http://betashow.html5.qq.com/player.html?m=6
+TTS的效果体验，请访问以下地址：http://betashow.html5.qq.com/player.html
 
 注：
 - 选中页面中的正文内容，可对需要合成的文本进行编辑。
