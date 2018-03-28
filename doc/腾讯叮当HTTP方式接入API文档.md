@@ -1,6 +1,6 @@
 <h1>腾讯叮当HTTP接入API V1.15</h1>
 
-腾讯叮当HTTP接入API能够帮助开发者快速构建具备新闻、赛事、票务、快递、音乐、股市、文学、基于LBS的附近资源等能力的人工智能助手。API以HTTP方式提供服务，开发者可以用`GET`、`POST`等方法请求腾讯叮当API并获取响应数据。__为了减少访问耗时、提升用户体验，建议接入方与腾讯叮当保持HTTPs长连接，避免因每次重试建立HTTPs连接而造成耗时增加__。
+腾讯叮当HTTP接入API能够帮助开发者快速构建具备新闻、赛事、票务、快递、音乐、股市、文学、基于LBS的附近资源等能力的人工智能助手。API以HTTP方式提供服务，开发者可以用`GET`、`POST`等方法请求腾讯叮当API并获取响应数据。__为了减少访问耗时、提升用户体验，建议接入方与腾讯叮当保持HTTPS长连接，避免因每次重试建立HTTPS连接而造成耗时增加__。
 
 [TOC]
 
@@ -428,6 +428,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `header.session`            | -        | 会话          |
 | `header.session.session_id` | `string` | 会话ID        |
 | `payload`                   | -        | 消息体         |
+| `payload.final_result`     | `bool` | 是否结束音频 |
 | `payload.speech_base64`     | `string` | 语音的Base64数据 |
 
 
