@@ -417,6 +417,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
         }
     },
     "payload": {
+        "final_result":false,
         "speech_base64": "..."
     }
 }
