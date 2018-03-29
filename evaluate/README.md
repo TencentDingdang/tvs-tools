@@ -30,6 +30,7 @@ app/ASRNLU_demo_xxxx.apk¹¤¾ßÖ§³ÖAndroidÔËÐÐ»·¾³£¬Ìá¹©ASR¡¢NLPÅúÁ¿Êý¾ÝµÄÆÀ²âÄÜÁ¦¡
 - ²âÊÔÍê³Éºó£¬²âÊÔ±¨¸æ´æ·ÅÔÚ/sdcard/tencent/test/tsr/out/Ä¿Â¼ÏÂ¡£
 
 ### 3.1.2 HTTP API»ù´¡ÄÜÁ¦ÆÀ²â½Å±¾
-script/tvs_hmac_sha256_basic.py½Å±¾Ö§³Ö»ùÓÚHTTP API·ÃÎÊTVS»ù´¡ÄÜÁ¦£¨ASR¡¢NLP¡¢TTS£©½Ó¿ÚµÄ¹¦ÄÜ£¬µ±Ç°Ö§³ÖÓïÒåÇëÇó½Ó¿Ú£¬ºóÐø»áÌí¼ÓASR¡¢TTSµÄ¶ÔÓ¦ÇëÇóÊ¾Àý¡£
-
+script/richanswerV1.py½Å±¾Ö§³Ö»ùÓÚHTTP API·ÃÎÊTVS»ù´¡ÄÜÁ¦NLPµÄ¹¦ÄÜ
+script/tts.py½Å±¾Ö§³Ö»ùÓÚHTTP API·ÃÎÊTVS»ù´¡ÄÜÁ¦TTSµÄ¹¦ÄÜ
+script/asr.py½Å±¾Ö§³Ö»ùÓÚHTTP API·ÃÎÊTVS»ù´¡ÄÜÁ¦ASRµÄ¹¦ÄÜ
 ×¢£ºPython»·¾³ÐèÒªÊ¹ÓÃ3.6.4¼°ÒÔÉÏ°æ±¾¡£
