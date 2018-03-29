@@ -1,36 +1,37 @@
-# TVSÆÀ²â¹¤¾ßËµÃ÷
+# TVSè¯„æµ‹å·¥å…·è¯´æ˜Ž
 
-## 1 ±³¾°
-TVSÆÀ²â¹¤¾ßÓÃÓÚÂú×ãÒÔÏÂ¼¸ÖÖÐèÇó£º
-- Íâ²¿³§ÉÌµÄ²úÆ·¡¢ÉÌÎñÍ¬Ñ§ÌåÑéÒµÎñ£¬°üÀ¨ÍêÕûÁ´Â·ÌåÑé¼°»ù´¡ÄÜÁ¦£¨ASR¡¢NLP¡¢TTS£©ÌåÑé¡£
-- Íâ²¿³§ÉÌµÄ¼¼ÊõÍ¬Ñ§ÆÀ²âTVSÄÜÁ¦£¬°üÀ¨»ù´¡ÄÜÁ¦£¨ASR¡¢NLP¡¢TTS£©µÄÅúÁ¿ÆÀ²â¡£
+## 1 èƒŒæ™¯
+TVSè¯„æµ‹å·¥å…·ç”¨äºŽæ»¡è¶³ä»¥ä¸‹å‡ ç§éœ€æ±‚ï¼š
+- å¤–éƒ¨åŽ‚å•†çš„äº§å“ã€å•†åŠ¡åŒå­¦ä½“éªŒä¸šåŠ¡ï¼ŒåŒ…æ‹¬å®Œæ•´é“¾è·¯ä½“éªŒåŠåŸºç¡€èƒ½åŠ›ï¼ˆASRã€NLPã€TTSï¼‰ä½“éªŒã€‚
+- å¤–éƒ¨åŽ‚å•†çš„æŠ€æœ¯åŒå­¦è¯„æµ‹TVSèƒ½åŠ›ï¼ŒåŒ…æ‹¬åŸºç¡€èƒ½åŠ›ï¼ˆASRã€NLPã€TTSï¼‰çš„æ‰¹é‡è¯„æµ‹ã€‚
 
-## 2 ²úÆ·¡¢ÉÌÎñÍ¬Ñ§ÌåÑé
-### 2.1 ÍêÕûÁ´Â·ÌåÑé
-ÍêÕûÁ´Â·ÌåÑé£¬ÇëÊ¹ÓÃÌÚÑ¶¶£µ±¹Ù·½App¡£ÊÖ»úÓÃ»§ÔÚÓ¦ÓÃ±¦¡¢AppStoreÉÏËÑË÷¡°ÌÚÑ¶¶£µ±¡±£¬ÏÂÔØ°²×°Appºó¼´¿ÉÌåÑé¡£
-ÌÚÑ¶¶£µ±App°üÀ¨ASR¡¢NLP¡¢Srv¡¢TTSÕû¸öÁ´Â·µÄÍêÕûÌåÑé£¬Ò²¸²¸ÇÒôÀÖ¡¢ÐÂÎÅµÈµ±Ç°TVSÆ½Ì¨Ö§³ÖµÄËùÓÐÁìÓò¡£
-### 2.2 TTSÌåÑé
-TTSµÄÐ§¹ûÌåÑé£¬Çë·ÃÎÊÒÔÏÂµØÖ·£ºhttp://betashow.html5.qq.com/player.html
+## 2 äº§å“ã€å•†åŠ¡åŒå­¦ä½“éªŒ
+### 2.1 å®Œæ•´é“¾è·¯ä½“éªŒ
+å®Œæ•´é“¾è·¯ä½“éªŒï¼Œè¯·ä½¿ç”¨è…¾è®¯å®å½“å®˜æ–¹Appã€‚æ‰‹æœºç”¨æˆ·åœ¨åº”ç”¨å®ã€AppStoreä¸Šæœç´¢â€œè…¾è®¯å®å½“â€ï¼Œä¸‹è½½å®‰è£…AppåŽå³å¯ä½“éªŒã€‚
+è…¾è®¯å®å½“AppåŒ…æ‹¬ASRã€NLPã€Srvã€TTSæ•´ä¸ªé“¾è·¯çš„å®Œæ•´ä½“éªŒï¼Œä¹Ÿè¦†ç›–éŸ³ä¹ã€æ–°é—»ç­‰å½“å‰TVSå¹³å°æ”¯æŒçš„æ‰€æœ‰é¢†åŸŸã€‚
+### 2.2 TTSä½“éªŒ
+TTSçš„æ•ˆæžœä½“éªŒï¼Œè¯·è®¿é—®ä»¥ä¸‹åœ°å€ï¼šhttp://betashow.html5.qq.com/player.html
 
-×¢£º
-- Ñ¡ÖÐÒ³ÃæÖÐµÄÕýÎÄÄÚÈÝ£¬¿É¶ÔÐèÒªºÏ³ÉµÄÎÄ±¾½øÐÐ±à¼­¡£
-- µã»÷Ò³Ãæ¶¥²¿µÄTitle¡°±´Ëþ¡±£¬¿ÉÇÐ»»²»Í¬·¢ÉùÈË¡£
-- µã»÷Ò³Ãæµ×²¿µÄ²¥·Å°´Å¥£¬¿ªÊ¼µÄ²¥·ÅºÏ³ÉºóµÄÓïÒô¡£
+æ³¨ï¼š
+- é€‰ä¸­é¡µé¢ä¸­çš„æ­£æ–‡å†…å®¹ï¼Œå¯å¯¹éœ€è¦åˆæˆçš„æ–‡æœ¬è¿›è¡Œç¼–è¾‘ã€‚
+- ç‚¹å‡»é¡µé¢é¡¶éƒ¨çš„Titleâ€œè´å¡”â€ï¼Œå¯åˆ‡æ¢ä¸åŒå‘å£°äººã€‚
+- ç‚¹å‡»é¡µé¢åº•éƒ¨çš„æ’­æ”¾æŒ‰é’®ï¼Œå¼€å§‹çš„æ’­æ”¾åˆæˆåŽçš„è¯­éŸ³ã€‚
 
-## 3 ¼¼ÊõÆÀ²â
-### 3.1 ASR¡¢NLPÄÜÁ¦ÆÀ²â
-### 3.1.1 ASRNLU_demo¹¤¾ß
-app/ASRNLU_demo_xxxx.apk¹¤¾ßÖ§³ÖAndroidÔËÐÐ»·¾³£¬Ìá¹©ASR¡¢NLPÅúÁ¿Êý¾ÝµÄÆÀ²âÄÜÁ¦¡£½ÓÊÕwav¡¢pcmÅúÁ¿ÎÄ¼þ×÷ÎªÊäÈë£¬Ö´ÐÐºóÊä³ö°üº¬£ºASRÊ¶±ðÎÄ±¾¡¢NLP½á¹ûÊý¾ÝµÄ²âÊÔ±¨¸æ¡£
+## 3 æŠ€æœ¯è¯„æµ‹
+### 3.1 ASRã€NLPèƒ½åŠ›è¯„æµ‹
+### 3.1.1 ASRNLU_demoå·¥å…·
+app/ASRNLU_demo_xxxx.apkå·¥å…·æ”¯æŒAndroidè¿è¡ŒçŽ¯å¢ƒï¼Œæä¾›ASRã€NLPæ‰¹é‡æ•°æ®çš„è¯„æµ‹èƒ½åŠ›ã€‚æŽ¥æ”¶wavã€pcmæ‰¹é‡æ–‡ä»¶ä½œä¸ºè¾“å…¥ï¼Œæ‰§è¡ŒåŽè¾“å‡ºåŒ…å«ï¼šASRè¯†åˆ«æ–‡æœ¬ã€NLPç»“æžœæ•°æ®çš„æµ‹è¯•æŠ¥å‘Šã€‚
 
-Ê¹ÓÃÁ÷³ÌÈçÏÂ£º
-- °²×°ASRNLU_demo.apk£¬
-- ½«tsrÕû¸öÄ¿Â¼·Åµ½ÊÖ»ú/sdcard/tencent/dingdang/res/Ä¿Â¼ÏÂ¡£
-- ²âÊÔÒôÆµÎÄ¼þ£¬´æ·Åµ½/sdcard/tencent/test/tsr/wav/Ä¿Â¼ÏÂ¡£
-- ÔËÐÐApp£¬µã»÷¡°²âÊÔ¡±°´Å¥£¬¿ªÊ¼²âÊÔ¡£
-- ²âÊÔÍê³Éºó£¬²âÊÔ±¨¸æ´æ·ÅÔÚ/sdcard/tencent/test/tsr/out/Ä¿Â¼ÏÂ¡£
+ä½¿ç”¨æµç¨‹å¦‚ä¸‹ï¼š
+- å®‰è£…ASRNLU_demo.apkï¼Œ
+- å°†tsræ•´ä¸ªç›®å½•æ”¾åˆ°æ‰‹æœº/sdcard/tencent/dingdang/res/ç›®å½•ä¸‹ã€‚
+- æµ‹è¯•éŸ³é¢‘æ–‡ä»¶ï¼Œå­˜æ”¾åˆ°/sdcard/tencent/test/tsr/wav/ç›®å½•ä¸‹ã€‚
+- è¿è¡ŒAppï¼Œç‚¹å‡»â€œæµ‹è¯•â€æŒ‰é’®ï¼Œå¼€å§‹æµ‹è¯•ã€‚
+- æµ‹è¯•å®ŒæˆåŽï¼Œæµ‹è¯•æŠ¥å‘Šå­˜æ”¾åœ¨/sdcard/tencent/test/tsr/out/ç›®å½•ä¸‹ã€‚
 
-### 3.1.2 HTTP API»ù´¡ÄÜÁ¦ÆÀ²â½Å±¾
-* script/richanswerV1.py½Å±¾Ö§³Ö»ùÓÚHTTP API·ÃÎÊTVS»ù´¡ÄÜÁ¦NLPµÄ¹¦ÄÜ
-* script/tts.py½Å±¾Ö§³Ö»ùÓÚHTTP API·ÃÎÊTVS»ù´¡ÄÜÁ¦TTSµÄ¹¦ÄÜ
-* script/asr.py½Å±¾Ö§³Ö»ùÓÚHTTP API·ÃÎÊTVS»ù´¡ÄÜÁ¦ASRµÄ¹¦ÄÜ
-×¢£ºPython»·¾³ÐèÒªÊ¹ÓÃ3.6.4¼°ÒÔÉÏ°æ±¾¡£
+### 3.1.2 HTTP APIåŸºç¡€èƒ½åŠ›è¯„æµ‹è„šæœ¬
+* script/richanswerV1.pyè„šæœ¬æ”¯æŒåŸºäºŽHTTP APIè®¿é—®TVSåŸºç¡€èƒ½åŠ›NLPçš„åŠŸèƒ½
+* script/tts.pyè„šæœ¬æ”¯æŒåŸºäºŽHTTP APIè®¿é—®TVSåŸºç¡€èƒ½åŠ›TTSçš„åŠŸèƒ½
+* script/asr.pyè„šæœ¬æ”¯æŒåŸºäºŽHTTP APIè®¿é—®TVSåŸºç¡€èƒ½åŠ›ASRçš„åŠŸèƒ½
+
+	*æ³¨ï¼šPythonçŽ¯å¢ƒéœ€è¦ä½¿ç”¨3.6.4åŠä»¥ä¸Šç‰ˆæœ¬*
