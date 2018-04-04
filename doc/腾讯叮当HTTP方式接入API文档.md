@@ -124,7 +124,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswer`
 				}
 			]
 		},
-		extraData:[
+		extra_data:[
 			{
 				"type":"AUDIO",
 				"data_base64":"..."
@@ -163,9 +163,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswer`
 | `payload.semantic.param{type}`	|	`string`	|	否		|	语义参数信息				|
 | `payload.semantic.param{key}`	|	`string`	|	否		|	语义参数信息				|
 | `payload.semantic.param{value}`	|	`string`	|	否	|	语义参数信息				|
-| `payload.semantic.extraData`	|	-	|	否		|	额外数据信息				|
-| `payload.semantic.extraData{type}`	|	`string`	|	否		|	额外数据类型				|
-| `payload.semantic.extraData{data_base64}`	|	`string`	|	否		|	额外数据				|
+| `payload.semantic.extra_data`	|	-	|	否		|	额外数据信息				|
+| `payload.semantic.extra_data{type}`	|	`string`	|	否		|	额外数据类型				|
+| `payload.semantic.extra_data{data_base64}`	|	`string`	|	否		|	额外数据				|
 
 
 
@@ -186,7 +186,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswer`
             "json": {
                 ...
             },
-			"jsonTemplate":{
+			"json_template":{
 			}
         }
     }
@@ -206,7 +206,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswer`
 | `payload.response_text`            | `string` | 显示正文内容  |
 | `payload.data`                     | -        | 领域数据    |
 | `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见"domains/xxx" |
-| `payload.data.jsonTemplate`                | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档" |
+| `payload.data.json_template`                | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档" |
 
 ## 终端上报接口
 为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过终端上报接口向腾讯叮当上报终端的阅读、播放等状态。
