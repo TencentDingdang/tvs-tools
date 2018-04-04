@@ -160,8 +160,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswer`
 | `payload.semantic.domain`	|	`string`	|	否		|	领域信息				|
 | `payload.semantic.intent`	|	`string`	|	否		|	意图信息				|
 | `payload.semantic.param`	|	-	|	否		|	语义参数信息				|
+| `payload.semantic.param{type}`	|	`string`	|	否		|	语义参数信息				|
+| `payload.semantic.param{key}`	|	`string`	|	否		|	语义参数信息				|
+| `payload.semantic.param{value}`	|	`string`	|	否	|	语义参数信息				|
 | `payload.semantic.extraData`	|	-	|	否		|	额外数据信息				|
-| `payload.semantic.extraData{type}`	|	-	|	`string`		|	额外数据类型				|
+| `payload.semantic.extraData{type}`	|	`string`	|	否		|	额外数据类型				|
 | `payload.semantic.extraData{data_base64}`	|	`string`	|	否		|	额外数据				|
 
 
