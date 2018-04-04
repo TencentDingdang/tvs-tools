@@ -202,8 +202,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswer`
 | `payload`                          | -        | 消息体     |
 | `payload.response_text`            | `string` | 显示正文内容  |
 | `payload.data`                     | -        | 领域数据    |
-| `payload.data.json`                | -        | 领域结构化Json数据 |
-| `payload.data.jsonTemplate`                | -        | 领域模版Json数据 |
+| `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见"domains/xxx" |
+| `payload.data.jsonTemplate`                | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档" |
 
 ## 终端上报接口
 为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过终端上报接口向腾讯叮当上报终端的阅读、播放等状态。
