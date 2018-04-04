@@ -1,7 +1,7 @@
-# 翻译
-### translate.*
+# 时间节日
+### holiday.*
 #### 问法
-翻译苹果
+今天是几号
 #### 无JSON数据
 ```
 数据都是纯文本，都在strSpeakText和strTipsText中
