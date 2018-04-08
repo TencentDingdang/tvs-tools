@@ -110,6 +110,7 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 ​	该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
 
 该接口按request_type的不同提供三种功能：
+
 | payload.request_type | 说明                                       |
 | -------------------- | ---------------------------------------- |
 | SEMANTIC_SERVICE     | 默认，返回语义、服务结果                             |
@@ -207,6 +208,7 @@ body请求示例
 
 
 #### 返回参数
+
 ```json
 {
     "header": {
@@ -245,6 +247,7 @@ body请求示例
 | `payload.data`                     | -            | 领域数据                            |
 | `payload.data.json`                | -            | 领域结构化Json数据，数据格式详见"domains/xxx" |
 | `payload.data.json_template`       | -            | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"     |
+
 示例代码见../evaluate/script/richanswerV1.py
 
 
@@ -569,6 +572,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 ### TVS-HMAC-SHA256-BASIC签名示例
 
 #### Python版(依赖requests)
+
 ```python
 # -*- coding: UTF-8 -*-
 import datetime, hashlib, hmac
@@ -615,6 +619,7 @@ print r.text
 ```
 
 #### Java版
+
 ```java
 //package com.qq.tvs.auth;
 
