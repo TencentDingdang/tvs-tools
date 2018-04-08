@@ -1,0 +1,3 @@
+# API请求DEMO说明
+
+示例代码需要先改一下bot_key和bot_secret，填入自己的appkey和accessToken。
