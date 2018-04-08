@@ -3,15 +3,9 @@ import datetime, hashlib, hmac
 import requests # Command to install: `pip install request`
 import json, sys, time, base64
 
-# 腾讯叮当提供的Bot Key/Secret
+# 腾讯叮当提供的Bot Key/Secret，请填入自己的bot_key
 botKey = 'bot_key'
 botSecret = 'bot_secret'
-botKey = '544fb88b-4944-4110-88f1-8e89b2902c4d'
-botSecret = b'bb8b659ae9894d56b8991cd42140de7e'
-botKey = 'f6d5a9b8-003c-4ec5-aa79-bac5f2d50f38'
-botSecret = b'0ffefed0b8eb4dc6800a3452e50a21ec'
-botKey = '24fa48d8-f52e-467c-b896-2ee66a10f644'
-botSecret = b'78145981238a4023a92016d29badb553'
 
 usage = '''
 ####
@@ -74,7 +68,7 @@ authorizationHeader = 'TVS-HMAC-SHA256-BASIC' + ' ' + 'CredentialKey=' + botKey 
 headers = {'Content-Type': 'application/json; charset=UTF-8', 'Authorization': authorizationHeader}
 
 # **** Send the request *****
-requestUrl = 'https://aiwx.sparta.html5.qq.com/api/v1/richanswer'
+requestUrl = 'https://aiwx.html5.qq.com/api/v1/richanswer'
 
 print ('Begin request...')
 print ('Request Url = ' + requestUrl)

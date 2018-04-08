@@ -20,18 +20,9 @@ if (3 > len(sys.argv)) :
     print (usage);
     sys.exit(0);
 
-# 腾讯叮当提供的Bot Key/Secret
+# 腾讯叮当提供的Bot Key/Secret，请填入自己的bot_key
 botKey = 'bot_key'
 botSecret = 'bot_secret'
-botKey = '544fb88b-4944-4110-88f1-8e89b2902c4d'
-botSecret = b'bb8b659ae9894d56b8991cd42140de7e'
-botKey = 'f6d5a9b8-003c-4ec5-aa79-bac5f2d50f38'
-botSecret = b'0ffefed0b8eb4dc6800a3452e50a21ec'
-botKey = '24fa48d8-f52e-467c-b896-2ee66a10f644'
-botSecret = b'78145981238a4023a92016d29badb553'
-
-# botKey = '1e02ddd9-7528-46c7-903b-1e4b01e8912e'
-# botSecret = 'f6ab3a6cc3bc48dca1e3e20470536ff4'
 
 
 
@@ -75,7 +66,7 @@ jsonReq = json.loads(postData);
 if (3 >= len(sys.argv)) :
     jsonReq["payload"]["content"]["text"] = sys.argv[2];
     
-requestUrl = 'https://aiwx.sparta.html5.qq.com/api/tts'
+requestUrl = 'https://aiwx.html5.qq.com/api/tts'
 
 print ('Begin request...')
 print ('Request Url = ' + requestUrl)
