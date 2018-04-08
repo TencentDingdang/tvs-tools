@@ -213,6 +213,8 @@ body请求示例
 {
     "header": {
         "semantic": {
+			"code":0,
+			"msg":"",
             "session_id": "...",
             "domain": "...",
             "intent": "...",
@@ -236,6 +238,8 @@ body请求示例
 | ---------------------------------- | ------------ | ------------------------------- |
 | `header`                           | -            | 消息头                             |
 | `header.semantic`                  | -            | 语义信息                            |
+| `header.semantic.code`           | `string`     | 语义错误码(0,正常;非0,异常;)                              |
+| `header.semantic.msg`           | `string`     | 语义错误消息                              |
 | `header.semantic.domain`           | `string`     | 领域                              |
 | `header.semantic.intent`           | `string`     | 意图                              |
 | `header.semantic.slots`            | `JsonObject` | 语义槽                             |
