@@ -163,7 +163,11 @@ body请求示例
 				}
 			]
 		},
-		extra_data:[
+		extra_data:[			
+			{
+				"type":"IMAGE",
+				"data_base64":"..."
+			},
 			{
 				"type":"AUDIO",
 				"data_base64":"..."
@@ -191,8 +195,6 @@ body请求示例
 | `header.device`                          |    -     |  否   |                                          |
 | `header.device.network`                  | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
 | `payload`                                |    -     |  是   | 请求内容                                     |
-| `payload.session`                        |    -     |  否   | 会话                                       |
-| `payload.session.session_id`             | `string` |  是   | 会话ID                                     |
 | `payload.query`                          | `string` |  是   | 用户query                                  |
 | `payload.request_type`                   | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果；<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
 | `payload.semantic`                       |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
@@ -203,8 +205,8 @@ body请求示例
 | `payload.semantic.param{key}`            | `string` |  否   | 语义参数名字                                   |
 | `payload.semantic.param{value}`          | `string` |  否   | 语义参数值                                    |
 | `payload.semantic.extra_data`            |    -     |  否   | 额外数据信息                                   |
-| `payload.semantic.extra_data{type}`      |    -     |  否   | 额外数据类型                                   |
-| `payload.semantic.extra_data{data_base64}` | `string` |  否   | 额外数据                                     |
+| `payload.semantic.extra_data{type}`      |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频；|                            
+| `payload.semantic.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                                     |
 
 
 #### 返回参数
@@ -215,7 +217,6 @@ body请求示例
         "semantic": {
 			"code":0,
 			"msg":"",
-            "session_id": "...",
             "domain": "...",
             "intent": "...",
             "session_complete": true
@@ -242,7 +243,6 @@ body请求示例
 | `header.semantic.msg`           | `string`     | 语义错误消息                              |
 | `header.semantic.domain`           | `string`     | 领域                              |
 | `header.semantic.intent`           | `string`     | 意图                              |
-| `header.semantic.slots`            | `JsonObject` | 语义槽                             |
 | `header.semantic.session_complete` | `bool`       | 会话是否结束                          |
 | `header.session`                   | -            | 会话                              |
 | `header.session.session_id`        | `string`     | 会话ID                            |
@@ -252,7 +252,8 @@ body请求示例
 | `payload.data.json`                | -            | 领域结构化Json数据，数据格式详见"domains/xxx" |
 | `payload.data.json_template`       | -            | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"     |
 
-示例代码见../evaluate/script/richanswerV1.py
+示例代码见1:	../evaluate/script/richanswerV1.py(不带附加数据)
+示例代码见2:	../evaluate/script/richanswer_extV1.py(带附加数据)
 
 
 
@@ -265,7 +266,7 @@ body请求示例
 | 类型      | 说明                                       |
 | ------- | ---------------------------------------- |
 | 云端VAD  | 当payload.open_vad=true时，语音识别引擎将会自动识别用户说话结束。自动返回最终识别结果。适用于音箱收音等非手动控制结束的场景 |
-| 本地VAD | 当payload.open_vad=false时，语音识别引擎不会自动识别用户说话结束。需要终端主动设置结束标识(voice_finished=true)，语音识别引擎才会返回最终识别结果。适用于**`按下说话,抬起结束`**的收音场景，如遥控器。 |
+| 本地VAD | 当payload.open_vad=false时，语音识别引擎不会自动识别用户说话结束。需要终端主动设置结束标识(voice_finished=true)，语音识别引擎才会返回最终识别结果。适用于**按下说话,抬起结束**的收音场景，如遥控器。 |
 
 #### 请求参数
 
