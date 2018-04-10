@@ -18,7 +18,7 @@ TTS的效果体验，请访问以下地址：http://betashow.html5.qq.com/player
 - 点击页面底部的播放按钮，开始的播放合成后的语音。
 
 ## 3 技术评测
-### 3.1 ASR、NLP能力评测
+### 3.1 ASR、NLP、TTS能力评测
 ### 3.1.1 ASRNLU_demo工具
 app/ASRNLU_demo_xxxx.apk工具支持Android运行环境，提供ASR、NLP批量数据的评测能力。接收wav、pcm批量文件作为输入，执行后输出包含：ASR识别文本、NLP结果数据的测试报告。
 
@@ -35,3 +35,23 @@ app/ASRNLU_demo_xxxx.apk工具支持Android运行环境，提供ASR、NLP批量�
 * script/asr.py脚本支持基于HTTP API访问TVS基础能力ASR的功能
 
 	*注：Python环境需要使用3.6.4及以上版本*
+
+### 3.2 媒体播放能力评测
+腾讯叮当后台返回给终端设备的媒体数据格式，如下表所示：
+厂商在接入腾讯叮当之初，需要先对媒体播放器的能力进行评测，保证以下示例文件能正常播放，播放过程中不出现卡顿、杂音等现象。
+
+如果播放格式不支持，需要考虑升级终端的解码器。
+
+| 领域        | 文件类型   |  格式说明  | 文件下载 | 备注 |
+| --------    | -----      |  -----     | -----    | ---- |
+| TTS数据     |mp3         |   MPEG ADTS, layer III, v2,  64 kbps, 16 kHz, Monaural                                                 |   [tts_stream2.mp3](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/tts_stream2.mp3 "tts_stream2.mp3")     |       |
+| TTS数据     |wav         |   RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 16000 Hz                          |   [tts_stream1.wav](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/tts_stream1.wav "tts_stream1.wav")     |       |
+| 笑话        |mp3         |  Audio file with ID3 version 2.3.0, contains: MPEG ADTS, layer III, v1, 192 kbps, 44.1 kHz, JntStereo  |   [joke_demo.mp3](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/joke_demo.mp3 "joke_demo.mp3")           |       |
+| 声音百科    |mp3         |  MPEG ADTS, layer III, v2,  64 kbps, 22.05 kHz, JntStereo                                              |   [sound_demo.mp3](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/sound_demo.mp3 "sound_demo.mp3")        |       |
+| 新闻        |mp3         | Audio file with ID3 version 2.3.0, contains: MPEG ADTS, layer III, v1, 192 kbps, 44.1 kHz, JntStereo   |   [news_demo2.mp3](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/news_demo2.mp3 "news_demo2.mp3")        |       |
+| 新闻        |wav         | RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 16000 Hz                            |   [news_demo1.wav](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/news_demo1.wav "news_demo1.wav")        |       |
+| FM          |m4a         | ISO Media, MPEG v4 system, version 2                                                                   |   [fm_demo.m4a](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/fm_demo.m4a "fm_demo.m4a")     | |
+| 音乐        |mp3标准音质 | Audio file with ID3 version 2.3.0, contains: MPEG ADTS, layer III, v1, 128 kbps, 44.1 kHz, JntStereo   |   [music_demo2.mp3](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/music_demo2.mp3 "music_demo2.mp3")     |       |
+| 音乐        |m4a标准音质 | ISO Media, MPEG v4 system, version 2                                                                   |   [music_demo1.m4a](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/music_demo1.m4a "music_demo1.m4a")     |       |
+| 音乐        |m4a钢琴曲   | ISO Media, MPEG v4 system, version 2                                                                   |   [music_piano_demo1.m4a](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/music_piano_demo1.m4a "music_piano_demo1.m4a")     |是否有吱吱声|
+| 音乐        |m4a体面     | ISO Media, MPEG v4 system, version 2                                                                   |   [music_demo3.m4a](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/music_demo3.m4a "music_demo3.m4a")     |前奏是否有杂音|

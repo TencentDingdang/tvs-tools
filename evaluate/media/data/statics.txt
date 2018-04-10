@@ -1,0 +1,27 @@
+joke_demo.mp3:
+Audio file with ID3 version 2.3.0, contains: MPEG ADTS, layer III, v1, 192 kbps, 44.1 kHz, JntStereo
+
+sound_demo.mp3:
+MPEG ADTS, layer III, v2,  64 kbps, 22.05 kHz, JntStereo
+
+news_demo1.wav:
+RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 16000 Hz
+news_demo2.mp3:
+Audio file with ID3 version 2.3.0, contains: MPEG ADTS, layer III, v1, 192 kbps, 44.1 kHz, JntStereo
+
+music_demo1.m4a:(正常音频m4a格式)
+ISO Media, MPEG v4 system, version 2
+music_demo2.mp3:(正常音频mp3格式)
+Audio file with ID3 version 2.3.0, contains: MPEG ADTS, layer III, v1, 128 kbps, 44.1 kHz, JntStereo
+music_piano_demo1.m4a: (钢琴曲，是否有吱吱声)
+ISO Media, MPEG v4 system, version 2
+music_demo3.m4a:(体面，前奏是否有杂音)
+ISO Media, MPEG v4 system, version 2
+
+fm_demo.m4a:
+ISO Media, MPEG v4 system, version 2
+
+tts_stream1.wav:
+RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 16000 Hz
+tts_stream2.mp3:
+MPEG ADTS, layer III, v2,  64 kbps, 16 kHz, Monaural
