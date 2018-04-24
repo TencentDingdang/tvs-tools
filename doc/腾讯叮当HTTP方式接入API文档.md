@@ -229,6 +229,7 @@ body请求示例
                 ...
             },
             "json_template":{
+                ...
 			}
         }
     }
@@ -357,7 +358,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 
 ### 3. 语音合成接口
 #### 接口描述
-语音合成接口，提供了将文本转换为语音的能力。按照分几次返回合成结果，语音合成接口分为两种类型：
+(非)流式文本转换为语音。
 
 | 类型   | 说明                                       |
 | ---- | ---------------------------------------- |
@@ -389,7 +390,10 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
     "payload": {
         "speech_meta": {
             "compress": "MP3",
-            "person": "LIBAI"
+            "person": "LIBAI",
+            "volume": 50,
+            "speed": 50,
+            "pitch": 50
         },
         "session_id": "...",
         "index": 0,
@@ -401,16 +405,16 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 }
 ```
 
-| 参数名                            |    类型    | 是否必选 | 描述                                       |
-| ------------------------------ | :------: | :--: | ---------------------------------------- |
+| 参数名                         |    类型  | 是否必选 | 描述                                       |
+| ------------------------------ | :------: | :--:  | ---------------------------------------- |
 | `header`                       |    -     |  是   | 请求头                                      |
 | `header.guid`                  | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)             |
 | `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)         |
 | `header.user`                  |    -     |  否   | 用户信息                                     |
-| `header.user.user_id`          | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)         |
+| `header.user.user_id`          | `string` |  -    | 用户ID，，详细说明见[附录-USERID](#USERID)         |
 | `header.lbs`                   |    -     |  否   | 用户位置信息                                   |
-| `header.lbs.longitude`         | `double` |  -   | 经度                                       |
-| `header.lbs.latitude`          | `double` |  -   | 纬度                                       |
+| `header.lbs.longitude`         | `double` |  -    | 经度                                       |
+| `header.lbs.latitude`          | `double` |  -    | 纬度                                       |
 | `header.ip`                    | `string` |  是   | 终端IP                                     |
 | `header.device`                |    -     |  否   |                                          |
 | `header.device.network`        | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
@@ -418,6 +422,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload.speech_meta`          |    -     |  是   | 语音配置信息                                   |
 | `payload.speech_meta.compress` | `string` |  是   | 压缩类型：`WAV`/`MP3`/`AMR`                   |
 | `payload.speech_meta.person`   | `string` |  否   | 发音人：`ZHOULONGFEI`/`CHENANQI`/`YEZI`/`YEWAN`/`DAJI`/`LIBAI`/`NAZHA` |
+| `payload.speech_meta.volume`   | `int`    |  否   | 音量：0~100（默认50） |
+| `payload.speech_meta.speed`    | `int`    |  否   | 语速：0~100（默认50） |
+| `payload.speech_meta.pitch`    | `int`    |  否   | 声调：0~100（默认50） |
 | `payload.session_id`           | `string` |  否   | 流式TTS过程中必填                               |
 | `payload.index`                |  `int`   |  是   | 请求的语音片序号                                 |
 | `payload.single_request`       |  `bool`  |  是   | 是否一次合成：<br>`true`：一次合成；<br>`false`：流式合成； |
