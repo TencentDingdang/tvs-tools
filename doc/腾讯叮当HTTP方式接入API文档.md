@@ -161,9 +161,9 @@ body请求示例
 					"key":"...",
 					"value":"..."
 				}
-			]
+		    ]
 		},
-		extra_data:[			
+		"extra_data":[			
 			{
 				"type":"IMAGE",
 				"data_base64":"..."
@@ -175,38 +175,38 @@ body请求示例
 			{
 				"type":"VIDEO",
 				"data_base64":"..."
-			},
+			}
 		]
     }
 }
 ```
 
-| 参数名                                      |    类型    | 是否必选 | 描述                                       |
-| ---------------------------------------- | :------: | :--: | ---------------------------------------- |
-| `header`                                 |    -     |  是   | 请求头                                      |
-| `header.guid`                            | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)       |
-| `header.qua`                             | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)         |
-| `header.user`                            |    -     |  否   | 用户信息                                     |
-| `header.user.user_id`                    | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)         |
-| `header.lbs`                             |    -     |  否   | 用户位置信息                                   |
-| `header.lbs.longitude`                   | `double` |  -   | 经度                                       |
-| `header.lbs.latitude`                    | `double` |  -   | 纬度                                       |
-| `header.ip`                              | `string` |  是   | 终端IP                                     |
-| `header.device`                          |    -     |  否   |                                          |
-| `header.device.network`                  | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
-| `payload`                                |    -     |  是   | 请求内容                                     |
-| `payload.query`                          | `string` |  是   | 用户query                                  |
-| `payload.request_type`                   | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果；<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
-| `payload.semantic`                       |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
-| `payload.semantic.domain`                | `string` |  否   | 领域信息                                     |
-| `payload.semantic.intent`                | `string` |  否   | 意图信息                                     |
-| `payload.semantic.param`                 |    -     |  否   | 语义参数信息                                   |
-| `payload.semantic.param{type}`           | `string` |  否   | 语义参数类型                                   |
-| `payload.semantic.param{key}`            | `string` |  否   | 语义参数名字                                   |
-| `payload.semantic.param{value}`          | `string` |  否   | 语义参数值                                    |
-| `payload.semantic.extra_data`            |    -     |  否   | 额外数据信息                                   |
-| `payload.semantic.extra_data{type}`      |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频；|                            
-| `payload.semantic.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                                     |
+| 参数名                                     |    类型    | 是否必选 | 描述                                       |
+| ----------------------------------------  | :------: | :--: | ---------------------------------------- |
+| `header`                                  |    -     |  是   | 请求头                                      |
+| `header.guid`                             | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)       |
+| `header.qua`                              | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)         |
+| `header.user`                             |    -     |  否   | 用户信息                                     |
+| `header.user.user_id`                     | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)         |
+| `header.lbs`                              |    -     |  否   | 用户位置信息                                   |
+| `header.lbs.longitude`                    | `double` |  -   | 经度                                       |
+| `header.lbs.latitude`                     | `double` |  -   | 纬度                                       |
+| `header.ip`                               | `string` |  是   | 终端IP                                     |
+| `header.device`                           |    -     |  否   |                                          |
+| `header.device.network`                   | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `payload`                                 |    -     |  是   | 请求内容                                     |
+| `payload.query`                           | `string` |  是   | 用户query                                  |
+| `payload.request_type`                    | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； | 
+| `payload.semantic`                        |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
+| `payload.semantic.domain`                 | `string` |  否   | 领域信息                                     |
+| `payload.semantic.intent`                 | `string` |  否   | 意图信息                                     |
+| `payload.semantic.param`                  |    -     |  否   | 语义参数信息                                   |
+| `payload.semantic.param{type}`            | `string` |  否   | 语义参数类型                                   |
+| `payload.semantic.param{key}`             | `string` |  否   | 语义参数名字                                   |
+| `payload.semantic.param{value}`           | `string` |  否   | 语义参数值                                    |
+| `payload.extra_data`                      |    -     |  否   | 额外数据信息                                   |
+| `payload.extra_data{type}`                |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频；|                            
+| `payload.extra_data{data_base64}`         | `string` |  否   | 额外数据`Base64`编码                                     |
 
 
 #### 返回参数
@@ -240,8 +240,8 @@ body请求示例
 | ---------------------------------- | ------------ | ------------------------------- |
 | `header`                           | -            | 消息头                             |
 | `header.semantic`                  | -            | 语义信息                            |
-| `header.semantic.code`           | `string`     | 语义错误码(0,正常;非0,异常;)                              |
-| `header.semantic.msg`           | `string`     | 语义错误消息                              |
+| `header.semantic.code`             | `string`     | 语义错误码(0,正常;非0,异常;)                              |
+| `header.semantic.msg`              | `string`     | 语义错误消息                              |
 | `header.semantic.domain`           | `string`     | 领域                              |
 | `header.semantic.intent`           | `string`     | 意图                              |
 | `header.semantic.session_complete` | `bool`       | 会话是否结束                          |
@@ -305,7 +305,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 }
 ```
 
-| 参数名                              |    类型    | 是否必选 | 描述                                    |
+| 参数名                            |    类型    | 是否必选 | 描述                                    |
 | -------------------------------- | :------: | :--: | ------------------------------------- |
 | `header`                         |    -     |  是   | 请求头                                   |
 | `header.guid`                    | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)          |
