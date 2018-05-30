@@ -15,6 +15,25 @@ enum TRAIN_TYPE
     E_TRAINTYPE_K = 5,      // 普快
     E_TRAINTYPE_OTHERS = 6, // 其他
 };
+
+enum SEAT_TYPE
+{
+    E_SEATTYPE_YZ    = 0,       // 硬座
+    E_SEATTYPE_YW    = 1,       // 硬卧
+    E_SEATTYPE_SWZ   = 2,       // 商务座
+    E_SEATTYPE_TDZ   = 3,       // 特等座
+    E_SEATTYPE_YDZ   = 4,       // 一等座
+    E_SEATTYPE_EDZ   = 5,       // 二等座
+    E_SEATTYPE_GJRW  = 6,       // 高级软卧
+    E_SEATTYPE_RW    = 7,       // 软卧
+    E_SEATTYPE_WZ    = 8,       // 无座
+    E_SEATTYPE_OTHERS= 9,       // 其他
+    E_SEATTYPE_YWS   = 10,      // 硬卧上
+    E_SEATTYPE_YWZ   = 11,      // 硬卧中
+    E_SEATTYPE_YWX   = 12,      // 硬卧下
+    E_SEATTYPE_RWS   = 13,      // 软卧上
+    E_SEATTYPE_RWX   = 14,      // 软卧下
+};
 ```
 ```json
 {
