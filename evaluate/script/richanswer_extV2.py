@@ -4,8 +4,8 @@ import requests # Command to install: `pip install request`
 import json, sys, time, base64
 
 # 腾讯叮当提供的Bot Key/Secret
-botKey = 'bot_key'
-botSecret = 'bot_secret'
+botKey = "XXXX";
+botSecret = b"YYYY";
 
 usage = '''
 ####
@@ -92,5 +92,5 @@ r = session.post(requestUrl, data = json.dumps(jsonReq).encode('utf-8'))
 respTime = time.time();
 
 print ('Response...')
-print ("HTTP Status Code:%d" % r.status_code, "cost:%f" %(reqTime - respTime))
+print ("HTTP Status Code:%d" % r.status_code, "cost:%f(ms)" %((respTime - reqTime) * 1000));
 print (r.text)

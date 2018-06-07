@@ -20,8 +20,8 @@ if (2 > len(sys.argv)) :
     sys.exit(0);
 
 # 腾讯叮当提供的Bot Key/Secret，请填入自己的bot_key
-botKey = 'bot_key'
-botSecret = 'bot_secret'
+botKey = "XXXX";
+botSecret = b"YYYY";
 
 # ***** Task 1: 拼接请求数据和时间戳 *****
 
@@ -112,7 +112,7 @@ while 1 :
 
     print ("reqTime:%f" % reqTime, "respTime:%f" % respTime); 
     print ('Response...')
-    print ('HTTP Status Code:%d' % r.status_code, 'cost:%f' %(respTime - reqTime))
+    print ('HTTP Status Code:%d' % r.status_code, 'cost:%f(ms)' %((respTime - reqTime) * 1000))
 
     if 200 != r.status_code : 
         file.close();
