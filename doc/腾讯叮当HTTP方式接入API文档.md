@@ -320,7 +320,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `header.device.network`          | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`           |
 | `payload`                        |    -     |  是   | 请求内容                                  |
 | `payload.voice_meta`             |    -     |  是   | 语音配置信息                                |
-| `payload.voice_meta.compress`    | `string` |  是   | 压缩类型：`PCM`/`WAV`/`SPEEX`/`AMR`/`OPUS` |
+| `payload.voice_meta.compress`    | `string` |  是   | 压缩类型：`PCM`/`WAV`/`SPEEX`/`AMR`/`OPUS`/`MP3` |
 | `payload.voice_meta.sample_rate` | `string` |  是   | 采样率：`8K`/`16K`                        |
 | `payload.voice_meta.channel`     |  `int`   |  是   | 音频通道数：`1`/`2`                         |
 | `payload.open_vad`               |  `bool`  |  是   | 是否打开VAD                               |
