@@ -198,7 +198,7 @@ body请求示例
 | `header.user.account`                     | `object` |  -   | 用户账户信息        |
 | `header.user.account.id`                  | `string` |  -   | 用户账户ID，填openid       |
 | `header.user.account.token`               | `string` |  -   | 用户账户accesstoken |
-| `header.user.account.type`               | `string` |  -   | 用户账户类型,支持`WX`|`QQOPEN`       |
+| `header.user.account.type`               | `string` |  -   | 用户账户类型,支持`WX`/`QQOPEN`       |
 | `header.user.account.appid`               | `string` |  -   | 用户账户的appid     |
 | `header.lbs`                              |    -     |  否   | 用户位置信息                                   |
 | `header.lbs.longitude`                    | `double` |  -   | 经度                                       |
