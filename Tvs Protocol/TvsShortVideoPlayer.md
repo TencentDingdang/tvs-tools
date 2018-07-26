@@ -49,7 +49,7 @@
 |	videoItem.stream.progressReport.progressReportDelayInMilliseconds		|	string	|	No	|	进度上报延迟时间点		|
 |	videoItem.stream.progressReport	.progressReportIntervalInMilliseconds	|	string	|	No	|	进度上报间隔					|
 
-###播放开始事件
+### 播放开始事件
 ```json
 {
     "event": {
@@ -79,7 +79,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###播放快结束事件
+### 播放快结束事件
 ```json
 {
     "event": {
@@ -109,7 +109,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###进度上报延迟到达事件
+### 进度上报延迟到达事件
 ```json
 {
     "event": {
@@ -139,7 +139,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###进度上报间隔到达事件
+### 进度上报间隔到达事件
 ```json
 {
     "event": {
@@ -169,7 +169,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###播放卡顿开始事件
+### 播放卡顿开始事件
 ```json
 {
     "event": {
@@ -199,7 +199,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###播放卡顿结束事件
+### 播放卡顿结束事件
 ```json
 {
     "event": {
@@ -231,7 +231,7 @@
 |	offsetInMilliseconds				|	long		|	Yes	|	偏移量							|
 |	stutterDurationInMilliseconds	|	long		|	Yes	|	卡顿时长						|
 
-###播放结束事件
+### 播放结束事件
 ```json
 {
     "event": {
@@ -261,7 +261,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###播放失败事件
+### 播放失败事件
 ```json
 {
     "event": {
@@ -305,7 +305,7 @@
 |	error.type													|	string	|	Yes	|	错误类型							|
 |	error.message											|	string	|	Yes	|	错误消息							|
 
-###停止播放指令
+### 停止播放指令
 ```json
 {
     "directive": {
@@ -327,7 +327,7 @@
 |	:-------------------	|	:--------	|	:-----	|	:--------------------------------	|
 |	messageId			|	string	|	Yes	|	消息ID							|
 
-###播放已停止事件
+### 播放已停止事件
 ```json
 {
     "event": {
@@ -357,7 +357,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###播放已暂停事件
+### 播放已暂停事件
 ```json
 {
     "event": {
@@ -387,7 +387,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###播放已恢复事件
+### 播放已恢复事件
 ```json
 {
     "event": {
@@ -417,7 +417,7 @@
 |	token						|	string	|	Yes	|	视频对象token				|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###视频流元数据解析成功事件
+### 视频流元数据解析成功事件
 ```json
 {
     "event": {

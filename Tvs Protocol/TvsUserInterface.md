@@ -1,4 +1,4 @@
-###UI数据指令
+### UI数据指令
 ```json
 {
 	"directive": {
@@ -54,7 +54,7 @@
 |	jsonSemantic.compress		|	string	|	Yes	|	压缩格式<br>none:无压缩<br>gzip:GZIP压缩							|
 |	jsonSemantic.data				|	string	|	Yes	|	语义数据																				|
 
-###选择事件
+### 选择事件
 ```json
 {
 	"context": [...],
@@ -87,7 +87,7 @@
 |	dataId				|	string	|	Yes	|	数据ID							|
 
 
-###实时ASR结果指令
+### 实时ASR结果指令
 	说明：该指令从下行通道发送
 
 ```json
@@ -165,7 +165,7 @@
 |	data.asrClassifierInfo[].items[].label				|	long		|	No	|	ASR分类器标签				|
 |	data.asrClassifierInfo[].items[].probability		|	float		|	No	|	ASR分类器概率				|
 
-###AudioPlayer进度改变事件
+### AudioPlayer进度改变事件
 ```json
 {
 	"event": {
@@ -197,7 +197,7 @@
 |	playerActivity				|	string	|	Yes	|	AudioPlayer状态			|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量							|
 
-###TvsShortVideoPlayer进度改变事件
+### TvsShortVideoPlayer进度改变事件
 ```json
 {
 	"event": {
@@ -229,7 +229,7 @@
 |	playerActivity				|	string	|	Yes	|	TvsShortVideoPlayer状态		|
 |	offsetInMilliseconds	|	long		|	Yes	|	偏移量									|
 
-###收藏展示指令
+### 收藏展示指令
 ```json
 {
 	"directive": {
@@ -257,7 +257,7 @@
 |	:---------------------------	|	:--------	|	:-----	|	:--------------------------------	|
 |	id								|	string	|	Yes	|	数据ID							|
 
-###取消收藏展示指令
+### 取消收藏展示指令
 ```json
 {
 	"directive": {
@@ -286,7 +286,7 @@
 |	id								|	string	|	Yes	|	数据ID							|
 
 
-###播放模式指令
+### 播放模式指令
 ```json
 {
 	"directive": {
@@ -314,7 +314,7 @@
 |	:---------------------------	|	:--------	|	:-----	|	:--------------------------------	|
 |	mode						|	string	|	Yes	|	模式:<br>SingleMode:单曲<br>SingleCycleMode:单曲循环<br>ListMode:列表<br>ListCycleMode:列表循环<br>RandomMode:随机	|
 
-###音乐播放器进入MV模式事件
+### 音乐播放器进入MV模式事件
 	说明：用户点击界面按钮上报
 
 ```json
@@ -337,7 +337,7 @@
 |	:------------------------------------	|	:--------	|	:-----	|	:---------------------------	|
 |	messageId							|	string	|	Yes	|	消息ID						|
 
-###音乐播放器离开MV模式事件
+### 音乐播放器离开MV模式事件
 	说明：用户点击界面按钮上报
 
 ```json
