@@ -397,3 +397,193 @@
 |	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
 |	messageId			|	string	|	Yes	|	消息ID						|
 |	dialogRequestId	|	string	|	No	|	对话ID						|
+
+### 设置睡眠指令
+```json
+{
+	"directive": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "SetSleep",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+			"token": "{{STRING}}",
+			"beginDate": "{{STRING}}",
+			"endDate": "{{STRING}}",
+			"beginTime": "{{STRING}}",
+			"endTime": "{{STRING}}",
+			"type": "{{STRING}}"
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述										|
+|	:---------------------------	|	:--------	|	:-----	|	:---------------------------------------	|
+|	token						|	string	|	Yes	|	token									|
+|	beginDate					|	string	|	Yes	|	开始日期(UTC:20180810)		|
+|	endDate					|	string	|	Yes	|	结束日期(UTC:20180830)		|
+|	beginTime					|	string	|	Yes	|	开始时间(UTC:231010)			|
+|	endTime					|	string	|	Yes	|	结束时间(UTC:071010)			|
+|	type							|	string	|	Yes	|	类型<br>Once,一次<br>Daily,每天<br>Weekly,每周<br>Monthly,每月	|
+
+### 设置睡眠成功事件
+```json
+{
+	"event": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "SetSleepSucceeded",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+			"token": "{{STRING}}"
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述										|
+|	:---------------------------	|	:--------	|	:-----	|	:---------------------------------------	|
+|	token						|	string	|	Yes	|	token									|
+
+### 设置睡眠失败事件
+```json
+{
+	"event": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "SetSleepFailed",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+			"token": "{{STRING}}"
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述										|
+|	:---------------------------	|	:--------	|	:-----	|	:---------------------------------------	|
+|	token						|	string	|	Yes	|	token									|
+
+### 取消睡眠指令
+```json
+{
+	"directive": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "DeleteSleep",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+			"token": "{{STRING}}"
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述										|
+|	:---------------------------	|	:--------	|	:-----	|	:---------------------------------------	|
+|	token						|	string	|	Yes	|	token									|
+
+### 取消睡眠成功事件
+```json
+{
+	"event": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "DeleteSleepSucceeded",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+			"token": "{{STRING}}"
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述										|
+|	:---------------------------	|	:--------	|	:-----	|	:---------------------------------------	|
+|	token						|	string	|	Yes	|	token									|
+
+### 取消睡眠失败事件
+```json
+{
+	"event": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "DeleteSleepFailed",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+			"token": "{{STRING}}"
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述										|
+|	:---------------------------	|	:--------	|	:-----	|	:---------------------------------------	|
+|	token						|	string	|	Yes	|	token									|
