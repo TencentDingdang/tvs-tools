@@ -315,6 +315,118 @@
 |	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
 |	state							|	string	|	Yes	|	监视器状态:<br>Open:打开<br>Closed:关闭			|
 
+### 关闭蓝牙指令
+```json
+{
+	"directive": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "CloseBluetooth",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述					|
+|	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
+|	controlInfo					|	string	|	Yes	|	控制信息			|
+### 打开蓝牙指令
+```json
+{
+	"directive": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "OpenBluetooth",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+### 蓝牙改变事件
+```json
+{
+	"directive": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "BluetoothChanged",
+            "messageId": "{{STRING}}"
+		},
+		"payload": {
+			"state": "{{STRING}}"
+		}
+	}
+}	
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述					|
+|	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
+|	state							|	string	|	Yes	|	监视器状态:<br>Open:打开<br>Closed:关闭			|
+
+### 关闭Wifi指令
+```json
+{
+	"directive": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "CloseWifi",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述					|
+|	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
+|	controlInfo					|	string	|	Yes	|	控制信息			|
+
+
 ### 改变页面指令
 ```json
 {

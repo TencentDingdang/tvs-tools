@@ -16,6 +16,9 @@
         "microphone": {
 			"state": "{{STRING}}"
 		},
+        "bluetooth": {
+			"state": "{{STRING}}"
+		},
 		"battery": {
 			"power": {{LONG}}
 		}
@@ -33,6 +36,8 @@
 |	camera.state						|	string	|	Yes	|	摄像头状态					|
 |	microphone						|	object	|	Yes	|	麦克风							|
 |	microphone.state				|	string	|	Yes	|	麦克风状态					|
+|	bluetooth							|	object	|	Yes	|	蓝牙								|
+|	bluetooth.state					|	string	|	Yes	|	蓝牙状态						|
 |	battery								|	object	|	Yes	|	电池								|
 |	battery.power						|	long		|	Yes	|	电池电量						|
 
