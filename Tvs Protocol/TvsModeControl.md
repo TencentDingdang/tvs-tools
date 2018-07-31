@@ -1,7 +1,7 @@
-### 进入儿童模式事件
+### 进入儿童模式指令
 ```json
 {
-	"event": {
+	"directive": {
 		"header": {
 			"namespace": "TvsModeControl",
 			"name": "EnterChildMode",
@@ -24,7 +24,7 @@
 ### 退出儿童模式指令
 ```json
 {
-	"event": {
+	"directive": {
 		"header": {
 			"namespace": "TvsModeControl",
 			"name": "LeaveChildMode",
