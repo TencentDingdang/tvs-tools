@@ -498,6 +498,7 @@
 			"dialogRequestId": "{{STRING}}"
 		},
 		"payload": {
+			"type": "{{STRING}}"
 		}
 	}
 }
@@ -509,6 +510,12 @@
 |	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
 |	messageId			|	string	|	Yes	|	消息ID						|
 |	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述					|
+|	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
+|	type							|	string	|	Yes	|	类型<br>INFORMATION:提示<br>EXECUTE:执行<br>CANCEL:取消			|
 
 ### 设置睡眠指令
 ```json
