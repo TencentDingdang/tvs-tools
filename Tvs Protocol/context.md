@@ -191,7 +191,8 @@
 		},
 		"payload": {
 			"isChildModeEnabled" : {{BOOLEAN}},
-			"isPhoneModeEnabled" : {{BOOLEAN}}
+			"isPhoneModeEnabled" : {{BOOLEAN}},
+			"isLockModeEnabled" : {{BOOLEAN}}
 		}
 	}
 }
@@ -203,3 +204,4 @@
 |	:---------------------------		|	:--------	|	:-----		|	:-------------------	|
 |	isChildModeEnabled		|	boolean	|	Yes		|	是否儿童模式		|
 |	isPhoneModeEnabled		|	boolean	|	Yes		|	是否电话模式		|
+|	isLockModeEnabled		|	boolean	|	Yes		|	是否锁定模式		|
