@@ -520,11 +520,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `header.ip`                  | `string` | 终端IP（厂商后台代为上报需填该字段）                      |
 | `payload`                    | -        | 上报消息体。消息分为几种类型：<br>`state_report`：上报媒体播放/展示状态；<br>`device_report`：上报设备开关机等状态； |
 
-##### media_report
+##### state_report
 
 | 参数名                      | 类型       | 描述                                       |
 | ------------------------ | -------- | ---------------------------------------- |
-| `type`                   | `string` | 填"media_report"                          |
+| `type`                   | `string` | 填"state_report"                          |
 | `semantic`               | -        | 语义信息                                     |
 | `semantic.domain`        | `string` | 领域                                       |
 | `semantic.intent`        | `string` | 意图                                       |
