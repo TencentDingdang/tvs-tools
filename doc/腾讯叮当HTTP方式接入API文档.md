@@ -518,7 +518,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `header.user.account_app_id` | `string` | 登陆平台的APPID                               |
 | `header.user.user_id`        | `string` | QQ或微信的OpenID                             |
 | `header.ip`                  | `string` | 终端IP（厂商后台代为上报需填该字段）                      |
-| `payload`                    | -        | 上报消息体。消息分为几种类型：<br>`media_report`：上报媒体播放/展示状态；<br>`device_report`：上报设备开关机等状态； |
+| `payload`                    | -        | 上报消息体。消息分为几种类型：<br>`state_report`：上报媒体播放/展示状态；<br>`device_report`：上报设备开关机等状态； |
 
 ##### media_report
 
