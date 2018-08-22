@@ -456,7 +456,7 @@
 
 |	Parameter					|	Type		|	必选	|	描述					|
 |	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
-|	type							|	string	|	Yes	|	类型:<br>Back:返回<br>Exit:退出<br>BackToHome:返回首屏<br>OpenPage:打开页面			|
+|	type							|	string	|	Yes	|	类型:<br>Back:返回<br>Exit:退出<br>BackToHome:返回首屏<br>OpenThis:打开当前对象<br>OpenPage:打开页面			|
 |	pageInfo					|	string	|	Yes	|	页面信息			|
 
 ### 改变壁纸指令

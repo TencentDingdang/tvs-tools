@@ -111,18 +111,16 @@
 ### 音频播放器上下文
 ```json
 {
-	"context": {
-		"header": {
-			"namespace":"AudioPlayer",
-			"name":"PlaybackState"
-		},
-		"payload": {
-			"token": "{{STRING}}",
-			"playerActivity": "{{STRING}}",
-			"tvsPlayerMode": "{{STRING}}",
-			"offsetInMilliseconds": {{LONG}},
-			"isTop": {{BOOLEAN}}
-		}
+	"header": {
+		"namespace":"AudioPlayer",
+		"name":"PlaybackState"
+	},
+	"payload": {
+		"token": "{{STRING}}",
+		"playerActivity": "{{STRING}}",
+		"tvsPlayerMode": "{{STRING}}",
+		"offsetInMilliseconds": {{LONG}},
+		"isTop": {{BOOLEAN}}
 	}
 }
 ```
@@ -140,14 +138,12 @@
 ### UI上下文
 ```json
 {
-	"context": {
-		"header": {
-			"namespace": "TvsUserInterface",
-			"name": "ShowState"
-		},
-		"payload": {
-			"isEnabled": {{BOOLEAN}}
-		}
+	"header": {
+		"namespace": "TvsUserInterface",
+		"name": "ShowState"
+	},
+	"payload": {
+		"isEnabled": {{BOOLEAN}}
 	}
 }
 ```
@@ -161,15 +157,13 @@
 ### 位置信息上下文
 ```json
 {
-	"context": {
-		"header": {
-			"namespace": "LocationInformation",
-			"name": "LocationState"
-		},
-		"payload": {
-			"latitude" : 30.0000,
-			"longitude": 90.0000
-		}
+	"header": {
+		"namespace": "LocationInformation",
+		"name": "LocationState"
+	},
+	"payload": {
+		"latitude" : 30.0000,
+		"longitude": 90.0000
 	}
 }
 ```
@@ -184,16 +178,14 @@
 ### 情景模式上下文
 ```json
 {
-	"context": {
-		"header": {
-			"namespace": "TvsProfileInformation",
-			"name": "ProfileState"
-		},
-		"payload": {
-			"isChildModeEnabled" : {{BOOLEAN}},
-			"isPhoneModeEnabled" : {{BOOLEAN}},
-			"isLockModeEnabled" : {{BOOLEAN}}
-		}
+	"header": {
+		"namespace": "TvsProfileInformation",
+		"name": "ProfileState"
+	},
+	"payload": {
+		"isChildModeEnabled" : {{BOOLEAN}},
+		"isPhoneModeEnabled" : {{BOOLEAN}},
+		"isLockModeEnabled" : {{BOOLEAN}}
 	}
 }
 ```
