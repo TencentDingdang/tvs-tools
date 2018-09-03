@@ -251,22 +251,22 @@ body请求示例
 }
 ```
 
-| 参数名                                | 类型       | 描述                              |
-| ---------------------------------- | -------- | ------------------------------- |
-| `header`                           | -        | 消息头                             |
-| `header.semantic`                  | -        | 语义信息                            |
-| `header.semantic.code`             | `string` | 语义错误码(0,正常;非0,异常;)              |
-| `header.semantic.msg`              | `string` | 语义错误消息                          |
-| `header.semantic.domain`           | `string` | 领域                              |
-| `header.semantic.intent`           | `string` | 意图                              |
-| `header.semantic.session_complete` | `bool`   | 会话是否结束                          |
-| `header.session`                   | -        | 会话                              |
-| `header.session.session_id`        | `string` | 会话ID                            |
-| `payload`                          | -        | 消息体                             |
-| `payload.response_text`            | `string` | 显示正文内容                          |
-| `payload.data`                     | -        | 领域数据                            |
+| 参数名                                | 类型       | 描述                                       |
+| ---------------------------------- | -------- | ---------------------------------------- |
+| `header`                           | -        | 消息头                                      |
+| `header.semantic`                  | -        | 语义信息                                     |
+| `header.semantic.code`             | `string` | 语义错误码(0,正常;非0,异常;)                       |
+| `header.semantic.msg`              | `string` | 语义错误消息                                   |
+| `header.semantic.domain`           | `string` | 领域                                       |
+| `header.semantic.intent`           | `string` | 意图                                       |
+| `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
+| `header.session`                   | -        | 会话                                       |
+| `header.session.session_id`        | `string` | 会话ID                                     |
+| `payload`                          | -        | 消息体                                      |
+| `payload.response_text`            | `string` | 显示正文内容                                   |
+| `payload.data`                     | -        | 领域数据                                     |
 | `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/tree/master/doc/domains， 对于采用V3协议的端，见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
-| `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"     |
+| `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
 
 示例代码见1:	../evaluate/script/richanswerV1.py(不带附加数据)
 示例代码见2:	../evaluate/script/richanswer_extV1.py(带附加数据)
@@ -561,6 +561,105 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `code`    | `int`    | 错误码：<br>`0`: 正常；<br>`其他`:异常 |
 | `message` | `string` | 错误消息                        |
 
+### 5. 统一接入接口
+#### 接口描述
+​	统一接入接口提供终端访问后端各个服务特定接口的能力。
+#### 请求参数
+__URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
+
+```
+json
+{
+    "header": {
+        "guid": "【设备唯一标识】",
+        "qua": "【设备QUA】",
+        "user": {
+            "user_id": "",
+	        "account":{
+	    	    "id":"{{STRING}}",
+                "appid":"{{STRING}}",
+                "type":"{{STRING}}",
+                "token":"{{STRING}}"	
+	    }
+        },
+        "lbs": {
+            "longitude": 132.56481,
+            "latitude": 22.36549
+        },
+        "ip": "8.8.8.8",
+        "device": {
+            "network": "4G"
+        },
+		"profile":{
+			"isChildModeEnabled" : {{BOOLEAN}},
+			"isPhoneModeEnabled" : {{BOOLEAN}}
+		}
+    },
+    "payload": {
+      	"domain": "{{STRING}}",
+		"intent": "{{STRING}}",
+        "jsonBlobInfo": "{{STRING}}"
+    }
+}
+```
+
+***Header Parameters***
+
+| 参数名                         | 类型       | 是否必选 | 描述                                  |
+| --------------------------- | -------- | ---- | ----------------------------------- |
+| ` header `                  | `object` | Yes  | -                                   |
+| `header.guid`               | `string` | 是    | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)   |
+| `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明) |
+| `header.user`               | -        | No   | 用户信息                                |
+| `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)     |
+| `header.user.account`       | `object` | No   | 用户账户信息                              |
+| `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                      |
+| `header.user.account.token` | `string` | No   | 用户账户accesstoken                     |
+| `header.user.account.type`  | `string` | No   | 用户账户类型,支持`WX`/`QQOPEN`              |
+| `header.user.account.appid` | `string` | No   | 用户账户的appid                          |
+| `header.ip`                 | `string` | No   | 终端IP                                |
+| `header.device`             | `object` | No   | 终端其他信息                              |
+| `header.device.network`     | `string` | No   | 终端网络类型                              |
+
+
+***Payload Parameters***
+
+| 参数名                    | 类型       | 是否必选 | 描述   |
+| ---------------------- | -------- | ---- | ---- |
+| `payload`              | `object` | Yes  | 负载   |
+| `payload.domain`       | `string` | Yes  | 领域   |
+| `payload.intent`       | `string` | Yes  | 意图   |
+| `payload.jsonBlobInfo` | `string` | Yes  | 数据   |
+
+#### 返回参数
+```
+json
+{
+	"header": {
+   		"retCode": 0,
+   		"errMsg": "{{STRING}}"
+	},
+	"payload": {
+        "jsonBlobInfo": "{{STRING}}"
+	}
+}
+```
+
+***Header Parameters***
+
+| 参数名              | 类型       | 是否必选 | 描述   |
+| ---------------- | -------- | ---- | ---- |
+| `header`         | `object` | Yes  | 头部   |
+| `header.retCode` | `long`   | Yes  | 返回码  |
+| `header.errMsg`  | `string` | Yes  | 错误消息 |
+
+***Payload Parameters***
+
+| 参数名                    | 类型       | 是否必选 | 描述   |
+| ---------------------- | -------- | ---- | ---- |
+| `payload`              | `object` | Yes  | 负载   |
+| `payload.jsonBlobInfo` | `string` | Yes  | 数据   |
+
 
 
 ## 腾讯叮当能力评测注意事项
@@ -592,7 +691,15 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
 ### GUID获取
 
-​	`方案待定`
+​	如果设备上使用了AISDK，可以从AISDK获取GUID，否则，设备端需要自己生成GUID。
+
+按照如下方式生成：
+
+1. 把厂商的appkey、appSceret和设备唯一序列号三个字符串拼接，以“:”作为分割符，拼接形式为`appkey:appSceret:设备唯一序列号`
+
+2. 取拼接串的md5值小写形式。md5值即为GUID。
+
+   ​
 
 ### USERID
 
