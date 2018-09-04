@@ -36,8 +36,8 @@
 ```json
 {
 	"vectResourceList": [{
-		"lExpiresInSec": 43200,
-		"lRefrainEnd": 0,
+		"lExpiresInSec": {{INT}},
+		"lRefrainEnd": {{INT}},
 		"lRefrainStart":{{INT}} ,
 		"strResourceCoverURL": "{{STRING}}",
 		"strResourceID": "{{STRING}}",
