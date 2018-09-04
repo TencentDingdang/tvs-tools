@@ -563,7 +563,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
 ### 5. 统一接入接口
 #### 接口描述
-​	统一接入接口提供终端访问后端各个服务特定接口的能力。
+​	统一接入接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见
 #### 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
@@ -589,11 +589,8 @@ json
         "ip": "8.8.8.8",
         "device": {
             "network": "4G"
-        },
-		"profile":{
-			"isChildModeEnabled" : {{BOOLEAN}},
-			"isPhoneModeEnabled" : {{BOOLEAN}}
-		}
+        }
+
     },
     "payload": {
       	"domain": "{{STRING}}",
@@ -624,12 +621,12 @@ json
 
 ***Payload Parameters***
 
-| 参数名                    | 类型       | 是否必选 | 描述   |
-| ---------------------- | -------- | ---- | ---- |
-| `payload`              | `object` | Yes  | 负载   |
-| `payload.domain`       | `string` | Yes  | 领域   |
-| `payload.intent`       | `string` | Yes  | 意图   |
-| `payload.jsonBlobInfo` | `string` | Yes  | 数据   |
+| 参数名                    | 类型       | 是否必选 | 描述                                       |
+| ---------------------- | -------- | ---- | ---------------------------------------- |
+| `payload`              | `object` | Yes  | 负载                                       |
+| `payload.domain`       | `string` | Yes  | 领域                                       |
+| `payload.intent`       | `string` | Yes  | 意图                                       |
+| `payload.jsonBlobInfo` | `string` | Yes  | 数据，根据`payload.domain`和`payload.intent`的不同，有不同的数据格式。 |
 
 #### 返回参数
 ```
