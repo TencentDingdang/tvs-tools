@@ -563,7 +563,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
 ### 5. 统一接入接口
 #### 接口描述
-​	统一接入接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见
+​	统一接入接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
 #### 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
