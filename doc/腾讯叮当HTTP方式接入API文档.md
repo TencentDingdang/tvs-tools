@@ -1,4 +1,6 @@
-<h1>腾讯叮当HTTP接入API V1.15</h1>
+# 腾讯叮当HTTP接入API V1.15
+
+
 
 [TOC]
 
@@ -188,38 +190,38 @@ body请求示例
 }
 ```
 
-| 参数名                                     |    类型    | 是否必选 | 描述                                       |
-| ----------------------------------------  | :------: | :--: | ---------------------------------------- |
-| `header`                                  |    -     |  是   | 请求头                                      |
-| `header.guid`                             | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)       |
-| `header.qua`                              | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)         |
-| `header.user`                             |    -     |  否   | 用户信息                                     |
-| `header.user.user_id`                     | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)         |
-| `header.user.account`                     | `object` |  -   | 用户账户信息        |
-| `header.user.account.id`                  | `string` |  -   | 用户账户ID，填openid       |
-| `header.user.account.token`               | `string` |  -   | 用户账户accesstoken |
-| `header.user.account.type`               | `string` |  -   | 用户账户类型,支持`WX`/`QQOPEN`       |
-| `header.user.account.appid`               | `string` |  -   | 用户账户的appid     |
-| `header.lbs`                              |    -     |  否   | 用户位置信息                                   |
-| `header.lbs.longitude`                    | `double` |  -   | 经度                                       |
-| `header.lbs.latitude`                     | `double` |  -   | 纬度                                       |
-| `header.ip`                               | `string` |  是   | 终端IP                                     |
-| `header.device`                           |    -     |  否   |                                          |
-| `header.device.network`                   | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
-| `header.device.serial_num`                | `string` |  否   | 设备唯一序列号              |
-| `payload`                                 |    -     |  是   | 请求内容                                     |
-| `payload.query`                           | `string` |  是   | 用户query                                  |
-| `payload.request_type`                    | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； | 
-| `payload.semantic`                        |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
-| `payload.semantic.domain`                 | `string` |  否   | 领域信息                                     |
-| `payload.semantic.intent`                 | `string` |  否   | 意图信息                                     |
-| `payload.semantic.param`                  |    -     |  否   | 语义参数信息                                   |
-| `payload.semantic.param{type}`            | `string` |  否   | 语义参数类型                                   |
-| `payload.semantic.param{key}`             | `string` |  否   | 语义参数名字                                   |
-| `payload.semantic.param{value}`           | `string` |  否   | 语义参数值                                    |
-| `payload.extra_data`                      |    -     |  否   | 额外数据信息                                   |
-| `payload.extra_data{type}`                |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频；|                            
-| `payload.extra_data{data_base64}`         | `string` |  否   | 额外数据`Base64`编码                                     |
+| 参数名                               |    类型    | 是否必选 | 描述                                       |
+| --------------------------------- | :------: | :--: | ---------------------------------------- |
+| `header`                          |    -     |  是   | 请求头                                      |
+| `header.guid`                     | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
+| `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
+| `header.user`                     |    -     |  否   | 用户信息                                     |
+| `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
+| `header.user.account`             | `object` |  -   | 用户账户信息                                   |
+| `header.user.account.id`          | `string` |  -   | 用户账户ID，填openid                           |
+| `header.user.account.token`       | `string` |  -   | 用户账户accesstoken                          |
+| `header.user.account.type`        | `string` |  -   | 用户账户类型,支持`WX`/`QQOPEN`                   |
+| `header.user.account.appid`       | `string` |  -   | 用户账户的appid                               |
+| `header.lbs`                      |    -     |  否   | 用户位置信息                                   |
+| `header.lbs.longitude`            | `double` |  -   | 经度                                       |
+| `header.lbs.latitude`             | `double` |  -   | 纬度                                       |
+| `header.ip`                       | `string` |  是   | 终端IP                                     |
+| `header.device`                   |    -     |  否   |                                          |
+| `header.device.network`           | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `header.device.serial_num`        | `string` |  否   | 设备唯一序列号                                  |
+| `payload`                         |    -     |  是   | 请求内容                                     |
+| `payload.query`                   | `string` |  是   | 用户query                                  |
+| `payload.request_type`            | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
+| `payload.semantic`                |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
+| `payload.semantic.domain`         | `string` |  否   | 领域信息                                     |
+| `payload.semantic.intent`         | `string` |  否   | 意图信息                                     |
+| `payload.semantic.param`          |    -     |  否   | 语义参数信息                                   |
+| `payload.semantic.param{type}`    | `string` |  否   | 语义参数类型                                   |
+| `payload.semantic.param{key}`     | `string` |  否   | 语义参数名字                                   |
+| `payload.semantic.param{value}`   | `string` |  否   | 语义参数值                                    |
+| `payload.extra_data`              |    -     |  否   | 额外数据信息                                   |
+| `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
+| `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
 
 
 #### 返回参数
@@ -249,22 +251,22 @@ body请求示例
 }
 ```
 
-| 参数名                                | 类型           | 描述                              |
-| ---------------------------------- | ------------ | ------------------------------- |
-| `header`                           | -            | 消息头                             |
-| `header.semantic`                  | -            | 语义信息                            |
-| `header.semantic.code`             | `string`     | 语义错误码(0,正常;非0,异常;)                              |
-| `header.semantic.msg`              | `string`     | 语义错误消息                              |
-| `header.semantic.domain`           | `string`     | 领域                              |
-| `header.semantic.intent`           | `string`     | 意图                              |
-| `header.semantic.session_complete` | `bool`       | 会话是否结束                          |
-| `header.session`                   | -            | 会话                              |
-| `header.session.session_id`        | `string`     | 会话ID                            |
-| `payload`                          | -            | 消息体                             |
-| `payload.response_text`            | `string`     | 显示正文内容                          |
-| `payload.data`                     | -            | 领域数据                            |
-| `payload.data.json`                | -            | 领域结构化Json数据，数据格式详见"domains/xxx" |
-| `payload.data.json_template`       | -            | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"     |
+| 参数名                                | 类型       | 描述                                       |
+| ---------------------------------- | -------- | ---------------------------------------- |
+| `header`                           | -        | 消息头                                      |
+| `header.semantic`                  | -        | 语义信息                                     |
+| `header.semantic.code`             | `string` | 语义错误码(0,正常;非0,异常;)                       |
+| `header.semantic.msg`              | `string` | 语义错误消息                                   |
+| `header.semantic.domain`           | `string` | 领域                                       |
+| `header.semantic.intent`           | `string` | 意图                                       |
+| `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
+| `header.session`                   | -        | 会话                                       |
+| `header.session.session_id`        | `string` | 会话ID                                     |
+| `payload`                          | -        | 消息体                                      |
+| `payload.response_text`            | `string` | 显示正文内容                                   |
+| `payload.data`                     | -        | 领域数据                                     |
+| `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/tree/master/doc/domains， 对于采用V3协议的端，见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
+| `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
 
 示例代码见1:	../evaluate/script/richanswerV1.py(不带附加数据)
 示例代码见2:	../evaluate/script/richanswer_extV1.py(带附加数据)
@@ -277,9 +279,9 @@ body请求示例
 
 该接口提供(非)流式语音识别的能力。语音识别按是否采用云端VAD分为两种情况：
 
-| 类型      | 说明                                       |
-| ------- | ---------------------------------------- |
-| 云端VAD  | 当payload.open_vad=true时，语音识别引擎将会自动识别用户说话结束。自动返回最终识别结果。适用于音箱收音等非手动控制结束的场景 |
+| 类型    | 说明                                       |
+| ----- | ---------------------------------------- |
+| 云端VAD | 当payload.open_vad=true时，语音识别引擎将会自动识别用户说话结束。自动返回最终识别结果。适用于音箱收音等非手动控制结束的场景 |
 | 本地VAD | 当payload.open_vad=false时，语音识别引擎不会自动识别用户说话结束。需要终端主动设置结束标识(voice_finished=true)，语音识别引擎才会返回最终识别结果。适用于**按下说话,抬起结束**的收音场景，如遥控器。 |
 
 #### 请求参数
@@ -318,29 +320,29 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 }
 ```
 
-| 参数名                            |    类型    | 是否必选 | 描述                                    |
-| -------------------------------- | :------: | :--: | ------------------------------------- |
-| `header`                         |    -     |  是   | 请求头                                   |
-| `header.guid`                    | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)          |
+| 参数名                              |    类型    | 是否必选 | 描述                                       |
+| -------------------------------- | :------: | :--: | ---------------------------------------- |
+| `header`                         |    -     |  是   | 请求头                                      |
+| `header.guid`                    | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
 | `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
-| `header.user`                    |    -     |  否   | 用户信息                                  |
-| `header.user.user_id`            | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)      |
-| `header.lbs`                     |    -     |  否   | 用户位置信息                                |
-| `header.lbs.longitude`           | `double` |  -   | 经度                                    |
-| `header.lbs.latitude`            | `double` |  -   | 纬度                                    |
-| `header.ip`                      | `string` |  是   | 终端IP                                  |
-| `header.device`                  |    -     |  否   |                                       |
-| `header.device.network`          | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`           |
-| `payload`                        |    -     |  是   | 请求内容                                  |
-| `payload.voice_meta`             |    -     |  是   | 语音配置信息                                |
+| `header.user`                    |    -     |  否   | 用户信息                                     |
+| `header.user.user_id`            | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
+| `header.lbs`                     |    -     |  否   | 用户位置信息                                   |
+| `header.lbs.longitude`           | `double` |  -   | 经度                                       |
+| `header.lbs.latitude`            | `double` |  -   | 纬度                                       |
+| `header.ip`                      | `string` |  是   | 终端IP                                     |
+| `header.device`                  |    -     |  否   |                                          |
+| `header.device.network`          | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `payload`                        |    -     |  是   | 请求内容                                     |
+| `payload.voice_meta`             |    -     |  是   | 语音配置信息                                   |
 | `payload.voice_meta.compress`    | `string` |  是   | 压缩类型：`PCM`/`WAV`/`SPEEX`/`AMR`/`OPUS`/`MP3` |
-| `payload.voice_meta.sample_rate` | `string` |  是   | 采样率：`8K`/`16K`                        |
-| `payload.voice_meta.channel`     |  `int`   |  是   | 音频通道数：`1`/`2`                         |
-| `payload.open_vad`               |  `bool`  |  是   | 是否打开VAD                               |
-| `payload.session_id`             | `string` |  否   | 流式识别过程中必填                             |
-| `payload.index`                  |  `int`   |  是   | 语音片偏移量                                |
-| `payload.voice_finished`         |  `bool`  |  是   | 语音是否结束                                |
-| `payload.voice_base64`           | `string` |  是   | 语音数据的`Base64`编码                       |
+| `payload.voice_meta.sample_rate` | `string` |  是   | 采样率：`8K`/`16K`                           |
+| `payload.voice_meta.channel`     |  `int`   |  是   | 音频通道数：`1`/`2`                            |
+| `payload.open_vad`               |  `bool`  |  是   | 是否打开VAD                                  |
+| `payload.session_id`             | `string` |  否   | 流式识别过程中必填                                |
+| `payload.index`                  |  `int`   |  是   | 语音片偏移量                                   |
+| `payload.voice_finished`         |  `bool`  |  是   | 语音是否结束                                   |
+| `payload.voice_base64`           | `string` |  是   | 语音数据的`Base64`编码                          |
 
 
 #### 返回参数
@@ -418,16 +420,16 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 }
 ```
 
-| 参数名                         |    类型  | 是否必选 | 描述                                       |
-| ------------------------------ | :------: | :--:  | ---------------------------------------- |
+| 参数名                            |    类型    | 是否必选 | 描述                                       |
+| ------------------------------ | :------: | :--: | ---------------------------------------- |
 | `header`                       |    -     |  是   | 请求头                                      |
-| `header.guid`                  | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)             |
-| `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)         |
+| `header.guid`                  | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
+| `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
 | `header.user`                  |    -     |  否   | 用户信息                                     |
-| `header.user.user_id`          | `string` |  -    | 用户ID，，详细说明见[附录-USERID](#USERID)         |
+| `header.user.user_id`          | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.lbs`                   |    -     |  否   | 用户位置信息                                   |
-| `header.lbs.longitude`         | `double` |  -    | 经度                                       |
-| `header.lbs.latitude`          | `double` |  -    | 纬度                                       |
+| `header.lbs.longitude`         | `double` |  -   | 经度                                       |
+| `header.lbs.latitude`          | `double` |  -   | 纬度                                       |
 | `header.ip`                    | `string` |  是   | 终端IP                                     |
 | `header.device`                |    -     |  否   |                                          |
 | `header.device.network`        | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
@@ -435,9 +437,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload.speech_meta`          |    -     |  是   | 语音配置信息                                   |
 | `payload.speech_meta.compress` | `string` |  是   | 压缩类型：`WAV`/`MP3`/`AMR`                   |
 | `payload.speech_meta.person`   | `string` |  否   | 发音人：`ZHOULONGFEI`/`CHENANQI`/`YEZI`/`YEWAN`/`DAJI`/`LIBAI`/`NAZHA`/`MUZHA`/`WY` |
-| `payload.speech_meta.volume`   | `int`    |  否   | 音量：0~100（默认50） |
-| `payload.speech_meta.speed`    | `int`    |  否   | 语速：0~100（默认50） |
-| `payload.speech_meta.pitch`    | `int`    |  否   | 声调：0~100（默认50） |
+| `payload.speech_meta.volume`   |  `int`   |  否   | 音量：0~100（默认50）                           |
+| `payload.speech_meta.speed`    |  `int`   |  否   | 语速：0~100（默认50）                           |
+| `payload.speech_meta.pitch`    |  `int`   |  否   | 声调：0~100（默认50）                           |
 | `payload.session_id`           | `string` |  否   | 流式TTS过程中必填                               |
 | `payload.index`                |  `int`   |  是   | 请求的语音片序号                                 |
 | `payload.single_request`       |  `bool`  |  是   | 是否一次合成：<br>`true`：一次合成；<br>`false`：流式合成； |
@@ -559,6 +561,102 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `code`    | `int`    | 错误码：<br>`0`: 正常；<br>`其他`:异常 |
 | `message` | `string` | 错误消息                        |
 
+### 5. 统一接入接口
+#### 接口描述
+​	统一接入接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
+#### 请求参数
+__URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
+
+```
+json
+{
+    "header": {
+        "guid": "【设备唯一标识】",
+        "qua": "【设备QUA】",
+        "user": {
+            "user_id": "",
+	        "account":{
+	    	    "id":"{{STRING}}",
+                "appid":"{{STRING}}",
+                "type":"{{STRING}}",
+                "token":"{{STRING}}"	
+	    }
+        },
+        "lbs": {
+            "longitude": 132.56481,
+            "latitude": 22.36549
+        },
+        "ip": "8.8.8.8",
+        "device": {
+            "network": "4G"
+        }
+
+    },
+    "payload": {
+      	"domain": "{{STRING}}",
+		"intent": "{{STRING}}",
+        "jsonBlobInfo": "{{STRING}}"
+    }
+}
+```
+
+***Header Parameters***
+
+| 参数名                         | 类型       | 是否必选 | 描述                                  |
+| --------------------------- | -------- | ---- | ----------------------------------- |
+| ` header `                  | `object` | Yes  | -                                   |
+| `header.guid`               | `string` | 是    | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)   |
+| `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明) |
+| `header.user`               | -        | No   | 用户信息                                |
+| `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)     |
+| `header.user.account`       | `object` | No   | 用户账户信息                              |
+| `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                      |
+| `header.user.account.token` | `string` | No   | 用户账户accesstoken                     |
+| `header.user.account.type`  | `string` | No   | 用户账户类型,支持`WX`/`QQOPEN`              |
+| `header.user.account.appid` | `string` | No   | 用户账户的appid                          |
+| `header.ip`                 | `string` | No   | 终端IP                                |
+| `header.device`             | `object` | No   | 终端其他信息                              |
+| `header.device.network`     | `string` | No   | 终端网络类型                              |
+
+
+***Payload Parameters***
+
+| 参数名                    | 类型       | 是否必选 | 描述                                       |
+| ---------------------- | -------- | ---- | ---------------------------------------- |
+| `payload`              | `object` | Yes  | 负载                                       |
+| `payload.domain`       | `string` | Yes  | 领域                                       |
+| `payload.intent`       | `string` | Yes  | 意图                                       |
+| `payload.jsonBlobInfo` | `string` | Yes  | 数据，根据`payload.domain`和`payload.intent`的不同，有不同的数据格式。 |
+
+#### 返回参数
+```
+json
+{
+	"header": {
+   		"retCode": 0,
+   		"errMsg": "{{STRING}}"
+	},
+	"payload": {
+        "jsonBlobInfo": "{{STRING}}"
+	}
+}
+```
+
+***Header Parameters***
+
+| 参数名              | 类型       | 是否必选 | 描述   |
+| ---------------- | -------- | ---- | ---- |
+| `header`         | `object` | Yes  | 头部   |
+| `header.retCode` | `long`   | Yes  | 返回码  |
+| `header.errMsg`  | `string` | Yes  | 错误消息 |
+
+***Payload Parameters***
+
+| 参数名                    | 类型       | 是否必选 | 描述   |
+| ---------------------- | -------- | ---- | ---- |
+| `payload`              | `object` | Yes  | 负载   |
+| `payload.jsonBlobInfo` | `string` | Yes  | 数据   |
+
 
 
 ## 腾讯叮当能力评测注意事项
@@ -590,7 +688,15 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
 ### GUID获取
 
-​	`方案待定`
+​	如果设备上使用了AISDK，可以从AISDK获取GUID，否则，设备端需要自己生成GUID。
+
+按照如下方式生成：
+
+1. 把厂商的appkey、appSceret和设备唯一序列号三个字符串拼接，以“:”作为分割符，拼接形式为`appkey:appSceret:设备唯一序列号`
+
+2. 取拼接串的md5值小写形式。md5值即为GUID。
+
+   ​
 
 ### USERID
 

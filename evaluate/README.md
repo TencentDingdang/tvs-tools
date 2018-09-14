@@ -42,6 +42,8 @@ app/ASRNLU_demo_xxxx.apk工具支持Android运行环境，提供ASR、NLP批量�
 
 如果播放格式不支持，需要考虑升级终端的解码器。
 
+* 音频文件
+
 | 领域        | 文件类型   |  格式说明  | 文件下载 | 备注 |
 | --------    | -----      |  -----     | -----    | ---- |
 | TTS数据     |mp3         |   MPEG ADTS, layer III, v2,  64 kbps, 16 kHz, Monaural                                                 |   [tts_stream2.mp3](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/tts_stream2.mp3 "tts_stream2.mp3")     |       |
@@ -57,3 +59,10 @@ app/ASRNLU_demo_xxxx.apk工具支持Android运行环境，提供ASR、NLP批量�
 | 音乐        |m4a标准     | ISO Media, MPEG v4 system, version 2                                                                   |   [music_demo3_stardard.m4a](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/music_demo3_stardard.m4a "music_demo3_stardard.m4a")     |       |
 | 音乐        |m4a高质     | ISO Media, MPEG v4 system, version 2                                                                   |   [music_demo3_high.m4a](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/music_demo3_high.m4a "music_demo3_high.m4a")                 |       |
 | 音乐        |flac无损    | FLAC audio bitstream data, 16 bit, stereo, 44.1 kHz, 12470158 samples                                  |   [music_demo3_pretect.flac](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/music_demo3_pretect.flac "music_demo3_pretect.flac")     |       |
+
+* 视频文件(仅针对有屏设备)
+
+| 领域        | 文件类型   |  格式说明  | 文件下载 | 备注 |
+| --------    | -----      |  -----     | -----    | ---- |
+| 音乐        |MV视频      | ISO Media, MPEG v4 system, version 1                                                                   |   [music_mv.mp4](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/music_mv.mp4 "music_mv.mp4")              |       |
+| 百科        |百科视频    | ISO Media, MPEG v4 system, version 1                                                                   |   [baike_video.mp4](https://github.com/TencentDingdang/tvs-tools/blob/master/evaluate/media/data/baike_video.mp4 "baike_video.mp4")     |       |
