@@ -183,9 +183,10 @@
 		"name": "ProfileState"
 	},
 	"payload": {
-		"isChildModeEnabled" : {{BOOLEAN}},
-		"isPhoneModeEnabled" : {{BOOLEAN}},
-		"isLockModeEnabled" : {{BOOLEAN}}
+		"isChildModeEnabled": {{BOOLEAN}},
+		"isLockModeEnabled": {{BOOLEAN}},
+		"isPhoneModeEnabled": {{BOOLEAN}},
+		"phoneState": "{{STRING}}"
 	}
 }
 ```
@@ -195,5 +196,6 @@
 |	Parameter						|	Type		|	必选		|	描述					|
 |	:---------------------------		|	:--------	|	:-----		|	:-------------------	|
 |	isChildModeEnabled		|	boolean	|	Yes		|	是否儿童模式		|
-|	isPhoneModeEnabled		|	boolean	|	Yes		|	是否电话模式		|
 |	isLockModeEnabled		|	boolean	|	Yes		|	是否锁定模式		|
+|	isPhoneModeEnabled		|	boolean	|	Yes		|	是否电话模式		|
+|	phoneState					|	string	|	No		|	电话状态:<br>CALL_COME<br>CALLING<br>CALL_IN	|

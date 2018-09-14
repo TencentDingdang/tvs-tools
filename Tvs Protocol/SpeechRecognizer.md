@@ -40,4 +40,4 @@
 |	Parameter					|	Type		|	必选	|	描述					|
 |	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
 |	language					|	string	|	No	|	语言类型<br>CHINESE:中文<br>ENGLISH:英文	|
-|	semantic					|	string	|	No	|	语义参数Json		|
+|	semantic					|	string	|	No	|	语义参数Json	<br>{"domain": "XXX", "intent": "YYY"}	|
