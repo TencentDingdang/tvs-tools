@@ -17,7 +17,7 @@
 | 接口名称      | 能力                       |
 | --------- | ------------------------ |
 | 语义理解+服务接口 | 提供文本转语义结构，并返回服务数据的能力。    |
-| 语音识别接口    | 提供流式语音识别能力。              |
+| 语音识别接口    | 提供流式/非流式语音识别能力。          |
 | TTS接口     | 提供语音合成的能力。               |
 | 终端状态上报接口  | 上报终端状态，有助于后台提供更精准的语义服务结果 |
 
@@ -129,7 +129,7 @@ body请求示例
 ```json
 {
     "header": {
-        "guid": "【设备唯一表示】，请看",
+        "guid": "【设备唯一标识】",
         "qua": "【设备QUA】",
         "user": {
             "user_id": "",
@@ -510,34 +510,34 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 }
 ```
 
-| 参数名                          | 类型       | 描述                                       |
-| ---------------------------- | -------- | ---------------------------------------- |
-| `header`                     | -        | 消息头                                      |
-| `header.guid`                | `string` | 是                                        |
-| `header.qua`                 | `string` | 是                                        |
-| `header.user`                | -        | 否                                        |
-| `header.user.account_type`   | `int`    | `-1`：未登录<br>`2`：QQ Open登陆<br>`3`：微信登陆    |
-| `header.user.account_app_id` | `string` | 登陆平台的APPID                               |
-| `header.user.user_id`        | `string` | QQ或微信的OpenID                             |
-| `header.ip`                  | `string` | 终端IP（厂商后台代为上报需填该字段）                      |
-| `payload`                    | -        | 上报消息体。消息分为几种类型：<br>`state_report`：上报媒体播放/展示状态；<br>`device_report`：上报设备开关机等状态； |
+| 参数名                          | 类型       | 是否必选 | 描述                                       |
+| ---------------------------- | -------- | ---- | ---------------------------------------- |
+| `header`                     | -        | 是    | 消息头                                      |
+| `header.guid`                | `string` | 是    |                                          |
+| `header.qua`                 | `string` | 是    |                                          |
+| `header.user`                | -        | 否    |                                          |
+| `header.user.account_type`   | `int`    | 否    | `-1`：未登录<br>`2`：QQ Open登陆<br>`3`：微信登陆    |
+| `header.user.account_app_id` | `string` | 否    | 登陆平台的APPID                               |
+| `header.user.user_id`        | `string` | 否    | QQ或微信的OpenID                             |
+| `header.ip`                  | `string` | 是    | 终端IP（厂商后台代为上报需填该字段）                      |
+| `payload`                    | -        | 是    | 上报消息体。消息分为几种类型：<br>`state_report`：上报媒体播放/展示状态；<br>`device_report`：上报设备开关机等状态； |
 
 ##### state_report
 
-| 参数名                      | 类型       | 描述                                       |
-| ------------------------ | -------- | ---------------------------------------- |
-| `type`                   | `string` | 填"state_report"                          |
-| `semantic`               | -        | 语义信息                                     |
-| `semantic.domain`        | `string` | 领域                                       |
-| `semantic.intent`        | `string` | 意图                                       |
-| `state`                  | -        | 状态信息                                     |
-| `state.resource_id`      | `string` | 资源ID                                     |
-| `state.offset`           | `int`    | 资源播放进度Offset，单位为秒                        |
-| `state.play_state`       | `int`    | 播放状态：<br>`1`:播放中；<br>`2`:播放暂停；<br>`3`:播放中断；<br>`4`:播放开始；<br>`5`:播放结束； |
-| `detail`                 | -        | 上报详情                                     |
-| `detail.data_source`     | `string` | 内容来源                                     |
-| `detail.exposure_reason` | `string` | 曝光原因                                     |
-| `detail.state_reason`    | `string` | 进入状态原因                                   |
+| 参数名                      | 类型       | 是否必选 | 描述                                       |
+| ------------------------ | -------- | ---- | ---------------------------------------- |
+| `type`                   | `string` | 是    | 填"state_report"                          |
+| `semantic`               | -        | 是    | 语义信息                                     |
+| `semantic.domain`        | `string` | 是    | 领域                                       |
+| `semantic.intent`        | `string` | 是    | 意图                                       |
+| `state`                  | -        | 是    | 状态信息                                     |
+| `state.resource_id`      | `string` | 是    | 资源ID                                     |
+| `state.offset`           | `int`    | 是    | 资源播放进度Offset，单位为秒                        |
+| `state.play_state`       | `int`    | 是    | 播放状态：<br>`1`:播放中；<br>`2`:播放暂停；<br>`3`:播放中断；<br>`4`:播放开始；<br>`5`:播放结束； |
+| `detail`                 | -        | 否    | 上报详情                                     |
+| `detail.data_source`     | `string` | 否    | 内容来源                                     |
+| `detail.exposure_reason` | `string` | 否    | 曝光原因                                     |
+| `detail.state_reason`    | `string` | 否    | 进入状态原因                                   |
 
 ##### device_report
 
