@@ -6,9 +6,13 @@
 
 ### 意图列表
 
-| Intent | Description                         |
-| ------ | ----------------------------------- |
-| search_almanac   | 查询黄历宜忌 |
+| Intent | Description                         |语料|
+| ------ | ----------------------------------- |----------------------------------- |
+| search_almanac   | 查询黄历宜忌 |查下今天的黄历|
+| search_almanactime   | 查询黄历时间 |本月搬家哪天好|
+| search_almanacrush   | 查黄历冲煞 |	龙年跟哪个生肖相冲|
+| search_almanacbearing   | 查询黄历方位 |	今天财神在哪个方位|
+
 
 ### 数据示例
 今天宜做什么
