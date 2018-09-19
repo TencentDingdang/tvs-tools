@@ -3,6 +3,7 @@
 
 
 [TOC]
+
 `v1/uniAccess`接口根据`payload.domain`和`payload.intent`提供不同的能力。`payload.jsonBlobInfo`为附加参数，一般为json结构的**string**形式。下面介绍`v1/uniAccess`所提供的能力，并说明各个能力下`payload.domain`、`payload.intent`、`payload.jsonBlobInfo`应怎么填写。如果不特殊说明，为了美观起见，`payload.jsonBlobInfo`参数本文将只给出json形式，实际请求的时候开发者必须将**json转换为string**填到`payload.jsonBlobInfo`。
 
 # 1. 媒体ID换URL
