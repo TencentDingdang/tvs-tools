@@ -23,7 +23,7 @@
 */ 
 // ======================= 回复语 =======================
 {
-	"strTipsText": "1+1=2",
+	"strTipsText": "",
 	"strSpeakTipsText": "1加1等于2"
 }
 // ======================= Json 数据 =======================
@@ -35,7 +35,7 @@
     "controlInfo": {
         "audioConsole": "false", 
         "orientation": "portrait", 
-        "textSpeak": "true", 
+        "textSpeak": "false", 
         "type": "TEXT", 
         "version": "1.0.0"
     }, 
@@ -43,7 +43,7 @@
         {
             "selfData": {
                 "iRet": 0, 
-                "sFormula": "1+1=2", 
+                "sFormula": "1+1", 
                 "sResult": "2"
             }, 
             "textContent": "1加1等于2", 
