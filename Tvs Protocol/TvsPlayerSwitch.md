@@ -11,11 +11,13 @@
             "srcToken": "{{STRING}}",
 			"srcType": "{{STRING}}",
 			"srcId": "{{STRING}}",
-			"srcOffsetInMillseconds": {{LONG}},
+			"srcPlayerActivity": "{{STRING}}",
+			"srcOffsetInMilliseconds": {{LONG}},
             "dstToken": "{{STRING}}",
 			"dstType": "{{STRING}}",
 			"dstId": "{{STRING}}",
-			"dstOffsetInMillseconds": {{LONG}}
+			"dstPlayerActivity": "{{STRING}}",
+			"dstOffsetInMilliseconds": {{LONG}}
 		}
 	}
 }	
@@ -34,9 +36,11 @@
 |	srcToken						|	string	|	Yes	|	来源播放器Token	|
 |	srcType							|	string	|	Yes	|	来源播放器类型:<br>AudioPlayer<br>OtherPlayer<br>ShortVideoPlayer		|
 |	srcId								|	string	|	No	|	来源播放器Id			|
-|	srcOffsetInMillseconds	|	long		|	No	|	来源播放器偏移量	|
+|	srcPlayerActivity			|	string	|	Yes	|	来源播放器状态		|
+|	srcOffsetInMilliseconds	|	long		|	No	|	来源播放器偏移量	|
 |	dstToken						|	string	|	Yes	|	目的播放器Token	|
 |	dstType							|	string	|	Yes	|	目的播放器类型:<br>AudioPlayer<br>OtherPlayer<br>ShortVideoPlayer		|
 |	dstId								|	string	|	No	|	目的播放器Id			|
-|	dstOffsetInMillseconds	|	long		|	No	|	目的播放器偏移量	|
+|	dstPlayerActivity			|	string	|	Yes	|	目的播放器状态		|
+|	dstOffsetInMilliseconds	|	long		|	No	|	目的播放器偏移量	|
 
