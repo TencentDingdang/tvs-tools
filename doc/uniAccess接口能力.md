@@ -7,7 +7,11 @@
 `v1/uniAccess`接口根据`payload.domain`和`payload.intent`提供不同的能力。`payload.jsonBlobInfo`为附加参数，一般为json结构的**string**形式。下面介绍`v1/uniAccess`所提供的能力，并说明各个能力下`payload.domain`、`payload.intent`、`payload.jsonBlobInfo`应怎么填写。如果不特殊说明，为了美观起见，`payload.jsonBlobInfo`参数本文将只给出json形式，实际请求的时候开发者必须将**json转换为string**填到`payload.jsonBlobInfo`。
 
 # 1. 媒体ID换URL
-## 1.1 参数
+## 1.1 说明
+
+某些领域返回的媒体数据只有媒体ID（例如闹钟返回的闹铃信息）。如果想要播放该媒体，终端需要调用本接口换取媒体的URL才行。
+
+## 1.2 参数
 
 
 `payload.domain`: resource
@@ -32,7 +36,7 @@
 | `vectResourceID.strID` | `string` | Yes  | 媒体ID          |
 
 ​	
-## 1.2 返回jsonBlobInfo 参数
+## 1.3 返回jsonBlobInfo 参数
 
 ```json
 {
@@ -62,9 +66,9 @@
 | `vectResourceList.lExpiresInSec`       | `int`    | No   | 失效时间                                 |
 
 
-## 1.3 payload示例
+## 1.4 payload示例
 
-### 1.3.1 请求payload数据
+### 1.4.1 请求payload数据
 ```json
 {
 	"domain": "resource",
