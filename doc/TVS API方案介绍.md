@@ -48,10 +48,10 @@ TVS云端API针对机器人领域，扩展了控制指令集。支持如跳舞、打太极、俯卧撑等多种动作
 [腾讯叮当厂商App账号接入流程](https://softfile.3g.qq.com/myapp/trom_l/dingdang/gw/files/cloud_sdk/tvs_access.pdf)
 
 ## 服务地址
-TVS指令下发地址：<https://tvs.html5.qq.com/v20160207/directives/> 
-TVS事件接收地址：<https://tvs.html5.qq.com/v20160207/events/> 
-TVS Ping地址：<https://tvs.html5.qq.com/ping/>
+- TVS指令下发地址：<https://tvs.html5.qq.com/v20160207/directives/> 
+- TVS事件接收地址：<https://tvs.html5.qq.com/v20160207/events/> 
+- TVS Ping地址：<https://tvs.html5.qq.com/ping/>
 
-##API文档
+## API文档
 TVS API各接口的详细说明，请参考：
 [TVS API接口文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/Tencent%20Voice%20Service%20Reference.md)
