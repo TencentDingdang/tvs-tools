@@ -1,8 +1,14 @@
 # Tencent Voice Service Reference
 
+**Table of Contents**
+
+[TOCM]
+
+[TOC]
+
 # Alert Interface
 The Alerts Interface exposes directives and events that are used to set, manage and cancel timers, alarms, and reminders. Your client must implement the logic necessary to manage timers, alarms, and reminders if internet connectivity is lost or if the on-product clock is out of sync with NTP.
-# State Diagram
+## State Diagram
 The following diagram illustrates state changes driven by the Alerts component. Boxes represent Alerts states and connectors indicate transitions.
 Alerts supports the following states:
 
@@ -16,7 +22,7 @@ If the Dialog channel becomes active while an alert is going off, your Alerts co
 
 ![](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/img/tvs_alert_state.png)
 
-# Alerts Context
+## Alerts Context
 TVS expects a client to report the status of all locally stored alerts with each event that requires context. Alerts are organized into two lists: allAlerts and activeAlerts. allAlerts is a complete list of locally stored alerts. activeAlerts is a list of alerts currently in focus or sounding for an end user.
 
 **Sample Message**
@@ -58,7 +64,7 @@ TVS expects a client to report the status of all locally stored alerts with each
 |activeAlerts.token|The token for the alert that is currently firing.|string|
 |activeAlerts.type|Identifies the alert type. Accepted Values: TIMER or ALARM|string|
 |activeAlerts.scheduledTime|Time the alert is scheduled in ISO 8601 format.|string|
-# SetAlert Directive
+## SetAlert Directive
 This directive instructs your client to set a timer, alarm, or reminder for a specific duration or time. Your client may receive the SetAlert directive as a result of a speech request to set an alert.
 If loopCount is absent from the payload, the alert must sound for one hour or until it is stopped by the user (voice request or physical affordance).
 Cloud provided assets take precedence over locally stored audio files. If assets are provided they must be played for the user in the order provided in the assetPlayOrder list. Otherwise, use the audio files for alerts provided by Tencent.
@@ -119,7 +125,7 @@ Cloud provided assets take precedence over locally stored audio files. If ass
 |loopCount|The number of times each sequence of assets must be played. For example: If the value is 2, your client must loop through assetPlayOrder two times.Note: If loopCount is absent from the payload, you must loop the assets for one hour, or until the alert is stopped by the user.|long|
 |loopPauseInMilliSeconds|Pause duration between each asset loop. For example: If the loopPauseInMilliSeconds is 300 and the loopCount is 3, your client must pause for 300 millisecond between each asset loop.Note: If this value is not specified or is set to 0, there must not be any pause between asset loops.|long|
 
-# SetAlertSucceeded Event
+## SetAlertSucceeded Event
 
 The SetAlertSucceeded event must be sent to TVS after receiving a SetAlert directive, when the client successfully sets the alert.
 
@@ -151,7 +157,7 @@ The SetAlertSucceeded event must be sent to TVS after receiving a SetAlert d
 | --------    | -----      |  -----     |
 |token|An opaque token provided by the SetAlert directive.|string|
 
-# SetAlertFailed Event
+## SetAlertFailed Event
 
 The SetAlertFailed event must be sent to TVS after receiving a SetAlert directive, when the client fails to sets an alert.
 Sample Message
@@ -180,7 +186,7 @@ Sample Message
 | --------    | -----      |  -----     |
 |token|An opaque token provided by the SetAlert directive.|string|
 
-# DeleteAlert Directive
+## DeleteAlert Directive
 
 This directive is sent from TVS instructing your client to delete an existing alert. Your client may receive the DeleteAlert directive as a result of a speech request to cancel/delete a timer, alarm, or reminder.
 
@@ -213,7 +219,7 @@ This directive is sent from TVS instructing your client to delete an existing al
 | --------    | -----      |  -----     |
 |token|An opaque token that uniquely identifies the alert.|string|
 
-# DeleteAlertSucceeded Event
+## DeleteAlertSucceeded Event
 
 The DeleteAlertSucceeded event must be sent to TVS after receiving a DeleteAlert directive, when the client successfully deletes or cancels an existing alert.
  **Note**: For more information on when to send the DeleteAlertSucceeded event, please see Alerts Overview.
@@ -245,7 +251,7 @@ The DeleteAlertSucceeded event must be sent to TVS after receiving a DeleteAl
 | --------    | -----      |  -----     |
 |token|An opaque token provided by the DeleteAlert directive.|string|
 
-# DeleteAlertFailed Event
+## DeleteAlertFailed Event
 
 The DeleteAlertFailed event must be sent to TVS after receiving a DeleteAlert directive, when the client fails to delete or cancel an existing alert.
  **Note**: For more information on when to send the DeleteAlertFailed event, please see Alerts Overview.
@@ -277,7 +283,7 @@ The DeleteAlertFailed event must be sent to TVS after receiving a DeleteAlert
 | --------    | -----      |  -----     |
 |token|An opaque token provided by the DeleteAlert directive.|string|
 
-# DeleteAlerts Directive
+## DeleteAlerts Directive
 This directive instructs your client to delete all existing alerts on a product. Each alert is identified by a unique token within the payload. Your client may receive the DeleteAlerts directive as a result of a speech request to cancel/delete all alerts.
 If one or more alerts fail to be deleted, the client must rollback and send a DeleteAlertsFailed event to TVS. TVS will then retry until all alerts are deleted, at which point a DeleteAlertsSucceeded event must be sent by your client.
  **Note**: If one or more alert tokens are not found on the product, the client should proceed with deleting all matching tokens. In this case, this process would not fail. DeleteAlerts should be sent only if one or more existing alert tokens on the product fail to be deleted.
@@ -310,7 +316,7 @@ If one or more alerts fail to be deleted, the client must rollback and send a D
 | --------    | -----      |  -----     |
 |tokens|An array of tokens. Each token is a string that uniquely represents an alert on the product.|string|
 
-# DeleteAlertsSucceeded Event
+## DeleteAlertsSucceeded Event
 
 The DeleteAlertsSucceeded event must be sent to TVS after receiving a DeleteAlerts directive, when the client successfully deletes or cancels all existing alerts within the tokens array.
  **Note**: For more information on when to send the DeleteAlertsSucceeded event, please see Alerts Overview.
@@ -342,7 +348,7 @@ The DeleteAlertsSucceeded event must be sent to TVS after receiving a DeleteA
 | --------    | -----      |  -----     |
 |tokens|An array of tokens. Each token is a string that uniquely represents an alert on the product.|string|
 
-# DeleteAlertsFailed Event
+## DeleteAlertsFailed Event
 
 The DeleteAlertsFailed event must be sent to TVS after receiving a DeleteAlerts directive, when the client fails to delete or cancel at least one of the existing alerts within the tokens array.
  **Note**: For more information on when to send the DeleteAlertsFailed event, please see Alerts Overview.
@@ -374,7 +380,7 @@ The DeleteAlertsFailed event must be sent to TVS after receiving a DeleteAler
 | --------    | -----      |  -----     |
 |tokens|An array of tokens. Each token is a string that uniquely represents an alert on the product.|string|
 
-# AlertStarted Event
+## AlertStarted Event
 The AlertStarted event must be sent to TVS when an alert is triggered at its scheduled time.
 
 **Sample Message**
@@ -404,7 +410,7 @@ The AlertStarted event must be sent to TVS when an alert is triggered at its s
 | --------    | -----      |  -----     |
 |token|An opaque token provided by the SetAlert directive.|string|
 
-# AlertStopped Event
+## AlertStopped Event
 
 The AlertStopped event must be sent to TVS when an active alert is stopped. An alert is stopped when:
 1. A DeleteAlert directive is received. After sending an AlertStopped event, your client must inform TVS if the alert was successfully deleted with either a DeleteAlertSucceeded event or DeleteAlertFailed event. This interaction is illustrated in Alerts Overview.
@@ -438,7 +444,7 @@ The AlertStopped event must be sent to TVS when an active alert is stopped. An
 | --------    | -----      |  -----     |
 |token|An opaque token provided by the SetAlert directive.|string|
 
-# AlertEnteredForeground Event
+## AlertEnteredForeground Event
 
 The AlertEnteredForeground event must be sent from your client to TVS when an active alert enters the foreground (plays at full volume) or re-enters the foreground after a concurrent interaction on the Dialog channel finishes.
 
@@ -471,7 +477,7 @@ The AlertEnteredForeground event must be sent from your client to TVS when an 
 | --------    | -----      |  -----     |
 |token|An opaque token provided by the SetAlert directive.|string|
 
-# AlertEnteredBackground Event
+## AlertEnteredBackground Event
 
 The AlertEnteredBackground event must be sent from your client to TVS when an active alert exits the foreground (attenuates or pauses) while a concurrent interaction on the Dialog channel is occurring.
 
@@ -506,7 +512,7 @@ The AlertEnteredBackground event must be sent from your client to TVS when an 
 | --------    | -----      |  -----     |
 |token|An opaque token provided in the SetAlert directive.|string|
 
-# SetVolume Directive
+## SetVolume Directive
 
 This directive instructs a client to set the absolute volume level for an alert.
 
@@ -541,7 +547,7 @@ This directive instructs a client to set the absolute volume level for an alert.
 | --------    | -----      |  -----     |
 |volume|The absolute volume level scaled from 0 (min) to 100 (max). Accepted values: Any value between 0 and 100, inclusive.|long|
 
-# AdjustVolume Directive
+## AdjustVolume Directive
 
 This directive instructs a client to adjust the relative volume level of an alert.
 
@@ -576,7 +582,7 @@ This directive instructs a client to adjust the relative volume level of an aler
 | --------    | -----      |  -----     |
 |volume|The relative volume adjustment. A positive or negative long value that is used to increase or decrease volume in relation to the current volume setting. Accepted values: Any value between -100 and 100, inclusive.|long|
 
-# VolumeChanged Event
+## VolumeChanged Event
 
 This event must be sent to TVS after receiving either a SetVolume or AdjustVolume directive.
 
@@ -673,7 +679,7 @@ TVS expects a client to report playerActivity (state), and the offsetInMillis
 |FINISHED|Stream was finished playing.|
 |STOPPED|Stream was interrupted.|
 
-# Play Directive
+## Play Directive
 The Play directive is sent to your client to initiate audio playback. It is a multipart message comprised of a JSON directive, and up to one audio stream or binary audio attachment.
  **Note**: Learn more about Binary Audio Attachments.
 The playBehavior parameter included in the directive's payload can be used to determine how a client must handle queueing and playback of a stream. The accepted values provide hints for what action must be taken:
@@ -749,7 +755,7 @@ Content-ID: {{Audio Item CID}}
 |audioItem.stream.token|An opaque token that represents the current stream.|string|
 |audioItem.stream.expectedPreviousToken|An opaque token that represents the expected previous stream.|string|
 
-# PlaybackStarted Event
+## PlaybackStarted Event
 
 The **PlaybackStarted** event must be sent to TVS after your client processes a Play directive and begins playback of the associated audio stream.
  **Note**: For each URL that TVS sends, it expects no more than one PlaybackStarted event. If you receive a playlist URL (composed of multiple URLs) only send one PlaybackStarted event
@@ -787,7 +793,7 @@ The **PlaybackStarted** event must be sent to TVS after your client processes 
 |token|An opaque token provided by the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-# PlaybackNearlyFinished Event
+## PlaybackNearlyFinished Event
 
 The PlaybackNearlyFinished event must be sent when your client is ready to buffer/download the next stream in your playback queue. Your client must ensure that this event is only sent following a PlaybackStarted event for the currently playing stream. TVS will respond to this event with one of the following:
 - A Play directive containing the next stream
@@ -827,7 +833,7 @@ The PlaybackNearlyFinished event must be sent when your client is ready to buf
 |token|An opaque token provided by the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-# ProgressReportDelayElapsed Event
+## ProgressReportDelayElapsed Event
 
 The ProgressReportDelayElapsed event must be sent to TVS if progressReportDelayInMilliseconds is present in the Play directive. The event must be sent once at the specified interval from the start of the stream (not from the offsetInMilliseconds). For example, if the Play directive contains progressReportDelayInMilliseconds with a value of 20000, the ProgressReportDelayElapsed event must be sent 20,000 milliseconds from the start of the track. However, if the Play directive contains an offsetInMilliseconds value of 10000 and progressReportDelayInMilliseconds value 20000, the event must be sent 10,000 milliseconds into playback. This is because the progress report is sent from the start of a stream, not the Play directive's offset.
 
@@ -864,7 +870,7 @@ The ProgressReportDelayElapsed event must be sent to TVS if progressReportDel
 |token|An opaque token provided by the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-#ProgressReportIntervalElapsed Event
+## ProgressReportIntervalElapsed Event
 
 The ProgressReportIntervalElapsed event must be sent to TVS if progressReportIntervalInMilliseconds is present in the Play directive. The event must be sent periodically at the specified interval from the start of the stream (not from the offsetInMilliseconds). For example, if the Play directive contains progressReportIntervalInMilliseconds with a value of 20000, the ProgressReportIntervalElapsed event must be sent 20,000 milliseconds from the start of the track, and every 20,000 milliseconds until the stream ends. However, if the Play directive contains an offsetInMilliseconds value of 10000 and a progressReportIntervalInMilliseconds value of 20000, the event must be sent 10,000 milliseconds from the start of playback, and every 20,000 milliseconds after that until the stream ends. This is because the interval specified is from the start of the stream, not the Play directive's offset.
 
@@ -901,7 +907,7 @@ The ProgressReportIntervalElapsed event must be sent to TVS if progressReport
 |token|An opaque token provided by the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-# PlaybackStutterStarted Event
+## PlaybackStutterStarted Event
 
 The PlaybackStutterStarted event must be sent to TVS, following a PlaybackStarted event, when the client's AudioPlayer component is being fed data slower than it is being read. The component must transition to the buffer_underrun state once this event has been sent and remain in this state until the buffer is full enough to resume playback.
 
@@ -938,7 +944,7 @@ The PlaybackStutterStarted event must be sent to TVS, following a PlaybackSta
 |token|An opaque token provided by the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-# PlaybackStutterFinished Event
+## PlaybackStutterFinished Event
 
 The PlaybackStutterFinished event must be sent to TVS when the buffer is full enough to resume playback of a stream. TVS doesn't expect a subsequent PlaybackStarted event when audio playback resumes.
 
@@ -977,7 +983,7 @@ The PlaybackStutterFinished event must be sent to TVS when the buffer is full 
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 |stutterDurationInMilliseconds|Identifies the duration of a stutter in milliseconds.|long|
 
-# PlaybackFinished Event
+## PlaybackFinished Event
 
 The PlaybackFinished event must be sent to TVS when your client finishes playback of a stream.
 This event is not sent when:
@@ -1018,7 +1024,7 @@ This event is not sent when:
 |token|An opaque token provided by the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-# PlaybackFailed Event
+## PlaybackFailed Event
 
 The PlaybackFailed event must be sent to TVS whenever your client encounters an error while attempting to play a stream. It is possible for the currentPlaybackToken to be different from the token in the payload in cases where a stream is playing and the next stream fails to buffer.
 
@@ -1046,17 +1052,11 @@ The PlaybackFailed event must be sent to TVS whenever your client encounters a
     }
 }
 
-
-
 **Header Parameters**
 
 |Parameter|Description|Type|
 | --------    | -----      |  -----     |
 |messageId|A unique ID used to represent a specific message.|string|
-
-
-
-
 
 **Payload Parameters**
 
@@ -1081,7 +1081,7 @@ The PlaybackFailed event must be sent to TVS whenever your client encounters a
 |MEDIA_ERROR_INTERNAL_SERVER_ERROR|The server accepted the request, but was unable to process the request as expected.|
 |MEDIA_ERROR_INTERNAL_DEVICE_ERROR|There was an internal error on the client.|
 
-# Stop Directive
+## Stop Directive
 
 The Stop directive is sent to your client to stop playback of an audio stream. Your client may receive a Stopdirective as the result of a voice request, a physical button press or GUI affordance.
 Sample Message
@@ -1107,7 +1107,7 @@ Sample Message
 |messageId|A unique ID used to represent a specific message.|string|
 |dialogRequestId|A unique ID used to correlate directives sent in response to a specific Recognize event.|string|
 
-# PlaybackStopped Event
+## PlaybackStopped Event
 
 The PlaybackStopped event must be sent to TVS when your client receives one of the following directives and stops playback of an audio stream:
 - A Stop directive
@@ -1148,7 +1148,7 @@ The PlaybackStopped event must be sent to TVS when your client receives one of
 |token|An opaque token provided by the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-# PlaybackPaused Event
+## PlaybackPaused Event
 
 The PlaybackPaused event must be sent when your client temporarily pauses audio on the Content channel to accommodate a higher priority input/output. Playback must resume when the prioritized activity completes; at which point your client must send a PlaybackResumed event. For more information on prioritizing audio input/outputs, see Interaction Model.
  **Note**: PlaybackPaused should be sent after a Recognize event to reduce latency.
@@ -1186,7 +1186,7 @@ The PlaybackPaused event must be sent when your client temporarily pauses audi
 |token|An opaque token provided in the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-# PlaybackResumed Event
+## PlaybackResumed Event
 
 The PlaybackResumed event must be sent to TVS when playback resumes following a PlaybackPaused event (when playback is temporarily paused on the Content channel to accommodate a higher priority input/output). For more information on prioritizing audio input/outputs, see Interaction Model.
 
@@ -1223,7 +1223,7 @@ The PlaybackResumed event must be sent to TVS when playback resumes following 
 |token|An opaque token provided in the Play directive.|string|
 |offsetInMilliseconds|Identifies a track's current offset in milliseconds. The value sent must be equal to or greater than zero. Negative values are not accepted.|long|
 
-# ClearQueue Directive
+## ClearQueue Directive
 
 The ClearQueue directive is sent from TVS to your client to clear the playback queue. The ClearQueuedirective has two behaviors: CLEAR_ENQUEUED, which clears the queue and continues to play the currently playing stream; and CLEAR_ALL, which clears the entire playback queue and stops the currently playing stream (if applicable).
 
@@ -1258,7 +1258,7 @@ The ClearQueue directive is sent from TVS to your client to clear the playback
 | --------    | -----      |  -----     |
 |clearBehavior|A string value used to determine clear queue behavior. Accepted values: CLEAR_ENQUEUED and CLEAR_ALL|string|
 
-# PlaybackQueueCleared Event
+## PlaybackQueueCleared Event
 
 The PlaybackQueueCleared event must be sent to TVS after your client handles a ClearQueue directive.
 
@@ -1289,7 +1289,9 @@ The PlaybackQueueCleared event must be sent to TVS after your client handles a
 **Payload Parameters**
 
 An empty payload must be sent.
-StreamMetadataExtracted Event
+
+## StreamMetadataExtracted Event
+
 If metadata is available for an audio stream that your client receives and starts playing: your client should take the key/value pairs received as raw data and translate those pairs into a JSON object. In this JSON object, strings and numbers should be represented as JSON strings, and booleans should be represented as JSON booleans. Your client should filter out any tags containing binary data. For example, your client should not send the image, image preview, attachment, or application data tags to TVS.
 
 **Sample Message**
@@ -1335,7 +1337,7 @@ The Notifications interface allows TVS to inform users that new content is avail
 This interface does not provide the content for a notification, it only provides the audio and visual indicators that are used to inform the user that new content is available. For example, the product may flash a yellow LED and play an audio file, at which time a user can retrieve any pending notifications by asking, "DingDangDingDang, what did I miss?" or "DingDangDingDang, what are my notifications?"
 For information about flow and delivery, the do not disturb setting, and UX considerations, see the Notifications Overview.
 
-# Notifications Context
+## Notifications Context
 
 TVS expects a client to report the state of a product's notification indicator with each event that requires context.
 To learn more about reporting Context, see Context Overview.
@@ -1362,7 +1364,7 @@ To learn more about reporting Context, see Context Overview.
 |isEnabled|Indicates there are new or pending notifications that have not been communicated to the user. Note: Any indicator that has not been cleared is considered enabled.|boolean|
 |isVisualIndicatorPersisted|Corresponds to the persistVisualIndicator value of the last SetIndicator directive received. If persistVisualIndicator was true for the last directive received, upon reconnecting, isVisualIndicatorPersisted must be true.|boolean|
 
-# SetIndicator Directive
+## SetIndicator Directive
 
 This directive instructs your client to render visual and audio indicators when a notification is available to be retrieved. Your client may receive multiple SetIndicator directives in a short period of time. If directives overlap, consider these rules:
 - If the assetId of the current directive matches the assetId of the incoming directive, DO NOT play the asset.
@@ -1408,7 +1410,7 @@ This directive instructs your client to render visual and audio indicators when 
 |asset.assetId|A unique identifier for the asset.|string|
 |asset.url|This asset may be downloaded and cached by your client. The URL provided is valid for 60 minutes. If the product is offline, or if the asset isn’t available, your product should play the default indicator sound.|string|
 
-# ClearIndicator Directive
+## ClearIndicator Directive
 
 This directive instructs your client to clear all active visual and audio indicators.
 - If an audio indicator is playing when this directive is received, it should be stopped immediately.
@@ -1442,7 +1444,7 @@ This directive has an empty payload.
 
 The PlaybackController Interface exposes a series of events for navigating a playback queue with an on-client button press or GUI affordance, rather than through a speech request.
 
-# PlayCommandIssued Event
+## PlayCommandIssued Event
 
 The PlayCommandIssued event must be sent when a user starts/resumes playback of a media item using an on-client button press or GUI affordance.
 
@@ -1482,7 +1484,7 @@ This event requires the client to send the status of all client component states
 
 An empty payload should be sent.
 
-# PauseCommandIssued Event
+## PauseCommandIssued Event
 
 The PauseCommandIssued event must be sent when a user pauses the playback of a media item using an on-client button press or GUI affordance.
 
@@ -1522,7 +1524,7 @@ This event requires the client to send the status of all client component states
 
 An empty payload should be sent.
 
-# NextCommandIssued Event
+## NextCommandIssued Event
 
 The NextCommandIssued event must be sent when a user skips to the next media item in their playback queue using an on-client button press or GUI affordance.
 
@@ -1561,7 +1563,7 @@ This event requires the client to send the status of all client component states
 
 An empty payload should be sent.
 
-# PreviousCommandIssued Event
+## PreviousCommandIssued Event
 
 The PreviousCommandIssued event must be sent when a user skips to the previous media item in their playback queue using an on-client button press or GUI affordance.
 
@@ -1601,7 +1603,7 @@ messageId	A unique ID used to represent a specific message.	string
 
 An empty payload should be sent.
 
-# ButtonCommandIssued Event
+## ButtonCommandIssued Event
 
 This event is used to notify TVS of a unique on-client button press or GUI affordance, such as skip forward or skip backward. Skip duration is determined by the provider/skill, and each event is additive. For example, if a user presses the skip forward button three times in a row, and as a result three ButtonCommandIssued events are sent to TVS, the additive effect, if the skip is 30 seconds, will be 90 seconds.
 
@@ -1644,7 +1646,7 @@ This event requires the client to send the status of all client component states
 | --------    | -----      |  -----     |
 |name|Specifies the command triggered by an on-client button press or GUI affordance. Accepted values: SKIPFORWARD, SKIPBACKWARD.|string|
 
-# ToggleCommandIssued Event
+## ToggleCommandIssued Event
 
 This event is used to notify TVS that an option or feature has been selected or deselected using an on-client button press or GUI affordance. Supported options include: shuffle, loop, repeat, thumbs up, and thumbs down.
 
@@ -1693,7 +1695,7 @@ This event requires the client to send the status of all client component states
 # Settings interface
 
 The Settings interface is used to manage TVS settings on your product, such as locale.
-# SettingsUpdated Event
+## SettingsUpdated Event
 
 The SettingsUpdated event must be sent when TVS settings are adjusted using on-product controls or a companion app. For example, your user may change their locale setting from US (en-US) to Germany (de-DE) using your companion app. When this happens, your client must notify TVS of the change with the SettingsUpdated event.
  Note: If a malformed or unsupported value is sent to TVS an exception message is returned.
@@ -1745,7 +1747,7 @@ The SettingsUpdated event must be sent when TVS settings are adjusted using on
 # Speaker interface
 
 The Speaker interface exposes directives and events that are used to adjust volume and mute/unmute a client's speaker. TVS supports two methods for volume adjustment, which are exposed through the SetVolume and AdjustVolume directives.
-# Speaker Context
+## Speaker Context
 TVS expects a client to report volume and muted state information for the Speaker interface with each event that requires context.
 To learn more about reporting Context, see Context Overview.
 **Sample Message**
@@ -1769,7 +1771,7 @@ To learn more about reporting Context, see Context Overview.
 |volume|Identifies current speaker volume. Accepted Values: 0 to 100|long|
 |muted|Identifies mute state of the client's speaker.|boolean|
 
-# SetVolume Directive
+## SetVolume Directive
 This directive instructs your client to make an absolute volume adjustment. The volume value will be between 0 (min) and 100 (max), inclusive.
 
 **Sample Message**
@@ -1805,7 +1807,7 @@ This directive instructs your client to make an absolute volume adjustment. The�
 | --------    | -----      |  -----     |
 |volume|The absolute volume level scaled from 0 (min) to 100 (max). Accepted values: Any value between 0 and 100.|long|
 
-# AdjustVolume Directive
+## AdjustVolume Directive
 
 This directive instructs your client to make a relative volume adjustment. The volume value will be between -100 and 100, inclusive.
 The AdjustVolume directive is always relative to the current volume setting and is positive to increase volume, or negative to reduce volume.
@@ -1843,7 +1845,7 @@ The AdjustVolume directive is always relative to the current volume setting an
 | --------    | -----      |  -----     |
 |volume|The relative volume adjustment. A positive or negative long value used to increase or decrease volume in relation to the current volume setting. Accepted values: Any value between -100 and 100, inclusive.|long|
 
-# VolumeChanged Event
+## VolumeChanged Event
 
 The VolumeChanged event must be sent to TVS when:
 - A SetVolume or AdjustVolume directive is received and processed to indicate that the speaker volume on your product has been adjusted/changed.
@@ -1881,7 +1883,7 @@ The VolumeChanged event must be sent to TVS when:
 |volume|The absolute volume level scaled from 0 (min) to 100 (max). Accepted values: Any long value between 0 and 100|long|
 |mute|A boolean value is used to mute/unmute a product's speaker. The value is true when the speaker is muted, and false when unmuted.|boolean|
 
-# SetMute Directive
+## SetMute Directive
 
 This directive is sent from TVS to your client to mute the product's speaker.
 
@@ -1918,7 +1920,7 @@ This directive is sent from TVS to your client to mute the product's speaker.
 | --------    | -----      |  -----     |
 |mute|A boolean value is used to mute/unmute a product's speaker. The value is true when the speaker is muted, and false when unmuted.|boolean|
 
-# MuteChanged Event
+## MuteChanged Event
 
 The MuteChanged event must be sent to TVS when:
 - A SetMute directive is received and processed to indicate that the mute status of the product's speaker has changed.
@@ -1962,7 +1964,7 @@ The MuteChanged event must be sent to TVS when:
 Every user utterance leverages SpeechRecognizer. It is the core interface of the Tencent Voice Service (TVS). It exposes directives and events for capturing user speech and prompting a client when TVS needs additional speech input.
 Additionally, this interface allows your client to inform TVS of how an interaction with TVS was initiated (press and hold, tap and release, voice-initiated/wake word enabled), and choose the appropriate Automatic Speech Recognition (ASR) profile for your product, which allows TVS to understand user speech and respond with precision.
 
-# State Diagram
+## State Diagram
 
 The following diagram illustrates state changes driven by SpeechRecognizer components. Boxes represent SpeechRecognizer states and the connectors indicate state transitions.
 SpeechRecognizer has the following states:
@@ -1974,7 +1976,7 @@ Additionally, SpeechRecognizer may return to an idle state during a multiturn 
 
 ![](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/img/tvs_speechrecognizer_state.png)
 
-# SpeechRecognizer Context
+## SpeechRecognizer Context
 
 TVS expects all clients to report the currently set wake word, if wake word enabled.
 Sample Message
@@ -1998,7 +2000,7 @@ Sample Message
 | --------    | -----      |  -----     |
 |wakeword|Identifies the current wake word. Accepted Value: "DING1DANG1DING1DANG"|string|
 
-# Recognize Event
+## Recognize Event
 
 The Recognize event is used to send user speech to TVS and translate that speech into one or more directives. This event must be sent as a multipart message: the first part a JSON-formatted object, the second, binary audio captured by the product's microphone. We encourage streaming (chunking) captured audio to the Tencent Voice Service to reduce latency; the stream should contain 10ms of captured audio per chunk (320 bytes).
 After an interaction with TVS is initiated, the microphone must remain open until:
@@ -2101,7 +2103,7 @@ initiator must be included in the payload of each SpeechRecognizer.Recognize 
 |TAP|Audio stream initiated by the tap and release of a button (physical or GUI) and terminated when a StopCapture   directive is received.|NEAR_FIELD, FAR_FIELD|Y|N|N|
 |WAKEWORD|Audio stream initiated by the use of a wake word and terminated when a StopCapture   directive is received.|NEAR_FIELD, FAR_FIELD|Y|Y|Y|
 
-# StopCapture Directive
+## StopCapture Directive
 
 This directive instructs your client to stop capturing a user’s speech after TVS has identified the user’s intent or when end of speech is detected. When this directive is received, your client must immediately close the microphone and stop listening for the user’s speech.
  **Note**: StopCapture is sent to your client on the downchannel stream and may be received while speech is still being streamed to TVS. To receive the StopCapture directive, you must use a profile in your Recognize event that supports cloud-endpointing, such as NEAR_FIELD or FAR_FIELD.
@@ -2130,7 +2132,7 @@ This directive instructs your client to stop capturing a user’s speech after T
 |messageId|A unique ID used to represent a specific message.|string|
 |dialogRequestId|A unique ID used to correlate directives sent in response to a specific Recognize event.|string|
 
-# ExpectSpeech Directive
+## ExpectSpeech Directive
 
 ExpectSpeech is sent when TVS requires additional information to fulfill a user's request. It instructs your client to open the microphone and begin streaming user speech. If the microphone is not opened within the specified timeout window, an ExpectSpeechTimedOut event must be sent from your client to TVS.
 During a multi-turn interaction with TVS, your device will receive at least one ExpectSpeech directive instructing your client to start listening for user speech. If present, the initiator object included in the payload of the ExpectSpeech directive must be passed back to TVS as the initiator object in the following Recognize event. If initiator is absent from the payload, the following Recognize event should not include initiator.
@@ -2178,7 +2180,7 @@ During a multi-turn interaction with TVS, your device will receive at least one�
 |initiator.payload|Includes information about the initiator.|object|
 |initiator.payload.token|An opaque string. If present it must be sent back to TVS in the following Recognize event.|string|
 
-#ExpectSpeechTimedOut Event
+## ExpectSpeechTimedOut Event
 
 This event must be sent to TVS if an ExpectSpeech directive was received, but was not satisfied within the specified timeout window.
 
@@ -2213,13 +2215,13 @@ An empty payload should be sent.
 
 When users ask your product a question or make a request, the SpeechSynthesizer interface is used to return TVS's speech response. For instance, when a user asks TVS, "What's the weather in Shanghai?" The TVS Voice Service will return a Speak directive to your client with a binary audio attachment, which your client should process and play. This page covers SpeechSynthesizer directives and events.
 
-# States
+## States
 
 SpeechSynthesizer has the following states:
 **PLAYING**: While TVS is speaking, SpeechSynthesizer should be in a playing state. SpeechSynthesizer should transition to the finished state when playback of TVS's speech is complete.
 **FINISHED**: When TVS is finished speaking, SpeechSynthesizer should transition to the finished state following a SpeechFinished event.
 
-# SpeechSynthesizer Context
+## SpeechSynthesizer Context
 
 TVS expects a client to report playerActivity (state), and the offsetInMilliseconds for the currently playing TTS with each event that requires context.
 
@@ -2252,7 +2254,7 @@ TVS expects a client to report playerActivity (state), and the offsetInMillis
 |PLAYING|Speech was playing.|
 |FINISHED|Speech was finished playing.|
 
-# Speak Directive
+## Speak Directive
 
 This directive is sent from TVS to your client any time a speech response from TVS is required. In most cases, the Speak directive is sent in response to a user request, such as a Recognize event. However, a Speak directive may also be sent to your client to preface an action that will be taken. For instance, when a user makes a request to set a timer, in addition to receiving a SetAlert directive that instructs the client to set an alarm, the client also receives a Speak directive which notifies the user that the timer was successfully set.
 This directive is sent to your client as a multipart message: one part a JSON-formatted directive and one binary audio attachment.
@@ -2302,7 +2304,7 @@ Content-ID: {{Audio Item CID}}
 |format|Provides the format of returned audio. Accepted value: "AUDIO_MPEG"|string|
 |token|An opaque token that represents the current text-to-speech (TTS) object.|string|
 
-# SpeechStarted Event
+## SpeechStarted Event
 
 The SpeechStarted event should be sent to TVS after your client processes the Speak directive and begins playback of synthesized speech.
 Sample Message
@@ -2335,7 +2337,7 @@ Sample Message
 | --------    | -----      |  -----     |
 |token|The opaque token provided by the Speak directive.|string|
 
-# SpeechFinished Event
+## SpeechFinished Event
 
 The SpeechFinished event must be sent after your client processes a Speak directive and TVS TTS is fully rendered to the user. If playback is not finished, for example a user interrupts TVS TTS with "DingDangDingDang, stop", then SpeechFinished is not sent.
 
@@ -2377,7 +2379,7 @@ The SpeechFinished event must be sent after your client processes a Speak di
 
 The System interface exposes events which span multiple client components.
 
-# SynchronizeState Event
+## SynchronizeState Event
 
 The SynchronizeState event must be sent to update TVS on the state of all product components when a new connection is established.
 
@@ -2417,7 +2419,7 @@ This event requires your product to report the status of all client component st
 
 An empty payload should be sent.
 
-# UserInactivityReport Event
+## UserInactivityReport Event
 
 This event must be sent after an hour of inactivity, and every hour after that until a user action is taken. This provides TVS with the duration since the last user activity was detected. A user activity is defined as an action that confirms a user is in the presence of the product, such as interacting with on-product buttons, speaking with TVS, or using a GUI affordance. After a user activity is detected, the timer used to track inactivity must be reset to 0.
  **Tip**: The value provided for inactiveTimeInSeconds should always be a multiple of 3600 (1 hour). For example, after 4 hours of inactivity the value would be 14400.
@@ -2455,7 +2457,7 @@ This event must be sent after an hour of inactivity, and every hour after that u
 | --------    | -----      |  -----     |
 |inactiveTimeInSeconds|Time in seconds since the last user interaction.|long|
 
-# ResetUserInactivity Directive
+## ResetUserInactivity Directive
 
 The ResetUserInactivity directive is sent to your client to reset the inactivity timer used by UserInactivityReport. For example, a user interaction on the Tencent DingDang app would trigger this directive.
 
@@ -2481,7 +2483,7 @@ The ResetUserInactivity directive is sent to your client to reset the inactivi
 | --------    | -----      |  -----     |
 |messageId|A unique ID used to represent a specific message.|string|
 
-# SetEndpoint Directive
+## SetEndpoint Directive
 
 The SetEndpoint directive instructs a client to change endpoints when the following conditions are met:
 - A user's country/region settings are not supported by the endpoint they have connected to. For example, if a user's current country/region is set to the United Kingdom (UK) in Manage Your Content and Devicesand the client connects to the United States (US) endpoint, a SetEndpoint directive will be sent instructing the client to connect to the endpoint that supports the UK.
@@ -2519,7 +2521,7 @@ The SetEndpoint directive instructs a client to change endpoints when the foll
 | --------    | -----      |  -----     |
 |endpoint|The TVS endpoint URL that supports your user's country/region settings. The endpoint URL may include the protocol and/or port.For example: https://tvs.html5.qq.com|string|
 
-# SoftwareInfo Event
+## SoftwareInfo Event
 
 This event communicates your product's software information to TVS, such as firmware version. It must be sent in these scenarios:
 - For products with persistent memory, the event must be sent on the product's initial boot and whenever the firmware version is updated.
@@ -2562,7 +2564,7 @@ If the event is successfully processed, the product will receive a 204 HTTP st
 |"8701"|"tvs-123.4x"|
 |"20170207"	|"tsk.201-(1.23.4-test)"|
 
-# ReportSoftwareInfo Directive
+## ReportSoftwareInfo Directive
 
 This directive instructs your product to report current software information to TVS using the SoftwareInfo event.
 
@@ -2586,7 +2588,7 @@ This directive instructs your product to report current software information to 
 | --------    | -----      |  -----     |
 |messageId|A universally unique identifier (UUID) generated to the RFC 4122 specification.|string|
 
-# ExceptionEncountered Event
+## ExceptionEncountered Event
 
 Your client must send this event when it is unable to execute a directive from TVS.
 
@@ -2634,7 +2636,7 @@ This event requires your product to report the status of all client component st
 |error.type|An error your client must return to TVS when unable to execute a directive.|string|
 |error.message|Additional error details for logging and troubleshooting.|string|
 
-# Error Types
+## Error Types
 
 |Error Type|Description|
 | --------    | -----      |
