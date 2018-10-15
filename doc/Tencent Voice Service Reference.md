@@ -26,7 +26,7 @@ If the Dialog channel becomes active while an alert is going off, your Alerts co
 TVS expects a client to report the status of all locally stored alerts with each event that requires context. Alerts are organized into two lists: allAlerts and activeAlerts. allAlerts is a complete list of locally stored alerts. activeAlerts is a list of alerts currently in focus or sounding for an end user.
 
 **Sample Message**
-
+```java
 {
     "header": {
         "namespace": "Alerts",
@@ -49,8 +49,7 @@ TVS expects a client to report the status of all locally stored alerts with each
         ]
     }
 }
-
-
+```
 
 **Payload Parameters**
 
@@ -72,7 +71,7 @@ Cloud provided assets take precedence over locally stored audio files. If ass
  **Important**: If the assets.url[i] is unreachable, or if your client fails to download the associated files, it should play the audio files for the associated alert type provided by Tencent and adhere to the provided loopCount and loopPauseInMilliSeconds.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -102,6 +101,7 @@ Cloud provided assets take precedence over locally stored audio files. If ass
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -130,7 +130,7 @@ Cloud provided assets take precedence over locally stored audio files. If ass
 The SetAlertSucceeded event must be sent to TVS after receiving a SetAlert directive, when the client successfully sets the alert.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -143,7 +143,7 @@ The SetAlertSucceeded event must be sent to TVS after receiving a SetAlert d
         }
     }
 }
-
+```
 
 **Header Parameters**
 
@@ -160,7 +160,9 @@ The SetAlertSucceeded event must be sent to TVS after receiving a SetAlert d
 ## SetAlertFailed Event
 
 The SetAlertFailed event must be sent to TVS after receiving a SetAlert directive, when the client fails to sets an alert.
-Sample Message
+
+**Sample Message**
+```java
 {
     "event": {
         "header": {
@@ -173,6 +175,7 @@ Sample Message
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -191,7 +194,7 @@ Sample Message
 This directive is sent from TVS instructing your client to delete an existing alert. Your client may receive the DeleteAlert directive as a result of a speech request to cancel/delete a timer, alarm, or reminder.
 
 ** Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -205,7 +208,7 @@ This directive is sent from TVS instructing your client to delete an existing al
         }
     }
 }
-
+```
 **Header Parameters**
 
 |Parameter|Description|Type|
@@ -225,7 +228,7 @@ The DeleteAlertSucceeded event must be sent to TVS after receiving a DeleteAl
  **Note**: For more information on when to send the DeleteAlertSucceeded event, please see Alerts Overview.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -238,6 +241,7 @@ The DeleteAlertSucceeded event must be sent to TVS after receiving a DeleteAl
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -257,7 +261,7 @@ The DeleteAlertFailed event must be sent to TVS after receiving a DeleteAlert
  **Note**: For more information on when to send the DeleteAlertFailed event, please see Alerts Overview.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -270,6 +274,7 @@ The DeleteAlertFailed event must be sent to TVS after receiving a DeleteAlert
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -289,7 +294,7 @@ If one or more alerts fail to be deleted, the client must rollback and send a D
  **Note**: If one or more alert tokens are not found on the product, the client should proceed with deleting all matching tokens. In this case, this process would not fail. DeleteAlerts should be sent only if one or more existing alert tokens on the product fail to be deleted.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -302,6 +307,7 @@ If one or more alerts fail to be deleted, the client must rollback and send a D
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -322,7 +328,7 @@ The DeleteAlertsSucceeded event must be sent to TVS after receiving a DeleteA
  **Note**: For more information on when to send the DeleteAlertsSucceeded event, please see Alerts Overview.
  
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -335,7 +341,7 @@ The DeleteAlertsSucceeded event must be sent to TVS after receiving a DeleteA
         }
     }
 }
-
+```
 **Header Parameters**
 
 |Parameter|Description|Type|
@@ -354,7 +360,7 @@ The DeleteAlertsFailed event must be sent to TVS after receiving a DeleteAler
  **Note**: For more information on when to send the DeleteAlertsFailed event, please see Alerts Overview.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -367,6 +373,7 @@ The DeleteAlertsFailed event must be sent to TVS after receiving a DeleteAler
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -384,7 +391,7 @@ The DeleteAlertsFailed event must be sent to TVS after receiving a DeleteAler
 The AlertStarted event must be sent to TVS when an alert is triggered at its scheduled time.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -397,7 +404,7 @@ The AlertStarted event must be sent to TVS when an alert is triggered at its s
         }
     }
 }
-
+```
 **Header Parameters**
 
 |Parameter|Description|Type|
@@ -418,7 +425,7 @@ The AlertStopped event must be sent to TVS when an active alert is stopped. An
 3. The loopCount is complete, or an alert without a loopCount has played for an hour and is stopped locally.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -431,6 +438,7 @@ The AlertStopped event must be sent to TVS when an active alert is stopped. An
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -449,7 +457,7 @@ The AlertStopped event must be sent to TVS when an active alert is stopped. An
 The AlertEnteredForeground event must be sent from your client to TVS when an active alert enters the foreground (plays at full volume) or re-enters the foreground after a concurrent interaction on the Dialog channel finishes.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -462,8 +470,7 @@ The AlertEnteredForeground event must be sent from your client to TVS when an 
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -482,7 +489,7 @@ The AlertEnteredForeground event must be sent from your client to TVS when an 
 The AlertEnteredBackground event must be sent from your client to TVS when an active alert exits the foreground (attenuates or pauses) while a concurrent interaction on the Dialog channel is occurring.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -495,8 +502,7 @@ The AlertEnteredBackground event must be sent from your client to TVS when an 
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -517,7 +523,7 @@ The AlertEnteredBackground event must be sent from your client to TVS when an 
 This directive instructs a client to set the absolute volume level for an alert.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -531,8 +537,7 @@ This directive instructs a client to set the absolute volume level for an alert.
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -552,7 +557,7 @@ This directive instructs a client to set the absolute volume level for an alert.
 This directive instructs a client to adjust the relative volume level of an alert.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -566,8 +571,7 @@ This directive instructs a client to adjust the relative volume level of an aler
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -587,7 +591,7 @@ This directive instructs a client to adjust the relative volume level of an aler
 This event must be sent to TVS after receiving either a SetVolume or AdjustVolume directive.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -600,6 +604,7 @@ This event must be sent to TVS after receiving either a SetVolume or AdjustVo
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -647,7 +652,7 @@ AudioPlayer must transition from finished to playing when:
 TVS expects a client to report playerActivity (state), and the offsetInMilliseconds for the currently playing media item with each event that requires context.
 
 **Sample Message**
-
+```java
 {
     "header": {
         "namespace": "AudioPlayer",
@@ -659,8 +664,7 @@ TVS expects a client to report playerActivity (state), and the offsetInMillis
         "playerActivity": "{{STRING}}"
     }
 }
-
-
+```
 
 **Payload Parameters**
 
@@ -689,7 +693,7 @@ The playBehavior parameter included in the directive's payload can be used to 
  **Note**: When adding streams to your playback queue, you must ensure that the token for the currently playing stream matches the expectedPreviousToken in the stream being added to the queue. If the tokens do not match the stream must be ignored. However, if no expectedPreviousToken is returned, the stream must be added to the queue.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -718,15 +722,18 @@ The playBehavior parameter included in the directive's payload can be used to 
         }
     }
 }
+```
 
 **Binary Audio Attachment**
 
 Play directives may have a corresponding binary audio attachment as one part of the multipart message. When a binary audio attachment is present, the value provided for url will include the following prefix: cid.
 The following multipart headers will precede the binary audio attachment:
+```java
 Content-Type: application/octet-stream
 Content-ID: {{Audio Item CID}}
 
 {{BINARY AUDIO ATTACHMENT}}
+```
 
 **Header Parameters**
 
@@ -761,7 +768,7 @@ The **PlaybackStarted** event must be sent to TVS after your client processes 
  **Note**: For each URL that TVS sends, it expects no more than one PlaybackStarted event. If you receive a playlist URL (composed of multiple URLs) only send one PlaybackStarted event
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -775,8 +782,7 @@ The **PlaybackStarted** event must be sent to TVS after your client processes 
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -801,7 +807,7 @@ The PlaybackNearlyFinished event must be sent when your client is ready to buf
  **Tip**: As a best practice, you may want to consider waiting until the previous song has buffered before sending a PlaybackNearlyFinished event to TVS. This lowers the risk of exceeding the expiryTime and can reduce the frequency of playback stutters that may occur when downloading and processing multiple Play directives at the same time.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -815,8 +821,7 @@ The PlaybackNearlyFinished event must be sent when your client is ready to buf
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -838,7 +843,7 @@ The PlaybackNearlyFinished event must be sent when your client is ready to buf
 The ProgressReportDelayElapsed event must be sent to TVS if progressReportDelayInMilliseconds is present in the Play directive. The event must be sent once at the specified interval from the start of the stream (not from the offsetInMilliseconds). For example, if the Play directive contains progressReportDelayInMilliseconds with a value of 20000, the ProgressReportDelayElapsed event must be sent 20,000 milliseconds from the start of the track. However, if the Play directive contains an offsetInMilliseconds value of 10000 and progressReportDelayInMilliseconds value 20000, the event must be sent 10,000 milliseconds into playback. This is because the progress report is sent from the start of a stream, not the Play directive's offset.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -852,8 +857,7 @@ The ProgressReportDelayElapsed event must be sent to TVS if progressReportDel
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -875,7 +879,7 @@ The ProgressReportDelayElapsed event must be sent to TVS if progressReportDel
 The ProgressReportIntervalElapsed event must be sent to TVS if progressReportIntervalInMilliseconds is present in the Play directive. The event must be sent periodically at the specified interval from the start of the stream (not from the offsetInMilliseconds). For example, if the Play directive contains progressReportIntervalInMilliseconds with a value of 20000, the ProgressReportIntervalElapsed event must be sent 20,000 milliseconds from the start of the track, and every 20,000 milliseconds until the stream ends. However, if the Play directive contains an offsetInMilliseconds value of 10000 and a progressReportIntervalInMilliseconds value of 20000, the event must be sent 10,000 milliseconds from the start of playback, and every 20,000 milliseconds after that until the stream ends. This is because the interval specified is from the start of the stream, not the Play directive's offset.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -889,8 +893,7 @@ The ProgressReportIntervalElapsed event must be sent to TVS if progressReport
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -912,7 +915,7 @@ The ProgressReportIntervalElapsed event must be sent to TVS if progressReport
 The PlaybackStutterStarted event must be sent to TVS, following a PlaybackStarted event, when the client's AudioPlayer component is being fed data slower than it is being read. The component must transition to the buffer_underrun state once this event has been sent and remain in this state until the buffer is full enough to resume playback.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -926,8 +929,7 @@ The PlaybackStutterStarted event must be sent to TVS, following a PlaybackSta
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -949,7 +951,7 @@ The PlaybackStutterStarted event must be sent to TVS, following a PlaybackSta
 The PlaybackStutterFinished event must be sent to TVS when the buffer is full enough to resume playback of a stream. TVS doesn't expect a subsequent PlaybackStarted event when audio playback resumes.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -964,8 +966,7 @@ The PlaybackStutterFinished event must be sent to TVS when the buffer is full 
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -992,7 +993,7 @@ This event is not sent when:
 ** Note**: For each URL that TVS sends, it expects no more than one PlaybackFinished event. If you receive a playlist URL (composed of multiple URLs) only send one PlaybackFinished event
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1006,8 +1007,7 @@ This event is not sent when:
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -1029,7 +1029,7 @@ This event is not sent when:
 The PlaybackFailed event must be sent to TVS whenever your client encounters an error while attempting to play a stream. It is possible for the currentPlaybackToken to be different from the token in the payload in cases where a stream is playing and the next stream fails to buffer.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1051,6 +1051,7 @@ The PlaybackFailed event must be sent to TVS whenever your client encounters a
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -1084,7 +1085,9 @@ The PlaybackFailed event must be sent to TVS whenever your client encounters a
 ## Stop Directive
 
 The Stop directive is sent to your client to stop playback of an audio stream. Your client may receive a Stopdirective as the result of a voice request, a physical button press or GUI affordance.
-Sample Message
+
+**Sample Message**
+```java
 {
     "directive": {
         "header": {
@@ -1097,8 +1100,7 @@ Sample Message
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -1116,7 +1118,7 @@ The PlaybackStopped event must be sent to TVS when your client receives one of
  **Note**: This event is only sent when a stream is terminated as a result of receiving one of the directives listed above. Typically, this is the result of a user action. This event must not be sent when a stream has finished playing (see PlaybackFinished).
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1130,16 +1132,13 @@ The PlaybackStopped event must be sent to TVS when your client receives one of
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
 |Parameter|Description|Type|
 | --------    | -----      |  -----     |
 |messageId|A unique ID used to represent a specific message.|string|
-
-
 
 **Payload Parameters**
 
@@ -1154,7 +1153,7 @@ The PlaybackPaused event must be sent when your client temporarily pauses audi
  **Note**: PlaybackPaused should be sent after a Recognize event to reduce latency.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1168,8 +1167,7 @@ The PlaybackPaused event must be sent when your client temporarily pauses audi
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -1191,7 +1189,7 @@ The PlaybackPaused event must be sent when your client temporarily pauses audi
 The PlaybackResumed event must be sent to TVS when playback resumes following a PlaybackPaused event (when playback is temporarily paused on the Content channel to accommodate a higher priority input/output). For more information on prioritizing audio input/outputs, see Interaction Model.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1205,8 +1203,7 @@ The PlaybackResumed event must be sent to TVS when playback resumes following 
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -1228,7 +1225,7 @@ The PlaybackResumed event must be sent to TVS when playback resumes following 
 The ClearQueue directive is sent from TVS to your client to clear the playback queue. The ClearQueuedirective has two behaviors: CLEAR_ENQUEUED, which clears the queue and continues to play the currently playing stream; and CLEAR_ALL, which clears the entire playback queue and stops the currently playing stream (if applicable).
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -1242,8 +1239,7 @@ The ClearQueue directive is sent from TVS to your client to clear the playback
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -1263,7 +1259,7 @@ The ClearQueue directive is sent from TVS to your client to clear the playback
 The PlaybackQueueCleared event must be sent to TVS after your client handles a ClearQueue directive.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1275,16 +1271,13 @@ The PlaybackQueueCleared event must be sent to TVS after your client handles a
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
 |Parameter|Description|Type|
 | --------    | -----      |  -----     |
 |messageId|A unique ID used to represent a specific message.|string|
-
-
 
 **Payload Parameters**
 
@@ -1295,7 +1288,7 @@ An empty payload must be sent.
 If metadata is available for an audio stream that your client receives and starts playing: your client should take the key/value pairs received as raw data and translate those pairs into a JSON object. In this JSON object, strings and numbers should be represented as JSON strings, and booleans should be represented as JSON booleans. Your client should filter out any tags containing binary data. For example, your client should not send the image, image preview, attachment, or application data tags to TVS.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1313,8 +1306,7 @@ If metadata is available for an audio stream that your client receives and start
         }
     }
 }
-
-
+```
 
 **Header Parameters**
 
@@ -1343,7 +1335,7 @@ TVS expects a client to report the state of a product's notification indicator w
 To learn more about reporting Context, see Context Overview.
 
 **Sample Message**
-
+```java
 {
     "header": {
         "namespace": "Notifications",
@@ -1354,7 +1346,7 @@ To learn more about reporting Context, see Context Overview.
         "isVisualIndicatorPersisted": {{BOOLEAN}}
     }
 }
-
+```
 
 
 **Payload Parameters**
@@ -1371,7 +1363,7 @@ This directive instructs your client to render visual and audio indicators when 
 - If the assetId of the current directive does not match the assetId of the incoming directive, play the asset for the incoming directive AFTER playback of the current asset is finished.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -1389,7 +1381,7 @@ This directive instructs your client to render visual and audio indicators when 
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -1417,7 +1409,7 @@ This directive instructs your client to clear all active visual and audio indica
 - If any visual indicators are set when this directive is received, they should be cleared immediately.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -1429,6 +1421,7 @@ This directive instructs your client to clear all active visual and audio indica
         }
     }
 }
+```
 
 **Header Parameters**
 
@@ -1449,7 +1442,7 @@ The PlaybackController Interface exposes a series of events for navigating a pla
 The PlayCommandIssued event must be sent when a user starts/resumes playback of a media item using an on-client button press or GUI affordance.
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -1465,6 +1458,7 @@ The PlayCommandIssued event must be sent when a user starts/resumes playback o
         }
     }
 }
+```
 
 **Context**
 
@@ -1489,7 +1483,7 @@ An empty payload should be sent.
 The PauseCommandIssued event must be sent when a user pauses the playback of a media item using an on-client button press or GUI affordance.
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -1505,6 +1499,7 @@ The PauseCommandIssued event must be sent when a user pauses the playback of a
         }
     }
 }
+```
 
 **Context**
 
@@ -1529,7 +1524,7 @@ An empty payload should be sent.
 The NextCommandIssued event must be sent when a user skips to the next media item in their playback queue using an on-client button press or GUI affordance.
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -1545,6 +1540,7 @@ The NextCommandIssued event must be sent when a user skips to the next media i
         }
     }
 }
+```
 
 **Context**
 This event requires the client to send the status of all client component states to TVS. For additional information see Context.
@@ -1568,7 +1564,7 @@ An empty payload should be sent.
 The PreviousCommandIssued event must be sent when a user skips to the previous media item in their playback queue using an on-client button press or GUI affordance.
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -1584,6 +1580,7 @@ The PreviousCommandIssued event must be sent when a user skips to the previous
         }
     }
 }
+```
 
 **Context**
 
@@ -1595,9 +1592,7 @@ This event requires the client to send the status of all client component states
 
 |Parameter|Description|Type|
 | --------    | -----      |  -----     |
-messageId	A unique ID used to represent a specific message.	string
-
-
+|messageId|A unique ID used to represent a specific message.|string|
 
 **Payload Parameters**
 
@@ -1608,7 +1603,7 @@ An empty payload should be sent.
 This event is used to notify TVS of a unique on-client button press or GUI affordance, such as skip forward or skip backward. Skip duration is determined by the provider/skill, and each event is additive. For example, if a user presses the skip forward button three times in a row, and as a result three ButtonCommandIssued events are sent to TVS, the additive effect, if the skip is 30 seconds, will be 90 seconds.
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -1625,6 +1620,7 @@ This event is used to notify TVS of a unique on-client button press or GUI affor
         }
     }
 }
+```
 
 **Context**
 
@@ -1651,7 +1647,7 @@ This event requires the client to send the status of all client component states
 This event is used to notify TVS that an option or feature has been selected or deselected using an on-client button press or GUI affordance. Supported options include: shuffle, loop, repeat, thumbs up, and thumbs down.
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -1669,6 +1665,7 @@ This event is used to notify TVS that an option or feature has been selected or 
          }
     }
 }
+```
 
 **Context**
 
@@ -1701,7 +1698,7 @@ The SettingsUpdated event must be sent when TVS settings are adjusted using on
  Note: If a malformed or unsupported value is sent to TVS an exception message is returned.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1719,7 +1716,7 @@ The SettingsUpdated event must be sent when TVS settings are adjusted using on
         }    
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -1750,7 +1747,9 @@ The Speaker interface exposes directives and events that are used to adjust volu
 ## Speaker Context
 TVS expects a client to report volume and muted state information for the Speaker interface with each event that requires context.
 To learn more about reporting Context, see Context Overview.
+
 **Sample Message**
+```java
 {
     "header": {
         "namespace": "Speaker",
@@ -1761,7 +1760,7 @@ To learn more about reporting Context, see Context Overview.
         "muted": {{BOOLEAN}}
     }
 }
-
+```
 
 
 **Payload Parameters**
@@ -1775,7 +1774,7 @@ To learn more about reporting Context, see Context Overview.
 This directive instructs your client to make an absolute volume adjustment. The volume value will be between 0 (min) and 100 (max), inclusive.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -1789,7 +1788,7 @@ This directive instructs your client to make an absolute volume adjustment. The�
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -1813,7 +1812,7 @@ This directive instructs your client to make a relative volume adjustment. The 
 The AdjustVolume directive is always relative to the current volume setting and is positive to increase volume, or negative to reduce volume.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -1827,7 +1826,7 @@ The AdjustVolume directive is always relative to the current volume setting an
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -1851,7 +1850,9 @@ The VolumeChanged event must be sent to TVS when:
 - A SetVolume or AdjustVolume directive is received and processed to indicate that the speaker volume on your product has been adjusted/changed.
 - Volume is locally adjusted to indicate that the speaker volume on your product has been adjusted/changed.
 **Important**: volume must be a value between 0 (min) and 100 (max), inclusive. If your product locally supports volume adjustment from 0 to 10, when the user increases the volume to 8, TVS expects the volume value sent to be 80.
+
 **Sample Message**
+```java
 {
     "event": {
         "header": {
@@ -1865,7 +1866,7 @@ The VolumeChanged event must be sent to TVS when:
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -1888,7 +1889,7 @@ The VolumeChanged event must be sent to TVS when:
 This directive is sent from TVS to your client to mute the product's speaker.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -1902,7 +1903,7 @@ This directive is sent from TVS to your client to mute the product's speaker.
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -1927,7 +1928,7 @@ The MuteChanged event must be sent to TVS when:
 - Your product is muted/unmuted locally to indicate that the mute status of the product's speaker has changed.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -1941,7 +1942,7 @@ The MuteChanged event must be sent to TVS when:
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -1979,8 +1980,9 @@ Additionally, SpeechRecognizer may return to an idle state during a multiturn 
 ## SpeechRecognizer Context
 
 TVS expects all clients to report the currently set wake word, if wake word enabled.
-Sample Message
 
+**Sample Message**
+```java
 {
     "header": {
         "namespace": "SpeechRecognizer",
@@ -1990,9 +1992,7 @@ Sample Message
         "wakeword": "DING1DANG1DING1DANG"
     }
 }
-
-
-
+```
 
 **Payload Parameters**
 
@@ -2015,7 +2015,7 @@ All captured audio sent to TVS should be encoded as:
 - Little endian byte order
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -2044,14 +2044,17 @@ All captured audio sent to TVS should be encoded as:
         }
     }
 }
+```
 
 **Binary Audio Attachment**
 
 Each Recognize event requires a corresponding binary audio attachment as one part of the multipart message. The following headers are required for each binary audio attachment:
+```java
 Content-Disposition: form-data; name="audio"
 Content-Type: application/octet-stream
 
 {{BINARY AUDIO ATTACHMENT}}
+```
 
 **Context**
 
@@ -2109,7 +2112,7 @@ This directive instructs your client to stop capturing a user’s speech after T
  **Note**: StopCapture is sent to your client on the downchannel stream and may be received while speech is still being streamed to TVS. To receive the StopCapture directive, you must use a profile in your Recognize event that supports cloud-endpointing, such as NEAR_FIELD or FAR_FIELD.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -2122,7 +2125,7 @@ This directive instructs your client to stop capturing a user’s speech after T
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -2138,7 +2141,7 @@ ExpectSpeech is sent when TVS requires additional information to fulfill a user
 During a multi-turn interaction with TVS, your device will receive at least one ExpectSpeech directive instructing your client to start listening for user speech. If present, the initiator object included in the payload of the ExpectSpeech directive must be passed back to TVS as the initiator object in the following Recognize event. If initiator is absent from the payload, the following Recognize event should not include initiator.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -2158,7 +2161,7 @@ During a multi-turn interaction with TVS, your device will receive at least one�
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -2185,7 +2188,7 @@ During a multi-turn interaction with TVS, your device will receive at least one�
 This event must be sent to TVS if an ExpectSpeech directive was received, but was not satisfied within the specified timeout window.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -2197,7 +2200,7 @@ This event must be sent to TVS if an ExpectSpeech directive was received, but 
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -2226,7 +2229,7 @@ SpeechSynthesizer has the following states:
 TVS expects a client to report playerActivity (state), and the offsetInMilliseconds for the currently playing TTS with each event that requires context.
 
 **Sample Message**
-
+```java
 {
     "header": {
         "namespace": "SpeechSynthesizer",
@@ -2238,7 +2241,7 @@ TVS expects a client to report playerActivity (state), and the offsetInMillis
         "playerActivity": "{{STRING}}"
     }
 }
-
+```
 
 
 **Payload Parameters**
@@ -2260,7 +2263,7 @@ This directive is sent from TVS to your client any time a speech response from T
 This directive is sent to your client as a multipart message: one part a JSON-formatted directive and one binary audio attachment.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -2276,15 +2279,17 @@ This directive is sent to your client as a multipart message: one part a JSON-fo
         }
     }
 }
+```
 
 **Binary Audio Attachment**
 
 Each Speak directive will have a corresponding binary audio attachment as one part of the multipart message. The following multipart headers will precede the binary audio attachment:
+```java
 Content-Type: application/octet-stream
 Content-ID: {{Audio Item CID}}
 
 {{BINARY AUDIO ATTACHMENT}}
-
+```
 
 
 **Header Parameters**
@@ -2307,7 +2312,9 @@ Content-ID: {{Audio Item CID}}
 ## SpeechStarted Event
 
 The SpeechStarted event should be sent to TVS after your client processes the Speak directive and begins playback of synthesized speech.
-Sample Message
+
+**Sample Message**
+```java
 {
     "event": {
         "header": {
@@ -2320,7 +2327,7 @@ Sample Message
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -2342,7 +2349,7 @@ Sample Message
 The SpeechFinished event must be sent after your client processes a Speak directive and TVS TTS is fully rendered to the user. If playback is not finished, for example a user interrupts TVS TTS with "DingDangDingDang, stop", then SpeechFinished is not sent.
 
 **Sample Message**
-
+```java
 {
     "event": {
         "header": {
@@ -2355,7 +2362,7 @@ The SpeechFinished event must be sent after your client processes a Speak di
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -2384,7 +2391,7 @@ The System interface exposes events which span multiple client components.
 The SynchronizeState event must be sent to update TVS on the state of all product components when a new connection is established.
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -2400,6 +2407,7 @@ The SynchronizeState event must be sent to update TVS on the state of all prod
         }
     }
 }
+```
 
 **Context**
 
@@ -2425,7 +2433,7 @@ This event must be sent after an hour of inactivity, and every hour after that u
  **Tip**: The value provided for inactiveTimeInSeconds should always be a multiple of 3600 (1 hour). For example, after 4 hours of inactivity the value would be 14400.
 
 **Sample Message**
-
+```java
 {
    "event": {
         "header": {
@@ -2440,7 +2448,7 @@ This event must be sent after an hour of inactivity, and every hour after that u
     }
 
 }
-
+```
 
 
 **Header Parameters**
@@ -2462,7 +2470,7 @@ This event must be sent after an hour of inactivity, and every hour after that u
 The ResetUserInactivity directive is sent to your client to reset the inactivity timer used by UserInactivityReport. For example, a user interaction on the Tencent DingDang app would trigger this directive.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -2474,7 +2482,7 @@ The ResetUserInactivity directive is sent to your client to reset the inactivi
         }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -2491,7 +2499,7 @@ The SetEndpoint directive instructs a client to change endpoints when the foll
  **Important**: Failure to switch endpoints may result in a user not having access to custom preferences and country or region specific content.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -2504,7 +2512,7 @@ The SetEndpoint directive instructs a client to change endpoints when the foll
          }
     }
 }
-
+```
 
 
 **Header Parameters**
@@ -2530,7 +2538,7 @@ This event communicates your product's software information to TVS, such as firm
 If the event is successfully processed, the product will receive a 204 HTTP status code with an empty body. If the event is not processed the product will receive a 500 HTTP status code and an Exception Message from TVS.
 
 **Sample Message**
-
+```java
 {    
     "event": {
         "header": {
@@ -2543,6 +2551,7 @@ If the event is successfully processed, the product will receive a 204 HTTP st
         }
     }
 }
+```
 
 **Header Parameter**
 
@@ -2569,7 +2578,7 @@ If the event is successfully processed, the product will receive a 204 HTTP st
 This directive instructs your product to report current software information to TVS using the SoftwareInfo event.
 
 **Sample Message**
-
+```java
 {
     "directive": {
         "header": {
@@ -2581,6 +2590,7 @@ This directive instructs your product to report current software information to 
         }
     }
 }
+```
 
 **Header Parameter**
 
@@ -2593,7 +2603,7 @@ This directive instructs your product to report current software information to 
 Your client must send this event when it is unable to execute a directive from TVS.
 
 **Sample Message**
-
+```java
 {
     "context": [
         // This is an array of context objects that are used to communicate the
@@ -2614,6 +2624,7 @@ Your client must send this event when it is unable to execute a directive from T
         }
     }
 }
+```
 
 **Context**
 
