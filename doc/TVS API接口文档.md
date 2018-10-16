@@ -230,7 +230,8 @@ TVS期望客户端上报每个本地存储的alert的状态，每个事件都需
 ## 1.7 DeleteAlertSucceeded事件
 
 当客户端成功删除或取消现有alert时，必须在收到DeleteAlert指令后将DeleteAlertSucceeded事件发送到TVS。
- **注意**: 有关何时发送DeleteAlertSucceeded事件的更多信息，请参阅alert概述。
+
+**注意**: 有关何时发送DeleteAlertSucceeded事件的更多信息，请参阅alert概述。
 
 **示例代码**
 ```java
@@ -263,7 +264,8 @@ TVS期望客户端上报每个本地存储的alert的状态，每个事件都需
 ## 1.8 DeleteAlertFailed事件
 
 当客户端无法删除或取消现有alert时，必须在收到DeleteAlert指令后将DeleteAlertFailed事件发送到TVS。
- **注意**: 有关何时发送DeleteAlertFailed事件的更多信息，请参阅alert概述。
+
+**注意**: 有关何时发送DeleteAlertFailed事件的更多信息，请参阅alert概述。
 
 **示例代码**
 ```java
@@ -296,7 +298,8 @@ TVS期望客户端上报每个本地存储的alert的状态，每个事件都需
 ## 1.9 DeleteAlerts指令
 该指令指示客户端删除产品上的所有现有alert。 每个alert由有效负载内的唯一令牌标识。 当语音请求取消/删除所有alert时，您的客户可能会收到DeleteAlerts指令。
 如果无法删除一个或多个alert，则客户端必须回滚并向TVS发送DeleteAlertsFailed事件。 然后TVS将重试，直到删除所有alert，此时客户端必须发送DeleteAlertsSucceeded事件。
- **注意**: 如果在客户端上找不到一个或多个alert的token，则客户端应继续删除所有匹配的token。 在这种情况下，此过程不会失败。 仅当无法删除产品上的一个或多个现有alert的token时，才应发送DeleteAlerts。
+
+**注意**: 如果在客户端上找不到一个或多个alert的token，则客户端应继续删除所有匹配的token。 在这种情况下，此过程不会失败。 仅当无法删除产品上的一个或多个现有alert的token时，才应发送DeleteAlerts。
 
 **示例代码**
 ```java
@@ -330,7 +333,8 @@ TVS期望客户端上报每个本地存储的alert的状态，每个事件都需
 ## 1.10 DeleteAlertsSucceeded事件
 
 当客户端成功删除或取消令牌数组中的所有现有alert时，必须在收到DeleteAlerts指令后将DeleteAlertsSucceeded事件发送到TVS。
- **注意**: 有关何时发送DeleteAlertsSucceeded事件的更多信息，请参阅alert概述。
+
+**注意**: 有关何时发送DeleteAlertsSucceeded事件的更多信息，请参阅alert概述。
  
 **示例代码**
 ```java
@@ -362,7 +366,8 @@ TVS期望客户端上报每个本地存储的alert的状态，每个事件都需
 ## 1.11 DeleteAlertsFailed事件
 
 当客户端无法删除或取消token数组中的至少一个现有alert时，必须在收到DeleteAlerts指令后将DeleteAlertsFailed事件发送到TVS。
- **注意**: 有关何时发送DeleteAlertsFailed事件的更多信息，请参阅alert概述。
+
+**注意**: 有关何时发送DeleteAlertsFailed事件的更多信息，请参阅alert概述。
 
 **示例代码**
 ```java
@@ -690,12 +695,14 @@ TVS希望客户端报告playerActivity（状态），以及当前正在播放的
 
 ## 2.3 Play指令
 Play指令将发送到您的客户端以启动音频播放。 它是一个由JSON指令组成的多部分消息，最多包含一个音频流或二进制音频附件。
- **注意**: 了解有关二进制音频附件的更多信息。
+
+**注意**: 了解有关二进制音频附件的更多信息。
 指令的有效负载中包含的playBehavior参数可用于确定客户端必须如何处理流的排队和回放。接受的值提供了必须采取的操作的提示：
 - **REPLACE_ALL**: 立即开始播放使用Play指令返回的流，并替换当前和排队的流。 播放流时，如果您收到PlayBehavior为REPLACE_ALL的Play指令，则必须向TVS发送PlaybackStopped事件。
 - **ENQUEUE**: 将流添加到当前队列的末尾。
 - **REPLACE_ENQUEUED**: 替换队列中的所有流。 这不会影响当前播放的流。
- **注意**: 将流添加到回放队列时，必须确保当前播放的流的标记与要添加到队列的流中的expectedPreviousToken匹配。 如果令牌不匹配，则必须忽略该流。 但是，如果未返回expectedPreviousToken，则必须将流添加到队列中。
+
+**注意**: 将流添加到回放队列时，必须确保当前播放的流的标记与要添加到队列的流中的expectedPreviousToken匹配。 如果令牌不匹配，则必须忽略该流。 但是，如果未返回expectedPreviousToken，则必须将流添加到队列中。
 
 **示例代码**
 ```java
@@ -753,7 +760,7 @@ Content-ID: {{Audio Item CID}}
  
 |参数|描述|类型|
 | --------    | -----      |  -----     |
-|playBehavior|提供播放提示。 可接受的值：REPLACE_ALL，ENQUEUE和REPLACE_ENQUEUED。 ** REPLACE_ALL **：立即开始播放使用Play指令返回的流，并替换当前和排队的流。** ENQUEUE **：将流添加到当前队列的末尾。** REPLACE_ENQUEUED **：全部替换队列中的流。这不会影响当前播放的流。|string|
+|playBehavior|提供播放提示。 可接受的值：REPLACE_ALL，ENQUEUE和REPLACE_ENQUEUED。 **REPLACE_ALL**：立即开始播放使用Play指令返回的流，并替换当前和排队的流。**ENQUEUE**：将流添加到当前队列的末尾。**REPLACE_ENQUEUED*：全部替换队列中的流。这不会影响当前播放的流。|string|
 |audioItem|包含audioItems的键/值对。|object|
 |audioItem.audioItemId|标识audioItem。|string|
 |audioItem.stream|包含流的键/值对。|object|
@@ -770,7 +777,8 @@ Content-ID: {{Audio Item CID}}
 ## 2.4 PlaybackStarted事件
 
 在客户端处理Play指令并开始播放相关音频流后，必须将**PlaybackStarted**事件发送到TVS。
- **注意**: 对于TVS发送的每个URL，它预期不会有多个PlaybackStarted事件。 如果您收到播放列表网址（由多个网址组成），则只发送一个PlaybackStarted事件。
+ 
+**注意**: 对于TVS发送的每个URL，它预期不会有多个PlaybackStarted事件。 如果您收到播放列表网址（由多个网址组成），则只发送一个PlaybackStarted事件。
 
 **示例代码**
 ```java
@@ -809,7 +817,8 @@ Content-ID: {{Audio Item CID}}
 当您的客户端准备缓冲/下载回放队列中的下一个流时，必须发送PlaybackNearlyFinished事件。 您的客户端必须确保仅在当前播放的流的PlaybackStarted事件之后发送此事件。 TVS将通过以下方式之一回应此事件：
 - 包含下一个流的Play指令
 - HTTP 204响应代码
- **提示**: 作为最佳实践，您可能需要考虑等待上一首歌曲被缓冲，然后再向TVS发送PlaybackNearlyFinished事件。 这降低了超过expiryTime的风险，并且可以降低在同时下载和处理多个Play指令时可能发生的回放断断续续的频率。
+ 
+**提示**: 作为最佳实践，您可能需要考虑等待上一首歌曲被缓冲，然后再向TVS发送PlaybackNearlyFinished事件。 这降低了超过expiryTime的风险，并且可以降低在同时下载和处理多个Play指令时可能发生的回放断断续续的频率。
 
 **示例代码**
 ```java
@@ -995,6 +1004,7 @@ PlaybackStutterStarted事件必须在PlaybackStarted事件之后发送到TVS，�
 在以下情况下不会发送此事件：
 - 停止播放（本地按键或Stop指令的结果）
 - 在流之间切换换（下一个/上一个）
+
 **注意**：对于TVS发送的每个URL，它预期收到不超过一个PlaybackFinished事件。 如果您收到播放列表网址（由多个网址组成），则只发送一个PlaybackFinished事件。
 
 **示例代码**
@@ -1089,7 +1099,7 @@ PlaybackStutterStarted事件必须在PlaybackStarted事件之后发送到TVS，�
 
 ## 2.12 Stop指令
 
-Stop指令将发送到您的客户端以停止播放音频流。 您的客户可能会因语音请求，物理按键按下或GUI启动而收到Stopdirective。
+Stop指令将发送到您的客户端以停止播放音频流。 您的客户可能会因语音请求，物理按键按下或GUI启动而收到Stop指令。
 
 **示例代码**
 ```java
@@ -1120,7 +1130,8 @@ Stop指令将发送到您的客户端以停止播放音频流。 您的客户可
 - Stop指令
 - Play指令，其playBehavior为REPLACE_ALL
 - ClearQueue指令，其clearBehavior为CLEAR_ALL
- **注意**: 仅当由于接收到上面列出的指令之一而终止流时才会发送此事件。 通常，这是用户操作的结果。 当流完成播放时，不得发送此事件（请参阅PlaybackFinished）。
+
+**注意**: 仅当由于接收到上面列出的指令之一而终止流时才会发送此事件。 通常，这是用户操作的结果。 当流完成播放时，不得发送此事件（请参阅PlaybackFinished）。
 
 **示例代码**
 ```java
@@ -1155,7 +1166,8 @@ Stop指令将发送到您的客户端以停止播放音频流。 您的客户可
 ## 2.14 PlaybackPaused事件
 
 当您的客户端暂时暂停内容频道上的音频以适应更高优先级的输入/输出时，必须发送PlaybackPaused事件。 当优先活动完成时，必须恢复播放; 此时您的客户端必须发送PlaybackResumed事件。 有关确定音频输入/输出优先级的更多信息，请参阅交互模型。
- **注意**: 应该在Recognize事件之后发送PlaybackPaused以减少延迟。
+
+**注意**: 应该在Recognize事件之后发送PlaybackPaused以减少延迟。
 
 **示例代码**
 ```java
