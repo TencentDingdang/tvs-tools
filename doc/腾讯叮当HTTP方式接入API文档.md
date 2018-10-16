@@ -4,7 +4,7 @@
 
 [TOC]
 
-## 简介
+## 1 简介
 
 本文档主要针对API开发者，描述腾讯叮当云端API语音识别、语义理解、TTS接口服务的相关技术内容。如果您对文档内容有任何疑问，可以通过以下方式联系我们：
 
@@ -12,7 +12,7 @@
 
   ​
 
-## API接口能力
+## 2 API接口能力
 
 | 接口名称      | 能力                       |
 | --------- | ------------------------ |
@@ -22,12 +22,12 @@
 | 终端状态上报接口  | 上报终端状态，有助于后台提供更精准的语义服务结果 |
 
 
-## 协议支持
+## 3 协议支持
 
 ​	接口为HTTP形式，建议使用HTTPS保持长连接，以减少访问耗时、提升用户体验。
 
 
-## 请求格式
+## 4 请求格式
 
 POST方式调用。并在Http协议头中，设置`Content-Type`为`application/json; charset=UTF-8`。
 
@@ -35,13 +35,13 @@ POST方式调用。并在Http协议头中，设置`Content-Type`为`application/
 
 
 
-## 返回格式
+## 5 返回格式
 
 JSON格式，返回内容为UTF-8编码
 
 
 
-## HTTP Header要求
+## 6 HTTP Header要求
 
 腾讯叮当API对于HTTP请求的请求头字段有如下要求：
 
@@ -51,15 +51,15 @@ JSON格式，返回内容为UTF-8编码
 | Content-Type  | 可选   | 当请求方法为`PATCH`、`PUT`或`POST`时，指定`Content-Type: application/json; charset=UTF-8`。 |
 
 
-### 签名方法
+### 6.1 签名方法
 
 腾讯叮当API要求所有的请求都要经过签名，以证明请求是经过授权的。请求通过Hash算法进行加密计算，得到一个请求对应的签名字符串，并将该签名字符串带到`Authorization`请求头中。腾讯叮当API会对该签名进行校验，对于未带上正确签名的请求将视为未授权的请求并拒绝访问。
 
 腾讯叮当API支持使用[TVS-HMAC-SHA256-BASIC](#TVS-HMAC-SHA256-BASIC签名方法)进行消息签名。
 
-#### TVS-HMAC-SHA256-BASIC签名方法
+#### 6.1.1 TVS-HMAC-SHA256-BASIC签名方法
 
-#### Task 1: 拼接请求数据和时间戳得到`SigningContent`
+#### 6.1.2 Task 1: 拼接请求数据和时间戳得到`SigningContent`
 请求数据指的是HTTP Body数据，时间戳取当前的UTC时间，并以ISO8601格式为标准（'YYYYMMDD'T'HHMMSS'Z）。假设当前时间戳为20170701T235959Z，以示例1的请求为例，得到的`SigningContent`为：
 ```text
 {
@@ -70,7 +70,7 @@ JSON格式，返回内容为UTF-8编码
 }20170701T235959Z
 ```
 
-#### Task 2: 获取`Signature`签名
+#### 6.1.3 Task 2: 获取`Signature`签名
 腾讯叮当API要求使用平台分配的`BotSecret`作为签名的密钥，`BotSecret`应该存放在请求方的服务器中，不应该以任何形式暴露给终端。签名使用的算法是`HMAC-SHA256`：
 ```
 Signature = HMAC_SHA256(SigningContent, BotSecret);
@@ -90,7 +90,7 @@ cc7d8a8210bace445f7f67c862fac6ad33e99feda0f16a45fe6bbcda295388f4
 ```
 文档后面给出了具体的签名的具体实现Demo和请求方式，详见[TVS-HMAC-SHA256-BASIC签名示例](#tvs-hmac-sha256-basic_1)
 
-#### Task 3: 在请求中带上签名信息
+#### 6.1.4 Task 3: 在请求中带上签名信息
 计算得到请求内容的签名之后，需要在HTTP Header的`Authorization`中带上签名信息。`Authorization`的结构如下伪代码所示：
 
 ```http
@@ -104,11 +104,11 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 
 
 
-## API接口文档
+## 7 API接口文档
 
-### 1. 语义请求接口
+### 7.1 语义请求接口
 
-#### 接口描述
+#### 7.1.1 接口描述
 ​	该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
 
 该接口按request_type的不同提供三种功能：
@@ -120,7 +120,7 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 | SERVICE_ONLY         | 仅返回服务结果，但是需要payload.session.session_id填上语义理解的sessionId。 |
 
 
-#### 请求参数
+#### 7.1.2 请求参数
 
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswer`
 
@@ -224,7 +224,7 @@ body请求示例
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
 
 
-#### 返回参数
+#### 7.1.3 返回参数
 
 ```json
 {
@@ -273,9 +273,9 @@ body请求示例
 
 
 
-### 2. 语音识别接口
+### 7.2. 语音识别接口
 
-#### 接口描述
+#### 7.2.1 接口描述
 
 该接口提供(非)流式语音识别的能力。语音识别按是否采用云端VAD分为两种情况：
 
@@ -284,7 +284,7 @@ body请求示例
 | 云端VAD | 当payload.open_vad=true时，语音识别引擎将会自动识别用户说话结束。自动返回最终识别结果。适用于音箱收音等非手动控制结束的场景 |
 | 本地VAD | 当payload.open_vad=false时，语音识别引擎不会自动识别用户说话结束。需要终端主动设置结束标识(voice_finished=true)，语音识别引擎才会返回最终识别结果。适用于**按下说话,抬起结束**的收音场景，如遥控器。 |
 
-#### 请求参数
+#### 7.2.2 请求参数
 
 __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 
@@ -345,7 +345,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.voice_base64`           | `string` |  是   | 语音数据的`Base64`编码                          |
 
 
-#### 返回参数
+#### 7.2.3 返回参数
 
 ```json
 {
@@ -371,8 +371,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.result`            | `string` | 语音识别结果 |
 
 
-### 3. 语音合成接口
-#### 接口描述
+### 7.3 语音合成接口
+#### 7.3.1 接口描述
 (非)流式文本转换为语音。
 
 | 类型   | 说明                                       |
@@ -447,7 +447,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload.content.text`         | `string` |  是   | 转语音的文本内容                                 |
 
 
-#### 返回参数
+#### 7.3.2 返回参数
 
 ```json
 {
@@ -472,10 +472,10 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload.speech_finished`   | `bool`   | 是否结束        |
 | `payload.speech_base64`     | `string` | 语音的Base64数据 |
 
-### 4. 终端上报接口
-#### 接口描述
+### 7.4 终端上报接口
+#### 7.4.1 接口描述
 ​	为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过上报接口向腾讯叮当上报终端的阅读、播放等状态。
-#### 请求参数
+#### 7.4.2 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
 ```json
@@ -522,7 +522,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `header.ip`                  | `string` | 是    | 终端IP（厂商后台代为上报需填该字段）                      |
 | `payload`                    | -        | 是    | 上报消息体。消息分为几种类型：<br>`state_report`：上报媒体播放/展示状态；<br>`device_report`：上报设备开关机等状态； |
 
-##### state_report
+##### 7.4.2.1 state_report
 
 | 参数名                      | 类型       | 是否必选 | 描述                                       |
 | ------------------------ | -------- | ---- | ---------------------------------------- |
@@ -539,7 +539,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `detail.exposure_reason` | `string` | 否    | 曝光原因                                     |
 | `detail.state_reason`    | `string` | 否    | 进入状态原因                                   |
 
-##### device_report
+##### 7.4.2.2 device_report
 
 | 参数名            | 类型       | 描述                              |
 | -------------- | -------- | ------------------------------- |
@@ -547,7 +547,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `device`       | -        | 设备状态信息                          |
 | `device.state` | `string` | `power_on` 开机<br>`power_off` 关机 |
 
-#### 返回数据
+#### 7.4.3 返回数据
 
 ```json
 {
@@ -561,10 +561,10 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `code`    | `int`    | 错误码：<br>`0`: 正常；<br>`其他`:异常 |
 | `message` | `string` | 错误消息                        |
 
-### 5. 统一接入接口
-#### 接口描述
+### 7.5 统一接入接口
+#### 7.5.1 接口描述
 ​	统一接入接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
-#### 请求参数
+#### 7.5.2 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 ```
@@ -628,7 +628,7 @@ json
 | `payload.intent`       | `string` | Yes  | 意图                                       |
 | `payload.jsonBlobInfo` | `string` | Yes  | 数据，根据`payload.domain`和`payload.intent`的不同，有不同的数据格式。 |
 
-#### 返回参数
+#### 7.5.3 返回参数
 ```
 json
 {
@@ -659,7 +659,7 @@ json
 
 
 
-## 腾讯叮当能力评测注意事项
+## 8 腾讯叮当能力评测注意事项
 
 终端接入腾讯叮当时，若有评测需求需向相应的产品接口人申请，告知测试理由、测试QPS及持续时间，评测时有以下需要注意的事项：
 
@@ -667,8 +667,8 @@ json
 2. 测试QPS需以1小时为单位逐渐增加；
 3. 测试时GUID及UserID需设置为`auto_test`；
 
-## 附录
-### QUA字段说明
+## 9 附录
+### 9.1 QUA字段说明
 ​	QUA是用于标识客户端信息的key-value对，key-value之间以`&`连接，服务端可根据QUA信息给出响应的适配内容。
 
 ​	QUA 的key-value说明如下：
@@ -686,7 +686,7 @@ json
 
 ​	示例:QV=3&PR=Dingdang&PL=LINUX&VE=GA&VN=1.0.1000&PP=com.tencent.ai.tvs&DE=SPEAKER&CHID=10020
 
-### GUID获取
+### 9.2 GUID获取
 
 ​	如果设备上使用了AISDK，可以从AISDK获取GUID，否则，设备端需要自己生成GUID。
 
@@ -698,13 +698,13 @@ json
 
    ​
 
-### USERID
+### 9.3 USERID
 
 请将用户openid填入。
 
-### TVS-HMAC-SHA256-BASIC签名示例
+### 9.4 TVS-HMAC-SHA256-BASIC签名示例
 
-#### Python版(依赖requests)
+#### 9.4.1 Python版(依赖requests)
 
 ```python
 # -*- coding: UTF-8 -*-
@@ -751,7 +751,7 @@ print 'HTTP Status Code:%d' % r.status_code
 print r.text
 ```
 
-#### Java版
+#### 9.4.2 Java版
 
 ```java
 //package com.qq.tvs.auth;
@@ -830,7 +830,7 @@ public class TVSBasicSigner
 }
 ```
 
-### 错误码
+### 9.5 错误码
 
 | HTTP Status Code | 错误类型    |
 | ---------------- | ------- |
@@ -842,7 +842,7 @@ public class TVSBasicSigner
 | 404              | 资源不存在   |
 | 405              | 请求方法不允许 |
 
-### 更新日志
+### 9.6 更新日志
 
 | 版本    | 日期         | 更新内容                         |
 | ----- | ---------- | ---------------------------- |
