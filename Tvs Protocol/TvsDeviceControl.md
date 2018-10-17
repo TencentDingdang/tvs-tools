@@ -708,3 +708,59 @@
 |	Parameter					|	Type		|	必选	|	描述										|
 |	:---------------------------	|	:--------	|	:-----	|	:---------------------------------------	|
 |	token						|	string	|	Yes	|	token									|
+
+
+### 设置定时时间事件
+```json
+{
+	"event": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "SetFixedTime",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+			"timeInMilliseconds": LONG,
+			"action": "{{STRING}}"
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|
+
+***Payload Paramters***
+
+|	Parameter					|	Type		|	必选	|	描述										|
+|	:---------------------------	|	:--------	|	:-----	|	:---------------------------------------	|
+|	timeInMilliseconds		|	long		|	Yes	|	时长				|
+|	action						|	string	|	Yes	|	动作<br>PAUSE,暂停				|
+
+### 清楚定时时间事件
+```json
+{
+	"event": {
+		"header": {
+			"namespace": "TvsDeviceControl",
+			"name": "ClearFixedTime",
+            "messageId": "{{STRING}}",
+			"dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+		}
+	}
+}
+```
+
+***Header Paramters***
+
+|	Parameter			|	Type		|	必选	|	描述							|
+|	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
+|	messageId			|	string	|	Yes	|	消息ID						|
+|	dialogRequestId	|	string	|	No	|	对话ID						|

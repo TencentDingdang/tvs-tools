@@ -22,7 +22,8 @@
                 }
             },
 			"language": "{{STRING}}",
-			"semantic": "{{STRING}}"
+			"semantic": "{{STRING}}",
+			"resultType": "{{STRING}}"
         }
     }
 }
@@ -41,3 +42,4 @@
 |	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
 |	language					|	string	|	No	|	语言类型<br>CHINESE:中文<br>ENGLISH:英文	|
 |	semantic					|	string	|	No	|	语义参数Json	<br>{"domain": "XXX", "intent": "YYY"}	|
+|	semantic					|	string	|	No	|	结果类型<br>DEFAULT,默认;ASR,语音识别	|
