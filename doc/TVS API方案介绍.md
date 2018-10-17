@@ -1,5 +1,12 @@
 # ÔÆ¶ËAPI·½°¸½éÉÜ
-# ¸ÅÊö
+
+**Ä¿ Â¼**
+
+[TOCM]
+
+[TOC]
+
+# 1 ¸ÅÊö
 ÌÚÑ¶ÓïÒô·þÎñ£¨TVS£©ÔÆ¶ËAPI£¬ÊÇÒ»Ì×»ùÓÚHTTPµÄWeb½Ó¿Ú¡£Ëü½ÓÊÕÓÃ»§µÄÓïÒô»òÎÄ±¾ÊäÈë£¬´«µÝ¸øÌÚÑ¶¶£µ±ºóÌ¨½øÐÐ´¦Àí£¬²¢½«´¦Àí½á¹ûÒÔÓïÒô¡¢ÎÄ±¾»ò¿¨Æ¬µÄÐÎÊ½£¬·µ»Ø¸øÓÃ»§¡£
 
 ÖÕ¶Ë¿ª·¢ÕßÉêÇë¿ª·¢ÕßÕÊºÅºó£¬¾ÍÄÜÍ¨¹ýTVSÔÆ¶ËAPI½ÓÈëÌÚÑ¶¶£µ±ÌåÏµ¡£Ê¹ÖÕ¶ËÉè±¸ÓµÓÐÌÚÑ¶¶£µ±Ìá¹©µÄÐÂÎÅ¡¢ÒôÀÖ¡¢ÌìÆø¡¢¹ÉÆ±¡¢ÄÖÖÓµÈ½ü°ÙÖÖÄÜÁ¦¡£ÕâÐ©ÄÜÁ¦¼¯£¬»¹»áËæ×ÅÌÚÑ¶¼¼ÄÜÌ×¼þ£¨TSK£©ÌåÏµ¶ø²»¶ÏµØÔö¼ÓºÍÍêÉÆ¡£
@@ -8,7 +15,7 @@ TVS APIÓÉÒ»ÏµÁÐÓëÖÕ¶Ë¹¦ÄÜÏà¹ØµÄ½Ó¿Ú×é³É£¬°üÀ¨ÓïÒôÊ¶±ð¡¢²¥·Å¿ØÖÆ¡¢ÒôÁ¿¿ØÖÆµÈµÈ¡£Ã
 
 TVSÊ¹ÓÃ»ùÓÚQQ»¥Áª¡¢Î¢ÐÅ¿ª·ÅÆ½Ì¨µÄÌÚÑ¶¶£µ±ÕÊºÅÌåÏµ½øÐÐ²úÆ·ÊÚÈ¨£¬Ê¹ÓÃHTTP2.0Ð­Òé¶ÔÍâÌá¹©·þÎñ¡£
 
-# Ö÷Òª¹¦ÄÜ
+# 2 Ö÷Òª¹¦ÄÜ
 TVSÔÆ¶ËAPI¶¨ÒåÁË°Ë¸öÖ÷Òª½Ó¿Ú£¬ÕâÐ©½Ó¿ÚÓÖ¸÷×Ô°üº¬ÁËÒ»ÏµÁÐµÄÖ¸ÁîºÍÊÂ¼þ¼¯ºÏ£¬¶ÔÓ¦ÏàÓ¦µÄÖÕ¶ËÄÜÁ¦¡£½Ó¿ÚÃû³Æ¼°¼òÒªËµÃ÷ÈçÏÂ£º
 
 |½Ó¿Ú|ÃèÊö|
@@ -21,37 +28,37 @@ TVSÔÆ¶ËAPI¶¨ÒåÁË°Ë¸öÖ÷Òª½Ó¿Ú£¬ÕâÐ©½Ó¿ÚÓÖ¸÷×Ô°üº¬ÁËÒ»ÏµÁÐµÄÖ¸ÁîºÍÊÂ¼þ¼¯ºÏ£¬¶ÔÓ¦Ïà
 |Speeker|ÑïÉùÆ÷½Ó¿Ú¡£Éè±¸»òAppµÄÒôÁ¿¿ØÖÆ½Ó¿Ú£¬°üÀ¨¾²ÒôºÍÈ¡Ïû¾²Òô¡£|
 |Settings|¹ÜÀíDingdangÉèÖÃµÄ½Ó¿Ú£¬Èç»·¾³Ïà¹ØµÄÉèÖÃ¡£|
 |System|ÎªDingdangÌá¹©ÖÕ¶ËÐÅÏ¢µÄ½Ó¿Ú¡£|
-# ¼¼ÊõÌØÉ«
+# 3 ¼¼ÊõÌØÉ«
 ÌÚÑ¶ÓïÒô·þÎñ£¨TVS£©ÔÆ¶ËAPI£¬ÊÇÒ»Ì×»ùÓÚHTTPµÄWeb½Ó¿Ú¡£Ëü½ÓÊÕÓÃ»§µÄÓïÒô»òÎÄ±¾ÊäÈë£¬´«µÝ¸øÌÚÑ¶¶£µ±ºóÌ¨½øÐÐ´¦Àí£¬²¢½«´¦Àí½á¹ûÒÔÓïÒô¡¢ÎÄ±¾»ò¿¨Æ¬µÄÐÎÊ½£¬·µ»Ø¸øÓÃ»§¡£
 
-## Óï·¨¼æÈÝAVS API
+## 3.1 Óï·¨¼æÈÝAVS API
 TVSÔÆ¶ËAPIµÄ½Ó¿Ú¶¨Òå¡¢Í¨ÐÅÐ­ÒéÍêÈ«¼æÈÝAVS API¡£ÒÑ¾­½ÓÈë¹ýAVSµÄÉè±¸³§ÉÌ£¬Ö»Ðè½«AVS APIµÄ·þÎñ¶ËµØÖ·Ö¸ÏòTVSÔÆ¶ËAPIµÄ·þÎñ¶ËµØÖ·£¬¼´¿É½«²úÆ·¿ìËÙÇÐ»»µ½ÌÚÑ¶¶£µ±ÌåÏµ£¬²»ÐèÒªµ÷ÕûÖÕ¶ËµÄÆäËüÂß¼­ÊµÏÖ¡£
 
-##ÊäÈë¼æÈÝÎÄ±¾ºÍÓïÒô
+## 3.2 ÊäÈë¼æÈÝÎÄ±¾ºÍÓïÒô
 TVSÔÆ¶ËAPIÔÚÖ§³ÖÓïÒôÊäÈëµÄÍ¬Ê±£¬À©Õ¹Ö§³ÖÎÄ±¾µÄÊäÈë¡£ÔÊÐíÖÕ¶Ë³§ÉÌ¶¨ÖÆÑ¡ÔñÓïÒôÊ¶±ð·½°¸ÉÌ£¬Ìá¹©¸ü¶àµÄ¼¯³ÉÁé»îÐÔ¡£ Ä¿Ç°Ö»Ö§³ÖUTF8±àÂë¸ñÊ½µÄÖÐÎÄÎÄ±¾ÊäÈë¡£
 
-## Êä³ö¼æÈÝÓÐÆÁºÍÎÞÆÁ¶Ë
+## 3.3 Êä³ö¼æÈÝÓÐÆÁºÍÎÞÆÁ¶Ë
 TVSÔÆ¶ËAPIÌá¹©ÓïÒô¡¢ÎÄ±¾ºÍÄ£°åÈýÀàÊä³ö¸ñÊ½¡£ 
 ¶ÔÓÚÒôÏä¡¢¶ú»úµÈÎÞÆÁÉè±¸£¬ÖÕ¶Ë¿ª·¢ÕßÖ»ÐèÒªÖ§³ÖÓïÒô¡¢Ã½ÌåURL¸ñÊ½Êý¾ÝµÄ²¥·Å¡£ 
 ¶ÔÓÚ³µ»ú¡¢ÊÖ»úµÈÓÐÆÁÉè±¸£¬TVSÔÆ¶ËÌá¹©ÓëÓïÒôÊä³ö¶ÔÓ¦µÄÎÄ±¾Êä³ö£»Í¬Ê±Ìá¹©¶àÌ×Ä£°å£¬¶¨ÒåÄ£°å¶ÔÓ¦µÄÊý¾Ý½á¹¹¼°ÑùÊ½£¬·½±ãÖÕ¶ËÊµÏÖ¸ü·á¸»µÄÕ¹Ê¾Ð§¹û¡£
 
-## »½ÐÑ´Ê¼¯³ÉÌÚÑ¶¡¢Ñ¶·É¡¢sensoryµÈÖ÷Á÷½â¾ö·½°¸
+## 3.4 »½ÐÑ´Ê¼¯³ÉÌÚÑ¶¡¢Ñ¶·É¡¢sensoryµÈÖ÷Á÷½â¾ö·½°¸
 TVSÔÆ¶ËAPI½â¾ö·½°¸£¬ÒÑÍê³ÉÌÚÑ¶¡¢Ñ¶·É¡¢sensoryµÈ¹úÄÚÍâ¶à¼Ò»½ÐÑ´Ê·½°¸ÉÌ¡£²¢ÒÔÖÕ¶ËSDKµÄ·½Ê½Ìá¹©Ö÷Á÷Æ½Ì¨µÄ¼¯³Éµ÷ÓÃ¡£ÒÑÊ¹ÓÃ¹ýÑ¶·É¡¢sensoryµÈ³§¼Ò»½ÐÑ´ÊµÄÏîÄ¿£¬¿ÉÒÔ²»ÓÃµ÷ÕûÒÑÓÐÉùÑ§Ç°¶Ë£¬¼´¿ÉÍê³É»½ÐÑ´ÊµÄÌæ»»¡£
 
-## À©Õ¹Ö§³Ö»úÆ÷ÈË¶¯×÷ºÍÇé¸Ð¿ØÖÆÖ¸Áî
+## 3.5 À©Õ¹Ö§³Ö»úÆ÷ÈË¶¯×÷ºÍÇé¸Ð¿ØÖÆÖ¸Áî
 TVSÔÆ¶ËAPIÕë¶Ô»úÆ÷ÈËÁìÓò£¬À©Õ¹ÁË¿ØÖÆÖ¸Áî¼¯¡£Ö§³ÖÈçÌøÎè¡¢´òÌ«¼«¡¢¸©ÎÔ³ÅµÈ¶àÖÖ¶¯×÷£¬¼°¿ªÐÄ¡¢ÐË·Ü¡¢±¯ÉËµÈ¶àÖÖÇé¸Ð¿ØÖÆÖ¸Áî£¬²¢½«¶¯×÷¡¢Çé¸ÐÖ¸ÁîºÏ²¢ÔÚÌìÆø¡¢ÐÂÎÅµÈÒµÎñ³¡¾°ÖÐÏÂ·¢¡£
 
-# ½ÓÈëÁ÷³Ì
-## ÕÊºÅµÇÂ¼
+# 4 ½ÓÈëÁ÷³Ì
+## 4.1 ÕÊºÅµÇÂ¼
 ÖÕ¶Ë·ÃÎÊTVSÔÆ¶ËAPI£¬ÐèÒªÏÈ»ñÈ¡ÌÚÑ¶¶£µ±ÕÊºÅÌåÏµµÄ·ÃÎÊÆ±¾Ý¡£¸ÃÆ±¾ÝÊÚÈ¨ÖÕ¶ËÉè±¸´ú±íÓÃ»§£¬ÏòÌÚÑ¶¶£µ±·¢Æðµ÷ÓÃ¡£ 
 »ùÓÚAndroid»òiOS³§ÉÌApp·½Ê½½øÐÐÕÊºÅÈÏÖ¤µÄ²úÆ·½ÓÈëÁ÷³Ì£¬Çë²Î¿¼£º 
 [ÌÚÑ¶¶£µ±³§ÉÌAppÕËºÅ½ÓÈëÁ÷³Ì](https://softfile.3g.qq.com/myapp/trom_l/dingdang/gw/files/cloud_sdk/tvs_access.pdf)
 
-## ·þÎñµØÖ·
+## 4.2 ·þÎñµØÖ·
 - TVSÖ¸ÁîÏÂ·¢µØÖ·£º<https://tvs.html5.qq.com/v20160207/directives/> 
 - TVSÊÂ¼þ½ÓÊÕµØÖ·£º<https://tvs.html5.qq.com/v20160207/events/> 
 - TVS PingµØÖ·£º<https://tvs.html5.qq.com/ping/>
 
-## APIÎÄµµ
-TVS API¸÷½Ó¿ÚµÄÏêÏ¸ËµÃ÷£¬Çë²Î¿¼£º
+## 4.3 APIÎÄµµ
+- TVS API¸÷½Ó¿ÚµÄÏêÏ¸ËµÃ÷£¬Çë²Î¿¼£º
 [TVS API½Ó¿ÚÎÄµµ](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/Tencent%20Voice%20Service%20Reference.md)
