@@ -309,7 +309,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
         "voice_meta": {
             "compress": "PCM",
             "sample_rate": "8K",
-            "channel": 1
+            "channel": 1,
+			"language": ENGLISH,
+			"offset":0
         },
       	"open_vad": true,
         "session_id": "...",
@@ -338,9 +340,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.voice_meta.compress`    | `string` |  是   | 压缩类型：`PCM`/`WAV`/`SPEEX`/`AMR`/`OPUS`/`MP3` |
 | `payload.voice_meta.sample_rate` | `string` |  是   | 采样率：`8K`/`16K`                           |
 | `payload.voice_meta.channel`     |  `int`   |  是   | 音频通道数：`1`/`2`                            |
+| `payload.voice_meta.language`     |  `string`   |  否   | 语言类型(默认汉语)<br>ENGLISH:英语                            |
+| `payload.voice_meta.offset`     |  `int`   |  否   | 语音片偏移量                            |
 | `payload.open_vad`               |  `bool`  |  是   | 是否打开VAD                                  |
 | `payload.session_id`             | `string` |  否   | 流式识别过程中必填                                |
-| `payload.index`                  |  `int`   |  是   | 语音片偏移量                                   |
+| `payload.index`                  |  `int`   |  是   | 语音片偏移量(英文时为语音包序号)                                   |
 | `payload.voice_finished`         |  `bool`  |  是   | 语音是否结束                                   |
 | `payload.voice_base64`           | `string` |  是   | 语音数据的`Base64`编码                          |
 
