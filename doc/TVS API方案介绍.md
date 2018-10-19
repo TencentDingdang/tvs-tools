@@ -61,4 +61,4 @@ TVS云端API针对机器人领域，扩展了控制指令集。支持如跳舞、打太极、俯卧撑等多种动作
 
 ## 4.3 API文档
 - TVS API各接口的详细说明，请参考：
-[TVS API接口文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/Tencent%20Voice%20Service%20Reference.md)
+[TVS API接口文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/TVS%20API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
