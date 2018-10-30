@@ -1,14 +1,14 @@
-# TVS评测工具说明
+# 腾讯云叮当评测工具说明
 
 ## 1 背景
-TVS评测工具用于满足以下几种需求：
+腾讯云叮当评测工具用于满足以下几种需求：
 - 外部厂商的产品、商务同学体验业务，包括完整链路体验及基础能力（ASR、NLP、TTS）体验。
-- 外部厂商的技术同学评测TVS能力，包括基础能力（ASR、NLP、TTS）的批量评测。
+- 外部厂商的技术同学评测腾讯云叮当能力，包括基础能力（ASR、NLP、TTS）的批量评测。
 
 ## 2 产品、商务同学体验
 ### 2.1 完整链路体验
 完整链路体验，请使用腾讯叮当官方App。手机用户在应用宝、AppStore上搜索“腾讯叮当”，下载安装App后即可体验。
-腾讯叮当App包括ASR、NLP、Srv、TTS整个链路的完整体验，也覆盖音乐、新闻等当前TVS平台支持的所有领域。
+腾讯叮当App包括ASR、NLP、Srv、TTS整个链路的完整体验，也覆盖音乐、新闻等当前腾讯云叮当平台支持的所有领域。
 ### 2.2 TTS体验
 TTS的效果体验，请访问以下地址：http://betashow.html5.qq.com/player.html
 
@@ -30,9 +30,9 @@ app/ASRNLU_demo_xxxx.apk工具支持Android运行环境，提供ASR、NLP批量�
 - 测试完成后，测试报告存放在/sdcard/tencent/test/tsr/out/目录下。
 
 ### 3.1.2 HTTP API基础能力评测脚本
-* script/richanswerV1.py脚本支持基于HTTP API访问TVS基础能力NLP的功能
-* script/tts.py脚本支持基于HTTP API访问TVS基础能力TTS的功能
-* script/asr.py脚本支持基于HTTP API访问TVS基础能力ASR的功能
+* script/richanswerV1.py脚本支持基于HTTP API访问腾讯云叮当基础能力NLP的功能
+* script/tts.py脚本支持基于HTTP API访问腾讯云叮当基础能力TTS的功能
+* script/asr.py脚本支持基于HTTP API访问腾讯云叮当基础能力ASR的功能
 
 	*注：Python环境需要使用3.6.4及以上版本*
 
