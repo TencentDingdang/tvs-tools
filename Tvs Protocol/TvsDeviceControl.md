@@ -742,7 +742,7 @@
 |	timeInMilliseconds		|	long		|	Yes	|	时长				|
 |	action						|	string	|	Yes	|	动作<br>PAUSE,暂停				|
 
-### 清楚定时时间事件
+### 清除定时时间事件
 ```json
 {
 	"event": {

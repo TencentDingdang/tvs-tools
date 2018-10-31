@@ -28,10 +28,8 @@
 |	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
 |	text							|	string	|	Yes	|	需要TTS的文本	|
 
-
 ### 自定义消息指令
 ```json
-
 {
     "directive": {
         "header": {
@@ -41,12 +39,11 @@
             "dialogRequestId": "{{STRING}}"
         },
         "payload": {
-            "type":"{{STRING}}",
-            "message":"{{STRING}}"
+            "type": "{{STRING}}",
+            "message": "{{STRING}}"
         }
     }
-}   
-
+}
 ```
 
 ***Header Paramters***

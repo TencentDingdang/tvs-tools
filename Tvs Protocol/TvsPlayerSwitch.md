@@ -43,4 +43,3 @@
 |	dstId								|	string	|	No	|	目的播放器Id			|
 |	dstPlayerActivity			|	string	|	Yes	|	目的播放器状态		|
 |	dstOffsetInMilliseconds	|	long		|	No	|	目的播放器偏移量	|
-
