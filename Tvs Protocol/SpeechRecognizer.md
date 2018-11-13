@@ -24,7 +24,12 @@
             },
 			"language": "{{STRING}}",
 			"semantic": "{{STRING}}",
-			"resultType": "{{STRING}}"
+			"resultType": "{{STRING}}",
+			"extraOperation": "{{STRING}}",
+			"continuation": {
+				"type": "{{STRING}}",
+            	"dialogRequestId": "{{STRING}}"
+			}				
         }
     }
 }
@@ -39,8 +44,12 @@
 
 ***Payload Paramters***
 
-|	Parameter					|	Type		|	必选	|	描述					|
-|	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
-|	language					|	string	|	No	|	语言类型<br>CHINESE:中文<br>ENGLISH:英文	|
-|	semantic					|	string	|	No	|	语义参数Json	<br>{"domain": "XXX", "intent": "YYY"}	|
-|	resultType					|	string	|	No	|	结果类型<br>DEFAULT,默认;ASR,语音识别	|
+|	Parameter								|	Type		|	必选	|	描述																			|
+|	:---------------------------------------	|	:--------	|	:-----	|	:---------------------------------------------------------------------------	|
+|	language								|	string	|	No	|	语言类型<br>CHINESE:中文<br>ENGLISH:英文			|
+|	semantic								|	string	|	No	|	语义参数Json	<br>{"domain": "XXX", "intent": "YYY"}		|
+|	resultType								|	string	|	No	|	结果类型<br>DEFAULT,默认;<br>ASR,语音识别			|
+|	extraOperation						|	string	|	No	|	额外操作<br>SEMANTIC_FORCE_SESSION_COMPLETE,语义-强制Session结束	|
+|	continuation							|	object	|	No	|	连续操作																	|
+|	continuation.type					|	string	|	No	|	连续操作类型<br>PRESS_AND_HOLD<br>TAP<br>WAKEWORD	|
+|	continuation.dialogRequestId	|	string	|	No	|	连续操作对话ID															|
