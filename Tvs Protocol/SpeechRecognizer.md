@@ -27,8 +27,8 @@
 			"resultType": "{{STRING}}",
 			"extraOperation": "{{STRING}}",
 			"continuation": {
-				"type": "{{STRING}}",
-            	"dialogRequestId": "{{STRING}}"
+				"token": "{{STRING}}",
+           	 	"dialogRequestId": "{{STRING}}"
 			}				
         }
     }
@@ -51,5 +51,5 @@
 |	resultType								|	string	|	No	|	结果类型<br>DEFAULT,默认;<br>ASR,语音识别			|
 |	extraOperation						|	string	|	No	|	额外操作<br>SEMANTIC_FORCE_SESSION_COMPLETE,语义-强制Session结束	|
 |	continuation							|	object	|	No	|	连续操作																	|
-|	continuation.type					|	string	|	No	|	连续操作类型<br>ExpectSpeech,云端主动收音			|
+|	continuation.token					|	string	|	No	|	ExpectSpeech指令的token															|
 |	continuation.dialogRequestId	|	string	|	No	|	连续操作对话ID															|

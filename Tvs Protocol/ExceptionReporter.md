@@ -8,6 +8,7 @@
             "messageId": "{{STRING}}"
         },
         "payload": {
+			"token": "{{STRING}}",
             "dialogRequestId": "{{STRING}}"
 		}
     }
@@ -22,23 +23,24 @@
 
 ***Payload Paramters***
 
-|	Parameter					|	Type		|	必选	|	描述					|
-|	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
-|	dialogRequestId			|	string	|	Yes	|	对话ID				|
+|	Parameter					|	Type		|	必选	|	描述									|
+|	:---------------------------	|	:--------	|	:-----	|	:-----------------------------------	|
+|	token						|	string	|	No	|	ExpectSpeech指令的token	|
+|	dialogRequestId			|	string	|	No	|	对话ID								|
 
-### 期待语音超时事件
+### 退出多轮事件
 ```json
 {
-    "event": {
-        "header": {
-            "namespace": "ExceptionReporter",
-            "name": "ExpectSpeechTimeOut",
+	"event": {
+		"header": {
+			"namespace": "ExceptionReporter",
+			"name": "ExitMultiTurn",
             "messageId": "{{STRING}}"
-        },
-        "payload": {
-            "dialogRequestId": "{{STRING}}"
+		},
+		"payload": {
+			"token": "{{STRING}}"
 		}
-    }
+	}
 }
 ```
 
@@ -47,10 +49,9 @@
 |	Parameter			|	Type		|	必选	|	描述							|
 |	:-------------------	|	:--------	|	:-----	|	:-----------------------------	|
 |	messageId			|	string	|	Yes	|	消息ID						|
-|	dialogRequestId	|	string	|	No	|	对话ID						|
 
 ***Payload Paramters***
 
-|	Parameter					|	Type		|	必选	|	描述					|
-|	:---------------------------	|	:--------	|	:-----	|	:--------------------	|
-|	dialogRequestId			|	string	|	Yes	|	对话ID				|
+|	Parameter					|	Type		|	必选	|	描述									|
+|	:---------------------------	|	:--------	|	:-----	|	:-----------------------------------	|
+|	token						|	string	|	No	|	ExpectSpeech指令的token	|
