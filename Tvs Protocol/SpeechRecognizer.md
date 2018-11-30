@@ -29,7 +29,8 @@
 			"continuation": {
 				"token": "{{STRING}}",
            	 	"dialogRequestId": "{{STRING}}"
-			}				
+			},
+			"strategy": "{{STRING}}"
         }
     }
 }
@@ -53,3 +54,4 @@
 |	continuation							|	object	|	No	|	连续操作																	|
 |	continuation.token					|	string	|	No	|	ExpectSpeech指令的token															|
 |	continuation.dialogRequestId	|	string	|	No	|	连续操作对话ID															|
+|	strategy									|	string	|	No	|	策略名																		|
