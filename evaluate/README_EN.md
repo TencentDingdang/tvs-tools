@@ -2,7 +2,7 @@
 
 ## 1 Background
 Evaluation tools are used to meet the following requirements:：
-- Product managers, business from external vendors experience services, including full link experience and basic capabilities (ASR, NLP, TTS) experience.
+- Product managers, businessmen from external vendors experience services, including full link experience and basic capabilities (ASR, NLP, TTS) experience.
 - Engineers from external vendors evaluated Tencent's capabilities, including batch evaluation of basic capabilities (ASR, NLP, TTS).
 
 ## 2 Experience
