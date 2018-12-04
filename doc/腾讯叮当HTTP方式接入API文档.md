@@ -250,7 +250,7 @@ body请求示例
 | `payload`                          | -        | 消息体                                      |
 | `payload.response_text`            | `string` | 显示正文内容                                   |
 | `payload.data`                     | -        | 领域数据                                     |
-| `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/tree/master/doc/domains， 对于采用V3协议的端，见https://github.com/TencentDingdang/tvs-tools/tree/master/Tsk%20Protocol |
+| `payload.data.json`                | -        | 领域结构化Json数据,见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
 | `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
 
 示例代码见1:	../evaluate/script/richanswerV1.py(不带附加数据)
