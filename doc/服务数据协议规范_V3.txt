@@ -227,7 +227,7 @@
 # 3 各个领域返回V3数据示例
 
 见：
-https://github.com/TencentDingdang/tvs-tools/tree/master/doc/domains_V3
+https://github.com/TencentDingdang/tvs-tools/tree/master/Tsk%20Protocol/domains_V3
 
 
 
