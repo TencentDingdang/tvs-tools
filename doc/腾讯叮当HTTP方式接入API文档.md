@@ -761,7 +761,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
         "ip": "8.8.8.8",
         "device": {
             "network": "4G",
-			"serial_num": "{{STRING}}"
+			"serialNum": "{{STRING}}"
         }
     },
     "payload": {
@@ -789,7 +789,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | `header.ip`                 | `string` | No   | 终端IP                                |
 | `header.device`             | `object` | No   | 终端其他信息                              |
 | `header.device.network`     | `string` | No   | 终端网络类型                              |
-| `header.device.serial_num`        | `string` |  否   | 设备唯一序列号                                  |
+| `header.device.serialNum`        | `string` |  否   | 设备唯一序列号                                  |
 
 
 ***Payload Parameters***
