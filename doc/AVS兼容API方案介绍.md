@@ -1,64 +1,68 @@
-# �ƶ�API��������
+# 云端API方案介绍
 
-**Ŀ ¼**
+**目 录**
 
 [TOCM]
 
 [TOC]
 
-# 1 ����
-AVS����API����һ�׻���HTTP��Web�ӿڡ��������û����������ı����룬���ݸ���Ѷ������̨���д�������������������������ı���Ƭ����ʽ�����ظ��û���
+# 1 概述
+AVS兼容API，是一套基于HTTP的Web接口。它接收用户的语音或文本输入，传递给腾讯叮当后台进行处理，并将处理结果以语音、文本或卡片的形式，返回给用户。
 
-�ն˿��������뿪�����ʺź󣬾���ͨ��AVS����API������Ѷ������ϵ��ʹ�ն��豸ӵ����Ѷ�����ṩ�����š����֡���������Ʊ�����ӵȽ�������������Щ������������������Ѷ�����׼���TSK����ϵ�����ϵ����Ӻ����ơ�
+终端开发者申请开发者帐号后，就能通过AVS兼容API接入腾讯叮当体系。使终端设备拥有腾讯叮当提供的新闻、音乐、天气、股票、闹钟等近百种能力。这些能力集，还会随着腾讯技能套件（TSK）体系而不断地增加和完善。
 
-AVS����API��һϵ�����ն˹�����صĽӿ���ɣ���������ʶ�𡢲��ſ��ơ��������Ƶȵȡ�ÿ���ӿ��ְ�������һϵ�е�ָ�directives�����¼���events������ָ��������Ѷ������̨���͸��ն˵���Ϣ��ָʾ�ն�ִ�о���Ķ������¼��Ǵ��ն˷��͸���Ѷ������̨����Ϣ������֪ͨ��Ѷ����������ʲô���顣
+AVS兼容API由一系列与终端功能相关的接口组成，包括语音识别、播放控制、音量控制等等。每个接口又包含的有一系列的指令（directives）和事件（events）集。指令是由腾讯叮当后台发送给终端的消息，指示终端执行具体的动作。事件是从终端发送给腾讯叮当后台的消息，用于通知腾讯叮当发生了什么事情。
 
-AVS����APIʹ�û���QQ������΢�ſ���ƽ̨����Ѷ�����ʺ���ϵ���в�Ʒ��Ȩ��ʹ��HTTP2.0Э������ṩ����
+AVS兼容API使用基于QQ互联、微信开放平台的腾讯叮当帐号体系进行产品授权，使用HTTP2.0协议对外提供服务。
 
-# 2 ��Ҫ����
-AVS����API�����˰˸���Ҫ�ӿڣ���Щ�ӿ��ָ��԰�����һϵ�е�ָ����¼����ϣ���Ӧ��Ӧ���ն��������ӿ����Ƽ���Ҫ˵�����£�
+# 2 主要功能
+AVS兼容API定义了八个主要接口，这些接口又各自包含了一系列的指令和事件集合，对应相应的终端能力。接口名称及简要说明如下：
 
-|�ӿ�|����|
+|接口|描述|
 |-----|------|
-|SpeechRecognizer|����ʶ����Ѷ�ƶ����ĺ��Ľӿڣ�ÿ�λỰ��Ҫ�õ�Recognize�¼���|
-|SpeechSynthesizer|�����ʶ���Dingdang�����ӿڡ�|
-|Alerts|���á�ֹͣ��ɾ����ʱ�������ӵĽӿڡ�|
-|AudioPlayer|���ڹ����Ϳ�����Ƶ���š�|
-|PlaybackController|����ͨ���������Ʋ��ŵĽӿڡ�|
-|Speeker|�������ӿڡ��豸��App���������ƽӿڣ�����������ȡ��������|
-|Settings|����Dingdang���õĽӿڣ��绷����ص����á�|
-|System|ΪDingdang�ṩ�ն���Ϣ�Ľӿڡ�|
-# 3 ������ɫ
-AVS����API����һ�׻���HTTP��Web�ӿڡ��������û����������ı����룬���ݸ���Ѷ������̨���д�������������������������ı���Ƭ����ʽ�����ظ��û���
+|SpeechRecognizer|语音识别。腾讯云叮当的核心接口，每次会话都要用到Recognize事件。|
+|SpeechSynthesizer|语音朗读。Dingdang语音接口。|
+|Alerts|设置、停止、删除定时器和闹钟的接口。|
+|AudioPlayer|用于管理和控制音频播放。|
+|PlaybackController|用于通过按键控制播放的接口。|
+|Speeker|扬声器接口。设备或App的音量控制接口，包括静音和取消静音。|
+|Settings|管理Dingdang设置的接口，如环境相关的设置。|
+|System|为Dingdang提供终端信息的接口。|
+# 3 技术特色
+AVS兼容API，是一套基于HTTP的Web接口。它接收用户的语音或文本输入，传递给腾讯叮当后台进行处理，并将处理结果以语音、文本或卡片的形式，返回给用户。
 
-## 3.1 �﷨����AVS API
-AVS����API�Ľӿڶ��塢ͨ��Э����ȫ����AVS API���Ѿ������AVS���豸���̣�ֻ�轫AVS API�ķ���˵�ַָ��AVS����API�ķ���˵�ַ�����ɽ���Ʒ�����л�����Ѷ������ϵ������Ҫ�����ն˵������߼�ʵ�֡�
+## 3.1 语法兼容AVS API
+AVS兼容API的接口定义、通信协议完全兼容AVS API。已经接入过AVS的设备厂商，只需将AVS API的服务端地址指向AVS兼容API的服务端地址，即可将产品快速切换到腾讯叮当体系，不需要调整终端的其它逻辑实现。
 
-## 3.2 ��������ı�������
-AVS����API��֧�����������ͬʱ����չ֧���ı������롣�����ն˳��̶���ѡ������ʶ�𷽰��̣��ṩ����ļ�������ԡ� Ŀǰֻ֧��UTF8�����ʽ�������ı����롣
+## 3.2 输入兼容文本和语音
+AVS兼容API在支持语音输入的同时，扩展支持文本的输入。允许终端厂商定制选择语音识别方案商，提供更多的集成灵活性。 目前只支持UTF8编码格式的中文文本输入。
 
-## 3.3 �������������������
-AVS����API�ṩ�������ı���ģ�����������ʽ�� 
-�������䡢�����������豸���ն˿�����ֻ��Ҫ֧��������ý��URL��ʽ���ݵĲ��š� 
-���ڳ������ֻ��������豸����Ѷ�ƶ����ṩ�����������Ӧ���ı������ͬʱ�ṩ����ģ�壬����ģ���Ӧ�����ݽṹ����ʽ�������ն�ʵ�ָ��ḻ��չʾЧ����
+## 3.3 输出兼容有屏和无屏端
+AVS兼容API提供语音、文本和模板三类输出格式。 
+对于音箱、耳机等无屏设备，终端开发者只需要支持语音、媒体URL格式数据的播放。 
+对于车机、手机等有屏设备，腾讯云叮当提供与语音输出对应的文本输出；同时提供多套模板，定义模板对应的数据结构及样式，方便终端实现更丰富的展示效果。
 
-## 3.4 ���Ѵʼ�����Ѷ��Ѷ�ɡ�sensory�������������
-AVS����API����������������Ѷ��Ѷ�ɡ�sensory�ȹ������һ��Ѵʷ����̡������ն�SDK�ķ�ʽ�ṩ����ƽ̨�ļ��ɵ��á���ʹ�ù�Ѷ�ɡ�sensory�ȳ��һ��Ѵʵ���Ŀ�����Բ��õ���������ѧǰ�ˣ�������ɻ��Ѵʵ��滻��
+## 3.4 唤醒词集成腾讯、讯飞、sensory等主流解决方案
+AVS兼容API解决方案，已完成腾讯、讯飞、sensory等国内外多家唤醒词方案商。并以终端SDK的方式提供主流平台的集成调用。已使用过讯飞、sensory等厂家唤醒词的项目，可以不用调整已有声学前端，即可完成唤醒词的替换。
 
-## 3.5 ��չ֧�ֻ����˶�������п���ָ��
-AVS����API��Ի�����������չ�˿���ָ���֧�������衢��̫�������Գŵȶ��ֶ����������ġ��˷ܡ����˵ȶ�����п���ָ��������������ָ��ϲ������������ŵ�ҵ�񳡾����·���
+## 3.5 扩展支持机器人动作和情感控制指令
+AVS兼容API针对机器人领域，扩展了控制指令集。支持如跳舞、打太极、俯卧撑等多种动作，及开心、兴奋、悲伤等多种情感控制指令，并将动作、情感指令合并在天气、新闻等业务场景中下发。
 
-# 4 ��������
-## 4.1 �ʺŵ�¼
-�ն˷���AVS����API����Ҫ�Ȼ�ȡ��Ѷ�����ʺ���ϵ�ķ���Ʊ�ݡ���Ʊ����Ȩ�ն��豸�����û�������Ѷ����������á� 
-����Android��iOS����App��ʽ�����ʺ���֤�Ĳ�Ʒ�������̣���ο��� 
-[��Ѷ��������App�˺Ž�������](https://softfile.3g.qq.com/myapp/trom_l/dingdang/gw/files/cloud_sdk/tvs_access.pdf)
+# 4 接入流程
+## 4.1 TVS接入规范
+终端访问AVS兼容API，对于不同的HTTP返回码，需要遵循对应的规范，请参考:
+[TVS终端接入规范](https://github.com/TencentDingdang/tvs-tools/blob/master/Tvs%20Protocol/TVS%E7%BB%88%E7%AB%AF%E6%8E%A5%E5%85%A5%E8%A7%84%E8%8C%83.md)
 
-## 4.2 �����ַ
-- ��Ѷ�ƶ���ָ���·���ַ��<https://tvs.html5.qq.com/v20160207/directives/> 
-- ��Ѷ�ƶ����¼����յ�ַ��<https://tvs.html5.qq.com/v20160207/events/> 
-- ��Ѷ�ƶ���Ping��ַ��<https://tvs.html5.qq.com/ping/>
+## 4.2 帐号登录
+终端访问AVS兼容API，需要先获取腾讯叮当帐号体系的访问票据。该票据授权终端设备代表用户，向腾讯叮当发起调用。 
+基于Android或iOS厂商App方式进行帐号认证的产品接入流程，请参考： 
+[腾讯叮当厂商App账号接入流程](https://softfile.3g.qq.com/myapp/trom_l/dingdang/gw/files/cloud_sdk/tvs_access.pdf)
 
-## 4.3 API�ĵ�
-- AVS����API���ӿڵ���ϸ˵������ο���
-[AVS����API�ӿ��ĵ�](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/AVS%E5%85%BC%E5%AE%B9API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
+## 4.3 服务地址
+- 腾讯云叮当指令下发地址：<https://tvs.html5.qq.com/v20160207/directives/> 
+- 腾讯云叮当事件接收地址：<https://tvs.html5.qq.com/v20160207/events/> 
+- 腾讯云叮当Ping地址：<https://tvs.html5.qq.com/ping/>
+
+## 4.4 API文档
+- AVS兼容API各接口的详细说明，请参考：
+[AVS兼容API接口文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/AVS%E5%85%BC%E5%AE%B9API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
