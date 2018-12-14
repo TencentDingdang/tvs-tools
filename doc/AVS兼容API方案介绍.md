@@ -50,7 +50,7 @@ AVS兼容API针对机器人领域，扩展了控制指令集。支持如跳舞�
 
 # 4 接入流程
 ## 4.1 TVS接入规范
-终端访问AVS兼容API，对于不同的HTTP返回码，需要遵循对应的规范，请参考:
+终端访问AVS兼容API，需要遵循对应的规范，请参考:
 [TVS终端接入规范](https://github.com/TencentDingdang/tvs-tools/blob/master/Tvs%20Protocol/TVS%E7%BB%88%E7%AB%AF%E6%8E%A5%E5%85%A5%E8%A7%84%E8%8C%83.md)
 
 ## 4.2 帐号登录
