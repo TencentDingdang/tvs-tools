@@ -25,8 +25,19 @@
                             "{{STRING}}", "{{STRING}}", "{{STRING}}"
                         ]
                     }
+                ],
+                "originalParameters": [
+                    {
+						...
+                    },
+                    {
+                        ...
+                    }
                 ]
-            }
+            },
+			"data": {
+				"jsonData": "{{STRING}}"
+			}
 		}
 	}
 }
@@ -49,3 +60,6 @@
 |	nlpInfo.parameters					|	array		|	Yes	|	NLP参数信息					|
 |	nlpInfo.parameters[].name		|	string	|	Yes	|	NLP参数名称					|
 |	nlpInfo.parameters[].valueList	|	array		|	Yes	|	NLP参数值					|
+|	nlpInfo.originalparameters		|	array		|	Yes	|	NLP原始参数信息			|
+|	data										|	object	|	No	|	数据								|
+|	data.jsonData						|	string	|	No	|	服务数据信息					|
