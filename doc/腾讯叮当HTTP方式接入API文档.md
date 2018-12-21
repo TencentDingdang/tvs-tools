@@ -752,7 +752,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
                 "appid":"{{STRING}}",
                 "type":"{{STRING}}",
                 "token": "{{STRING}}"	
-	    	}
+	    	},
+			"authorization": "{{STRING}}"
         },
         "lbs": {
             "longitude": 132.56481,
@@ -774,12 +775,13 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 ***Header Parameters***
 
-| 参数名                         | 类型       | 是否必选 | 描述                                  |
-| --------------------------- | -------- | ---- | ----------------------------------- |
+| 参数名                         	| 类型       | 是否必选 | 描述                                  |
+| ------------------------------------- | -------- | ---- | ----------------------------------- |
 | ` header `                  | `object` | Yes  | -                                   |
 | `header.guid`               | `string` | 是    | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)   |
 | `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明) |
 | `header.user`               | -        | No   | 用户信息                                |
+| `header.authorization`  | -        | No   | 授权信息(TVS专用)                                |
 | `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)     |
 | `header.user.account`       | `object` | No   | 用户账户信息                              |
 | `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                      |
