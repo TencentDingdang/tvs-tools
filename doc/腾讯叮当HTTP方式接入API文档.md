@@ -203,7 +203,6 @@ body请求示例
 | `payload.semantic`                |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
 | `payload.semantic.domain`         | `string` |  否   | 领域信息                                     |
 | `payload.semantic.intent`         | `string` |  否   | 意图信息                                     |
-| `payload.semantic.param`          |    -     |  否   | 语义参数信息                                   |
 | `payload.extra_data`              |    -     |  否   | 额外数据信息                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
@@ -385,10 +384,7 @@ body请求示例
 | `payload.semantic`                |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
 | `payload.semantic.domain`         | `string` |  否   | 领域信息                                     |
 | `payload.semantic.intent`         | `string` |  否   | 意图信息                                     |
-| `payload.semantic.param`          |    -     |  否   | 语义参数信息                                   |
-| `payload.semantic.param{type}`    | `string` |  否   | 语义参数类型                                   |
-| `payload.semantic.param{key}`     | `string` |  否   | 语义参数名字                                   |
-| `payload.semantic.param{value}`   | `string` |  否   | 语义参数值                                    |
+| `payload.semantic.slots`          |    -     |  否   | 语义参数信息                                   |
 | `payload.extra_data`              |    -     |  否   | 额外数据信息                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
