@@ -528,6 +528,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
         }
     },
     "payload": {
+        "ret":0,
         "final_result": false,
         "result": "深圳市今天天气"
     }
@@ -542,7 +543,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload`                   | -        | 消息体    |
 | `payload.final_result`      | `bool`   | 是否最终结果 |
 | `payload.result`            | `string` | 语音识别结果 |
-
+| `payload.ret`            | `int` | 返回状态，如果是0表示正常返回，非0为错误 |
 
 ### 7.4 语音合成接口
 #### 7.4.1 接口描述
