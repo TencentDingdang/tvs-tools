@@ -41,26 +41,44 @@
 }
 // ======================= Json 数据 =======================
 {
-	"baseInfo": {
-		"skillName": "tvmao"
-	},
-	"controlInfo": {
-		"textSpeak": "false",
-		"type": "GRAPHIC"
-	},
-	"globalInfo": {
-		"seeMore": "http://m.tvmao.com/program/HUNANTV-HUNANTV1-w4.html"
-	},
-	"listItems": [{
-		"image": {
-			"sources": [{
-				"url": "http://softfile.3g.qq.com/myapp/soft_imtt/tvprogram/267bcb6711b15993a9a3af72123527bc.jpg"
-			}]
-		},
-		"selfData": "{ \"ChLogo\": \"http:\\/\\/softfile.3g.qq.com\\/myapp\\/soft_imtt\\/tvprogram\\/7fda3f934f038c523a4b2ec3d87bf1b1.png\", \"TVName\": \"偶像独播剧场:因为爱情有晴天(30)\", \"channel\": \"湖南卫视\", \"channelType\": 0, \"date\": \"2018-05-24\", \"endTime\": \"2018-05-24 16:18\", \"episode\": 30, \"hot\": 16, \"isPlaying\": 1, \"playType\": 0, \"thumb\": \"http:\\/\\/softfile.3g.qq.com\\/myapp\\/soft_imtt\\/tvprogram\\/267bcb6711b15993a9a3af72123527bc.jpg\", \"time\": \"15:39\", \"weekPrint\": \"周四\" }",
-		"textContent": "2018-05-24 15:39",
-		"title": "湖南卫视 偶像独播剧场:因为爱情有晴天(30)"
-	}]
+    "baseInfo":{
+        "skillName":"tvmao"
+    },
+    "controlInfo":{
+        "textSpeak":"false",
+        "type":"GRAPHIC"
+    },
+    "globalInfo":{
+        "seeMore":"http://m.tvmao.com/program/HUNANTV-HUNANTV1-w4.html"
+    },
+    "listItems":[
+        {
+            "image":{
+                "sources":[
+                    {
+                        "url":"http://softfile.3g.qq.com/myapp/soft_imtt/tvprogram/267bcb6711b15993a9a3af72123527bc.jpg"
+                    }
+                ]
+            },
+            "selfData":{
+                "ChLogo":"http://softfile.3g.qq.com/myapp/soft_imtt/tvprogram/7fda3f934f038c523a4b2ec3d87bf1b1.png",
+                "TVName":"偶像独播剧场:因为爱情有晴天(30)",
+                "channel":"湖南卫视",
+                "channelType":0,
+                "date":"2018-05-24",
+                "endTime":"2018-05-24 16:18",
+                "episode":30,
+                "hot":16,
+                "isPlaying":1,
+                "playType":0,
+                "thumb":"http://softfile.3g.qq.com/myapp/soft_imtt/tvprogram/267bcb6711b15993a9a3af72123527bc.jpg",
+                "time":"15:39",
+                "weekPrint":"周四"
+            },
+            "textContent":"2018-05-24 15:39",
+            "title":"湖南卫视 偶像独播剧场:因为爱情有晴天(30)"
+        }
+    ]
 }
 ```
 

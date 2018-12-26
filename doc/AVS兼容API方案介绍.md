@@ -53,16 +53,23 @@ AVS兼容API针对机器人领域，扩展了控制指令集。支持如跳舞�
 终端访问AVS兼容API，需要遵循对应的规范，请参考:
 [TVS终端接入规范](https://github.com/TencentDingdang/tvs-tools/blob/master/Tvs%20Protocol/TVS%E7%BB%88%E7%AB%AF%E6%8E%A5%E5%85%A5%E8%A7%84%E8%8C%83.md)
 
-## 4.2 帐号登录
-终端访问AVS兼容API，需要先获取腾讯叮当帐号体系的访问票据。该票据授权终端设备代表用户，向腾讯叮当发起调用。 
+## 4.2 服务地址
+- 腾讯云叮当指令下发地址：<https://tvs.html5.qq.com/v20160207/directives> 
+- 腾讯云叮当事件接收地址：<https://tvs.html5.qq.com/v20160207/events> 
+- 腾讯云叮当Ping地址：<https://tvs.html5.qq.com/ping>
+
+## 4.3 帐号登录
+终端访问AVS兼容API，需要先获取腾讯叮当帐号体系的访问票据。该票据授权终端设备代表用户，向腾讯叮当发起调用。
+
+腾讯云叮当帐号地址:<https://tvs.html5.qq.com/auth/o2/token>
+
 基于Android或iOS厂商App方式进行帐号认证的产品接入流程，请参考： 
 [腾讯叮当厂商App账号接入流程](https://softfile.3g.qq.com/myapp/trom_l/dingdang/gw/files/cloud_sdk/tvs_access.pdf)
 
-## 4.3 服务地址
-- 腾讯云叮当指令下发地址：<https://tvs.html5.qq.com/v20160207/directives/> 
-- 腾讯云叮当事件接收地址：<https://tvs.html5.qq.com/v20160207/events/> 
-- 腾讯云叮当Ping地址：<https://tvs.html5.qq.com/ping/>
+## 4.4 AVS方案切换为TVS
+1. 按照步骤4.2修改对应的url
+2. 按照步骤4.3修改对应的账号逻辑
 
-## 4.4 API文档
+## 4.5 API文档
 - AVS兼容API各接口的详细说明，请参考：
 [AVS兼容API接口文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/AVS%E5%85%BC%E5%AE%B9API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
