@@ -1,5 +1,5 @@
 ### 领域名称
-sports_kbqa
+sports
 
 
 ### 意图列表
@@ -35,3 +35,4 @@ sports_kbqa
             ]
         }
     }
+    

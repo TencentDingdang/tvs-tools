@@ -15,7 +15,7 @@
 | search_ancientpoem_dynasty      | 查询诗歌写作朝代     |
 | search_ancientpoem_by_tag       | 按标签 查询诗词     |
 | search_ancientpoem_appreciation | 查询古诗鉴赏文      |
-| search_ancientpoem_chain        | 查询诗句下一句      |
+| search_ancientpoem_chains        | 查询诗句下一句      |
 | search_ancientpoem_by_word      | 按诗词中的关键字查询诗词 |
 | search_ancientpoem_previous     | 查询诗句的上一句     |
 
@@ -26,7 +26,7 @@
 | Intent                  | Description |
 | ----------------------- | ----------- |
 | search_ancientpoem_previous | 查询诗句的上一句    |
-| search_ancientpoem_chain    | 查询诗句下一句     |
+| search_ancientpoem_chains    | 查询诗句下一句     |
 | search_ancientpoem_dynasty  | 查询诗歌写作朝代    |
 | search_tangshipoemtitle | 查询诗词的标题     |
 | search_tangshi_author   | 查询诗词作者      |
@@ -128,4 +128,5 @@
         }
     ]
 }
+
 ```
