@@ -71,9 +71,9 @@ JSON格式，返回内容为UTF-8编码
 ```
 
 #### 6.1.3 Task 2: 获取`Signature`签名
-腾讯叮当API要求使用平台分配的`BotSecret`作为签名的密钥，`BotSecret`应该存放在请求方的服务器中，不应该以任何形式暴露给终端。签名使用的算法是`HMAC-SHA256`：
+腾讯叮当API要求使用平台分配的`AccessToken`作为签名的密钥，`AccessToken`应该存放在请求方的服务器中，不应该以任何形式暴露给终端。签名使用的算法是`HMAC-SHA256`：
 ```
-Signature = HMAC_SHA256(SigningContent, BotSecret);
+Signature = HMAC_SHA256(SigningContent, AccessToken);
 ```
 
 需要注意的是，在执行hmac时用的是sha256哈希之后的16进制数据，而不是二进制数据，`Signature`同样是hmac之后的16进制数据。
@@ -81,8 +81,8 @@ Signature = HMAC_SHA256(SigningContent, BotSecret);
 以下为签名算法的伪代码：
 ```
 SigningContent = "This is signing-content";
-BotSeret = "bot_secret";
-Signature = HMAC_SHA256(SigningContent, BotSecret);
+AccessToken = "AccessToken";
+Signature = HMAC_SHA256(SigningContent, AccessToken);
 print Signature;
 
 /// output
@@ -94,7 +94,7 @@ cc7d8a8210bace445f7f67c862fac6ad33e99feda0f16a45fe6bbcda295388f4
 计算得到请求内容的签名之后，需要在HTTP Header的`Authorization`中带上签名信息。`Authorization`的结构如下伪代码所示：
 
 ```http
-Authorization: [Algorithm] CredentialKey=[BotKey], Datetime=[Timestamp], Signature=[Signature]
+Authorization: [Algorithm] CredentialKey=[AppKey], Datetime=[Timestamp], Signature=[Signature]
 ```
 
 以下Demo展示了一个完整的`Authorization`：
@@ -883,8 +883,8 @@ import datetime, hashlib, hmac
 import requests # Command to install: `pip install requests`
 
 # 腾讯叮当提供的Bot Key/Secret
-botKey = 'bot_key' # Replace with your Bot Key
-botSecret = 'bot_secret' # Replace with your Bot Secret
+AppKey = 'AppKey' # Replace with your appKey
+accessToken = 'AccessToken' # Replace with your accessToken
 
 # ***** Task 1: 拼接请求数据和时间戳 *****
 
@@ -897,10 +897,10 @@ credentialDate = datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')
 signingContent = postData + credentialDate
 
 # ***** Task 2: 获取Signature签名 *****
-signature = hmac.new(botSecret, signingContent, hashlib.sha256).hexdigest()
+signature = hmac.new(accessToken, signingContent, hashlib.sha256).hexdigest()
 
 # ***** Task 3: 在HTTP请求头中带上签名信息
-authorizationHeader = 'TVS-HMAC-SHA256-BASIC' + ' ' + 'CredentialKey=' + botKey + ', ' + 'Datetime=' + credentialDate + ', ' + 'Signature=' + signature
+authorizationHeader = 'TVS-HMAC-SHA256-BASIC' + ' ' + 'CredentialKey=' + AppKey + ', ' + 'Datetime=' + credentialDate + ', ' + 'Signature=' + signature
 
 headers = {'Content-Type': 'application/json; charset=UTF-8', 'Authorization': authorizationHeader}
 
@@ -969,8 +969,8 @@ public class TVSBasicSigner
     }
 
     public static void main(String args[]) {
-        String botKey = "bot_key";
-        String botSecret = "bot_secret";
+        String appKey = "appKey";
+        String accessToken = "accessToken";
 
         // ***** Task 1: 拼接请求数据和时间戳 *****
 
@@ -986,7 +986,7 @@ public class TVSBasicSigner
         // ***** Task 2: 获取Signature签名 *****
         String signature = null;
         try {
-            signature = sign(signingContent, botSecret);
+            signature = sign(signingContent, accessToken);
         }
         catch(Exception e)
         {
@@ -994,7 +994,7 @@ public class TVSBasicSigner
         }
 
         // ***** Task 3: 在HTTP请求头中带上签名信息
-        String authorizationHeader = "TVS-HMAC-SHA256-BASIC" + " " + "CredentialKey=" + botKey + ", " + "Datetime=" + credentialDate + ", " + "Signature=" + signature;
+        String authorizationHeader = "TVS-HMAC-SHA256-BASIC" + " " + "CredentialKey=" + appKey + ", " + "Datetime=" + credentialDate + ", " + "Signature=" + signature;
 
         System.out.println("Authorization:" + authorizationHeader);
     }
