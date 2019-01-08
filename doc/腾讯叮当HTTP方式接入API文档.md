@@ -252,8 +252,8 @@ body请求示例
 | `payload.data.json`                | -        | 领域结构化Json数据,见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
 | `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
 
-示例代码见1:	../evaluate/script/richanswerV1.py(不带附加数据)
-示例代码见2:	../evaluate/script/richanswer_extV1.py(带附加数据)
+示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py(不带附加数据)
+示例代码见2:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py(带附加数据)
 
 ### 7.2 语义请求接口V2
 
@@ -434,8 +434,8 @@ body请求示例
 | `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/tree/master/doc/domains， 对于采用V3协议的端，见https://github.com/TencentDingdang/tvs-tools/tree/master/Tsk%20Protocol |
 | `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
 
-示例代码见1:	../evaluate/script/richanswerV1.py(不带附加数据)
-示例代码见2:	../evaluate/script/richanswer_extV1.py(带附加数据)
+示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py(不带附加数据)
+示例代码见2:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py(带附加数据)
 
 
 ### 7.3 语音识别接口
@@ -487,31 +487,31 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 }
 ```
 
-| 参数名                             |  类型     | 是否必选   | 描述                                       |
-| --------------------------------  | :------:  | :--:      | ---------------------------------------- |
-| `header`                          |    -      |  是       | 请求头                                      |
-| `header.guid`                     | `string`  |  是       | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
-| `header.qua`                      | `string`  |  是       | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
-| `header.user`                     |    -      |  否       | 用户信息                                     |
-| `header.user.user_id`             | `string`  |  -        | 用户ID，，详细说明见[附录-USERID](#USERID)          |
-| `header.lbs`                      |    -      |  否       | 用户位置信息                                   |
-| `header.lbs.longitude`            | `double`  |  -        | 经度                                       |
-| `header.lbs.latitude`             | `double`  |  -        | 纬度                                       |
-| `header.ip`                       | `string`  |  是       | 终端IP                                     |
-| `header.device`                   |    -      |  否       |                                          |
-| `header.device.network`           | `string`  |  否       | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
-| `payload`                         |    -      |  是       | 请求内容                                     |
-| `payload.voice_meta`              |    -      |  是       | 语音配置信息                                   |
-| `payload.voice_meta.compress`     | `string`  |  是       | 压缩类型：`PCM`/`WAV`/`SPEEX`/`AMR`/`OPUS`/`MP3` |
-| `payload.voice_meta.sample_rate`  | `string`  |  是       | 采样率：`8K`/`16K`                           |
-| `payload.voice_meta.channel`      | `int`     |  是       | 音频通道数：`1`/`2`                            |
-| `payload.voice_meta.language`     | `string`  |  否       | 语言类型(默认汉语)<br>ENGLISH:英语                            |
-| `payload.voice_meta.offset`       | `int`     |  否       | 语音片偏移量                            |
-| `payload.open_vad`                | `bool`    |  是       | 是否打开VAD                                  |
-| `payload.session_id`              | `string`  |  否       | 流式识别过程中必填                                |
-| `payload.index`                   | `int`     |  是       | 语音片偏移量(英文时为语音包序号)                                   |
-| `payload.voice_finished`          | `bool`    |  是       | 语音是否结束                                   |
-| `payload.voice_base64`            | `string`  |  是       | 语音数据的`Base64`编码                          |
+| 参数名                              |    类型    | 是否必选 | 描述                                       |
+| -------------------------------- | :------: | :--: | ---------------------------------------- |
+| `header`                         |    -     |  是   | 请求头                                      |
+| `header.guid`                    | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
+| `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
+| `header.user`                    |    -     |  否   | 用户信息                                     |
+| `header.user.user_id`            | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
+| `header.lbs`                     |    -     |  否   | 用户位置信息                                   |
+| `header.lbs.longitude`           | `double` |  -   | 经度                                       |
+| `header.lbs.latitude`            | `double` |  -   | 纬度                                       |
+| `header.ip`                      | `string` |  是   | 终端IP                                     |
+| `header.device`                  |    -     |  否   |                                          |
+| `header.device.network`          | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `payload`                        |    -     |  是   | 请求内容                                     |
+| `payload.voice_meta`             |    -     |  是   | 语音配置信息                                   |
+| `payload.voice_meta.compress`    | `string` |  是   | 压缩类型：`PCM`/`WAV`/`SPEEX`/`AMR`/`OPUS`/`MP3` |
+| `payload.voice_meta.sample_rate` | `string` |  是   | 采样率：`8K`/`16K`                           |
+| `payload.voice_meta.channel`     |  `int`   |  是   | 音频通道数：`1`/`2`                            |
+| `payload.voice_meta.language`    | `string` |  否   | 语言类型(默认汉语)<br>ENGLISH:英语                 |
+| `payload.voice_meta.offset`      |  `int`   |  否   | 语音片偏移量                                   |
+| `payload.open_vad`               |  `bool`  |  是   | 是否打开VAD                                  |
+| `payload.session_id`             | `string` |  否   | 流式识别过程中必填                                |
+| `payload.index`                  |  `int`   |  是   | 语音片偏移量(英文时为语音包序号)                        |
+| `payload.voice_finished`         |  `bool`  |  是   | 语音是否结束                                   |
+| `payload.voice_base64`           | `string` |  是   | 语音数据的`Base64`编码                          |
 
 
 #### 7.3.3 返回参数
@@ -531,15 +531,18 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 }
 ```
 
-| 参数名                         | 类型       | 描述     |
-| --------------------------- | -------- | ------ |
-| `header`                    | -        | 消息头    |
-| `header.session`            | -        | 会话     |
-| `header.session.session_id` | `string` | 会话ID   |
-| `payload`                   | -        | 消息体    |
-| `payload.final_result`      | `bool`   | 是否最终结果 |
-| `payload.result`            | `string` | 语音识别结果 |
-| `payload.ret`            | `int` | 返回状态，如果是0表示正常返回，非0为错误 |
+| 参数名                         | 类型       | 描述                    |
+| --------------------------- | -------- | --------------------- |
+| `header`                    | -        | 消息头                   |
+| `header.session`            | -        | 会话                    |
+| `header.session.session_id` | `string` | 会话ID                  |
+| `payload`                   | -        | 消息体                   |
+| `payload.final_result`      | `bool`   | 是否最终结果                |
+| `payload.result`            | `string` | 语音识别结果                |
+| `payload.ret`               | `int`    | 返回状态，如果是0表示正常返回，非0为错误 |
+示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/asr.py
+
+ 
 
 ### 7.4 语音合成接口
 #### 7.4.1 接口描述
@@ -641,6 +644,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload`                   | -        | 消息体         |
 | `payload.speech_finished`   | `bool`   | 是否结束        |
 | `payload.speech_base64`     | `string` | 语音的Base64数据 |
+
+示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/tts.py
 
 ### 7.5 终端上报接口
 #### 7.5.1 接口描述
@@ -772,13 +777,13 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 ***Header Parameters***
 
-| 参数名                         	| 类型       | 是否必选 | 描述                                  |
-| ------------------------------------- | -------- | ---- | ----------------------------------- |
+| 参数名                         | 类型       | 是否必选 | 描述                                  |
+| --------------------------- | -------- | ---- | ----------------------------------- |
 | ` header `                  | `object` | Yes  | -                                   |
 | `header.guid`               | `string` | 是    | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)   |
 | `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明) |
 | `header.user`               | -        | No   | 用户信息                                |
-| `header.authorization`  | -        | No   | 授权信息(TVS专用)                                |
+| `header.authorization`      | -        | No   | 授权信息(TVS专用)                         |
 | `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)     |
 | `header.user.account`       | `object` | No   | 用户账户信息                              |
 | `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                      |
@@ -788,7 +793,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | `header.ip`                 | `string` | No   | 终端IP                                |
 | `header.device`             | `object` | No   | 终端其他信息                              |
 | `header.device.network`     | `string` | No   | 终端网络类型                              |
-| `header.device.serialNum`        | `string` |  否   | 设备唯一序列号                                  |
+| `header.device.serialNum`   | `string` | 否    | 设备唯一序列号                             |
 
 
 ***Payload Parameters***
