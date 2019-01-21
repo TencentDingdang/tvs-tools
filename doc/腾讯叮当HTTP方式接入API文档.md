@@ -860,7 +860,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | DE   | PHONE,TV,CAR,SPEAKER | 设备类型   | 手机填PHONE、电视填TV、车载设备填CAR，音箱填SPEAKER       |
 | CHID | *                    | 渠道号    |                                          |
 
-​	示例:QV=3&PR=Dingdang&PL=LINUX&VE=GA&VN=1.0.1000&PP=com.tencent.ai.tvs&DE=SPEAKER&CHID=10020
+​	示例:QV=3&PR=Dingdang&PL=LINUX&VE=GA&VN=1.0.1000.1&PP=com.tencent.ai.tvs&DE=SPEAKER&CHID=10020
 
 ### 9.2 GUID获取
 
