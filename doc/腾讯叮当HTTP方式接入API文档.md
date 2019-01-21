@@ -868,7 +868,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 按照如下方式生成：
 
-1. 把厂商的appkey、accessToken和设备唯一序列号三个字符串拼接，以“:”作为分割符，拼接形式为`appkey:appSceret:设备唯一序列号`
+1. 把厂商的appkey、accessToken和设备唯一序列号三个字符串拼接，以“:”作为分割符，拼接形式为`appkey:accessToken:设备唯一序列号`
 
 2. 取拼接串的md5值小写形式。md5值即为GUID。
 
