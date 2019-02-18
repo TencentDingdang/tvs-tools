@@ -158,22 +158,25 @@ body请求示例
         "request_type": "SEMANTIC_SERVICE",
         "semantic": {
 			"domain": "{{STRING}}",
-			"intent": "{{STRING}}",
-			"extra_data":[			
-				{
-					"type":"IMAGE",
-					"data_base64":"{{STRING}}"
-				},
-				{
-					"type":"AUDIO",
-					"data_base64":"{{STRING}}"
-				},
-				{
-					"type":"VIDEO",
-					"data_base64":"{{STRING}}"
-				}
-			]
-    	}
+			"intent": "{{STRING}}"
+    	},
+		"semantic_extra": {
+			"cmd": "{{STRING}}"
+		},
+		"extra_data":[			
+			{
+				"type":"IMAGE",
+				"data_base64":"{{STRING}}"
+			},
+			{
+				"type":"AUDIO",
+				"data_base64":"{{STRING}}"
+			},
+			{
+				"type":"VIDEO",
+				"data_base64":"{{STRING}}"
+			}
+		]
 	}
 }
 ```
@@ -203,6 +206,8 @@ body请求示例
 | `payload.semantic`                |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
 | `payload.semantic.domain`         | `string` |  否   | 领域信息                                     |
 | `payload.semantic.intent`         | `string` |  否   | 意图信息                                     |
+| `payload.semantic_extra`                |    -     |  否   |附加语义信息                       |
+| `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字                                     |
 | `payload.extra_data`              |    -     |  否   | 额外数据信息                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
@@ -340,21 +345,24 @@ body请求示例
 					]
 				}
 			],
-			"extra_data":[			
-				{
-					"type":"IMAGE",
-					"data_base64":"{{STRING}}"
-				},
-				{
-					"type":"AUDIO",
-					"data_base64":"{{STRING}}"
-				},
-				{
-					"type":"VIDEO",
-					"data_base64":"{{STRING}}"
-				}
-			]
-    	}
+    	},
+		"semantic_extra": {
+			"cmd": "{{STRING}}"
+		},
+		"extra_data":[			
+			{
+				"type":"IMAGE",
+				"data_base64":"{{STRING}}"
+			},
+			{
+				"type":"AUDIO",
+				"data_base64":"{{STRING}}"
+			},
+			{
+				"type":"VIDEO",
+				"data_base64":"{{STRING}}"
+			}
+		]
 	}
 }
 ```
@@ -385,6 +393,8 @@ body请求示例
 | `payload.semantic.domain`         | `string` |  否   | 领域信息                                     |
 | `payload.semantic.intent`         | `string` |  否   | 意图信息                                     |
 | `payload.semantic.slots`          |    -     |  否   | 语义参数信息                                   |
+| `payload.semantic_extra`                |    -     |  否   |附加语义信息                       |
+| `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               
 | `payload.extra_data`              |    -     |  否   | 额外数据信息                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
