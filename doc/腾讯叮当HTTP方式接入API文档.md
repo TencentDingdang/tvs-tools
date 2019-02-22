@@ -206,8 +206,8 @@ body请求示例
 | `payload.semantic`                |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
 | `payload.semantic.domain`         | `string` |  否   | 领域信息                                     |
 | `payload.semantic.intent`         | `string` |  否   | 意图信息                                     |
-| `payload.semantic_extra`                |    -     |  否   |附加语义信息                       |
-| `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字                                     |
+| `payload.semantic_extra`          |    -     |  否   | 附加语义信息                                   |
+| `payload.semantic_extra.cmd`      | `string` |  否   | 语义命令字                                    |
 | `payload.extra_data`              |    -     |  否   | 额外数据信息                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
@@ -257,8 +257,8 @@ body请求示例
 | `payload.data.json`                | -        | 领域结构化Json数据,见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
 | `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
 
-示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py(不带附加数据)
-示例代码见2:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py(带附加数据)
+示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py  (不带附加数据)
+示例代码见2:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py  (带附加数据)
 
 ### 7.2 语义请求接口V2
 
@@ -367,33 +367,33 @@ body请求示例
 }
 ```
 
-| 参数名                               |    类型    | 是否必选 | 描述                                       |
-| --------------------------------- | :------: | :--: | ---------------------------------------- |
-| `header`                          |    -     |  是   | 请求头                                      |
-| `header.guid`                     | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
-| `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
-| `header.user`                     |    -     |  否   | 用户信息                                     |
-| `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
-| `header.user.account`             | `object` |  -   | 用户账户信息                                   |
-| `header.user.account.id`          | `string` |  -   | 用户账户ID，填openid                           |
-| `header.user.account.token`       | `string` |  -   | 用户账户accesstoken                          |
-| `header.user.account.type`        | `string` |  -   | 用户账户类型,支持`WX`/`QQOPEN`                   |
-| `header.user.account.appid`       | `string` |  -   | 用户账户的appid                               |
-| `header.lbs`                      |    -     |  否   | 用户位置信息                                   |
-| `header.lbs.longitude`            | `double` |  -   | 经度                                       |
-| `header.lbs.latitude`             | `double` |  -   | 纬度                                       |
-| `header.ip`                       | `string` |  是   | 终端IP                                     |
-| `header.device`                   |    -     |  否   |                                          |
-| `header.device.network`           | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
-| `header.device.serial_num`        | `string` |  否   | 设备唯一序列号                                  |
-| `payload`                         |    -     |  是   | 请求内容                                     |
-| `payload.query`                   | `string` |  是   | 用户query                                  |
-| `payload.request_type`            | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
-| `payload.semantic`                |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
-| `payload.semantic.domain`         | `string` |  否   | 领域信息                                     |
-| `payload.semantic.intent`         | `string` |  否   | 意图信息                                     |
-| `payload.semantic.slots`          |    -     |  否   | 语义参数信息                                   |
-| `payload.semantic_extra`                |    -     |  否   |附加语义信息                       |
+| 参数名                         |    类型    | 是否必选 | 描述                                       |
+| --------------------------- | :------: | :--: | ---------------------------------------- |
+| `header`                    |    -     |  是   | 请求头                                      |
+| `header.guid`               | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
+| `header.qua`                | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
+| `header.user`               |    -     |  否   | 用户信息                                     |
+| `header.user.user_id`       | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
+| `header.user.account`       | `object` |  -   | 用户账户信息                                   |
+| `header.user.account.id`    | `string` |  -   | 用户账户ID，填openid                           |
+| `header.user.account.token` | `string` |  -   | 用户账户accesstoken                          |
+| `header.user.account.type`  | `string` |  -   | 用户账户类型,支持`WX`/`QQOPEN`                   |
+| `header.user.account.appid` | `string` |  -   | 用户账户的appid                               |
+| `header.lbs`                |    -     |  否   | 用户位置信息                                   |
+| `header.lbs.longitude`      | `double` |  -   | 经度                                       |
+| `header.lbs.latitude`       | `double` |  -   | 纬度                                       |
+| `header.ip`                 | `string` |  是   | 终端IP                                     |
+| `header.device`             |    -     |  否   |                                          |
+| `header.device.network`     | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `header.device.serial_num`  | `string` |  否   | 设备唯一序列号                                  |
+| `payload`                   |    -     |  是   | 请求内容                                     |
+| `payload.query`             | `string` |  是   | 用户query                                  |
+| `payload.request_type`      | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
+| `payload.semantic`          |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
+| `payload.semantic.domain`   | `string` |  否   | 领域信息                                     |
+| `payload.semantic.intent`   | `string` |  否   | 意图信息                                     |
+| `payload.semantic.slots`    |    -     |  否   | 语义参数信息                                   |
+| `payload.semantic_extra`    |    -     |  否   | 附加语义信息                                   |
 | `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               
 | `payload.extra_data`              |    -     |  否   | 额外数据信息                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
@@ -441,12 +441,10 @@ body请求示例
 | `payload`                          | -        | 消息体                                      |
 | `payload.response_text`            | `string` | 显示正文内容                                   |
 | `payload.data`                     | -        | 领域数据                                     |
-| `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/tree/master/doc/domains， 对于采用V3协议的端，见https://github.com/TencentDingdang/tvs-tools/tree/master/Tsk%20Protocol |
+| `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md  |
 | `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
 
-示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py(不带附加数据)
-示例代码见2:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py(带附加数据)
-
+ 
 
 ### 7.3 语音识别接口
 
