@@ -94,8 +94,7 @@
 		"header": {
 			"namespace": "TvsModeControl",
 			"name": "LeaveChildModeSucceeded",
-            "messageId": "{{STRING}}",
-			"dialogRequestId": "{{STRING}}"
+            "messageId": "{{STRING}}"
 		},
 		"payload": {
 		}
@@ -116,8 +115,7 @@
 		"header": {
 			"namespace": "TvsModeControl",
 			"name": "LeaveChildModeFailed",
-            "messageId": "{{STRING}}",
-			"dialogRequestId": "{{STRING}}"
+            "messageId": "{{STRING}}"
 		},
 		"payload": {
 		}
