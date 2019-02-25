@@ -195,7 +195,26 @@
 
 |	Parameter						|	Type		|	必选		|	描述					|
 |	:---------------------------		|	:--------	|	:-----		|	:-------------------	|
-|	isChildModeEnabled		|	boolean	|	Yes		|	是否儿童模式		|
-|	isLockModeEnabled		|	boolean	|	Yes		|	是否锁定模式		|
-|	isPhoneModeEnabled		|	boolean	|	Yes		|	是否电话模式		|
+|	isChildModeEnabled		|	boolean	|	No		|	是否儿童模式		|
+|	isLockModeEnabled		|	boolean	|	No		|	是否锁定模式		|
+|	isPhoneModeEnabled		|	boolean	|	No		|	是否电话模式		|
 |	phoneState					|	string	|	No		|	电话状态:<br>CALL_COME<br>CALLING<br>CALL_IN	|
+
+### 小程序控制上下文
+```json
+{
+	"header": {
+		"namespace": "AppletControl",
+		"name": "AppletState"
+	},
+	"payload": {
+		"id" : "{{STRING}}"
+	}
+}
+```
+
+***Payload Paramters***
+
+|	Parameter				|	Type		|	必选	|	描述				|
+|	:-----------------------	|	:--------	|	:-----	|	:---------------	|
+|	id							|	string	|	Yes	|	小程序ID		|
