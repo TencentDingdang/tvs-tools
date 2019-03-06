@@ -79,7 +79,7 @@
                                  "sStreet": "深南大道"
                              }
                          }, 
-                         "stLiveIndex": {
+                         "stLiveIndex": {//今天的指数信息，每天的数据还是保存在vcWeatherInfo中
                              "iFromChannel": 1, 
                              "vLiveIndex": [
                                  {
@@ -194,11 +194,27 @@
                          }, 
                          "vBgImg": [
                              {
-                                 "sImg": "http://soft.imtt.qq.com/browser/smart_service/weather/img/cloudy.jpg"
+                                 "sImg": "http://soft.imtt.qq.com/browser/smart_service/weather/img/cloudy.jpg",
+                                 "eAstroType": 0,
+                                 "sMusic": ""
                              }
                          ], 
                          "vFutureIndex": [ ], 
-                         "vWeatherWarning": [ ], 
+                         "vWeatherWarning": [ {
+                            "sAlarmLeveNum": "02", //等级
+                            "sAlarmTypeNum": "02", //类型
+                            "sAlertId": "43010041600000_20180530101833", 
+                            "sCity": "长沙", 
+                            "sCityId": "101250101", 
+                            "sContent": "长沙市气象台2018年5月30日10时18分发布暴雨黄色预警信号：预计长沙市区、长沙县、浏阳市未来6小时降雨量将达50毫米以上，请注意防范。", 
+                            "sIssueTime": "2018-05-30 10:18", 
+                            "sLevel": "黄色", //级别
+                            "sLinkSuffix": "", 
+                            "sProvince": "湖南", 
+                            "sStation": "湖南长沙", 
+                            "sTitle": "预警中", 
+                            "sType": "暴雨"//类型
+                        }], 
                          "vcHourlyWeatherInfo": [
                              {
                                  "sAQI": "32", 
@@ -1004,13 +1020,12 @@ enum IndexType
 
 //天气状况
 晴=0 
-多云=1
+多云=1 
 阴=2 
 小雨=3 
-中雨=4 
-冻雨=4
+中雨=4
 大雨=5 
-暴雨=6 
+暴雨=6
 雷阵雨=7
 阵雨=8 
 小雪=9 
@@ -1020,16 +1035,43 @@ enum IndexType
 雾=13 
 沙尘=14 
 霾=14
-雨夹雪=15 
-台风=16
+冻雨=15
+雨夹雪=15
+风=16
+
+支持的天气类型：
+晴
+多云
+阴
+小雨
+中雨
+冻雨
+大雨
+暴雨
+小雪
+中雪
+大雪
+雾
+沙尘
+霾
+风
+ 
 
 //空气质量等级
+未知=0
 空气优=1
 空气良=2
 轻度污染=3
 中度污染=4
 重度污染=5
 严重污染=6
+
+//eAstroType类型
+enum AstroType
+{
+    E_ASTRO_DAY		= 0,           //白天
+    E_ASTRO_NIGHT  	= 1,           //黑夜
+};
 
 
 ```
