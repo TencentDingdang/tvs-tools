@@ -14,13 +14,13 @@
 
 ## 2 API接口能力
 
-| 接口名称        | 能力                                |
-| ----------- | --------------------------------- |
-| 语义理解+服务接口   | 提供文本转语义结构，并返回技能服务数据的能力。           |
-| 语音识别接口      | 提供流式/非流式语音识别能力。                   |
-| TTS接口（语音合成） | 提供语音合成的能力。                        |
-| 终端状态上报接口    | 上报终端状态，有助于后台提供更精准的语义服务结果          |
-| 统一接入接口      | 为终端提供访问叮当非AI的其他能力，如换取资源URL、访问智能家居 |
+| 接口名称      | 能力                                |
+| --------- | --------------------------------- |
+| 语义理解+服务接口 | 提供文本转语义结构，并返回技能服务数据的能力。           |
+| 语音识别接口    | 提供流式/非流式语音识别能力。                   |
+| 语音合成接口    | 提供语音合成的能力。                        |
+| 终端状态上报接口  | 上报终端状态，有助于后台提供更精准的语义服务结果          |
+| 特殊能力访问接口  | 为终端提供访问叮当非AI的其他能力，如换取资源URL、访问智能家居 |
 
 其基本架构为：
 ![Demo](img/api.png)
@@ -659,7 +659,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 
 示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/tts.py
 
-### 7.5 终端上报接口
+### 7.5 终端状态上报接口
 #### 7.5.1 接口描述
 ​	为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过上报接口向腾讯叮当上报终端的阅读、播放等状态。
 #### 7.5.2 请求参数
@@ -748,9 +748,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `code`    | `int`    | 错误码：<br>`0`: 正常；<br>`其他`:异常 |
 | `message` | `string` | 错误消息                        |
 
-### 7.6 统一接入接口
+### 7.6 特殊能力访问接口
 #### 7.6.1 接口描述
-​	统一接入接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
+​	特殊能力访问接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
 #### 7.6.2 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
