@@ -186,7 +186,8 @@
 		"isChildModeEnabled": {{BOOLEAN}},
 		"isLockModeEnabled": {{BOOLEAN}},
 		"isPhoneModeEnabled": {{BOOLEAN}},
-		"phoneState": "{{STRING}}"
+		"phoneState": "{{STRING}}",
+		"currentMode": "{{STRING}}"
 	}
 }
 ```
@@ -195,6 +196,7 @@
 
 |	Parameter						|	Type		|	必选		|	描述					|
 |	:---------------------------		|	:--------	|	:-----		|	:-------------------	|
+|	currentMode					|	string	|	No		|	当前模式(以竖线分割)<br>LEARNING_MODE,学习模式		|
 |	isChildModeEnabled		|	boolean	|	No		|	是否儿童模式		|
 |	isLockModeEnabled		|	boolean	|	No		|	是否锁定模式		|
 |	isPhoneModeEnabled		|	boolean	|	No		|	是否电话模式		|
