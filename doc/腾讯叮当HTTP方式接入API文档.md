@@ -277,7 +277,7 @@ body请求示例
 | `header.semantic.domain`           | `string` | 领域                                       |
 | `header.semantic.intent`           | `string` | 意图                                       |
 | `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
-| `header.semantic.slots` | `array`   | 语义槽列表     |
+| `header.semantic.slots` | `array`   | 语义槽列表，语义槽 ，见[文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/slots.md)  |
 | `header.semantic.slots.name` | `string`   | 语义槽位名称     |
 | `header.semantic.slots.value` | `string`   | 语义槽位值     |
 | `header.session`                   | -        | 会话                                       |
@@ -473,7 +473,7 @@ body请求示例
 | `header.semantic.domain`           | `string` | 领域                                       |
 | `header.semantic.intent`           | `string` | 意图                                       |
 | `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
-| `header.semantic.slots` | `array`  | 语义槽列表     |
+| `header.semantic.slots` | `array`  | 语义槽列表，见[文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/slots.md)     |
 | `header.semantic.slots.name`       | `string`   | 语义槽位名称     |
 | `header.semantic.slots.value`      | `string`   | 语义槽位值     |
 | `header.session`                   | -        | 会话                                       |
