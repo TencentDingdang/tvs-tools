@@ -206,7 +206,7 @@ body请求示例
 | 参数名                               |    类型    | 是否必选 | 描述                                       |
 | --------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                          |    -     |  是   | 请求头                                      |
-| `header.guid`                     | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.guid`                     | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                     |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
@@ -401,7 +401,7 @@ body请求示例
 | 参数名                         |    类型    | 是否必选 | 描述                                       |
 | --------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                    |    -     |  是   | 请求头                                      |
-| `header.guid`               | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.guid`               | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`               |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`       | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
@@ -441,7 +441,13 @@ body请求示例
             "msg": "",
             "domain": "{{STRING}}",
             "intent": "{{STRING}}",
-            "session_complete": true
+            "session_complete": true,
+            "slots":[
+                {
+                    "name":"location",
+                    "value":"深圳"
+                }
+            ]
         }
     },
     "payload": {
@@ -467,9 +473,9 @@ body请求示例
 | `header.semantic.domain`           | `string` | 领域                                       |
 | `header.semantic.intent`           | `string` | 意图                                       |
 | `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
-| `header.semantic.slots` | `array`   | 语义槽列表     |
-| `header.semantic.slots.name` | `string`   | 语义槽位名称     |
-| `header.semantic.slots.value` | `string`   | 语义槽位值     |
+| `header.semantic.slots` | `array`  | 语义槽列表     |
+| `header.semantic.slots.name`       | `string`   | 语义槽位名称     |
+| `header.semantic.slots.value`      | `string`   | 语义槽位值     |
 | `header.session`                   | -        | 会话                                       |
 | `header.session.session_id`        | `string` | 会话ID                                     |
 | `payload`                          | -        | 消息体                                      |
@@ -532,7 +538,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | 参数名                              |    类型    | 是否必选 | 描述                                       |
 | -------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                         |    -     |  是   | 请求头                                      |
-| `header.guid`                    | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.guid`                    | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                    |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`            | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
@@ -638,7 +644,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | 参数名                            |    类型    | 是否必选 | 描述                                       |
 | ------------------------------ | :------: | :--: | ---------------------------------------- |
 | `header`                       |    -     |  是   | 请求头                                      |
-| `header.guid`                  | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.guid`                  | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                  |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`          | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
@@ -822,7 +828,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | 参数名                         | 类型       | 是否必选 | 描述                                       |
 | --------------------------- | -------- | ---- | ---------------------------------------- |
 | ` header `                  | `object` | Yes  | -                                        |
-| `header.guid`               | `string` | 是    | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.guid`               | `string` | 是    | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`               | -        | No   | 用户信息                                     |
 | `header.authorization`      | -        | No   | 授权信息(TVS专用)                              |
