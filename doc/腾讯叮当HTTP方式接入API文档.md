@@ -188,7 +188,7 @@ body请求示例
 | 参数名                               |    类型    | 是否必选 | 描述                                       |
 | --------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                          |    -     |  是   | 请求头                                      |
-| `header.guid`                     | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
+| `header.guid`                     | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID)          |
 | `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
 | `header.user`                     |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
@@ -876,7 +876,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 ​	**示例**: QV=3&VE=GA&VN=1.0.1000&PP=com.tencent.ai.tvs&CHID=10020
 
 
-### 9.2 GUID获取
+### 9.2 GUID获取#guid
 
 ​	如果设备上使用了AISDK，可以从AISDK获取GUID，否则，设备端需要自己生成GUID。
 
