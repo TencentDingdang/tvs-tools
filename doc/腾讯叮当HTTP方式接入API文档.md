@@ -857,22 +857,24 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 ## 9 附录
 ### 9.1 QUA字段说明
-​	QUA是用于标识客户端信息的key-value对，key-value之间以`&`连接，服务端可根据QUA信息给出响应的适配内容。
+
+​​	QUA是用于标识客户端信息的key-value对，key-value之间以`&`连接，服务端可根据QUA信息给出响应的适配内容。
+
+​	**终端每次请求叮当后台时，都需要在请求结构体中带上QUA信息。**
 
 ​	QUA 的key-value说明如下：
 
-| Key  | Value                | 含义     | 备注                                       |
-| ---- | -------------------- | ------ | ---------------------------------------- |
-| QV   | 3                    | QUA版本号 |                                          |
-| PR   | *                    | 终端产品名  | 英文、数字、下划线组成                              |
-| PL   | ADR,IOS,LINUX        | 终端平台标识 | 安卓平台填ADR，iOS平台填IOS，Linux平台填LINUX         |
-| VE   | P,GA,RC,B1...B9,LAB  | 终端版本名  | P:预览版<br>GA:正式版<br>RC:发布候选<br>BN:BetaN<br>LAB:实验室版 |
-| VN   | 主版本.子版本.修正版本.Build   | 终端版本号  | 例如：1.0.1.1000                            |
-| PP   | com.company.product  | 终端软件包名 |                                          |
-| DE   | PHONE,TV,CAR,SPEAKER | 设备类型   | 手机填PHONE、电视填TV、车载设备填CAR，音箱填SPEAKER       |
-| CHID | *                    | 渠道号    |                                          |
+| Key  | 是否必填  | 数据类型   | Value               | 含义     | 备注                                       |
+| ---- | ----- | ------ | ------------------- | ------ | ---------------------------------------- |
+| QV   | **是** | Number | 3                   | QUA版本号 | ** 默认填3，不能更改。**标识QUA的版本。                 |
+| VN   | **是** | String | 主版本.子版本.修正版本.Build  | 终端版本号  | **格式必须为四段。且新版本的版本号必须比旧版本大（按字母排序）。**<br>例如：1.0.1.1000。 |
+| PP   | **是** | String | com.company.product | 终端软件包名 | 例如：com.tencent.ai.tvs。                   |
+| VE   | 否     | String | P,GA,RC,B1...B9     | 终端版本名  | P: 预览版<br>GA: 正式版<br>RC: 发布候选<br>BN: BetaN<br> |
+| CHID | 否     | Number | 10020               | 渠道号    | 用于区分不同的渠道，如：线上渠道，线下渠道。                   |
 
-​	示例:QV=3&PR=Dingdang&PL=LINUX&VE=GA&VN=1.0.1000.1&PP=com.tencent.ai.tvs&DE=SPEAKER&CHID=10020
+
+​	**示例**: QV=3&VE=GA&VN=1.0.1000&PP=com.tencent.ai.tvs&CHID=10020
+
 
 ### 9.2 GUID获取
 
