@@ -1,8 +1,26 @@
-# 腾讯叮当HTTP接入API V1.15
+# 腾讯叮当HTTP接入API V20190314
 
 
 
 [TOC]
+
+## 目录
+
+- [1 简介](#1-简介)
+- [2 API接口能力](#2-api接口能力)
+- [3 协议支持](#3-协议支持)
+- [4 请求格式](#4-请求格式)
+- [5 返回格式](#5-返回格式)
+- [6 HTTP Header要求](#6-http-header要求)
+- [7 API接口文档](#7-api接口文档)
+  - [7.1 语义请求接口](#71-语义请求接口)
+  - [7.2 语义请求接口V2](#72-语义请求接口v2)
+  - [7.3 语音识别接口](#73-语音识别接口)
+  - [7.4 语音合成接口](#74-语音合成接口)
+  - [7.5 终端状态上报接口](#75-终端状态上报接口)
+  - [7.6 特殊能力访问接口](#76-特殊能力访问接口)
+- [8 叮当能力评测注意事项 ](#8-叮当能力评测注意事项)
+- [9 附录 ](#9-附录)
 
 ## 1 简介
 
@@ -188,8 +206,8 @@ body请求示例
 | 参数名                               |    类型    | 是否必选 | 描述                                       |
 | --------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                          |    -     |  是   | 请求头                                      |
-| `header.guid`                     | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96)        |
-| `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)      |
+| `header.guid`                     | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                     |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.user.account`             | `object` |  -   | 用户账户信息                                   |
@@ -374,8 +392,8 @@ body请求示例
 | 参数名                         |    类型    | 是否必选 | 描述                                       |
 | --------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                    |    -     |  是   | 请求头                                      |
-| `header.guid`               | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96)        |
-| `header.qua`                | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)      |
+| `header.guid`               | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`               |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`       | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.user.account`       | `object` |  -   | 用户账户信息                                   |
@@ -502,8 +520,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | 参数名                              |    类型    | 是否必选 | 描述                                       |
 | -------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                         |    -     |  是   | 请求头                                      |
-| `header.guid`                    | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96)        |
-| `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)      |
+| `header.guid`                    | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                    |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`            | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.lbs`                     |    -     |  否   | 用户位置信息                                   |
@@ -608,8 +626,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | 参数名                            |    类型    | 是否必选 | 描述                                       |
 | ------------------------------ | :------: | :--: | ---------------------------------------- |
 | `header`                       |    -     |  是   | 请求头                                      |
-| `header.guid`                  | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96)        |
-| `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)      |
+| `header.guid`                  | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                  |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`          | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.lbs`                   |    -     |  否   | 用户位置信息                                   |
@@ -789,23 +807,23 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 ***Header Parameters***
 
-| 参数名                         | 类型       | 是否必选 | 描述                                  |
-| --------------------------- | -------- | ---- | ----------------------------------- |
-| ` header `                  | `object` | Yes  | -                                   |
-| `header.guid`               | `string` | 是    | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96)   |
-| `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
-| `header.user`               | -        | No   | 用户信息                                |
-| `header.authorization`      | -        | No   | 授权信息(TVS专用)                         |
-| `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)     |
-| `header.user.account`       | `object` | No   | 用户账户信息                              |
-| `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                      |
-| `header.user.account.token` | `string` | No   | 用户账户accesstoken                     |
-| `header.user.account.type`  | `string` | No   | 用户账户类型,支持`WX`/`QQOPEN`              |
-| `header.user.account.appid` | `string` | No   | 用户账户的appid                          |
-| `header.ip`                 | `string` | No   | 终端IP                                |
-| `header.device`             | `object` | No   | 终端其他信息                              |
-| `header.device.network`     | `string` | No   | 终端网络类型                              |
-| `header.device.serialNum`   | `string` | 否    | 设备唯一序列号                             |
+| 参数名                         | 类型       | 是否必选 | 描述                                       |
+| --------------------------- | -------- | ---- | ---------------------------------------- |
+| ` header `                  | `object` | Yes  | -                                        |
+| `header.guid`               | `string` | 是    | 设备唯一标志码。详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
+| `header.user`               | -        | No   | 用户信息                                     |
+| `header.authorization`      | -        | No   | 授权信息(TVS专用)                              |
+| `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
+| `header.user.account`       | `object` | No   | 用户账户信息                                   |
+| `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                           |
+| `header.user.account.token` | `string` | No   | 用户账户accesstoken                          |
+| `header.user.account.type`  | `string` | No   | 用户账户类型,支持`WX`/`QQOPEN`                   |
+| `header.user.account.appid` | `string` | No   | 用户账户的appid                               |
+| `header.ip`                 | `string` | No   | 终端IP                                     |
+| `header.device`             | `object` | No   | 终端其他信息                                   |
+| `header.device.network`     | `string` | No   | 终端网络类型                                   |
+| `header.device.serialNum`   | `string` | 否    | 设备唯一序列号                                  |
 
 
 ***Payload Parameters***
