@@ -77,7 +77,7 @@ JSON格式，返回内容为UTF-8编码
 
 腾讯叮当API要求所有的请求都要经过签名，以证明请求是经过授权的。请求通过Hash算法进行加密计算，得到一个请求对应的签名字符串，并将该签名字符串带到`Authorization`请求头中。腾讯叮当API会对该签名进行校验，对于未带上正确签名的请求将视为未授权的请求并拒绝访问。
 
-腾讯叮当API支持使用[TVS-HMAC-SHA256-BASIC](#TVS-HMAC-SHA256-BASIC签名方法)进行消息签名。
+腾讯叮当API支持使用[TVS-HMAC-SHA256-BASIC](#611-TVS-HMAC-SHA256-BASIC签名方法)进行消息签名。
 
 #### 6.1.1 TVS-HMAC-SHA256-BASIC签名方法
 
@@ -245,7 +245,13 @@ body请求示例
 			"msg": "",
             "domain": "{{STRING}}",
             "intent": "{{STRING}}",
-            "session_complete": true
+            "session_complete": true,
+            "slots":[
+                {
+                    "name":"location",
+                    "value":"深圳"
+                }
+            ]
         }
     },
     "payload": {
@@ -271,6 +277,9 @@ body请求示例
 | `header.semantic.domain`           | `string` | 领域                                       |
 | `header.semantic.intent`           | `string` | 意图                                       |
 | `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
+| `header.semantic.slots` | `array`   | 语义槽列表     |
+| `header.semantic.slots.name` | `string`   | 语义槽位名称     |
+| `header.semantic.slots.value` | `string`   | 语义槽位值     |
 | `header.session`                   | -        | 会话                                       |
 | `header.session.session_id`        | `string` | 会话ID                                     |
 | `payload`                          | -        | 消息体                                      |
@@ -458,6 +467,9 @@ body请求示例
 | `header.semantic.domain`           | `string` | 领域                                       |
 | `header.semantic.intent`           | `string` | 意图                                       |
 | `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
+| `header.semantic.slots` | `array`   | 语义槽列表     |
+| `header.semantic.slots.name` | `string`   | 语义槽位名称     |
+| `header.semantic.slots.value` | `string`   | 语义槽位值     |
 | `header.session`                   | -        | 会话                                       |
 | `header.session.session_id`        | `string` | 会话ID                                     |
 | `payload`                          | -        | 消息体                                      |
