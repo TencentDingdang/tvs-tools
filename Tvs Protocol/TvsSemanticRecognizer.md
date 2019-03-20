@@ -32,4 +32,5 @@
 
 
 ***能力***
+
 能够让终端直接携带明确语义请求TVS。功能与`SpeechRecognizer.Recognize`一致，只是`SpeechRecognizer.Recognize`是语音触发。
