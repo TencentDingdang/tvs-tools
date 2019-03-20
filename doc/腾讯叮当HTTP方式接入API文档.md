@@ -28,7 +28,7 @@
 
 - 发送邮件至allenwwang##tencent.com;kangrong##tencent.com;。 替换##为@。
 
-  ​
+  
 
 ## 2 API接口能力
 
@@ -43,10 +43,12 @@
 其基本架构为：
 ![Demo](img/api.png)
 
+其中核心的三个接口在典型的语音交互使用方法如下图所示：
+![三个接口使用方法](img/api_case.png)
 
 ## 3 协议支持
 
-​   接口为HTTP形式，建议使用HTTPS保持长连接，以减少访问耗时、提升用户体验。
+   接口为HTTP形式，建议使用HTTPS保持长连接，以减少访问耗时、提升用户体验。
 
 
 ## 4 请求格式
@@ -116,7 +118,7 @@ cc7d8a8210bace445f7f67c862fac6ad33e99feda0f16a45fe6bbcda295388f4
 计算得到请求内容的签名之后，需要在HTTP Header的`Authorization`中带上签名信息。`Authorization`的结构如下伪代码所示：
 
 ```http
-Authorization: [Algorithm] CredentialKey=[AppKey], Datetime=[Timestamp], Signature=[Signature]
+Authorization: TVS-HMAC-SHA256-BASIC CredentialKey=[AppKey], Datetime=[Timestamp], Signature=[Signature]
 ```
 
 以下Demo展示了一个完整的`Authorization`：
@@ -131,7 +133,7 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 ### 7.1 语义请求接口
 
 #### 7.1.1 接口描述
-​   该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
+   该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
 
 该接口按request_type的不同提供三种功能：
 
@@ -294,7 +296,7 @@ body请求示例
 ### 7.2 语义请求接口V2
 
 #### 7.2.1 接口描述
-​   该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
+   该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
 
 该接口按request_type的不同提供三种功能：
 
@@ -697,7 +699,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 
 ### 7.5 终端状态上报接口
 #### 7.5.1 接口描述
-​   为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过上报接口向腾讯叮当上报终端的阅读、播放等状态。
+   为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过上报接口向腾讯叮当上报终端的阅读、播放等状态。
 #### 7.5.2 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
@@ -786,7 +788,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
 ### 7.6 特殊能力访问接口
 #### 7.6.1 接口描述
-​   特殊能力访问接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
+   特殊能力访问接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
 #### 7.6.2 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
@@ -894,11 +896,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 ## 9 附录
 ### 9.1 QUA字段说明
 
-​​  QUA是用于标识客户端信息的key-value对，key-value之间以`&`连接，服务端可根据QUA信息给出响应的适配内容。
+  QUA是用于标识客户端信息的key-value对，key-value之间以`&`连接，服务端可根据QUA信息给出响应的适配内容。
 
-​   **终端每次请求叮当后台时，都需要在请求结构体中带上QUA信息。**
+   **终端每次请求叮当后台时，都需要在请求结构体中带上QUA信息。**
 
-​   QUA 的key-value说明如下：
+   QUA 的key-value说明如下：
 
 | Key  | 是否必填  | 数据类型   | Value               | 含义     | 备注                                       |
 | ---- | ----- | ------ | ------------------- | ------ | ---------------------------------------- |
@@ -909,12 +911,12 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | CHID | 否     | Number | 10020               | 渠道号    | 用于区分不同的渠道，如：线上渠道，线下渠道。                   |
 
 
-​   **示例**: QV=3&VE=GA&VN=1.0.1000&PP=com.tencent.ai.tvs&CHID=10020
+   **示例**: QV=3&VE=GA&VN=1.0.1000&PP=com.tencent.ai.tvs&CHID=10020
 
 
 ### 9.2 GUID获取
 
-​   如果设备上使用了AISDK，可以从AISDK获取GUID，否则，设备端需要自己生成GUID。
+   如果设备上使用了AISDK，可以从AISDK获取GUID，否则，设备端需要自己生成GUID。
 
 按照如下方式生成：
 
@@ -922,7 +924,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 2. 取拼接串的md5值小写形式。md5值即为GUID。
 
-   ​
+   
 
 ### 9.3 USERID
 
