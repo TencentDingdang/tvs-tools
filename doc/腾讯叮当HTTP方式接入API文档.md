@@ -1,8 +1,26 @@
-# 腾讯叮当HTTP接入API V1.15
+# 腾讯叮当HTTP接入API V20190314
 
 
 
 [TOC]
+
+## 目录
+
+- [1 简介](#1-简介)
+- [2 API接口能力](#2-api接口能力)
+- [3 协议支持](#3-协议支持)
+- [4 请求格式](#4-请求格式)
+- [5 返回格式](#5-返回格式)
+- [6 HTTP Header要求](#6-http-header要求)
+- [7 API接口文档](#7-api接口文档)
+  - [7.1 语义请求接口](#71-语义请求接口)
+  - [7.2 语义请求接口V2](#72-语义请求接口v2)
+  - [7.3 语音识别接口](#73-语音识别接口)
+  - [7.4 语音合成接口](#74-语音合成接口)
+  - [7.5 终端状态上报接口](#75-终端状态上报接口)
+  - [7.6 特殊能力访问接口](#76-特殊能力访问接口)
+- [8 腾讯叮当能力评测注意事项 ](#8-腾讯叮当能力评测注意事项)
+- [9 附录 ](#9-附录)
 
 ## 1 简介
 
@@ -10,7 +28,7 @@
 
 - 发送邮件至allenwwang##tencent.com;kangrong##tencent.com;。 替换##为@。
 
-  ​
+  
 
 ## 2 API接口能力
 
@@ -25,10 +43,12 @@
 其基本架构为：
 ![Demo](img/api.png)
 
+其中核心的三个接口在典型的语音交互系统中使用方法如下图所示：
+![三个接口使用方法](img/api_case.png)
 
 ## 3 协议支持
 
-​	接口为HTTP形式，建议使用HTTPS保持长连接，以减少访问耗时、提升用户体验。
+   接口为HTTP形式，建议使用HTTPS保持长连接，以减少访问耗时、提升用户体验。
 
 
 ## 4 请求格式
@@ -59,7 +79,7 @@ JSON格式，返回内容为UTF-8编码
 
 腾讯叮当API要求所有的请求都要经过签名，以证明请求是经过授权的。请求通过Hash算法进行加密计算，得到一个请求对应的签名字符串，并将该签名字符串带到`Authorization`请求头中。腾讯叮当API会对该签名进行校验，对于未带上正确签名的请求将视为未授权的请求并拒绝访问。
 
-腾讯叮当API支持使用[TVS-HMAC-SHA256-BASIC](#TVS-HMAC-SHA256-BASIC签名方法)进行消息签名。
+腾讯叮当API支持使用[TVS-HMAC-SHA256-BASIC](#611-TVS-HMAC-SHA256-BASIC签名方法)进行消息签名。
 
 #### 6.1.1 TVS-HMAC-SHA256-BASIC签名方法
 
@@ -98,7 +118,7 @@ cc7d8a8210bace445f7f67c862fac6ad33e99feda0f16a45fe6bbcda295388f4
 计算得到请求内容的签名之后，需要在HTTP Header的`Authorization`中带上签名信息。`Authorization`的结构如下伪代码所示：
 
 ```http
-Authorization: [Algorithm] CredentialKey=[AppKey], Datetime=[Timestamp], Signature=[Signature]
+Authorization: TVS-HMAC-SHA256-BASIC CredentialKey=[AppKey], Datetime=[Timestamp], Signature=[Signature]
 ```
 
 以下Demo展示了一个完整的`Authorization`：
@@ -113,7 +133,7 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 ### 7.1 语义请求接口
 
 #### 7.1.1 接口描述
-​	该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
+   该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
 
 该接口按request_type的不同提供三种功能：
 
@@ -141,7 +161,7 @@ body请求示例
                 "id": "{{STRING}}",
                 "appid": "{{STRING}}",
                 "type": "{{STRING}}",
-                "token": "{{STRING}}"	
+                "token": "{{STRING}}"   
             }
         },
         "lbs": {
@@ -161,35 +181,35 @@ body请求示例
         "query": "我想听刘德华的歌",
         "request_type": "SEMANTIC_SERVICE",
         "semantic": {
-			"domain": "{{STRING}}",
-			"intent": "{{STRING}}"
-    	},
-		"semantic_extra": {
-			"cmd": "{{STRING}}"
-		},
-		"extra_data":[			
-			{
-				"type":"IMAGE",
-				"data_base64":"{{STRING}}"
-			},
-			{
-				"type":"AUDIO",
-				"data_base64":"{{STRING}}"
-			},
-			{
-				"type":"VIDEO",
-				"data_base64":"{{STRING}}"
-			}
-		]
-	}
+            "domain": "{{STRING}}",
+            "intent": "{{STRING}}"
+        },
+        "semantic_extra": {
+            "cmd": "{{STRING}}"
+        },
+        "extra_data":[          
+            {
+                "type":"IMAGE",
+                "data_base64":"{{STRING}}"
+            },
+            {
+                "type":"AUDIO",
+                "data_base64":"{{STRING}}"
+            },
+            {
+                "type":"VIDEO",
+                "data_base64":"{{STRING}}"
+            }
+        ]
+    }
 }
 ```
 
 | 参数名                               |    类型    | 是否必选 | 描述                                       |
 | --------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                          |    -     |  是   | 请求头                                      |
-| `header.guid`                     | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
-| `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
+| `header.guid`                     | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                     |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.user.account`             | `object` |  -   | 用户账户信息                                   |
@@ -223,11 +243,17 @@ body请求示例
 {
     "header": {
         "semantic": {
-			"code": 0,
-			"msg": "",
+            "code": 0,
+            "msg": "",
             "domain": "{{STRING}}",
             "intent": "{{STRING}}",
-            "session_complete": true
+            "session_complete": true,
+            "slots":[
+                {
+                    "name":"location",
+                    "value":"深圳"
+                }
+            ]
         }
     },
     "payload": {
@@ -238,7 +264,7 @@ body请求示例
             },
             "json_template":{
                 ...
-			}
+            }
         }
     }
 }
@@ -253,6 +279,9 @@ body请求示例
 | `header.semantic.domain`           | `string` | 领域                                       |
 | `header.semantic.intent`           | `string` | 意图                                       |
 | `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
+| `header.semantic.slots` | `array`   | 语义槽列表，语义槽 ，见[文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/slots.md)  |
+| `header.semantic.slots.name` | `string`   | 语义槽位名称     |
+| `header.semantic.slots.value` | `string`   | 语义槽位值     |
 | `header.session`                   | -        | 会话                                       |
 | `header.session.session_id`        | `string` | 会话ID                                     |
 | `payload`                          | -        | 消息体                                      |
@@ -261,13 +290,13 @@ body请求示例
 | `payload.data.json`                | -        | 领域结构化Json数据,见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
 | `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
 
-示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py  (不带附加数据)
-示例代码见2:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py  (带附加数据)
+示例代码见1: https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py  (不带附加数据)
+示例代码见2: https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py  (带附加数据)
 
 ### 7.2 语义请求接口V2
 
 #### 7.2.1 接口描述
-​	该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
+   该接口为语义理解、服务接口，语义理解能够分析出文本中的领域、意图、语义结构。服务接口可以根据语义理解结果返回相应的服务数据。例如“我想听周杰伦的歌”，语义理解的领域为song，意图为play，歌手名为周杰伦。服务接口根据语义理解结果，返回周杰伦的歌单。
 
 该接口按request_type的不同提供三种功能：
 
@@ -295,7 +324,7 @@ body请求示例
                 "id": "{{STRING}}",
                 "appid": "{{STRING}}",
                 "type": "{{STRING}}",
-                "token": "{{STRING}}"	
+                "token": "{{STRING}}"   
             }
         },
         "lbs": {
@@ -315,67 +344,67 @@ body请求示例
         "query": "我想听刘德华的歌",
         "request_type": "SEMANTIC_SERVICE",
         "semantic": {
-			"domain": "{{STRING}}",
-			"intent": "{{STRING}}",
-			"slots": [
-				{
-					"name": "{{STRING}}",
-					"type": "{{STRING}}",
-					"slot_struct": LONG,
-					"values": [
-						{
-							"origin_text": "{{STRING}}",
-							"text": "{{STRING}}"
-						},
-						{
-							"origin_text": "{{STRING}}",
-							"text": "{{STRING}}"
-						}
-					]
-				},
-				{
-					"name": "{{STRING}}",
-					"type": "{{STRING}}",
-					"slot_struct": LONG,
-					"values": [
-						{
-							"origin_text": "{{STRING}}",
-							"text": "{{STRING}}"
-						},
-						{
-							"origin_text": "{{STRING}}",
-							"text": "{{STRING}}"
-						}
-					]
-				}
-			],
-    	},
-		"semantic_extra": {
-			"cmd": "{{STRING}}"
-		},
-		"extra_data":[			
-			{
-				"type":"IMAGE",
-				"data_base64":"{{STRING}}"
-			},
-			{
-				"type":"AUDIO",
-				"data_base64":"{{STRING}}"
-			},
-			{
-				"type":"VIDEO",
-				"data_base64":"{{STRING}}"
-			}
-		]
-	}
+            "domain": "{{STRING}}",
+            "intent": "{{STRING}}",
+            "slots": [
+                {
+                    "name": "{{STRING}}",
+                    "type": "{{STRING}}",
+                    "slot_struct": LONG,
+                    "values": [
+                        {
+                            "origin_text": "{{STRING}}",
+                            "text": "{{STRING}}"
+                        },
+                        {
+                            "origin_text": "{{STRING}}",
+                            "text": "{{STRING}}"
+                        }
+                    ]
+                },
+                {
+                    "name": "{{STRING}}",
+                    "type": "{{STRING}}",
+                    "slot_struct": LONG,
+                    "values": [
+                        {
+                            "origin_text": "{{STRING}}",
+                            "text": "{{STRING}}"
+                        },
+                        {
+                            "origin_text": "{{STRING}}",
+                            "text": "{{STRING}}"
+                        }
+                    ]
+                }
+            ],
+        },
+        "semantic_extra": {
+            "cmd": "{{STRING}}"
+        },
+        "extra_data":[          
+            {
+                "type":"IMAGE",
+                "data_base64":"{{STRING}}"
+            },
+            {
+                "type":"AUDIO",
+                "data_base64":"{{STRING}}"
+            },
+            {
+                "type":"VIDEO",
+                "data_base64":"{{STRING}}"
+            }
+        ]
+    }
 }
 ```
 
 | 参数名                         |    类型    | 是否必选 | 描述                                       |
 | --------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                    |    -     |  是   | 请求头                                      |
-| `header.guid`               | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
-| `header.qua`                | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
+| `header.guid`               | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`               |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`       | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.user.account`       | `object` |  -   | 用户账户信息                                   |
@@ -410,11 +439,17 @@ body请求示例
 {
     "header": {
         "semantic": {
-			"code": 0,
-			"msg": "",
+            "code": 0,
+            "msg": "",
             "domain": "{{STRING}}",
             "intent": "{{STRING}}",
-            "session_complete": true
+            "session_complete": true,
+            "slots":[
+                {
+                    "name":"location",
+                    "value":"深圳"
+                }
+            ]
         }
     },
     "payload": {
@@ -425,7 +460,7 @@ body请求示例
             },
             "json_template":{
                 ...
-			}
+            }
         }
     }
 }
@@ -440,6 +475,9 @@ body请求示例
 | `header.semantic.domain`           | `string` | 领域                                       |
 | `header.semantic.intent`           | `string` | 意图                                       |
 | `header.semantic.session_complete` | `bool`   | 会话是否结束                                   |
+| `header.semantic.slots` | `array`  | 语义槽列表，见[文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/slots.md)     |
+| `header.semantic.slots.name`       | `string`   | 语义槽位名称     |
+| `header.semantic.slots.value`      | `string`   | 语义槽位值     |
 | `header.session`                   | -        | 会话                                       |
 | `header.session.session_id`        | `string` | 会话ID                                     |
 | `payload`                          | -        | 消息体                                      |
@@ -487,10 +525,10 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
             "compress": "PCM",
             "sample_rate": "8K",
             "channel": 1,
-			"language": "{{STRING}}",
-			"offset":0
+            "language": "{{STRING}}",
+            "offset":0
         },
-      	"open_vad": true,
+        "open_vad": true,
         "session_id": "{{STRING}}",
         "index": 0,
         "voice_finished": false,
@@ -502,8 +540,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | 参数名                              |    类型    | 是否必选 | 描述                                       |
 | -------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                         |    -     |  是   | 请求头                                      |
-| `header.guid`                    | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
-| `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
+| `header.guid`                    | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                    |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`            | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.lbs`                     |    -     |  否   | 用户位置信息                                   |
@@ -552,7 +590,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.final_result`      | `bool`   | 是否最终结果                |
 | `payload.result`            | `string` | 语音识别结果                |
 | `payload.ret`               | `int`    | 返回状态，如果是0表示正常返回，非0为错误 |
-示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/asr.py
+示例代码见1: https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/asr.py
 
  
 
@@ -608,8 +646,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | 参数名                            |    类型    | 是否必选 | 描述                                       |
 | ------------------------------ | :------: | :--: | ---------------------------------------- |
 | `header`                       |    -     |  是   | 请求头                                      |
-| `header.guid`                  | `string` |  是   | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)        |
-| `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明)      |
+| `header.guid`                  | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                  |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`          | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.lbs`                   |    -     |  否   | 用户位置信息                                   |
@@ -657,11 +695,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload.speech_finished`   | `bool`   | 是否结束        |
 | `payload.speech_base64`     | `string` | 语音的Base64数据 |
 
-示例代码见1:	https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/tts.py
+示例代码见1: https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/tts.py
 
 ### 7.5 终端状态上报接口
 #### 7.5.1 接口描述
-​	为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过上报接口向腾讯叮当上报终端的阅读、播放等状态。
+   为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过上报接口向腾讯叮当上报终端的阅读、播放等状态。
 #### 7.5.2 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
@@ -678,7 +716,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
         "ip": "8.8.8.8"
     },
     "payload": {
-      	"type": "state_report", // device_report: 设备上报，上报设备的开关机状态等；state_report：状态上报，上报当前媒体播放/展示状态；
+        "type": "state_report", // device_report: 设备上报，上报设备的开关机状态等；state_report：状态上报，上报当前媒体播放/展示状态；
         "semantic": {
             "domain": "",
             "intent": ""
@@ -750,7 +788,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
 ### 7.6 特殊能力访问接口
 #### 7.6.1 接口描述
-​	特殊能力访问接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
+   特殊能力访问接口提供终端访问后端各个服务特定接口的能力。本接口根据`payload.domain`和`payload.intent`提供不同的能力。见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md
 #### 7.6.2 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
@@ -761,13 +799,13 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
         "qua": "【设备QUA】",
         "user": {
             "user_id": "",
-	        "account":{
-	    	    "id":"{{STRING}}",
+            "account":{
+                "id":"{{STRING}}",
                 "appid":"{{STRING}}",
                 "type":"{{STRING}}",
-                "token": "{{STRING}}"	
-	    	},
-			"authorization": "{{STRING}}"
+                "token": "{{STRING}}"   
+            },
+            "authorization": "{{STRING}}"
         },
         "lbs": {
             "longitude": 132.56481,
@@ -776,12 +814,12 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
         "ip": "8.8.8.8",
         "device": {
             "network": "4G",
-			"serialNum": "{{STRING}}"
+            "serialNum": "{{STRING}}"
         }
     },
     "payload": {
-      	"domain": "{{STRING}}",
-		"intent": "{{STRING}}",
+        "domain": "{{STRING}}",
+        "intent": "{{STRING}}",
         "jsonBlobInfo": "{{STRING}}"
     }
 }
@@ -789,23 +827,23 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 ***Header Parameters***
 
-| 参数名                         | 类型       | 是否必选 | 描述                                  |
-| --------------------------- | -------- | ---- | ----------------------------------- |
-| ` header `                  | `object` | Yes  | -                                   |
-| `header.guid`               | `string` | 是    | 设备唯一标志码。详细说明见[附录-GUID获取](#GUID获取)   |
-| `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#QUA字段说明) |
-| `header.user`               | -        | No   | 用户信息                                |
-| `header.authorization`      | -        | No   | 授权信息(TVS专用)                         |
-| `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)     |
-| `header.user.account`       | `object` | No   | 用户账户信息                              |
-| `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                      |
-| `header.user.account.token` | `string` | No   | 用户账户accesstoken                     |
-| `header.user.account.type`  | `string` | No   | 用户账户类型,支持`WX`/`QQOPEN`              |
-| `header.user.account.appid` | `string` | No   | 用户账户的appid                          |
-| `header.ip`                 | `string` | No   | 终端IP                                |
-| `header.device`             | `object` | No   | 终端其他信息                              |
-| `header.device.network`     | `string` | No   | 终端网络类型                              |
-| `header.device.serialNum`   | `string` | 否    | 设备唯一序列号                             |
+| 参数名                         | 类型       | 是否必选 | 描述                                       |
+| --------------------------- | -------- | ---- | ---------------------------------------- |
+| ` header `                  | `object` | Yes  | -                                        |
+| `header.guid`               | `string` | 是    | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
+| `header.user`               | -        | No   | 用户信息                                     |
+| `header.authorization`      | -        | No   | 授权信息(TVS专用)                              |
+| `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
+| `header.user.account`       | `object` | No   | 用户账户信息                                   |
+| `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                           |
+| `header.user.account.token` | `string` | No   | 用户账户accesstoken                          |
+| `header.user.account.type`  | `string` | No   | 用户账户类型,支持`WX`/`QQOPEN`                   |
+| `header.user.account.appid` | `string` | No   | 用户账户的appid                               |
+| `header.ip`                 | `string` | No   | 终端IP                                     |
+| `header.device`             | `object` | No   | 终端其他信息                                   |
+| `header.device.network`     | `string` | No   | 终端网络类型                                   |
+| `header.device.serialNum`   | `string` | 否    | 设备唯一序列号                                  |
 
 
 ***Payload Parameters***
@@ -820,13 +858,13 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 #### 7.6.3 返回参数
 ```json
 {
-	"header": {
-   		"retCode": 0,
-   		"errMsg": "{{STRING}}"
-	},
-	"payload": {
+    "header": {
+        "retCode": 0,
+        "errMsg": "{{STRING}}"
+    },
+    "payload": {
         "jsonBlobInfo": "{{STRING}}"
-	}
+    }
 }
 ```
 
@@ -857,26 +895,28 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 ## 9 附录
 ### 9.1 QUA字段说明
-​	QUA是用于标识客户端信息的key-value对，key-value之间以`&`连接，服务端可根据QUA信息给出响应的适配内容。
 
-​	QUA 的key-value说明如下：
+  QUA是用于标识客户端信息的key-value对，key-value之间以`&`连接，服务端可根据QUA信息给出响应的适配内容。
 
-| Key  | Value                | 含义     | 备注                                       |
-| ---- | -------------------- | ------ | ---------------------------------------- |
-| QV   | 3                    | QUA版本号 |                                          |
-| PR   | *                    | 终端产品名  | 英文、数字、下划线组成                              |
-| PL   | ADR,IOS,LINUX        | 终端平台标识 | 安卓平台填ADR，iOS平台填IOS，Linux平台填LINUX         |
-| VE   | P,GA,RC,B1...B9,LAB  | 终端版本名  | P:预览版<br>GA:正式版<br>RC:发布候选<br>BN:BetaN<br>LAB:实验室版 |
-| VN   | 主版本.子版本.修正版本.Build   | 终端版本号  | 例如：1.0.1.1000                            |
-| PP   | com.company.product  | 终端软件包名 |                                          |
-| DE   | PHONE,TV,CAR,SPEAKER | 设备类型   | 手机填PHONE、电视填TV、车载设备填CAR，音箱填SPEAKER       |
-| CHID | *                    | 渠道号    |                                          |
+   **终端每次请求叮当后台时，都需要在请求结构体中带上QUA信息。**
 
-​	示例:QV=3&PR=Dingdang&PL=LINUX&VE=GA&VN=1.0.1000.1&PP=com.tencent.ai.tvs&DE=SPEAKER&CHID=10020
+   QUA 的key-value说明如下：
+
+| Key  | 是否必填  | 数据类型   | Value               | 含义     | 备注                                       |
+| ---- | ----- | ------ | ------------------- | ------ | ---------------------------------------- |
+| QV   | **是** | Number | 3                   | QUA版本号 | ** 默认填3，不能更改。**标识QUA的版本。                 |
+| VN   | **是** | String | 主版本.子版本.修正版本.Build  | 终端版本号  | **格式必须为四段。且新版本的版本号必须比旧版本大（按字母排序）。**<br>例如：1.0.1.1000。 |
+| PP   | **是** | String | com.company.product | 终端软件包名 | 例如：com.tencent.ai.tvs。                   |
+| VE   | 否     | String | P,GA,RC,B1...B9     | 终端版本名  | P: 预览版<br>GA: 正式版<br>RC: 发布候选<br>BN: BetaN<br> |
+| CHID | 否     | Number | 10020               | 渠道号    | 用于区分不同的渠道，如：线上渠道，线下渠道。                   |
+
+
+   **示例**: QV=3&VE=GA&VN=1.0.1000&PP=com.tencent.ai.tvs&CHID=10020
+
 
 ### 9.2 GUID获取
 
-​	如果设备上使用了AISDK，可以从AISDK获取GUID，否则，设备端需要自己生成GUID。
+   如果设备上使用了AISDK，可以从AISDK获取GUID，否则，设备端需要自己生成GUID。
 
 按照如下方式生成：
 
@@ -884,7 +924,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 2. 取拼接串的md5值小写形式。md5值即为GUID。
 
-   ​
+   
 
 ### 9.3 USERID
 
