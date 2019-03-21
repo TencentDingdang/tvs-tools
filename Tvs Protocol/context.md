@@ -143,7 +143,8 @@
 		"name": "ShowState"
 	},
 	"payload": {
-		"isEnabled": {{BOOLEAN}}
+		"isEnabled": {{BOOLEAN}},
+		"version": "{{STRING}}"
 	}
 }
 ```
@@ -153,6 +154,7 @@
 |	Parameter					|	Type		|	必选	|	描述								|
 |	:---------------------------	|	:--------	|	:-----	|	:--------------------------------	|
 |	isEnabled					|	boolean	|	Yes	|	是否开启UI					|
+|	version						|	string	|	No	|	版本号:<br>v1<br>v2		|
 
 ### 位置信息上下文
 ```json
@@ -187,7 +189,8 @@
 		"isLockModeEnabled": {{BOOLEAN}},
 		"isPhoneModeEnabled": {{BOOLEAN}},
 		"phoneState": "{{STRING}}",
-		"currentMode": "{{STRING}}"
+		"mainMode": "{{STRING}}",
+		"extraMode": "{{STRING}}"
 	}
 }
 ```
@@ -196,7 +199,8 @@
 
 |	Parameter						|	Type		|	必选		|	描述					|
 |	:---------------------------		|	:--------	|	:-----		|	:-------------------	|
-|	currentMode					|	string	|	No		|	当前模式(以竖线分割)<br>LEARNING_MODE,学习模式		|
+|	mainMode						|	string	|	No		|	当前模式:<br>LEARNING,学习模式	<br>CHLIDREN,儿童模式<br>FAMILY,家庭模式<br>NORMAL,普通模式|
+|	extraMode						|	string	|	No		|	当前模式:<br>CHILDREN_LOCK,儿童锁定模式<br>PHONE,电话模式	|
 |	isChildModeEnabled		|	boolean	|	No		|	是否儿童模式		|
 |	isLockModeEnabled		|	boolean	|	No		|	是否锁定模式		|
 |	isPhoneModeEnabled		|	boolean	|	No		|	是否电话模式		|
@@ -220,3 +224,32 @@
 |	Parameter				|	Type		|	必选	|	描述				|
 |	:-----------------------	|	:--------	|	:-----	|	:---------------	|
 |	id							|	string	|	Yes	|	小程序ID		|
+
+### 外部媒体播放控制上下文
+```json
+{
+	"header": {
+		"namespace":"TvsExternalMediaControl",
+		"name":"PlaybackState"
+	},
+	"payload": {
+		"playerActivity": "{{STRING}}",
+		"playerMode": "{{STRING}}",
+		"offsetInMilliseconds": {{LONG}},
+		"currentDataId": "{{STRING}}",
+		"previousDataId": "{{STRING}}",
+		"nextDataId": "{{STRING}}"
+	}
+}
+```
+
+***Payload Parameters***
+
+|	Parameter							|	Type		|	必选	|	描述																|
+|	:------------------------------------	|	:--------	|	:-----	|	:------------------------------------------------------------------	|
+|	playerMode						|	string	|	Yes	|	当前模式<br>Audio:音频(默认)<br>Video:视频	|
+|	playerActivity						|	string	|	Yes	|	播放器状态													|
+|	offsetInMilliseconds			|	long		|	Yes	|	偏移量															|
+|	currentDataId						|	string	|	Yes	|	当前数据ID													|
+|	previousDataId					|	string	|	Yes	|	上一个数据ID													|
+|	nextDataId							|	string	|	Yes	|	下一个数据ID													|
