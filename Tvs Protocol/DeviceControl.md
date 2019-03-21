@@ -1,14 +1,14 @@
 ### 设备控制指令
 ```json
 {
-	"directive": {
-		"header": {
-			"namespace": "DeviceControl",
-			"name": "Control",
+    "directive": {
+        "header": {
+            "namespace": "DeviceControl",
+            "name": "Control",
             "messageId": "{{STRING}}",
-			"dialogRequestId": "{{STRING}}"
-		},
-		"payload": {
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
             "nlpInfo" {
                 "domain": "{{STRING}}",
                 "intent": "{{STRING}}",
@@ -28,38 +28,38 @@
                 ],
                 "originalParameters": [
                     {
-						...
+                        ...
                     },
                     {
                         ...
                     }
                 ]
             },
-			"data": {
-				"jsonData": "{{STRING}}"
-			}
-		}
-	}
+            "data": {
+                "jsonData": "{{STRING}}"
+            }
+        }
+    }
 }
 ```
 
 ***Header Paramters***
 
-|	Parameter			|	Type		|	必选	|	描述								|
-|	:-------------------	|	:--------	|	:-----	|	:--------------------------------	|
-|	messageId			|	string	|	Yes	|	消息ID							|
-|	dialogRequestId	|	string	|	Yes	|	对话ID							|
+|    Parameter            |    Type        |    必选    |    描述                                |
+|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                            |
+|    dialogRequestId    |    string    |    Yes    |    对话ID                            |
 
 ***Payload Paramters***
 
-|	Parameter								|	Type		|	必选	|	描述								|
-|	:---------------------------------------	|	:--------	|	:-----	|	:--------------------------------	|
-|	nlpInfo									|	object	|	Yes	|	NLP信息						|
-|	nlpInfo.domain						|	string	|	Yes	|	NLP领域信息					|
-|	nlpInfo.intent							|	string	|	Yes	|	NLP意图信息					|
-|	nlpInfo.parameters					|	array		|	Yes	|	NLP参数信息					|
-|	nlpInfo.parameters[].name		|	string	|	Yes	|	NLP参数名称					|
-|	nlpInfo.parameters[].valueList	|	array		|	Yes	|	NLP参数值					|
-|	nlpInfo.originalparameters		|	array		|	Yes	|	NLP原始参数信息			|
-|	data										|	object	|	No	|	数据								|
-|	data.jsonData						|	string	|	No	|	服务数据信息					|
+|    Parameter                                |    Type        |    必选    |    描述                                |
+|    :---------------------------------------    |    :--------    |    :-----    |    :--------------------------------    |
+|    nlpInfo                                    |    object    |    Yes    |    NLP信息                        |
+|    nlpInfo.domain                        |    string    |    Yes    |    NLP领域信息                    |
+|    nlpInfo.intent                            |    string    |    Yes    |    NLP意图信息                    |
+|    nlpInfo.parameters                    |    array        |    Yes    |    NLP参数信息                    |
+|    nlpInfo.parameters[].name        |    string    |    Yes    |    NLP参数名称                    |
+|    nlpInfo.parameters[].valueList    |    array        |    Yes    |    NLP参数值                    |
+|    nlpInfo.originalparameters        |    array        |    Yes    |    NLP原始参数信息            |
+|    data                                        |    object    |    No    |    数据                                |
+|    data.jsonData                        |    string    |    No    |    服务数据信息                    |
