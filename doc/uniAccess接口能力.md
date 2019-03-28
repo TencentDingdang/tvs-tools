@@ -86,5 +86,69 @@
 	}
 ```
 
+# 2. 音乐硬件设备注册
+
+## 2.1 说明
+
+硬件设备需要先调用设备注册接口激活，才可正常访问音乐资源
+
+## 2.2 参数
+
+
+`payload.domain`: tskm_report
+
+`payload.intent`: cloud_bind
+
+`payload.jsonBlobInfo`:
+
+
+```json
+{
+	"app_key":"{{STRING}}",
+	"sn":"{{STRING}}"
+}
+```
+***jsonBlobInfo Parameters***
+
+| 参数名 | 类型 | 是否必选 | 描述            |
+| ----- | -------- | ---- | ------------- |
+| `app_key ` | `string` | Yes  | 开放平台分配的端标识 |
+| `sn ` | `string` | Yes | 设备唯一序列号 |
+
+## 2.3 返回jsonBlobInfo 参数
+
+```json
+{
+  "eRet": {{INT}},
+  "strMsg": "{{STRING}}"
+}
+```
+***jsonBlobInfo Parameters***
+
+| 参数名                                    | 类型       | 是否必选 | 描述                                   |
+| -------------------------------------- | -------- | ---- | ------------------------------------ |
+| `eRet` | `int` | YES | 0：成功 |
+| `strMsg` | `int` | YES | 提示语 |
+
+
+## 2.4 payload示例
+
+### 2.4.1 请求payload数据
+```json
+{
+	"domain": "tskm_report",
+	"intent": "cloud_bind",
+	"jsonBlobInfo": "{\"app_key\":\"{{STRING}}\",\"sn\":\"{{STRING}}\"}"
+
+}
+```
+
+### 2.4.2 返回payload数据
+
+```json
+{
+	"jsonBlobInfo": "{ \"eRet\": 1, \"strMsg\": \"QQMusic device has been registered\"}"
+}
+```
 
 
