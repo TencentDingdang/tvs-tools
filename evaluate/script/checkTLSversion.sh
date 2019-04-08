@@ -7,11 +7,6 @@ echo "SSL/TLS version : "$tls_version
 
 right_version="TLSv1.1"
 
-#if [ -z "$tls_version" ];then
-#echo "TLS version error, you need upgrade!"
-#exit 0
-#fi
-
 if [ "$tls_version" \> "$right_version" ] || [ "$tls_version" == "$right_version" ];then
 	echo "=========================TLS version is OK!========================="  
 else
