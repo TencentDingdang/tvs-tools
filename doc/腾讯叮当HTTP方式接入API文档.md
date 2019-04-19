@@ -945,11 +945,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/authorize`
 
 ***Header Parameters***
 
-| 参数名              | 类型       | 是否必选 | 描述   |
-| ---------------- | -------- | ---- | ---- |
-| `header`         | `object` | Yes  | 头部   |
-| `header.retCode` | `long`   | Yes  | 返回码  |
-| `header.errMsg`  | `string` | Yes  | 错误消息 |
+| 参数名           | 类型     | 是否必选 | 描述                                                        |
+| ---------------- | -------- | -------- | ----------------------------------------------------------- |
+| `header`         | `object` | Yes      | 头部                                                        |
+| `header.retCode` | `long`   | Yes      | 返回码。如果错误码不等于0且大于-1000000，可以认为票据无效。 |
+| `header.errMsg`  | `string` | Yes      | 错误消息                                                    |
 
 ***Payload Parameters***
 
@@ -991,7 +991,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/refresh`
 | -------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                         |    -     |  是   | 请求头       |
 | `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
-| `header.ip`                      | `string` |  否   | 终端IP，仅限云服务使用。终端直接调用本节课不要填这个字段。 |
+| `header.ip`                      | `string` |  否   | 终端IP，仅限云服务使用。终端直接调用本接口不要填这个字段。 |
 | `header.device`                  |    -     |  否   |                 |
 | `header.device.network`          | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
 | `payload`                        |    -     |  是   | 请求内容                                     |
@@ -1015,11 +1015,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/refresh`
 
 ***Header Parameters***
 
-| 参数名              | 类型       | 是否必选 | 描述   |
-| ---------------- | -------- | ---- | ---- |
-| `header`         | `object` | Yes  | 头部   |
-| `header.retCode` | `long`   | Yes  | 返回码  |
-| `header.errMsg`  | `string` | Yes  | 错误消息 |
+| 参数名           | 类型     | 是否必选 | 描述                                                        |
+| ---------------- | -------- | -------- | ----------------------------------------------------------- |
+| `header`         | `object` | Yes      | 头部                                                        |
+| `header.retCode` | `long`   | Yes      | 返回码。如果错误码不等于0且大于-1000000，可以认为票据无效。 |
+| `header.errMsg`  | `string` | Yes      | 错误消息                                                    |
 
 ***Payload Parameters***
 
