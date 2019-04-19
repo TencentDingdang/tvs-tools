@@ -214,7 +214,7 @@ body请求示例
 | `header.guid`                     | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                     |    -     |  否   | 用户信息                                     |
-| `header.user.authorization` | -        | No   | 授权信息(使用account相关接口得到的authorization)                            |
+| `header.user.authorization` | `string`   | No   | 授权信息(使用account相关接口得到的authorization)                            |
 | `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.user.account`             | `object` |  -   | 用户账户信息                                   |
 | `header.user.account.id`          | `string` |  -   | 用户账户ID，填openid                           |
@@ -411,7 +411,7 @@ body请求示例
 | `header.guid`               | `string` |    是    | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                | `string` |    是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
 | `header.user`               |    -     |    否    | 用户信息                                                     |
-| `header.user.authorization` |    -     |    No    | 授权信息(使用account相关接口得到的authorization)             |
+| `header.user.authorization` | `string` |    No    | 授权信息(使用account相关接口得到的authorization)             |
 | `header.user.user_id`       | `string` |    -     | 用户ID，，详细说明见[附录-USERID](#USERID)                   |
 | `header.user.account`       | `object` |    -     | 用户账户信息                                                 |
 | `header.user.account.id`    | `string` |    -     | 用户账户ID，填openid                                         |
@@ -839,7 +839,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | `header.guid`               | `string` | 是       | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                | `string` | 是       | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
 | `header.user`               | -        | No       | 用户信息                                                     |
-| `header.user.authorization` | -        | No       | 授权信息(使用account相关接口得到的authorization)             |
+| `header.user.authorization` | `string` | No       | 授权信息(使用account相关接口得到的authorization)             |
 | `header.user.user_id`       | `string` | No       | 用户ID，，详细说明见[附录-USERID](#USERID)                   |
 | `header.user.account`       | `object` | No       | 用户账户信息                                                 |
 | `header.user.account.id`    | `string` | No       | 用户账户ID，填openid                                         |
