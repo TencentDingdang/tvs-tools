@@ -894,6 +894,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 提供终端ClientId票据授权接口。
 
+调用时机： 设备侧第一次拿到手机端传过来的clientid，需要调用本接口换取对应的`tvsRefreshToken`和`authorization`，`tvsRefreshToken`用于刷票接口（7.8节）。`authorization`内部有账号与设备信息，调用7.1-7.6接口时，把`authorization`填入`header.user.authorization`。如果填入`header.user.authorization`，那么`header.guid`,`header.user`其他字段都不需要填写。
+
 #### 7.7.2 请求参数
 
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/authorize`
@@ -955,8 +957,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/authorize`
 | ---------------------- | -------- | ---- | ---- |
 | `payload`              | `object` | Yes  | 负载   |
 | `payload.tvsRefreshToken` | `string` | Yes  | tvsRefreshToken，刷票用 |
-| `payload.authorization` | `string` | Yes  | 账户信息   |
-| `payload.expiredTimeInSeconds` | `int` | Yes  | 过期时间 (秒)  |
+| `payload.authorization` | `string` | Yes  | 账户信息。用在其他请求的`header.user.authorization`中。 |
+| `payload.expiredTimeInSeconds` | `int` | Yes  | 票据过期时间 (秒)。到达过期时间，需要调用7.8刷票接口重新刷票。 |
 
 
 ### 7.8 刷票
@@ -1024,12 +1026,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/refresh`
 | 参数名                    | 类型       | 是否必选 | 描述   |
 | ---------------------- | -------- | ---- | ---- |
 | `payload`              | `object` | Yes  | 负载   |
-| `payload.tvsRefreshToken` | `string` | Yes  | tvsRefreshToken，下次刷票 |
-| `payload.authorization` | `string` | Yes  | 账户信息   |
-| `payload.expiredTimeInSeconds` | `int` | Yes  | 过期时间 (秒)  |
+| `payload.tvsRefreshToken` | `string` | Yes  | 最新tvsRefreshToken，下次刷票使用。 |
+| `payload.authorization` | `string` | Yes  | 最新账户信息。每次请求7.1-7.6的接口，都需要用最新账户信息。 |
+| `payload.expiredTimeInSeconds` | `int` | Yes  | 过期时间 (秒)。到达过期时间，需要重新刷票。 |
 
-调用说明：
-1. 从DMSDK拿到clientid，
+
 
 
 
