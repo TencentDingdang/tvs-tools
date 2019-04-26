@@ -19,6 +19,8 @@
   - [7.4 语音合成接口](#74-语音合成接口)
   - [7.5 终端状态上报接口](#75-终端状态上报接口)
   - [7.6 特殊能力访问接口](#76-特殊能力访问接口)
+  - [7.7 票据授权](#77-票据授权)
+  - [7.8 刷票](#78-刷票)
 - [8 腾讯叮当能力评测注意事项 ](#8-腾讯叮当能力评测注意事项)
 - [9 附录 ](#9-附录)
 
@@ -162,7 +164,8 @@ body请求示例
                 "appid": "{{STRING}}",
                 "type": "{{STRING}}",
                 "token": "{{STRING}}"   
-            }
+            }，
+            "authorization": "{{STRING}}"
         },
         "lbs": {
             "longitude": 132.56481,
@@ -211,6 +214,7 @@ body请求示例
 | `header.guid`                     | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
 | `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                     |    -     |  否   | 用户信息                                     |
+| `header.user.authorization` | `string`   | No   | 授权信息(使用account相关接口得到的authorization)                            |
 | `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
 | `header.user.account`             | `object` |  -   | 用户账户信息                                   |
 | `header.user.account.id`          | `string` |  -   | 用户账户ID，填openid                           |
@@ -288,7 +292,7 @@ body请求示例
 | `payload.response_text`            | `string` | 显示正文内容                                   |
 | `payload.data`                     | -        | 领域数据                                     |
 | `payload.data.json`                | -        | 领域结构化Json数据,见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
-| `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
+| `payload.data.json_template`       | -        | **废弃**。领域模版Json数据，数据格式详见"腾讯叮当模板文档"       |
 
 示例代码见1: https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py  (不带附加数据)
 示例代码见2: https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py  (带附加数据)
@@ -325,7 +329,8 @@ body请求示例
                 "appid": "{{STRING}}",
                 "type": "{{STRING}}",
                 "token": "{{STRING}}"   
-            }
+            },
+            "authorization": "{{STRING}}"
         },
         "lbs": {
             "longitude": 132.56481,
@@ -400,33 +405,34 @@ body请求示例
 }
 ```
 
-| 参数名                         |    类型    | 是否必选 | 描述                                       |
-| --------------------------- | :------: | :--: | ---------------------------------------- |
-| `header`                    |    -     |  是   | 请求头                                      |
-| `header.guid`               | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
-| `header.qua`                | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
-| `header.user`               |    -     |  否   | 用户信息                                     |
-| `header.user.user_id`       | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
-| `header.user.account`       | `object` |  -   | 用户账户信息                                   |
-| `header.user.account.id`    | `string` |  -   | 用户账户ID，填openid                           |
-| `header.user.account.token` | `string` |  -   | 用户账户accesstoken                          |
-| `header.user.account.type`  | `string` |  -   | 用户账户类型,支持`WX`/`QQOPEN`                   |
-| `header.user.account.appid` | `string` |  -   | 用户账户的appid                               |
-| `header.lbs`                |    -     |  否   | 用户位置信息                                   |
-| `header.lbs.longitude`      | `double` |  -   | 经度                                       |
-| `header.lbs.latitude`       | `double` |  -   | 纬度                                       |
-| `header.ip`                 | `string` |  是   | 终端IP                                     |
-| `header.device`             |    -     |  否   |                                          |
-| `header.device.network`     | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
-| `header.device.serial_num`  | `string` |  否   | 设备唯一序列号                                  |
-| `payload`                   |    -     |  是   | 请求内容                                     |
-| `payload.query`             | `string` |  是   | 用户query                                  |
-| `payload.request_type`      | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
-| `payload.semantic`          |    -     |  否   | 语义信息，若带上，则请求不经过NLP                       |
-| `payload.semantic.domain`   | `string` |  否   | 领域信息                                     |
-| `payload.semantic.intent`   | `string` |  否   | 意图信息                                     |
-| `payload.semantic.slots`    |    -     |  否   | 语义参数信息                                   |
-| `payload.semantic_extra`    |    -     |  否   | 附加语义信息                                   |
+| 参数名                      |   类型   | 是否必选 | 描述                                                         |
+| --------------------------- | :------: | :------: | ------------------------------------------------------------ |
+| `header`                    |    -     |    是    | 请求头                                                       |
+| `header.guid`               | `string` |    是    | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                | `string` |    是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
+| `header.user`               |    -     |    否    | 用户信息                                                     |
+| `header.user.authorization` | `string` |    No    | 授权信息(使用account相关接口得到的authorization)             |
+| `header.user.user_id`       | `string` |    -     | 用户ID，，详细说明见[附录-USERID](#USERID)                   |
+| `header.user.account`       | `object` |    -     | 用户账户信息                                                 |
+| `header.user.account.id`    | `string` |    -     | 用户账户ID，填openid                                         |
+| `header.user.account.token` | `string` |    -     | 用户账户accesstoken                                          |
+| `header.user.account.type`  | `string` |    -     | 用户账户类型,支持`WX`/`QQOPEN`                               |
+| `header.user.account.appid` | `string` |    -     | 用户账户的appid                                              |
+| `header.lbs`                |    -     |    否    | 用户位置信息                                                 |
+| `header.lbs.longitude`      | `double` |    -     | 经度                                                         |
+| `header.lbs.latitude`       | `double` |    -     | 纬度                                                         |
+| `header.ip`                 | `string` |    是    | 终端IP                                                       |
+| `header.device`             |    -     |    否    |                                                              |
+| `header.device.network`     | `string` |    否    | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`                             |
+| `header.device.serial_num`  | `string` |    否    | 设备唯一序列号                                               |
+| `payload`                   |    -     |    是    | 请求内容                                                     |
+| `payload.query`             | `string` |    是    | 用户query                                                    |
+| `payload.request_type`      | `string` |    否    | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
+| `payload.semantic`          |    -     |    否    | 语义信息，若带上，则请求不经过NLP                            |
+| `payload.semantic.domain`   | `string` |    否    | 领域信息                                                     |
+| `payload.semantic.intent`   | `string` |    否    | 意图信息                                                     |
+| `payload.semantic.slots`    |    -     |    否    | 语义参数信息                                                 |
+| `payload.semantic_extra`    |    -     |    否    | 附加语义信息                                                 |
 | `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               
 | `payload.extra_data`              |    -     |  否   | 额外数据信息                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
@@ -484,7 +490,7 @@ body请求示例
 | `payload.response_text`            | `string` | 显示正文内容                                   |
 | `payload.data`                     | -        | 领域数据                                     |
 | `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
-| `payload.data.json_template`       | -        | 领域模版Json数据，数据格式详见"腾讯叮当模板文档"              |
+| `payload.data.json_template`       | -        | **废弃**。领域模版Json数据，数据格式详见"腾讯叮当模板文档"       |
 
  
 
@@ -827,23 +833,23 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 ***Header Parameters***
 
-| 参数名                         | 类型       | 是否必选 | 描述                                       |
-| --------------------------- | -------- | ---- | ---------------------------------------- |
-| ` header `                  | `object` | Yes  | -                                        |
-| `header.guid`               | `string` | 是    | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
-| `header.qua`                | `string` | 是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
-| `header.user`               | -        | No   | 用户信息                                     |
-| `header.authorization`      | -        | No   | 授权信息(TVS专用)                              |
-| `header.user.user_id`       | `string` | No   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
-| `header.user.account`       | `object` | No   | 用户账户信息                                   |
-| `header.user.account.id`    | `string` | No   | 用户账户ID，填openid                           |
-| `header.user.account.token` | `string` | No   | 用户账户accesstoken                          |
-| `header.user.account.type`  | `string` | No   | 用户账户类型,支持`WX`/`QQOPEN`                   |
-| `header.user.account.appid` | `string` | No   | 用户账户的appid                               |
-| `header.ip`                 | `string` | No   | 终端IP                                     |
-| `header.device`             | `object` | No   | 终端其他信息                                   |
-| `header.device.network`     | `string` | No   | 终端网络类型                                   |
-| `header.device.serialNum`   | `string` | 否    | 设备唯一序列号                                  |
+| 参数名                      | 类型     | 是否必选 | 描述                                                         |
+| --------------------------- | -------- | -------- | ------------------------------------------------------------ |
+| ` header `                  | `object` | Yes      | -                                                            |
+| `header.guid`               | `string` | 是       | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.qua`                | `string` | 是       | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
+| `header.user`               | -        | No       | 用户信息                                                     |
+| `header.user.authorization` | `string` | No       | 授权信息(使用account相关接口得到的authorization)             |
+| `header.user.user_id`       | `string` | No       | 用户ID，，详细说明见[附录-USERID](#USERID)                   |
+| `header.user.account`       | `object` | No       | 用户账户信息                                                 |
+| `header.user.account.id`    | `string` | No       | 用户账户ID，填openid                                         |
+| `header.user.account.token` | `string` | No       | 用户账户accesstoken                                          |
+| `header.user.account.type`  | `string` | No       | 用户账户类型,支持`WX`/`QQOPEN`                               |
+| `header.user.account.appid` | `string` | No       | 用户账户的appid                                              |
+| `header.ip`                 | `string` | No       | 终端IP                                                       |
+| `header.device`             | `object` | No       | 终端其他信息                                                 |
+| `header.device.network`     | `string` | No       | 终端网络类型                                                 |
+| `header.device.serialNum`   | `string` | 否       | 设备唯一序列号                                               |
 
 
 ***Payload Parameters***
@@ -882,6 +888,149 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | ---------------------- | -------- | ---- | ---- |
 | `payload`              | `object` | Yes  | 负载   |
 | `payload.jsonBlobInfo` | `string` | Yes  | 数据   |
+
+### 7.7 票据授权
+#### 7.7.1 接口描述
+
+提供终端ClientId票据授权接口。
+
+调用时机： 设备侧第一次拿到手机端传过来的clientid，需要调用本接口换取对应的`tvsRefreshToken`和`authorization`，`tvsRefreshToken`用于刷票接口（7.8节）。`authorization`内部有账号与设备信息，调用7.1-7.6接口时，把`authorization`填入`header.user.authorization`。如果填入`header.user.authorization`，那么`header.guid`,`header.user`其他字段都不需要填写。
+
+#### 7.7.2 请求参数
+
+__URL__：`POST https://aiwx.html5.qq.com/api/v1/account/authorize`
+
+```json
+{
+    "header": {
+        "qua": "{{STRING}}",
+        "ip": "8.8.8.8",
+        "device": {
+            "network": "4G"
+        }
+    },
+    "payload": {
+    	"clientId":"{{STRING}}"
+    }
+}
+```
+
+
+
+| 参数名                              |    类型    | 是否必选 | 描述                                       |
+| -------------------------------- | :------: | :--: | ---------------------------------------- |
+| `header`                         |    -     |  是   | 请求头       |
+| `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
+| `header.ip`                      | `string` |  否   | 终端IP，仅限云服务使用。终端直接调用本节课不要填这个字段。 |
+| `header.device`                  |    -     |  否   |                 |
+| `header.device.network`          | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `payload`                        |    -     |  是   | 请求内容                                     |
+| `payload.clientId` |    -     |  是   | DMSDK ClientId |
+
+
+#### 7.7.3 返回参数
+```json
+{
+    "header": {
+        "retCode": 0,
+        "errMsg": "{{STRING}}"
+    },
+    "payload": {
+        "tvsRefreshToken": "{{STRING}}"，
+        "authorization": "{{STRING}}"，
+        "expiredTimeInSeconds":{{INT}}
+    }
+}
+```
+
+***Header Parameters***
+
+| 参数名           | 类型     | 是否必选 | 描述                                                        |
+| ---------------- | -------- | -------- | ----------------------------------------------------------- |
+| `header`         | `object` | Yes      | 头部                                                        |
+| `header.retCode` | `long`   | Yes      | 返回码。如果错误码不等于0且大于-1000000，可以认为票据无效。 |
+| `header.errMsg`  | `string` | Yes      | 错误消息                                                    |
+
+***Payload Parameters***
+
+| 参数名                    | 类型       | 是否必选 | 描述   |
+| ---------------------- | -------- | ---- | ---- |
+| `payload`              | `object` | Yes  | 负载   |
+| `payload.tvsRefreshToken` | `string` | Yes  | tvsRefreshToken，刷票用 |
+| `payload.authorization` | `string` | Yes  | 账户信息。用在其他请求的`header.user.authorization`中。 |
+| `payload.expiredTimeInSeconds` | `int` | Yes  | 票据过期时间 (秒)。到达过期时间，需要调用7.8刷票接口重新刷票。 |
+
+
+### 7.8 刷票
+#### 7.8.1 接口描述
+
+提供终端刷票接口。
+
+#### 7.8.2 请求参数
+
+__URL__：`POST https://aiwx.html5.qq.com/api/v1/account/refresh`
+
+```json
+{
+    "header": {
+        "qua": "{{STRING}}",
+        "ip": "8.8.8.8",
+        "device": {
+            "network": "4G"
+        }
+    },
+    "payload": {
+        "tvsRefreshToken": "{{STRING}}"
+    }
+}
+```
+
+
+
+| 参数名                              |    类型    | 是否必选 | 描述                                       |
+| -------------------------------- | :------: | :--: | ---------------------------------------- |
+| `header`                         |    -     |  是   | 请求头       |
+| `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
+| `header.ip`                      | `string` |  否   | 终端IP，仅限云服务使用。终端直接调用本接口不要填这个字段。 |
+| `header.device`                  |    -     |  否   |                 |
+| `header.device.network`          | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `payload`                        |    -     |  是   | 请求内容                                     |
+| `payload.tvsRefreshToken` |    -     |  是   | TVS刷票Token     |
+
+
+#### 7.8.3 返回参数
+```json
+{
+    "header": {
+        "retCode": 0,
+        "errMsg": "{{STRING}}"
+    },
+    "payload": {
+        "tvsRefreshToken": "{{STRING}}"，
+        "authorization": "{{STRING}}"，
+        "expiredTimeInSeconds":{{INT}}
+    }
+}
+```
+
+***Header Parameters***
+
+| 参数名           | 类型     | 是否必选 | 描述                                                        |
+| ---------------- | -------- | -------- | ----------------------------------------------------------- |
+| `header`         | `object` | Yes      | 头部                                                        |
+| `header.retCode` | `long`   | Yes      | 返回码。如果错误码不等于0且大于-1000000，可以认为票据无效。 |
+| `header.errMsg`  | `string` | Yes      | 错误消息                                                    |
+
+***Payload Parameters***
+
+| 参数名                    | 类型       | 是否必选 | 描述   |
+| ---------------------- | -------- | ---- | ---- |
+| `payload`              | `object` | Yes  | 负载   |
+| `payload.tvsRefreshToken` | `string` | Yes  | 最新tvsRefreshToken，下次刷票使用。 |
+| `payload.authorization` | `string` | Yes  | 最新账户信息。每次请求7.1-7.6的接口，都需要用最新账户信息。 |
+| `payload.expiredTimeInSeconds` | `int` | Yes  | 过期时间 (秒)。到达过期时间，需要重新刷票。 |
+
+
 
 
 
