@@ -155,8 +155,11 @@ body请求示例
 ```json
 {
     "header": {
-        "guid": "【设备唯一标识】",
-        "qua": "【设备QUA】",
+        "device": {
+            "network": "4G",
+            "serial_num":"{{STRING}}"
+        }，
+        "qua": "【QUA】",
         "user": {
             "user_id": "",
             "account":{
@@ -171,11 +174,7 @@ body请求示例
             "longitude": 132.56481,
             "latitude": 22.36549
         },
-        "ip": "8.8.8.8",
-        "device": {
-            "network": "4G",
-            "serial_num":"{{STRING}}"
-        }
+        "ip": "8.8.8.8"
     },
     "payload": {
         "session": {
@@ -211,8 +210,10 @@ body请求示例
 | 参数名                               |    类型    | 是否必选 | 描述                                       |
 | --------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                          |    -     |  是   | 请求头                                      |
-| `header.guid`                     | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
-| `header.qua`                      | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
+| `header.device`                   |    -     |  是   |   设备信息          |
+| `header.device.network`           | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `header.device.serial_num`        | `string` |  是   | 设备唯一序列号                               |
+| `header.qua`                      | `string` |  是   | 应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                     |    -     |  否   | 用户信息                                     |
 | `header.user.authorization` | `string`   | No   | 授权信息(使用account相关接口得到的authorization)                            |
 | `header.user.user_id`             | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
@@ -225,9 +226,6 @@ body请求示例
 | `header.lbs.longitude`            | `double` |  -   | 经度                                       |
 | `header.lbs.latitude`             | `double` |  -   | 纬度                                       |
 | `header.ip`                       | `string` |  是   | 终端IP                                     |
-| `header.device`                   |    -     |  否   |                                          |
-| `header.device.network`           | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
-| `header.device.serial_num`        | `string` |  否   | 设备唯一序列号                                  |
 | `payload`                         |    -     |  是   | 请求内容                                     |
 | `payload.query`                   | `string` |  是   | 用户query                                  |
 | `payload.request_type`            | `string` |  否   | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
@@ -320,7 +318,10 @@ body请求示例
 ```json
 {
     "header": {
-        "guid": "【设备唯一标识】",
+    	"device": {
+            "network": "4G",
+            "serial_num":"{{STRING}}"
+        },
         "qua": "【设备QUA】",
         "user": {
             "user_id": "",
@@ -336,11 +337,8 @@ body请求示例
             "longitude": 132.56481,
             "latitude": 22.36549
         },
-        "ip": "8.8.8.8",
-        "device": {
-            "network": "4G",
-            "serial_num":"{{STRING}}"
-        }
+        "ip": "8.8.8.8"
+
     },
     "payload": {
         "session": {
@@ -408,8 +406,10 @@ body请求示例
 | 参数名                      |   类型   | 是否必选 | 描述                                                         |
 | --------------------------- | :------: | :------: | ------------------------------------------------------------ |
 | `header`                    |    -     |    是    | 请求头                                                       |
-| `header.guid`               | `string` |    是    | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
-| `header.qua`                | `string` |    是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
+| `header.device`                   |    -     |  是   |   设备信息          |
+| `header.device.network`           | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `header.device.serial_num`        | `string` |  是   | 设备唯一序列号                                 |
+| `header.qua`                      | `string` |  是   | 应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`               |    -     |    否    | 用户信息                                                     |
 | `header.user.authorization` | `string` |    No    | 授权信息(使用account相关接口得到的authorization)             |
 | `header.user.user_id`       | `string` |    -     | 用户ID，，详细说明见[附录-USERID](#USERID)                   |
@@ -512,8 +512,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 ```json
 {
     "header": {
-        "guid": "9f533c717354fd6b2b95ee5111ba88cb",
-        "qua": "QV=3&PL=ADR&PR=your_product_name&VE=GA&VN=0.1.0.1000&PP=com.your_product.packagename&DE=TV&CHID=app_channel_id",
+        "device": {
+            "network": "4G",
+            "serial_num":"{{STRING}}"
+        },
+        "qua": "【QUA】",
         "user": {
             "user_id": ""
         },
@@ -521,10 +524,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
             "longitude": 132.56481,
             "latitude": 22.36549
         },
-        "ip": "8.8.8.8",
-        "device": {
-            "network": "4G"
-        }
+        "ip": "8.8.8.8"
     },
     "payload": {
         "voice_meta": {
@@ -546,7 +546,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | 参数名                              |    类型    | 是否必选 | 描述                                       |
 | -------------------------------- | :------: | :--: | ---------------------------------------- |
 | `header`                         |    -     |  是   | 请求头                                      |
-| `header.guid`                    | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
+| `header.device`                   |    -     |  是   |   设备信息          |
+| `header.device.network`           | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `header.device.serial_num`        | `string` |  是   | 设备唯一序列号                                  |
 | `header.qua`                     | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
 | `header.user`                    |    -     |  否   | 用户信息                                     |
 | `header.user.user_id`            | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
@@ -554,8 +556,6 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `header.lbs.longitude`           | `double` |  -   | 经度                                       |
 | `header.lbs.latitude`            | `double` |  -   | 纬度                                       |
 | `header.ip`                      | `string` |  是   | 终端IP                                     |
-| `header.device`                  |    -     |  否   |                                          |
-| `header.device.network`          | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
 | `payload`                        |    -     |  是   | 请求内容                                     |
 | `payload.voice_meta`             |    -     |  是   | 语音配置信息                                   |
 | `payload.voice_meta.compress`    | `string` |  是   | 压缩类型：`PCM`/`WAV`/`SPEEX`/`AMR`/`OPUS`/`MP3` |
@@ -610,15 +610,18 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | 一次合成 | 当payload.single_request=true时，TTS引擎将语音合成结果一次性返回。 优点是终端代码逻辑简单，缺点是合成速度较慢 |
 
 
-#### 请求参数
+#### 7.4.2 请求参数
 
 __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 
 ```json
 {
     "header": {
-        "guid": "9f533c717354fd6b2b95ee5111ba88cb",
-        "qua": "QV=3&PL=ADR&PR=your_product_name&VE=GA&VN=0.1.0.1000&PP=com.your_product.packagename&DE=TV&CHID=app_channel_id",
+        "device": {
+            "network": "4G",
+            "serial_num":"{{STRING}}"
+        },
+        "qua": "【QUA】",
         "user": {
             "user_id": ""
         },
@@ -626,10 +629,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
             "longitude": 132.56481,
             "latitude": 22.36549
         },
-        "ip": "8.8.8.8",
-        "device": {
-            "network": "4G"
-        }
+        "ip": "8.8.8.8"
     },
     "payload": {
         "speech_meta": {
@@ -649,34 +649,34 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 }
 ```
 
-| 参数名                            |    类型    | 是否必选 | 描述                                       |
-| ------------------------------ | :------: | :--: | ---------------------------------------- |
-| `header`                       |    -     |  是   | 请求头                                      |
-| `header.guid`                  | `string` |  是   | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
-| `header.qua`                   | `string` |  是   | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明)   |
-| `header.user`                  |    -     |  否   | 用户信息                                     |
-| `header.user.user_id`          | `string` |  -   | 用户ID，，详细说明见[附录-USERID](#USERID)          |
-| `header.lbs`                   |    -     |  否   | 用户位置信息                                   |
-| `header.lbs.longitude`         | `double` |  -   | 经度                                       |
-| `header.lbs.latitude`          | `double` |  -   | 纬度                                       |
-| `header.ip`                    | `string` |  是   | 终端IP                                     |
-| `header.device`                |    -     |  否   |                                          |
-| `header.device.network`        | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
-| `payload`                      |    -     |  是   | 请求内容                                     |
-| `payload.speech_meta`          |    -     |  是   | 语音配置信息                                   |
-| `payload.speech_meta.compress` | `string` |  是   | 压缩类型：`WAV`/`MP3`/`AMR`                   |
-| `payload.speech_meta.person`   | `string` |  否   | 发音人：`ZHOULONGFEI`/`CHENANQI`/`YEZI`/`YEWAN`/`DAJI`/`LIBAI`/`NAZHA`/`MUZHA`/`WY` |
-| `payload.speech_meta.volume`   |  `int`   |  否   | 音量：0~100（默认50）                           |
-| `payload.speech_meta.speed`    |  `int`   |  否   | 语速：0~100（默认50）                           |
-| `payload.speech_meta.pitch`    |  `int`   |  否   | 声调：0~100（默认50）                           |
-| `payload.session_id`           | `string` |  否   | 流式TTS过程中必填                               |
-| `payload.index`                |  `int`   |  是   | 请求的语音片序号                                 |
-| `payload.single_request`       |  `bool`  |  是   | 是否一次合成：<br>`true`：一次合成；<br>`false`：流式合成； |
-| `payload.content`              |    -     |  是   | TTS内容                                    |
-| `payload.content.text`         | `string` |  是   | 转语音的文本内容                                 |
+| 参数名                         |   类型   | 是否必选 | 描述                                                         |
+| ------------------------------ | :------: | :------: | ------------------------------------------------------------ |
+| `header`                       |    -     |    是    | 请求头                                                       |
+| `header.device`                |    -     |    是    | 设备信息                                                     |
+| `header.device.network`        | `string` |    否    | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`                             |
+| `header.device.serial_num`     | `string` |    是    | 设备唯一序列号，请保证每个设备唯一，以免影响用户体验。    |
+| `header.qua`                   | `string` |    是    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
+| `header.user`                  |    -     |    否    | 用户信息                                                     |
+| `header.user.user_id`          | `string` |    -     | 用户ID，，详细说明见[附录-USERID](#USERID)                   |
+| `header.lbs`                   |    -     |    否    | 用户位置信息                                                 |
+| `header.lbs.longitude`         | `double` |    -     | 经度                                                         |
+| `header.lbs.latitude`          | `double` |    -     | 纬度                                                         |
+| `header.ip`                    | `string` |    是    | 终端IP                                                       |
+| `payload`                      |    -     |    是    | 请求内容                                                     |
+| `payload.speech_meta`          |    -     |    是    | 语音配置信息                                                 |
+| `payload.speech_meta.compress` | `string` |    是    | 压缩类型：`WAV`/`MP3`/`AMR`                                  |
+| `payload.speech_meta.person`   | `string` |    否    | 发音人：`ZHOULONGFEI`/`CHENANQI`/`YEZI`/`YEWAN`/`DAJI`/`LIBAI`/`NAZHA`/`MUZHA`/`WY` |
+| `payload.speech_meta.volume`   |  `int`   |    否    | 音量：0~100（默认50）                                        |
+| `payload.speech_meta.speed`    |  `int`   |    否    | 语速：0~100（默认50）                                        |
+| `payload.speech_meta.pitch`    |  `int`   |    否    | 声调：0~100（默认50）                                        |
+| `payload.session_id`           | `string` |    否    | 流式TTS过程中必填                                            |
+| `payload.index`                |  `int`   |    是    | 请求的语音片序号                                             |
+| `payload.single_request`       |  `bool`  |    是    | 是否一次合成：<br>`true`：一次合成；<br>`false`：流式合成；  |
+| `payload.content`              |    -     |    是    | TTS内容                                                      |
+| `payload.content.text`         | `string` |    是    | 转语音的文本内容                                             |
 
 
-#### 7.4.2 返回参数
+#### 7.4.3 返回参数
 
 ```json
 {
@@ -712,8 +712,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 ```json
 {
     "header": {
-        "guid": "9f533c717354fd6b2b95ee5111ba88cb",
-        "qua": "QV=3&PL=ADR&PR=your_product_name&VE=GA&VN=0.1.0.1000&PP=com.your_product.packagename&DE=TV&CHID=app_channel_id",
+        "device": {
+            "network": "4G",
+            "serial_num":"{{STRING}}"
+        },
+        "qua": "【QUA】",
         "user": {
             "account_type": 0,
             "account_app_id": "",
@@ -744,7 +747,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | 参数名                          | 类型       | 是否必选 | 描述                                       |
 | ---------------------------- | -------- | ---- | ---------------------------------------- |
 | `header`                     | -        | 是    | 消息头                                      |
-| `header.guid`                | `string` | 是    |                                          |
+| `header.device`                   |    -     |  是   |   设备信息          |
+| `header.device.network`           | `string` |  否   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `header.device.serial_num`        | `string` |  是   | 设备唯一序列号。请保证每个设备唯一，以免影响用户体验。            |
 | `header.qua`                 | `string` | 是    |                                          |
 | `header.user`                | -        | 否    |                                          |
 | `header.user.account_type`   | `int`    | 否    | `-1`：未登录<br>`2`：QQ Open登陆<br>`3`：微信登陆    |
@@ -801,8 +806,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 ```json
 {
     "header": {
-        "guid": "【设备唯一标识】",
-        "qua": "【设备QUA】",
+        "device": {
+            "network": "4G",
+            "serial_num":"{{STRING}}"
+        },
+        "qua": "【QUA】",
         "user": {
             "user_id": "",
             "account":{
@@ -817,11 +825,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
             "longitude": 132.56481,
             "latitude": 22.36549
         },
-        "ip": "8.8.8.8",
-        "device": {
-            "network": "4G",
-            "serialNum": "{{STRING}}"
-        }
+        "ip": "8.8.8.8"
     },
     "payload": {
         "domain": "{{STRING}}",
@@ -836,8 +840,10 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | 参数名                      | 类型     | 是否必选 | 描述                                                         |
 | --------------------------- | -------- | -------- | ------------------------------------------------------------ |
 | ` header `                  | `object` | Yes      | -                                                            |
-| `header.guid`               | `string` | 是       | 设备唯一标志码。请保证每个设备有且仅有一个GUID，详细说明见[附录-GUID获取](#92-guid%E8%8E%B7%E5%8F%96) |
-| `header.qua`                | `string` | 是       | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
+| `header.device`                   |    -     |  Yes   |   设备信息          |
+| `header.device.network`           | `string` |  No   | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`              |
+| `header.device.serial_num`        | `string` |  Yes  | 设备唯一序列号                                  |
+| `header.qua`                | `string` | Yes    | 设备及应用信息，详细说明见[附录-QUA字段说明](#91-QUA字段说明) |
 | `header.user`               | -        | No       | 用户信息                                                     |
 | `header.user.authorization` | `string` | No       | 授权信息(使用account相关接口得到的authorization)             |
 | `header.user.user_id`       | `string` | No       | 用户ID，，详细说明见[附录-USERID](#USERID)                   |
