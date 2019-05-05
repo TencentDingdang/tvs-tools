@@ -25,7 +25,8 @@ astro
 
 "controlInfo": {
 	"textSpeak": "true",
-	"type": "TEXT"
+	"type": "TEXT"，
+	"version": "1.0.0"
 },
 "listItems": [{
 	"selfData": {

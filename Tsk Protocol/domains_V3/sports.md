@@ -6,21 +6,21 @@
 
 ### 意图列表
 
-| Intent             | Description                      |
-| :----------------- | -------------------------------- |
-| search_schedule    | 搜索最近有什么比赛               |
-| search_record      | 某个球队的排名多少了             |
-| search_round       | 比赛到第几轮了                   |
-| search_score       | 查比赛结果的比分                 |
-| search_status      | 搜索比赛是否有开始，到什么状态了 |
-| search_time        | 查下比赛时间                     |
-| search_channel     | 比赛在哪个频道播                 |
-| search_statistics  | 查询某个球队/球员的技术统计数据  |
-| search_rankinglist | 查各种榜单                       |
-| search_information | 查询球队/球员等的基本信息        |
-| search_rank_stat   | 查询球队球员成绩计算             |
-| search_group       | 球队与分组的正反向查询           |
-| search_player_goal | 查询谁进球了                     |
+| Intent             | Description                           |
+| :----------------- | ------------------------------------- |
+| search_schedule    | 搜索最近有什么比赛                    |
+| search_record      | 某个球队的排名多少了                  |
+| search_round       | 比赛到第几轮了                        |
+| search_score       | 查比赛结果的比分                      |
+| search_status      | 搜索比赛是否有开始，到什么状态了      |
+| search_time        | 查下比赛时间                          |
+| search_channel     | 比赛在哪个频道播                      |
+| search_statistics  | 查询某个球队/球员的技术统计数据       |
+| search_rankinglist | 技术统计对比，比如“NBA今天谁得分最多” |
+| search_information | 查询球队/球员等的基本信息             |
+| search_rank_stat   | 查询球队球员成绩计算                  |
+| search_group       | 球队与分组的正反向查询                |
+| search_player_goal | 查询谁进球了                          |
 
 
 
@@ -172,6 +172,7 @@
                     "href": "https://aiwx.sparta.html5.qq.com/sports/rank?param=D0fduEabSh32gixc37RggeCaSbYmi4%2FcIf7zEtQSUozOaPJl7YVZArJ2rqhBH4Fy", 
                     "name": "查看全部排名"
                 }, 
+                "iGroupIndex": 0,
                 "noSupport": "", 
                 "rankdata": {
                     "competitionName": "", 
