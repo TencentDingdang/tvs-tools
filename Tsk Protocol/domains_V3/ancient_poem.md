@@ -8,7 +8,7 @@
 
 | Intent                      | Description  |
 | --------------------------- | ------------ |
-| search_tangshi              | 查询古诗全文       |
+| search_tangshi              | 查询古诗全文      |
 | search_tangshi_author       | 查询诗词作者       |
 | search_ancientpoemtitle     | 查询诗词的标题      |
 | search_ancientpoem_meaning      | 查询诗词全文的含义    |
