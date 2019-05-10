@@ -1,4 +1,4 @@
-# 腾讯叮当HTTP接入API V20190314
+# 基础API文档
 
 
 
@@ -21,15 +21,12 @@
   - [7.6 特殊能力访问接口](#76-特殊能力访问接口)
   - [7.7 票据授权](#77-票据授权)
   - [7.8 刷票](#78-刷票)
-- [8 腾讯叮当能力评测注意事项 ](#8-腾讯叮当能力评测注意事项)
+- [8 能力评测注意事项 ](#8-能力评测注意事项)
 - [9 附录 ](#9-附录)
 
 ## 1 简介
 
-本文档主要针对API开发者，描述腾讯叮当云端API语音识别、语义理解、TTS接口服务的相关技术内容。如果您对文档内容有任何疑问，可以通过以下方式联系我们：
-
-- 发送邮件至allenwwang##tencent.com;kangrong##tencent.com;。 替换##为@。
-
+本文档主要针对API开发者，描述基础API语音识别、语义理解、TTS接口服务的相关技术内容。
   
 
 ## 2 API接口能力
@@ -40,7 +37,7 @@
 | 语音识别接口    | 提供流式/非流式语音识别能力。                   |
 | 语音合成接口    | 提供语音合成的能力。                        |
 | 终端状态上报接口  | 上报终端状态，有助于后台提供更精准的语义服务结果          |
-| 特殊能力访问接口  | 为终端提供访问叮当非AI的其他能力，如换取资源URL、访问智能家居 |
+| 特殊能力访问接口  | 为终端提供访问非AI的其他能力，如换取资源URL、访问智能家居 |
 
 其基本架构为：
 ![Demo](img/api.png)
@@ -69,7 +66,7 @@ JSON格式，返回内容为UTF-8编码
 
 ## 6 HTTP Header要求
 
-腾讯叮当API对于HTTP请求的请求头字段有如下要求：
+基础API对于HTTP请求的请求头字段有如下要求：
 
 | Header Name   | 是否必须 | 说明                                       |
 | ------------- | ---- | ---------------------------------------- |
@@ -79,9 +76,9 @@ JSON格式，返回内容为UTF-8编码
 
 ### 6.1 签名方法
 
-腾讯叮当API要求所有的请求都要经过签名，以证明请求是经过授权的。请求通过Hash算法进行加密计算，得到一个请求对应的签名字符串，并将该签名字符串带到`Authorization`请求头中。腾讯叮当API会对该签名进行校验，对于未带上正确签名的请求将视为未授权的请求并拒绝访问。
+基础API要求所有的请求都要经过签名，以证明请求是经过授权的。请求通过Hash算法进行加密计算，得到一个请求对应的签名字符串，并将该签名字符串带到`Authorization`请求头中。基础API会对该签名进行校验，对于未带上正确签名的请求将视为未授权的请求并拒绝访问。
 
-腾讯叮当API支持使用[TVS-HMAC-SHA256-BASIC](#611-TVS-HMAC-SHA256-BASIC签名方法)进行消息签名。
+基础API支持使用[TVS-HMAC-SHA256-BASIC](#611-TVS-HMAC-SHA256-BASIC签名方法)进行消息签名。
 
 #### 6.1.1 TVS-HMAC-SHA256-BASIC签名方法
 
@@ -97,7 +94,7 @@ JSON格式，返回内容为UTF-8编码
 ```
 
 #### 6.1.3 Task 2: 获取`Signature`签名
-腾讯叮当API要求使用平台分配的`AccessToken`作为签名的密钥，`AccessToken`应该存放在请求方的服务器中，不应该以任何形式暴露给终端。签名使用的算法是`HMAC-SHA256`：
+基础API要求使用平台分配的`AccessToken`作为签名的密钥，`AccessToken`应该存放在请求方的服务器中，不应该以任何形式暴露给终端。签名使用的算法是`HMAC-SHA256`：
 ```
 Signature = HMAC_SHA256(SigningContent, AccessToken);
 ```
@@ -290,7 +287,7 @@ body请求示例
 | `payload.response_text`            | `string` | 显示正文内容                                   |
 | `payload.data`                     | -        | 领域数据                                     |
 | `payload.data.json`                | -        | 领域结构化Json数据,见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
-| `payload.data.json_template`       | -        | **废弃**。领域模版Json数据，数据格式详见"腾讯叮当模板文档"       |
+| `payload.data.json_template`       | -        | **废弃**。      |
 
 示例代码见1: https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswerV1.py  (不带附加数据)
 示例代码见2: https://github.com/TencentDingdang/tvs-tools/tree/master/evaluate/script/richanswer_extV1.py  (带附加数据)
@@ -490,7 +487,7 @@ body请求示例
 | `payload.response_text`            | `string` | 显示正文内容                                   |
 | `payload.data`                     | -        | 领域数据                                     |
 | `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
-| `payload.data.json_template`       | -        | **废弃**。领域模版Json数据，数据格式详见"腾讯叮当模板文档"       |
+| `payload.data.json_template`       | -        | **废弃**。  |
 
  
 
@@ -705,7 +702,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 
 ### 7.5 终端状态上报接口
 #### 7.5.1 接口描述
-   为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过上报接口向腾讯叮当上报终端的阅读、播放等状态。
+   为了给用户提供更多个性化的内容，保证更优的体验。终端可以通过上报接口向腾讯后台上报终端的阅读、播放等状态。
 #### 7.5.2 请求参数
 __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
@@ -1040,9 +1037,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/refresh`
 
 
 
-## 8 腾讯叮当能力评测注意事项
+## 8 能力评测注意事项
 
-终端接入腾讯叮当时，若有评测需求需向相应的产品接口人申请，告知测试理由、测试QPS及持续时间，评测时有以下需要注意的事项：
+终端接入时，若有评测需求需向相应的产品接口人申请，告知测试理由、测试QPS及持续时间，评测时有以下需要注意的事项：
 
 1. 评测开始及过程中与接口人保持联系；
 2. 测试QPS需以1小时为单位逐渐增加；
@@ -1053,7 +1050,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/refresh`
 
   QUA是用于标识客户端信息的key-value对，key-value之间以`&`连接，服务端可根据QUA信息给出响应的适配内容。
 
-   **终端每次请求叮当后台时，都需要在请求结构体中带上QUA信息。**
+   **终端每次请求腾讯后台时，都需要在请求结构体中带上QUA信息。**
 
    QUA 的key-value说明如下：
 
@@ -1094,7 +1091,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/account/refresh`
 import datetime, hashlib, hmac
 import requests # Command to install: `pip install requests`
 
-# 腾讯叮当提供的Bot Key/Secret
+# 开放平台提供的Appkey/AccessToken
 AppKey = 'AppKey' # Replace with your appKey
 accessToken = 'AccessToken' # Replace with your accessToken
 
