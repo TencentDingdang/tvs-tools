@@ -27,7 +27,7 @@
 ## 1 简介
 
 本文档主要针对API开发者，描述基础API语音识别、语义理解、TTS接口服务的相关技术内容。
-  
+
 
 ## 2 API接口能力
 
@@ -419,9 +419,6 @@ body请求示例
 | `header.lbs.longitude`      | `double` |    -     | 经度                                                         |
 | `header.lbs.latitude`       | `double` |    -     | 纬度                                                         |
 | `header.ip`                 | `string` |    是    | 终端IP                                                       |
-| `header.device`             |    -     |    否    |                                                              |
-| `header.device.network`     | `string` |    否    | 网络类型：`4G`/`3G`/`2G`/`Wi-Fi`                             |
-| `header.device.serial_num`  | `string` |    否    | 设备唯一序列号                                               |
 | `payload`                   |    -     |    是    | 请求内容                                                     |
 | `payload.query`             | `string` |    是    | 用户query                                                    |
 | `payload.request_type`      | `string` |    否    | 请求类型：<br>`SEMANTIC_SERVICE`：默认，返回语义、服务结果；<br>`SEMANTIC_ONLY`：只需要语义结果<br>`SERVICE_ONLY`：只需要服务结果，需带上`session_id`； |
