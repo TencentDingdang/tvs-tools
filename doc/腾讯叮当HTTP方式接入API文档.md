@@ -266,14 +266,13 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 | `header.lbs.latitude`       | `double` |    -     | 纬度                                                         |
 | `header.ip`                 | `string` |    否    | 终端IP。如果是云端对接，需要填写。如果是终端直接调用，不需要填写。 |
 | `payload`                   |    -     |    是    | 请求内容                                                     |
-| `payload.query`             | `string` |    是    | 用户query                                                    |
-| `payload.semantic`          |    -     |    否    | 明确语义信息，若带上，则请求不经过NLP。一般不需要带，某些特殊能力需要。
+| `payload.query`             | `string` |    是    | 用户query         |
+| `payload.semantic`          |    -     |    否    | 明确语义信息，若带上，则请求不经过NLP。一般不需要带，某些特殊能力需要。|
 | `payload.semantic.domain`   | `string` |    否    | 领域信息                                                     |
 | `payload.semantic.intent`   | `string` |    否    | 意图信息                                                     |
 | `payload.semantic.slots`    |    -     |    否    | 语义参数信息（语义槽位）                                          |
 | `payload.semantic_extra`    |    -     |    否    | 附加语义信息                                                 |
-| `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               <br>
-
+| `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               <br>|
 | `payload.extra_data`              |    -     |  否   | 额外数据信息，特殊能力才需要                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
