@@ -147,7 +147,7 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 ```
 
 
-签名示例见：samples/signature.py
+签名示例见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/signature.py>
 
 # 4 API接口能力
 
@@ -334,7 +334,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 
  
 
-示例代码见：samples/richanswerv2.py，samples/richanswerv2_ext.py
+示例代码见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/richanswerv2.py>，<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/richanswerv2_ext.py>
 
 ## 5.2 语音识别
 
@@ -438,7 +438,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.final_result`      | `bool`   | 是否最终结果                             |
 | `payload.result`            | `string` | 语音识别结果                             |
 | `payload.ret`               | `int`    | 返回状态，如果是0表示正常返回，非0为错误 |
-示例代码见1:  samples/asr.py
+示例代码见1: <https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/asr.py>
 
  
 
@@ -543,7 +543,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload.speech_finished`   | `bool`   | 是否结束        |
 | `payload.speech_base64`     | `string` | 语音的Base64数据 |
 
-示例代码见1:  samples/tts.py
+示例代码见1:  <https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/tts.py>
 
 ## 5.4 终端状态上报
 ### 5.4.1 接口描述
@@ -729,7 +729,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | `payload`              | `object` | Yes  | 负载   |
 | `payload.jsonBlobInfo` | `string` | Yes  | 数据   |
 
-示例代码见：samples/uniAccess.py
+示例代码见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/uniAccess.py>
 
 
 
