@@ -298,6 +298,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
         }
     },
     "payload": {
+        "ret":0,
         "response_text": "深圳市今天天气.....",
         "data": {
             "json": {
@@ -326,6 +327,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 | `header.session`                   | -        | 会话                                       |
 | `header.session.session_id`        | `string` | 会话ID                                     |
 | `payload`                          | -        | 消息体                                      |
+| `payload.ret`                          | `int`      | 返回错误码，0表示正常                                    |
 | `payload.response_text`            | `string` | 显示正文内容                                   |
 | `payload.data`                     | -        | 领域数据                                     |
 | `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
