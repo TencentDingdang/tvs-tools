@@ -1,4 +1,4 @@
-### Call Directive
+### 呼叫指令
 ```json
 {
     "directive": {
@@ -34,12 +34,12 @@
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 |    contacts                    |    array        |    Yes    |    联系人列表                |
 |    contacts[].name            |    string    |    Yes    |    联系人名称                |
 |    contacts[].number        |    string    |    Yes    |    联系人号码                |
 
-### CallWillStart Event
+### 开始呼叫事件
     在开始呼叫前，上报即将开始呼叫事件
 ```json
 {
@@ -50,7 +50,7 @@
             "messageId": "{{STRING}}"
         },
         "payload": {
-            "type": "Phone",
+            "type": "{{STRING}}",
             "token": "{{STRING}}"
         }
     }
@@ -68,9 +68,9 @@
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 
-### CallFinished Event
+### 呼叫结束事件
     呼叫完成后，上报呼叫完成事件
 ```json
 {
@@ -100,10 +100,10 @@
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 |    timeInMilliSeconds        |    long        |    Yes    |    通话时长                    |
 
-### ContactNotFound Event
+### 未找到联系人事件
     如果有联系人未找到，终端上报联系人未找到事件，并带上未找到的联系人列表
 ```json
 {
@@ -115,7 +115,7 @@
             "dialogRequestId": "{{STRING}}"
         },
         "payload": {
-            "type": "Phone",
+            "type": "{{STRING}}",
             "token": "{{STRING}}",
             "contacts": [
                 {
@@ -140,12 +140,12 @@
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 |    contacts                    |    array        |    Yes    |    联系人列表                |
 |    contacts[].name            |    string    |    Yes    |    联系人名称                |
 |    contacts[].number        |    string    |    Yes    |    联系人号码                |
 
-### MultiNumberFound Event
+### 找到多个号码事件
     如果找到多个号码，则发送该事件给TVS
 ```json
 {
@@ -157,7 +157,7 @@
             "dialogRequestId": "{{STRING}}"
         },
         "payload": {
-            "type": "Phone",
+            "type": "{{STRING}}",
             "token": "{{STRING}}",
             "contacts": [
                 {
@@ -181,12 +181,12 @@
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 |    contacts                    |    array        |    Yes    |    联系人列表                |
 |    contacts[].name            |    string    |    Yes    |    联系人名称                |
 |    contacts[].number        |    string    |    Yes    |    联系人号码                |
 
-### CallComingUp Event
+### 收到呼叫事件
     收到呼叫时触发该事件
 ```json
 {
@@ -198,7 +198,7 @@
         },
         "payload": {
             "token": "{{STRING}}",
-            "type": "Phone",
+            "type": "{{STRING}}",
             "contact": {
                 "name": "{{STRING}}",
                 "number": "{{STRING}}"
@@ -219,12 +219,12 @@
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 |    contacts                    |    array        |    Yes    |    联系人列表                |
 |    contacts[].name            |    string    |    Yes    |    联系人名称                |
 |    contacts[].number        |    string    |    Yes    |    联系人号码                |
 
-### Answer Directive
+### 接听指令
 ```json
 {
     "directive": {
@@ -252,9 +252,9 @@
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 
-### HangUp Directive
+### 挂断指令
 ```json
 {
     "directive": {
@@ -282,7 +282,7 @@
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 
 ### 通话参数指令
 ```json
