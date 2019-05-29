@@ -152,7 +152,7 @@
     "event": {
         "header": {
             "namespace": "Communication",
-            "name": "ContactNotFound",
+            "name": "MultiNumberFound",
             "messageId": "{{STRING}}",
             "dialogRequestId": "{{STRING}}"
         },
