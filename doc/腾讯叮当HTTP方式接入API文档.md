@@ -508,7 +508,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload`                      |    -     |    是    | 请求内容                                                     |
 | `payload.speech_meta`          |    -     |    是    | 语音配置信息                                                 |
 | `payload.speech_meta.compress` | `string` |    是    | 压缩类型：`WAV`/`MP3`/`AMR`                                  |
-| `payload.speech_meta.person`   | `string` |    否    | 发音人：`ZHOULONGFEI`/`CHENANQI`/`YEZI`/`YEWAN`/`DAJI`/`LIBAI`/`NAZHA`/`MUZHA`/`WY` |
+| `payload.speech_meta.person`   | `string` |    否    | 发音人：`YEZI`/`YEWAN` |
 | `payload.speech_meta.volume`   |  `int`   |    否    | 音量：0~100（默认50）                                        |
 | `payload.speech_meta.speed`    |  `int`   |    否    | 语速：0~100（默认50）                                        |
 | `payload.speech_meta.pitch`    |  `int`   |    否    | 声调：0~100（默认50）                                        |
