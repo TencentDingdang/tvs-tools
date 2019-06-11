@@ -1,3 +1,33 @@
+### 上下文
+```json
+{
+	"header": {
+        "namespace": "ApplicationControl",
+        "name": "Control"
+	},
+	"payload": {
+		"activeApplication": {
+			"id": "{{STRING}}",
+			"activity": "{{STRING}}"
+		},
+		"allApplication": [
+			"{{STRING}}",
+			"{{STRING}}"
+		]
+	}	
+}
+```
+
+***Payload Paramters***
+
+|    Parameter                    			|    Type    	|    必选	|    描述                           	|
+|    :--------------------------------------- 	|    :--------	|    :-----	|    :-------------------------------- 	|
+|    activeApplication              		|    object 	|    No 	|    活跃应用             			|
+|    activeApplication.id               	|    string 	|    No   	|    应用ID                         	|
+|    activeApplication.activity       	|    string  	|    No 	|    应用状态		             	|
+|    allApplication               			|    array  	|    No 	|    所有应用             			|
+|    allApplication[].id          			|    string  	|    No 	|    应用ID			             	|
+
 ### 应用控制指令
 ```json
 {

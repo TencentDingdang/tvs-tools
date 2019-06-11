@@ -24,20 +24,20 @@
 
 ***Header Paramters***
 
-|    Parameter            |    Type        |    必选    |    描述                                |
-|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
-|    messageId            |    string    |    Yes    |    消息ID                            |
-|    dialogRequestId    |    string    |    Yes    |    对话ID                            |
+|    Parameter            	|    Type    	|    必选	|    描述                          	|
+|    :-------------------    	|    :--------	|    :-----	|    :-------------------------------- 	|
+|    messageId          	|    string  	|    Yes 	|    消息ID                         	|
+|    dialogRequestId   	|    string  	|    No 	|    对话ID                         	|
 
 ***Payload Paramters***
 
-|    Parameter                    |    Type        |    必选    |    描述                            |
-|    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
-|    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
-|    contacts                    |    array        |    Yes    |    联系人列表                |
-|    contacts[].name            |    string    |    Yes    |    联系人名称                |
-|    contacts[].number        |    string    |    Yes    |    联系人号码                |
+|    Parameter               	|    Type    	|    必选	|    描述                       	|
+|    :---------------------------  	|    :-------- 	|    :----- 	|    :---------------------------  	|
+|    token                      	|    string  	|    Yes 	|    token                      	|
+|    type                        	|    string  	|    Yes	|    类型<br>Phone,电话;<br>VideoCall,视频通话    |
+|    contacts                 	|    array   	|    Yes	|    联系人列表                |
+|    contacts[].name       	|    string  	|    Yes 	|    联系人名称                |
+|    contacts[].number   	|    string  	|    Yes 	|    联系人号码                |
 
 ### 开始呼叫事件
     在开始呼叫前，上报即将开始呼叫事件
@@ -97,11 +97,11 @@
 
 ***Payload Paramters***
 
-|    Parameter                    |    Type        |    必选    |    描述                            |
-|    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
-|    token                        |    string    |    Yes    |    token                        |
-|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
-|    timeInMilliSeconds        |    long        |    Yes    |    通话时长                    |
+|    Parameter              	|    Type   	|    必选    	|    描述                            |
+|    :--------------------------- 	|    :-------- 	|    :-----		|    :---------------------------    |
+|    token                     	|    string  	|    Yes 		|    token                        |
+|    type                       	|    string  	|    Yes    	|    类型<br>Phone,电话;<br>VideoCall,视频通话    |
+|    timeInMilliSeconds	|    long   	|    Yes    	|    通话时长                    |
 
 ### 未找到联系人事件
     如果有联系人未找到，终端上报联系人未找到事件，并带上未找到的联系人列表
@@ -111,8 +111,7 @@
         "header": {
             "namespace": "Communication",
             "name": "ContactNotFound",
-            "messageId": "{{STRING}}",
-            "dialogRequestId": "{{STRING}}"
+            "messageId": "{{STRING}}"
         },
         "payload": {
             "type": "{{STRING}}",
@@ -133,7 +132,6 @@
 |    Parameter            |    Type        |    必选    |    描述                                |
 |    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
 |    messageId            |    string    |    Yes    |    消息ID                            |
-|    dialogRequestId    |    string    |    Yes    |    对话ID                            |
 
 ***Payload Paramters***
 
@@ -153,8 +151,7 @@
         "header": {
             "namespace": "Communication",
             "name": "MultiNumberFound",
-            "messageId": "{{STRING}}",
-            "dialogRequestId": "{{STRING}}"
+            "messageId": "{{STRING}}"
         },
         "payload": {
             "type": "{{STRING}}",
@@ -197,7 +194,6 @@
             "messageId": "{{STRING}}"
         },
         "payload": {
-            "token": "{{STRING}}",
             "type": "{{STRING}}",
             "contact": {
                 "name": "{{STRING}}",
@@ -218,7 +214,6 @@
 
 |    Parameter                    |    Type        |    必选    |    描述                            |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
-|    token                        |    string    |    Yes    |    token                        |
 |    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
 |    contacts                    |    array        |    Yes    |    联系人列表                |
 |    contacts[].name            |    string    |    Yes    |    联系人名称                |
@@ -246,6 +241,7 @@
 |    Parameter            |    Type        |    必选    |    描述                                |
 |    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
 |    messageId            |    string    |    Yes    |    消息ID                            |
+|    dialogRequestId   	|    string  	|    No 	|    对话ID                         	|
 
 ***Payload Paramters***
 
@@ -253,6 +249,78 @@
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    token                        |    string    |    Yes    |    token                        |
 |    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
+
+### 接听成功事件
+    收到呼叫时触发该事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "Communication",
+            "name": "AnswerSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "type": "{{STRING}}",
+            "contact": {
+                "name": "{{STRING}}",
+                "number": "{{STRING}}"
+            }
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                                |
+|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                            |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                            |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
+|    contacts                    |    array        |    Yes    |    联系人列表                |
+|    contacts[].name            |    string    |    Yes    |    联系人名称                |
+|    contacts[].number        |    string    |    Yes    |    联系人号码                |
+
+### 接听失败事件
+    收到呼叫时触发该事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "Communication",
+            "name": "AnswerFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "type": "{{STRING}}",
+            "contact": {
+                "name": "{{STRING}}",
+                "number": "{{STRING}}"
+            }
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                                |
+|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                            |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                            |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------    |
+|    type                            |    string    |    Yes    |    类型<br>Phone,电话;<br>VideoCall,视频通话    |
+|    contacts                    |    array        |    Yes    |    联系人列表                |
+|    contacts[].name            |    string    |    Yes    |    联系人名称                |
+|    contacts[].number        |    string    |    Yes    |    联系人号码                |
 
 ### 挂断指令
 ```json
@@ -276,6 +344,7 @@
 |    Parameter            |    Type        |    必选    |    描述                                |
 |    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
 |    messageId            |    string    |    Yes    |    消息ID                            |
+|    dialogRequestId   	|    string  	|    No 	|    对话ID                         	|
 
 ***Payload Paramters***
 
