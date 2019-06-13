@@ -375,6 +375,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
             "sample_rate": "8K",
             "channel": 1,
             "language": "{{STRING}}",
+            "model":10
             "offset":0
         },
         "open_vad": true,
@@ -405,6 +406,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.voice_meta.sample_rate` | `string` |  是   | 采样率：`8K`/`16K`                           |
 | `payload.voice_meta.channel`     |  `int`   |  是   | 音频通道数：`1`/`2`                            |
 | `payload.voice_meta.language`    | `string` |  否   | 语言类型(默认汉语)<br>ENGLISH:英语                 |
+| `payload.voice_meta.model`    | `int` |  否   | asr模型标识。|
 | `payload.voice_meta.offset`      |  `int`   |  否   | 语音片偏移量                                   |
 | `payload.open_vad`               |  `bool`  |  是   | 是否打开VAD                                  |
 | `payload.session_id`             | `string` |  否   | 流式识别过程中必填                                |
