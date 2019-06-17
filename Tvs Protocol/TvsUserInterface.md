@@ -285,7 +285,6 @@
 |    :---------------------------    |    :--------    |    :-----    |    :--------------------------------    |
 |    id                                |    string    |    Yes    |    数据ID                            |
 
-
 ### 播放模式指令
 ```json
 {
@@ -359,3 +358,35 @@
 |    Parameter                            |    Type        |    必选    |    描述                            |
 |    :------------------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    messageId                            |    string    |    Yes    |    消息ID                        |
+
+### 触发动作事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsUserInterface",
+            "name": "ActionTriggered",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "actionDomain": "{{STRING}}",
+            "actionType": "{{STRING}}",
+            "actionParam": "{{STRING}}"
+        }
+    }
+}    
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                                |
+|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                            |
+
+***Payload Paramters***
+
+|    Parameter               	|    Type   	|    必选	|    描述                            	|
+|    :---------------------------  	|    :-------- 	|    :-----	|    :--------------------------------	|
+|    actionDomain          	|    string  	|    Yes	|    动作作用域					|
+|    actionType          		|    string  	|    Yes	|    动作类型						|
+|    actionParam          	|    string  	|    Yes	|    动作参数						|

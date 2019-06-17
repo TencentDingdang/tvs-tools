@@ -21,6 +21,10 @@
 		},
 		"battery": {
 			"power": {{LONG}}
+		},
+		"screensaver": {
+			"state": "{{STRING}}",
+			"switch": "{{STRING}}"
 		}
     }
 }
@@ -253,27 +257,3 @@
 |	currentDataId						|	string	|	Yes	|	当前数据ID													|
 |	previousDataId					|	string	|	Yes	|	上一个数据ID													|
 |	nextDataId							|	string	|	Yes	|	下一个数据ID													|
-
-
-### 应用控制上下文
-```json
-{
-	"header": {
-		"namespace":"ApplicationControl",
-		"name":"PlaybackState"
-	},
-	"payload": {
-		"id": "{{STRING}}",
-		"activity": "{{STRING}}",
-		"offsetInMilliseconds": {{LONG}}
-	}
-}
-```
-
-***Payload Parameters***
-
-|	Parameter							|	Type		|	必选	|	描述						|
-|	:------------------------------------	|	:--------	|	:-----	|	:-----------------------	|
-|	id										|	string	|	Yes	|	ID							|
-|	activity								|	string	|	Yes	|	应用状态				|
-|	offsetInMilliseconds			|	long		|	No	|	偏移量					|
