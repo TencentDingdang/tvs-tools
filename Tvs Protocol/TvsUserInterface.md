@@ -49,7 +49,7 @@
 |    baseInfo.intent                    |    string    |    Yes    |    意图                                                                                        |
 |    jsonUI                                |    string    |    Yes    |    UI信息                                                                                    |
 |    jsonUI.compress                |    string    |    Yes    |    压缩格式<br>none:无压缩<br>gzip:GZIP压缩                            |
-|    jsonUI.data                        |    string    |    Yes    |    UI数据，各领域UI协议见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/domains_V3/                                                                            |
+|    jsonUI.data                        |    string    |    Yes    | UI数据，各领域UI协议见[https://github.com/TencentDingdang/tvs-tools/tree/master/Tsk%20Protocol/domains_V3](https://github.com/TencentDingdang/tvs-tools/tree/master/Tsk Protocol/domains_V3) |
 |    jsonUI.tipsText                    |    string    |    Yes    |    回复语呈现文本                                                                        |
 |    jsonSemantic.compress        |    string    |    Yes    |    压缩格式<br>none:无压缩<br>gzip:GZIP压缩                            |
 |    jsonSemantic.data                |    string    |    Yes    |    语义数据                                                                                |
