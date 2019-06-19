@@ -21,6 +21,10 @@
 		},
 		"battery": {
 			"power": {{LONG}}
+		},
+		"screensaver": {
+			"state": "{{STRING}}",
+			"switch": "{{STRING}}"
 		}
     }
 }

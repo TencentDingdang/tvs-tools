@@ -31,13 +31,13 @@
 			"code_verifier": "{{STRING}}"
 		}
 		```
-		|	Parameter			|	Type		|	必选	|	描述								|
-		|	:-------------------	|	:--------	|	:-----	|	:--------------------------------	|
-		|	grant_type			|	string	|	Yes	|	请求类型						|
-		|	code					|	string	|	Yes	|	获取票据授权Code			|
-		|	redirect_uri		|	string	|	Yes	|	重定向URL					|
-		|	client_id			|	string	|	Yes	|	设备ID							|
-		|	code_verifier		|	string	|	Yes	|	获取票据校验码				|
+		|	Parameter			|	Type		|	必选	|	描述																	|
+		|	:-------------------	|	:--------	|	:-----	|	:----------------------------------------------------------------------	|
+		|	grant_type			|	string	|	Yes	|	请求类型(必须为authorization_code)					|
+		|	code					|	string	|	Yes	|	获取票据授权Code(如果手机端没有传递，空白)	|
+		|	redirect_uri		|	string	|	Yes	|	重定向URL(如果手机端没有传递，空白)				|
+		|	client_id			|	string	|	Yes	|	设备ID																|
+		|	code_verifier		|	string	|	Yes	|	票据校验码(终端生成的随机字符串，最少43个字符，最大128个字符)				|
 
 * 响应
 
@@ -89,11 +89,11 @@
 			"refresh_token": "{{STRING}}"
 		}
 		```
-		|	Parameter			|	Type		|	必选	|	描述								|
-		|	:-------------------	|	:--------	|	:-----	|	:--------------------------------	|
-		|	grant_type			|	string	|	Yes	|	请求类型						|
-		|	client_id			|	string	|	Yes	|	设备ID							|
-		|	refresh_token		|	string	|	Yes	|	刷票票据				|
+		|	Parameter			|	Type		|	必选	|	描述											|
+		|	:-------------------	|	:--------	|	:-----	|	:-------------------------------------------	|
+		|	grant_type			|	string	|	Yes	|	请求类型(必须为refresh_token)	|
+		|	client_id			|	string	|	Yes	|	设备ID										|
+		|	refresh_token		|	string	|	Yes	|	刷票票据									|
 
 * 响应
 
