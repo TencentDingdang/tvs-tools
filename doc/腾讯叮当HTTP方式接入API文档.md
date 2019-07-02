@@ -1130,3 +1130,10 @@ public class TVSBasicSigner
 | 2017/12/06 | 1.添加终端上报接口；<br>2.添加评测注意事项说明； |
 | 2017/12/25 | 1.添加终端开关机上报接口；               |
 | 2019/05/15 | 1.修改demo脚本；<br>2.添加QA；<br>3. 删除无用参数与接口<br>3. 文案修改  |
+
+# 8 示例代码
+
+## C++示例：<https://github.com/TencentDingdang/tvs-tools/tree/master/doc/samples/cpp>
+
+Java示例：<https://github.com/TencentDingdang/tvs-tools/tree/master/doc/samples/java>
+
