@@ -1134,7 +1134,7 @@ public class TVSBasicSigner
 
 # 8 示例代码
 
-## C++示例：<https://github.com/TencentDingdang/tvs-tools/tree/master/doc/samples/cpp>
+C++示例：<https://github.com/TencentDingdang/tvs-tools/tree/master/doc/samples/cpp>
 
 Java示例：<https://github.com/TencentDingdang/tvs-tools/tree/master/doc/samples/java>
 
