@@ -58,25 +58,10 @@
                     "url": ""
                 }
             }, 
-            "htmlView": "http://m.dianping.com/shop/93976896?utm_source=open&appKey=6400508795",
+            "htmlView": "http://m.dianping.com/shop/93976896?utm_source=open&appKey=6400508795",//点评跳转地址
             "mediaId": "", 
-            "selfData": {
-                        "nAvgPrice": 38, 
-                        "nDistance": 81, 
-                        "nReviewCount": 348, 
-                        "strAddress": "南山区万利达科技大厦1层01单位", 
-                        "strAvgRating": "4", 
-                        "strBranchName": "万利达店", 
-                        "strBusinessUrl": "", 
-                        "strCategory": "", 
-                        "strLat": "22.540613", 
-                        "strLng": "113.93371999999999", 
-                        "strName": "", 
-                        "strPhone": "0755-26928791", 
-                        "strPhotoUrl": ""
-                    }, 
-            "textContent": "南山区万利达科技大厦1层01单位", 
-            "title": "老碗会·陕西手工面食大师", 
+            "textContent": "南山区万利达科技大厦1层01单位", //位置信息
+            "title": "老碗会·陕西手工面食大师", //餐厅信息
  			"video": {
                         "metadata": {
                             "offsetInMilliseconds": 0, 

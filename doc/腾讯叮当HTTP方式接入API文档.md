@@ -32,7 +32,7 @@
 
 # 2 术语
 
-本文涉及以下术语，具体释义见http://xxxxxxxxx
+本文涉及以下术语
 
 - 语音合成
 
@@ -147,7 +147,7 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 ```
 
 
-签名示例见：samples/signature.py
+签名示例见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/signature.py>
 
 # 4 API接口能力
 
@@ -266,14 +266,13 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 | `header.lbs.latitude`       | `double` |    -     | 纬度                                                         |
 | `header.ip`                 | `string` |    否    | 终端IP。如果是云端对接，需要填写。如果是终端直接调用，不需要填写。 |
 | `payload`                   |    -     |    是    | 请求内容                                                     |
-| `payload.query`             | `string` |    是    | 用户query                                                    |
-| `payload.semantic`          |    -     |    否    | 明确语义信息，若带上，则请求不经过NLP。一般不需要带，某些特殊能力需要。
+| `payload.query`             | `string` |    是    | 用户query         |
+| `payload.semantic`          |    -     |    否    | 明确语义信息，若带上，则请求不经过NLP。一般不需要带，某些特殊能力需要。|
 | `payload.semantic.domain`   | `string` |    否    | 领域信息                                                     |
 | `payload.semantic.intent`   | `string` |    否    | 意图信息                                                     |
 | `payload.semantic.slots`    |    -     |    否    | 语义参数信息（语义槽位）                                          |
 | `payload.semantic_extra`    |    -     |    否    | 附加语义信息                                                 |
-| `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               <br>
-
+| `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               <br>|
 | `payload.extra_data`              |    -     |  否   | 额外数据信息，特殊能力才需要                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
@@ -299,6 +298,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
         }
     },
     "payload": {
+        "ret":0,
         "response_text": "深圳市今天天气.....",
         "data": {
             "json": {
@@ -327,6 +327,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 | `header.session`                   | -        | 会话                                       |
 | `header.session.session_id`        | `string` | 会话ID                                     |
 | `payload`                          | -        | 消息体                                      |
+| `payload.ret`                          | `int`      | 返回错误码，0表示正常                                    |
 | `payload.response_text`            | `string` | 显示正文内容                                   |
 | `payload.data`                     | -        | 领域数据                                     |
 | `payload.data.json`                | -        | 领域结构化Json数据，数据格式详见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E6%9C%8D%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE%E8%A7%84%E8%8C%83_V3.md |
@@ -334,7 +335,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 
  
 
-示例代码见：samples/richanswerv2.py，samples/richanswerv2_ext.py
+示例代码见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/richanswerv2.py>，<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/richanswerv2_ext.py>
 
 ## 5.2 语音识别
 
@@ -374,6 +375,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
             "sample_rate": "8K",
             "channel": 1,
             "language": "{{STRING}}",
+            "model":10
             "offset":0
         },
         "open_vad": true,
@@ -404,6 +406,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.voice_meta.sample_rate` | `string` |  是   | 采样率：`8K`/`16K`                           |
 | `payload.voice_meta.channel`     |  `int`   |  是   | 音频通道数：`1`/`2`                            |
 | `payload.voice_meta.language`    | `string` |  否   | 语言类型(默认汉语)<br>ENGLISH:英语                 |
+| `payload.voice_meta.model`    | `int` |  否   | asr模型标识。|
 | `payload.voice_meta.offset`      |  `int`   |  否   | 语音片偏移量                                   |
 | `payload.open_vad`               |  `bool`  |  是   | 是否打开VAD                                  |
 | `payload.session_id`             | `string` |  否   | 流式识别过程中必填                                |
@@ -438,7 +441,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.final_result`      | `bool`   | 是否最终结果                             |
 | `payload.result`            | `string` | 语音识别结果                             |
 | `payload.ret`               | `int`    | 返回状态，如果是0表示正常返回，非0为错误 |
-示例代码见1:  samples/asr.py
+示例代码见1: <https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/asr.py>
 
  
 
@@ -507,7 +510,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload`                      |    -     |    是    | 请求内容                                                     |
 | `payload.speech_meta`          |    -     |    是    | 语音配置信息                                                 |
 | `payload.speech_meta.compress` | `string` |    是    | 压缩类型：`WAV`/`MP3`/`AMR`                                  |
-| `payload.speech_meta.person`   | `string` |    否    | 发音人：`ZHOULONGFEI`/`CHENANQI`/`YEZI`/`YEWAN`/`DAJI`/`LIBAI`/`NAZHA`/`MUZHA`/`WY` |
+| `payload.speech_meta.person`   | `string` |    否    | 发音人：`YEZI`/`YEWAN` |
 | `payload.speech_meta.volume`   |  `int`   |    否    | 音量：0~100（默认50）                                        |
 | `payload.speech_meta.speed`    |  `int`   |    否    | 语速：0~100（默认50）                                        |
 | `payload.speech_meta.pitch`    |  `int`   |    否    | 声调：0~100（默认50）                                        |
@@ -543,7 +546,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/tts`
 | `payload.speech_finished`   | `bool`   | 是否结束        |
 | `payload.speech_base64`     | `string` | 语音的Base64数据 |
 
-示例代码见1:  samples/tts.py
+示例代码见1:  <https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/tts.py>
 
 ## 5.4 终端状态上报
 ### 5.4.1 接口描述
@@ -729,7 +732,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 | `payload`              | `object` | Yes  | 负载   |
 | `payload.jsonBlobInfo` | `string` | Yes  | 数据   |
 
-示例代码见：samples/uniAccess.py
+示例代码见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/uniAccess.py>
 
 
 
@@ -1125,4 +1128,4 @@ public class TVSBasicSigner
 | ---------- | ---------------------------- |
 | 2017/12/06 | 1.添加终端上报接口；<br>2.添加评测注意事项说明； |
 | 2017/12/25 | 1.添加终端开关机上报接口；               |
-| 2019/05/15 | 整体修改               |
+| 2019/05/15 | 1.修改demo脚本；<br>2.添加QA；<br>3. 删除无用参数与接口<br>3. 文案修改  |

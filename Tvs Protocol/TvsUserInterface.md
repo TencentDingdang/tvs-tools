@@ -49,7 +49,7 @@
 |    baseInfo.intent                    |    string    |    Yes    |    意图                                                                                        |
 |    jsonUI                                |    string    |    Yes    |    UI信息                                                                                    |
 |    jsonUI.compress                |    string    |    Yes    |    压缩格式<br>none:无压缩<br>gzip:GZIP压缩                            |
-|    jsonUI.data                        |    string    |    Yes    |    UI数据，各领域UI协议见https://github.com/TencentDingdang/tvs-tools/blob/master/doc/domains_V3/                                                                            |
+|    jsonUI.data                        |    string    |    Yes    | UI数据，各领域UI协议见[https://github.com/TencentDingdang/tvs-tools/tree/master/Tsk%20Protocol/domains_V3](https://github.com/TencentDingdang/tvs-tools/tree/master/Tsk Protocol/domains_V3) |
 |    jsonUI.tipsText                    |    string    |    Yes    |    回复语呈现文本                                                                        |
 |    jsonSemantic.compress        |    string    |    Yes    |    压缩格式<br>none:无压缩<br>gzip:GZIP压缩                            |
 |    jsonSemantic.data                |    string    |    Yes    |    语义数据                                                                                |
@@ -285,7 +285,6 @@
 |    :---------------------------    |    :--------    |    :-----    |    :--------------------------------    |
 |    id                                |    string    |    Yes    |    数据ID                            |
 
-
 ### 播放模式指令
 ```json
 {
@@ -359,3 +358,35 @@
 |    Parameter                            |    Type        |    必选    |    描述                            |
 |    :------------------------------------    |    :--------    |    :-----    |    :---------------------------    |
 |    messageId                            |    string    |    Yes    |    消息ID                        |
+
+### 触发动作事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsUserInterface",
+            "name": "ActionTriggered",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "actionDomain": "{{STRING}}",
+            "actionType": "{{STRING}}",
+            "actionParam": "{{STRING}}"
+        }
+    }
+}    
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                                |
+|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                            |
+
+***Payload Paramters***
+
+|    Parameter               	|    Type   	|    必选	|    描述                            	|
+|    :---------------------------  	|    :-------- 	|    :-----	|    :--------------------------------	|
+|    actionDomain          	|    string  	|    Yes	|    动作作用域					|
+|    actionType          		|    string  	|    Yes	|    动作类型						|
+|    actionParam          	|    string  	|    Yes	|    动作参数						|

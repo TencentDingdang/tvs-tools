@@ -1,3 +1,58 @@
+### 上下文
+```json
+{
+    "header": {
+        "namespace": "TvsDeviceControl",
+        "name": "DeviceState"
+    },
+    "payload": {
+		"monitor": {
+			"state": "{{STRING}}",
+        	"brightness": {{LONG}}
+		},
+		"camera": {
+			"state": "{{STRING}}"
+		},
+        "microphone": {
+			"state": "{{STRING}}"
+		},
+        "bluetooth": {
+			"state": "{{STRING}}"
+		},
+		"battery": {
+			"power": {{LONG}}
+		}
+		"activeApplication": {
+			"id": "{{STRING}}",
+			"activity": "{{STRING}}"
+		},
+		"allApplications": [
+			"{{STRING}}",
+			"{{STRING}}"
+		]
+    }
+}
+```
+***Payload Parameters***
+
+|	Parameter							|	Type		|	必选	|	描述								|
+|	:------------------------------------	|	:--------	|	:-----	|	:---------------------------------	|
+|	monitor								|	object	|	Yes	|	监视器							|
+|	monitor.state						|	string	|	Yes	|	监视器状态					|
+|	monitor.brightness				|	long		|	Yes	|	监视器亮度值[0~100]		|
+|	camera								|	object	|	Yes	|	摄像头							|
+|	camera.state						|	string	|	Yes	|	摄像头状态					|
+|	microphone						|	object	|	Yes	|	麦克风							|
+|	microphone.state				|	string	|	Yes	|	麦克风状态					|
+|	bluetooth							|	object	|	Yes	|	蓝牙								|
+|	bluetooth.state					|	string	|	Yes	|	蓝牙状态						|
+|	battery								|	object	|	Yes	|	电池								|
+|	battery.power						|	long		|	Yes	|	电池电量						|
+|   activeApplication              	|   object 	|    No 	|    活跃应用             			|
+|   activeApplication.id            	|   string 	|    No   	|    应用ID                         	|
+|   activeApplication.activity     |   string  	|    No 	|    应用状态		             	|
+|   allApplications              		|   array  	|    No 	|    所有应用             			|
+
 ### 设置亮度指令
 ```json
 {
@@ -325,7 +380,6 @@
             "dialogRequestId": "{{STRING}}"
         },
         "payload": {
-
         }
     }
 }
@@ -436,8 +490,7 @@
             "dialogRequestId": "{{STRING}}"
         },
         "payload": {
-            "type": "{{STRING}}",
-            "pageInfo": "{{STRING}}"
+            "type": "{{STRING}}"
         }
     }
 }
@@ -454,8 +507,7 @@
 
 |    Parameter                    |    Type        |    必选    |    描述                    |
 |    :---------------------------    |    :--------    |    :-----    |    :--------------------    |
-|    type                            |    string    |    Yes    |    类型:<br>Back:返回<br>Exit:退出<br>BackToHome:返回首屏<br>OpenThis:打开当前对象<br>OpenPage:打开页面            |
-|    pageInfo                    |    string    |    Yes    |    页面信息            |
+|    type                            |    string    |    Yes    |    类型:<br>Back:返回<br>Exit:退出<br>BackToHome:返回首屏<br>OpenThis:打开当前对象           |
 
 ### 改变壁纸指令
 ```json
@@ -654,8 +706,7 @@
         "header": {
             "namespace": "TvsDeviceControl",
             "name": "DeleteSleepSucceeded",
-            "messageId": "{{STRING}}",
-            "dialogRequestId": "{{STRING}}"
+            "messageId": "{{STRING}}"
         },
         "payload": {
             "token": "{{STRING}}"
@@ -669,7 +720,6 @@
 |    Parameter            |    Type        |    必选    |    描述                            |
 |    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
 |    messageId            |    string    |    Yes    |    消息ID                        |
-|    dialogRequestId    |    string    |    No    |    对话ID                        |
 
 ***Payload Paramters***
 
@@ -684,8 +734,7 @@
         "header": {
             "namespace": "TvsDeviceControl",
             "name": "DeleteSleepFailed",
-            "messageId": "{{STRING}}",
-            "dialogRequestId": "{{STRING}}"
+            "messageId": "{{STRING}}"
         },
         "payload": {
             "token": "{{STRING}}"
@@ -699,7 +748,6 @@
 |    Parameter            |    Type        |    必选    |    描述                            |
 |    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
 |    messageId            |    string    |    Yes    |    消息ID                        |
-|    dialogRequestId    |    string    |    No    |    对话ID                        |
 
 ***Payload Paramters***
 
@@ -707,11 +755,10 @@
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
 |    token                        |    string    |    Yes    |    token                                    |
 
-
-### 设置定时时间事件
+### 设置定时时间指令
 ```json
 {
-    "event": {
+    "directive": {
         "header": {
             "namespace": "TvsDeviceControl",
             "name": "SetFixedTime",
@@ -719,6 +766,7 @@
             "dialogRequestId": "{{STRING}}"
         },
         "payload": {
+            "token": "{{STRING}}",
             "timeInMilliseconds": LONG,
 			"dataType": "{{STRING}}",
             "action": "{{STRING}}"
@@ -741,11 +789,68 @@
 |    timeInMilliseconds        |    long        |    Yes    |    时长                |
 |    dataType                        |    string    |    Yes    |    数据类型<br>ANY,任意类型;<br>XXX,指定类型;               |
 |    action                        |    string    |    Yes    |    动作<br>PAUSE,暂停                |
+|    token                        |    string    |    Yes    |    token                                    |
 
-### 清除定时时间事件
+### 设置定时时间成功事件
 ```json
 {
     "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "SetFixedTimeSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 设置定时时间失败事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "SetFixedTimeFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 清除定时时间指令
+```json
+{
+    "directive": {
         "header": {
             "namespace": "TvsDeviceControl",
             "name": "ClearFixedTime",
@@ -753,6 +858,7 @@
             "dialogRequestId": "{{STRING}}"
         },
         "payload": {
+			"token": "{{STRING}}"
         }
     }
 }
@@ -764,3 +870,269 @@
 |    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
 |    messageId            |    string    |    Yes    |    消息ID                        |
 |    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 清除定时时间成功事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ClearFixedTimeSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+			"token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 清除定时时间失败事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ClearFixedTimeFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+			"token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 设置屏幕保护指令
+```json
+{
+    "directive": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "SetScreenSaver",
+            "messageId": "{{STRING}}",
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
+			"token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+|    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 设置屏幕保护成功事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "SetScreenSaverSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 设置屏幕保护失败事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "SetScreenSaverFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 取消屏幕保护指令
+```json
+{
+    "directive": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "DeleteScreenSaver",
+            "messageId": "{{STRING}}",
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
+			"token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+|    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 取消屏幕保护成功事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "DeleteScreenSaverSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 取消屏幕保护失败事件
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "DeleteScreenSaverFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+            "token": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    token                        |    string    |    Yes    |    token                                    |
+
+### 打开URI指令
+```json
+{
+    "directive": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "OpenUri",
+            "messageId": "{{STRING}}",
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
+			"type": "{{STRING}}",
+			"uri": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+|    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+***Payload Paramters***
+
+|    Parameter                    |    Type        |    必选    |    描述                                        |
+|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
+|    type                        |    string    |    Yes    |    类型:<br>URL,普通URL;<br>AndroidActivity,Android APP Activity;<br>AndroidBroadcast,Android APP Broadcast                                    |
+|    uri                        |    string    |    Yes    |    token                                    |
