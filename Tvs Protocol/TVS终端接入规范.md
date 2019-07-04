@@ -124,6 +124,13 @@
 		|	token_type		|	string	|	Yes	|	访问票据类型					|
 		|	expires_in			|	LONG	|	Yes	|	访问票据有效时间			|
 
+####	构造HTTP头部Authorization
+
+通过授权/刷票接口获取的access_token,token_type,终端即可自行构造HTTP头部的Authorization字段，Authorization格式如下：
+	
+	token_type Altz|access_token
+	
+
 #### 下行通道
 
 * 请求：
@@ -135,6 +142,12 @@
 	2. 请求方式
 
 		HTTP GET
+
+	3.	HTTP头部
+
+		*	Authorization
+
+			访问凭据，必须携带
 
 * 响应
 
@@ -162,7 +175,13 @@
 
 	2. 请求方式
 
-		HTTP GET
+		HTTP GET	
+
+	3.	HTTP头部
+
+		*	Authorization
+
+			访问凭据，必须携带
 
 * 响应
 
@@ -187,6 +206,21 @@
 	2. 请求方式
 
 		HTTP POST
+
+	3. HTTP头部
+		
+		*	Authorization
+
+			访问凭据，必须携带
+
+		*	Q-UA
+			
+			终端QUA，可以不携带，如果存在Q-UA2，则忽略
+
+		*	Q-UA2
+
+			终端QUA，可以不携带，如果存在Q-UA2，则忽略Q-UA
+
 * 响应
 
 	1. 响应方式

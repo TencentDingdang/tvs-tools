@@ -362,6 +362,7 @@
 ### 触发动作事件
 ```json
 {
+    "context" : [...],
     "event": {
         "header": {
             "namespace": "TvsUserInterface",

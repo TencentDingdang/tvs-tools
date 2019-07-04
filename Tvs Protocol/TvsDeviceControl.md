@@ -787,7 +787,7 @@
 |    Parameter                    |    Type        |    必选    |    描述                                        |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
 |    timeInMilliseconds        |    long        |    Yes    |    时长                |
-|    dataType                        |    string    |    Yes    |    数据类型<br>ANY,任意类型;<br>XXX,指定类型;               |
+|    dataType                        |    string    |    Yes    |    数据类型<br>ANY,任意类型;<br>CURRENT,当前类型;<br>XXX,指定类型;               |
 |    action                        |    string    |    Yes    |    动作<br>PAUSE,暂停                |
 |    token                        |    string    |    Yes    |    token                                    |
 
