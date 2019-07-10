@@ -787,7 +787,7 @@
 |    Parameter                    |    Type        |    必选    |    描述                                        |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
 |    timeInMilliseconds        |    long        |    Yes    |    时长                |
-|    dataType                        |    string    |    Yes    |    数据类型<br>ANY,任意类型;<br>CURRENT,当前类型;<br>XXX,指定类型;               |
+|    dataType                        |    string    |    Yes    |    数据类型<br>ANY,任意类型;<br>CURRENT,当前类型;<br>CURRENT_MEDIA,当前媒体;<br>XXX,指定类型;               |
 |    action                        |    string    |    Yes    |    动作<br>PAUSE,暂停                |
 |    token                        |    string    |    Yes    |    token                                    |
 
@@ -1136,3 +1136,263 @@
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
 |    type                        |    string    |    Yes    |    类型:<br>URL,普通URL;<br>AndroidActivity,Android APP Activity;<br>AndroidBroadcast,Android APP Broadcast                                    |
 |    uri                        |    string    |    Yes    |    token                                    |
+
+### 第三方APP播控(播放)
+```json
+{
+    "directive": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationPlay",
+            "messageId": "{{STRING}}",
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+|    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+### 第三方APP播控(播放成功事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationPlaySucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+### 第三方APP播控(播放失败事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationPlayFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+### 第三方APP播控(停止)
+```json
+{
+    "directive": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationStop",
+            "messageId": "{{STRING}}",
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+|    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+### 第三方APP播控(停止成功事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationStopSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+### 第三方APP播控(停止失败事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationStopFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+### 第三方APP播控(下一个)
+```json
+{
+    "directive": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationNext",
+            "messageId": "{{STRING}}",
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+|    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+### 第三方APP播控(下一个成功事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationNextSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+### 第三方APP播控(下一个失败事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationNextFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+### 第三方APP播控(上一个)
+```json
+{
+    "directive": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationPrevious",
+            "messageId": "{{STRING}}",
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+|    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+### 第三方APP播控(上一个成功事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationPreviousSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+### 第三方APP播控(上一个失败事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationPreviousFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
