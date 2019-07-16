@@ -1396,3 +1396,89 @@
 |    Parameter            |    Type        |    必选    |    描述                            |
 |    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
 |    messageId            |    string    |    Yes    |    消息ID                        |
+
+### 第三方APP播控(改变播放模式)
+```json
+{
+    "directive": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationChangePlaybackMode",
+            "messageId": "{{STRING}}",
+            "dialogRequestId": "{{STRING}}"
+        },
+        "payload": {
+			"mode": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+|    dialogRequestId    |    string    |    No    |    对话ID                        |
+
+***Payload Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    mode            |    string    |    Yes    |    播放模式<br>SingleMode:单曲<br>SingleCycleMode:单曲循环<br>ListMode:列表<br>ListCycleMode:列表循环<br>RandomMode:随机                        |
+
+### 第三方APP播控(改变播放模式成功事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationChangePlaybackModeSucceeded",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+			"mode": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    mode            |    string    |    Yes    |    播放模式<br>SingleMode:单曲<br>SingleCycleMode:单曲循环<br>ListMode:列表<br>ListCycleMode:列表循环<br>RandomMode:随机                        |
+
+### 第三方APP播控(改变播放模式失败事件)
+```json
+{
+    "event": {
+        "header": {
+            "namespace": "TvsDeviceControl",
+            "name": "ApplicationChangePlaybackModeFailed",
+            "messageId": "{{STRING}}"
+        },
+        "payload": {
+			"mode": "{{STRING}}"
+        }
+    }
+}
+```
+
+***Header Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    messageId            |    string    |    Yes    |    消息ID                        |
+
+***Payload Paramters***
+
+|    Parameter            |    Type        |    必选    |    描述                            |
+|    :-------------------    |    :--------    |    :-----    |    :-----------------------------    |
+|    mode            |    string    |    Yes    |    播放模式<br>SingleMode:单曲<br>SingleCycleMode:单曲循环<br>ListMode:列表<br>ListCycleMode:列表循环<br>RandomMode:随机                        |
