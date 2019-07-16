@@ -1,3 +1,32 @@
+### 外部媒体播放控制上下文
+```json
+{
+	"header": {
+		"namespace":"TvsExternalMediaControl",
+		"name":"PlaybackState"
+	},
+	"payload": {
+		"playerActivity": "{{STRING}}",
+		"playerMode": "{{STRING}}",
+		"offsetInMilliseconds": {{LONG}},
+		"currentDataId": "{{STRING}}",
+		"previousDataId": "{{STRING}}",
+		"nextDataId": "{{STRING}}"
+	}
+}
+```
+
+***Payload Parameters***
+
+|	Parameter							|	Type		|	必选	|	描述																|
+|	:------------------------------------	|	:--------	|	:-----	|	:------------------------------------------------------------------	|
+|	playerMode						|	string	|	Yes	|	当前模式<br>Audio:音频(默认)<br>Video:视频	|
+|	playerActivity						|	string	|	Yes	|	播放器状态													|
+|	offsetInMilliseconds			|	long		|	Yes	|	偏移量															|
+|	currentDataId						|	string	|	No	|	当前数据ID													|
+|	previousDataId					|	string	|	No	|	上一个数据ID													|
+|	nextDataId							|	string	|	No	|	下一个数据ID													|
+
 ### 外部媒体控制播放指令
 ```json
 {

@@ -1,133 +1,23 @@
-### 进入儿童模式指令
+### 情景模式上下文
 ```json
 {
-    "directive": {
-        "header": {
-            "namespace": "TvsModeControl",
-            "name": "EnterChildMode",
-            "messageId": "{{STRING}}",
-            "dialogRequestId": "{{STRING}}"
-        },
-        "payload": {
-        }
-    }
-}    
+	"header": {
+		"namespace": "TvsProfileInformation",
+		"name": "ProfileState"
+	},
+	"payload": {
+		"mainMode": "{{STRING}}",
+		"extraMode": "{{STRING}}"
+	}
+}
 ```
 
-***Header Paramters***
+***Payload Paramters***
 
-|    Parameter            |    Type        |    必选    |    描述                                |
-|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
-|    messageId            |    string    |    Yes    |    消息ID                            |
-|    dialogRequestId    |    string    |    Yes    |    对话ID                            |
-
-### 进入儿童模式成功事件
-```json
-{
-    "event": {
-        "header": {
-            "namespace": "TvsModeControl",
-            "name": "EnterChildModeSucceeded",
-            "messageId": "{{STRING}}"
-        },
-        "payload": {
-        }
-    }
-}    
-```
-
-***Header Paramters***
-
-|    Parameter            |    Type        |    必选    |    描述                                |
-|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
-|    messageId            |    string    |    Yes    |    消息ID                            |
-
-### 进入儿童模式失败事件
-```json
-{
-    "event": {
-        "header": {
-            "namespace": "TvsModeControl",
-            "name": "EnterChildModeFailed",
-            "messageId": "{{STRING}}"
-        },
-        "payload": {
-        }
-    }
-}    
-```
-
-***Header Paramters***
-
-|    Parameter            |    Type        |    必选    |    描述                                |
-|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
-|    messageId            |    string    |    Yes    |    消息ID                            |
-
-
-### 退出儿童模式指令
-```json
-{
-    "directive": {
-        "header": {
-            "namespace": "TvsModeControl",
-            "name": "LeaveChildMode",
-            "messageId": "{{STRING}}",
-            "dialogRequestId": "{{STRING}}"
-        },
-        "payload": {
-        }
-    }
-}    
-```
-
-***Header Paramters***
-
-|    Parameter            |    Type        |    必选    |    描述                                |
-|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
-|    messageId            |    string    |    Yes    |    消息ID                            |
-|    dialogRequestId    |    string    |    No    |    对话ID                            |
-
-### 退出儿童模式成功事件
-```json
-{
-    "event": {
-        "header": {
-            "namespace": "TvsModeControl",
-            "name": "LeaveChildModeSucceeded",
-            "messageId": "{{STRING}}"
-        },
-        "payload": {
-        }
-    }
-}    
-```
-
-***Header Paramters***
-
-|    Parameter            |    Type        |    必选    |    描述                                |
-|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
-|    messageId            |    string    |    Yes    |    消息ID                            |
-
-### 退出儿童模式失败事件
-```json
-{
-    "event": {
-        "header": {
-            "namespace": "TvsModeControl",
-            "name": "LeaveChildModeFailed",
-            "messageId": "{{STRING}}"
-        },
-        "payload": {
-        }
-    }
-}    
-```
-
-***Header Paramters***
-
-|    Parameter            |    Type        |    必选    |    描述                                |
-|    :-------------------    |    :--------    |    :-----    |    :--------------------------------    |
-|    messageId            |    string    |    Yes    |    消息ID                            |
+|	Parameter						|	Type		|	必选		|	描述					|
+|	:---------------------------		|	:--------	|	:-----		|	:-------------------	|
+|	mainMode						|	string	|	No		|	当前模式:<br>LEARNING,学习模式	<br>CHLIDREN,儿童模式<br>FAMILY,家庭模式<br>NORMAL,普通模式|
+|	extraMode						|	string	|	No		|	当前模式:<br>CHILDREN_LOCK,儿童锁定模式|
 
 ### 模式切换指令
 ```json
