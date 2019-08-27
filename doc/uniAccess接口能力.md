@@ -160,9 +160,9 @@
 ## 3.2 参数
 
 
-`payload.domain`: "alarm"
+`payload.domain`: `alarm`
 
-`payload.intent`: "sync_data"
+`payload.intent`: `sync_data`
 
 `payload.jsonBlobInfo`:
 
@@ -183,7 +183,6 @@
 	"domain": "alarm",
 	"intent": "sync_data",
 	"jsonBlobInfo": "{}"
-
 }
 ```
 
@@ -201,9 +200,9 @@
 ## 4.2 参数
 
 
-`payload.domain`: "reminder_v2"
+`payload.domain`: `reminder_v2`
 
-`payload.intent`: "sync_data"
+`payload.intent`: `sync_data`
 
 `payload.jsonBlobInfo`:
 
@@ -224,7 +223,6 @@
 	"domain": "reminder_v2",
 	"intent": "sync_data",
 	"jsonBlobInfo": "{}"
-
 }
 ```
 
