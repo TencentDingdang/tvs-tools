@@ -151,4 +151,86 @@
 }
 ```
 
+# 3. 设备闹钟数据同步
+
+## 3.1 说明
+
+硬件设备需要同步闹钟全量数据时，可以通过该接口拉取
+
+## 3.2 参数
+
+
+`payload.domain`: "alarm"
+
+`payload.intent`: "sync_data"
+
+`payload.jsonBlobInfo`:
+
+
+```json
+{}
+```
+
+## 3.3 返回jsonBlobInfo 参数
+
+参见 https://github.com/TencentDingdang/tvs-tools/blob/master/Tsk%20Protocol/domains_V3/custom_made_domain/alarm.md
+
+## 3.4 payload示例
+
+### 3.4.1 请求payload数据
+```json
+{
+	"domain": "alarm",
+	"intent": "sync_data",
+	"jsonBlobInfo": "{}"
+
+}
+```
+
+### 3.4.2 返回payload数据
+
+参见 https://github.com/TencentDingdang/tvs-tools/blob/master/Tsk%20Protocol/domains_V3/custom_made_domain/alarm.md
+
+
+# 4. 设备闹钟数据同步
+
+## 4.1 说明
+
+硬件设备需要同步闹钟全量数据时，可以通过该接口拉取
+
+## 4.2 参数
+
+
+`payload.domain`: "reminder_v2"
+
+`payload.intent`: "sync_data"
+
+`payload.jsonBlobInfo`:
+
+
+```json
+{}
+```
+
+## 4.3 返回jsonBlobInfo 参数
+
+参见 https://github.com/TencentDingdang/tvs-tools/blob/master/Tsk%20Protocol/domains_V3/custom_made_domain/reminder_v2.md
+
+## 4.4 payload示例
+
+### 4.4.1 请求payload数据
+```json
+{
+	"domain": "reminder_v2",
+	"intent": "sync_data",
+	"jsonBlobInfo": "{}"
+
+}
+```
+
+### 4.4.2 返回payload数据
+
+参见 https://github.com/TencentDingdang/tvs-tools/blob/master/Tsk%20Protocol/domains_V3/custom_made_domain/reminder_v2.md
+
+
 
