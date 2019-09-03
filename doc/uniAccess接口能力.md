@@ -190,7 +190,6 @@
 
 参见 https://github.com/TencentDingdang/tvs-tools/blob/master/Tsk%20Protocol/domains_V3/custom_made_domain/alarm.md
 
-
 # 4. 设备提醒数据同步
 
 ## 4.1 说明
@@ -232,4 +231,64 @@
 参见 https://github.com/TencentDingdang/tvs-tools/blob/master/Tsk%20Protocol/domains_V3/custom_made_domain/reminder_v2.md
 
 
+# 5. 通讯录上传
 
+## 5.1 说明
+
+为了提高通讯录的识别率，可以通过上传通讯录到云端来实现
+
+## 5.2 参数
+
+`payload.domain`: `1`
+
+`payload.intent`: `1`
+
+`payload.jsonBlobInfo`:
+
+```json
+	{
+		"businessType": "E_REPORT_PHONE_UPLOAD",
+		"contactList": [
+			{
+				"name": "{{STRING}}"
+			},
+			{
+				"name": "{{STRING}}"
+			}
+		]
+	}
+```
+
+***Payload Parameters***
+
+|	Parameter							|	Type		|	必选	|	描述								|
+|	:------------------------------------	|	:--------	|	:-----	|	:---------------------------------	|
+|	domain								|	string	|	Yes	|	领域信息(必须为"1")		|
+|	domain								|	string	|	Yes	|	意图信息(必须为"1")		|
+|	jsonBlobInfo						|	string	|	Yes	|	业务信息						|
+
+***jsonBlobInfo Parameters***
+
+|	Parameter							|	Type		|	必选	|	描述																	|
+|	:------------------------------------	|	:--------	|	:-----	|	:--------------------------------------------------------------------	|
+|	businessType						|	string	|	Yes	|	类型(必须为"E_REPORT_PHONE_UPLOAD")		|
+|	contactList						|	array		|	Yes	|	联系人信息														|
+|	contactList[].name				|	string	|	Yes	|	联系人名称														|
+
+## 5.3 返回jsonBlobInfo 参数
+
+`payload.jsonBlobInfo`:
+
+```json
+	{
+		"retCode": LONG,
+		"errMsg": "{{STRING}}"
+	}
+```
+
+***jsonBlobInfo Parameters***
+
+|	Parameter							|	Type		|	必选	|	描述								|
+|	:------------------------------------	|	:--------	|	:-----	|	:---------------------------------	|
+|	retCode								|	long		|	Yes	|	返回码(0,无错误)			|
+|	errMsg								|	string	|	Yes	|	错误信息						|
