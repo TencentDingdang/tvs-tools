@@ -239,9 +239,9 @@
 
 ## 5.2 参数
 
-`payload.domain`: `1`
+`payload.domain`: `"1"`
 
-`payload.intent`: `1`
+`payload.intent`: `"1"`
 
 `payload.jsonBlobInfo`:
 
@@ -267,13 +267,15 @@
 |	domain								|	string	|	Yes	|	意图信息(必须为"1")		|
 |	jsonBlobInfo						|	string	|	Yes	|	业务信息						|
 
-***jsonBlobInfo Parameters***
+***jsonBlobInfo Parameters***  (***注：jsonBlobInfo必须为序列化成string类型的参数***)
 
 |	Parameter							|	Type		|	必选	|	描述																	|
 |	:------------------------------------	|	:--------	|	:-----	|	:--------------------------------------------------------------------	|
 |	businessType						|	string	|	Yes	|	类型(必须为"E_REPORT_PHONE_UPLOAD")		|
 |	contactList						|	array		|	Yes	|	联系人信息														|
 |	contactList[].name				|	string	|	Yes	|	联系人名称														|
+
+
 
 ## 5.3 返回jsonBlobInfo 参数
 
