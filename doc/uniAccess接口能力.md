@@ -149,7 +149,7 @@
 
 ```json
 {
-	"jsonBlobInfo": "{ \"eRet\": 1, \"strMsg\": \"QQMusic device has been registered\"}"
+	"jsonBlobInfo": "{ \"eRet\": 1,\"iSubRet\":2 \"strMsg\": \"QQMusic device has been registered\"}"
 }
 ```
 
