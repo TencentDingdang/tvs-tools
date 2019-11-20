@@ -2,14 +2,14 @@
 
 ## uniAccess管理接口
 
-依赖于腾讯云小微TVS [unieAccess](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md)通道能力，在使用uniAccess时需要通过设置`payload.domain`和`payload.intent`路由到不同接口，并且需要填充符合叮当规范的账号、设备信息。账号开放授权管理接口包括：
+依赖于腾讯云小微TVS [unieAccess](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/uniAccess%E6%8E%A5%E5%8F%A3%E8%83%BD%E5%8A%9B.md)通道能力，在使用uniAccess时需要通过设置`payload.domain`和`payload.intent`路由到不同接口，并且需要填充符合叮当规范的账号、设备信息，uniAccess接口可以通过[HTTP的方式（见“特殊能力访问接口”）](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/%E8%85%BE%E8%AE%AF%E5%8F%AE%E5%BD%93HTTP%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%85%A5API%E6%96%87%E6%A1%A3.md#55-%E7%89%B9%E6%AE%8A%E8%83%BD%E5%8A%9B%E8%AE%BF%E9%97%AE)接入，也可以通过DMSDK的uniAccess接口进行访问（[Android文档](https://dingdang.qq.com/doc/page/344)、[iOS文档](https://dingdang.qq.com/doc/page/351)）。账号开放授权管理接口包括：
 
 | domain    |    intent    | 接口说明 |
 |-----------|--------------|---------|
 | tsk_oauth | get_bind_state | 查询技能的账号绑定状态 |
 
 ### get_bind_state
-DMSDK查询音箱的账号绑定状态。
+DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权类型：使用微信授权、使用QQ授权、使用QQ音乐授权。
 
 #### request
 
@@ -33,8 +33,8 @@ DMSDK查询音箱的账号绑定状态。
 |------|-----|----------|----|
 | `operType` | 操作类型，值同`payload.intent`，固定为`get_bind_state` | `string` | YES |
 | `skillId` | 技能ID，QQ音乐技能填：`caabf231-e655-11e7-8130-68cc6ea8c1f8` | `string` | YES |
-| `deviceBaseInfo` | 音箱设备信息 | `object` | YES |
-| `deviceBaseInfo.appKey` | 音箱在开放平台申请的AppKey | `string` | YES |
+| `deviceBaseInfo` | 设备信息 | `object` | YES |
+| `deviceBaseInfo.appKey` | 云小微设备开放平台申请的AppKey | `string` | YES |
 | `deviceBaseInfo.appAccessToken` | 音箱在开放平台申请的AccessToken | `string` | YES |
 | `deviceBaseInfo.guid` | 音箱的guid | `string` | YES |
 | `deviceBaseInfo.dsn` | 音箱的dsn | `string` | YES |
