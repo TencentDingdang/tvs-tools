@@ -76,7 +76,11 @@ DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权
 
 2. 如何用来判断当前用户是否已经使用QQ音乐APP授权过？
 
-> 可通过这些组合条件判断：`error.code == 0 && accountBaseInfo.acctType == “QQMusicOpenId”`
+> 可通过这些组合条件判断：`error.code == 0 && accountBaseInfo.acctType == “QQMusicOpenId”`。
+
+3. 为什么我没用QQ/微信/QQ音乐授权过，却能够查出授权关系？
+
+> 对于已经申请了QQ互联/微信打通的老客户，若用户发起音乐请求会默认进行隐式授权，因此调用该接口查出的`error.code == 0`。
 
 ### 业务错误码
 业务错误码指的是`error.code`。若通过HTTP方式请求，该字段在`strJsonBlob`解析后json中；若通过DMSDK请求，iOS SDK该字段在回调的第3个`NSDictionary`类型的参数中，Android SDK该字段在TVSCallback<String>的onSuccess中的第1个`String`参数中。
