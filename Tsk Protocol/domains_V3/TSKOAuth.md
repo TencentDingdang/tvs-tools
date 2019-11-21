@@ -79,6 +79,7 @@ DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权
 > 可通过这些组合条件判断：`error.code == 0 && accountBaseInfo.acctType == “QQMusicOpenId”`
 
 ### 业务错误码
+业务错误码指的是`error.code`。若通过HTTP方式请求，该字段在`strJsonBlob`解析后json中；若通过DMSDK请求，iOS SDK该字段在回调的第3个`NSDictionary`类型的参数中，Android SDK该字段在TVSCallback<String>的onSuccess中的第1个`String`参数中。
 
 | 错误码 | 描述 |
 | ------ | --- |
@@ -87,3 +88,12 @@ DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权
 | `-2`   | 频率限制 |
 | `-101` | 请求端账号信息校验不通过 |
 | `-102` | 请求数据不合法 |
+
+### 接口错误码
+接口错误码可以作为判断参考。在通过HTTP方式请求，在HTTP Response的数据`header.retCode`字段；若通过DMSDK请求，iOS SDK该字段在回调的第2个`NSInteger`类型的参数中，Android SDK该字段在TVSCallback<String>的onError中的`code`参数中（`0`的时候不会给出）。
+
+| 错误码 | 描述 |
+| ------ | --- |
+| `0`    | 成功 |
+| `3`    | 参数校验失败 |
+| `9`    | 登录态失效（校验登录态失败），需要终端重新刷新票据 |
