@@ -41,7 +41,7 @@
 |    nlpInfo.domain                	 	|    string  	|    Yes 	|    NLP领域信息               	|
 |    nlpInfo.intent                       	|    string  	|    Yes 	|    NLP意图信息               	|
 |    nlpInfo.semantic                       	|    string  	|    Yes 	|    语义结构体               	|
-|    nlpInfo.status.code                       	|    string  	|    Yes 	|    NLP错误码              	|
+|    nlpInfo.status.code                       	|    int  	|    Yes 	|    NLP错误码              	|
 |    nlpInfo.status.message                    	|    string  	|    Yes 	|    NLP错误信息               	|
 |    data                                    	|    object 	|    Yes  |    数据                           	|
 |    data.controlData                 	|    string  	|    Yes  |    服务数据                   	|
