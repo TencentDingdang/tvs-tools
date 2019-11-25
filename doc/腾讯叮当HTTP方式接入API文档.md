@@ -743,7 +743,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 提供终端ClientId票据授权接口。
 
-调用时机： 设备侧第一次拿到手机端传过来的clientid，需要调用本接口换取对应的`tvsRefreshToken`和`authorization`，`tvsRefreshToken`用于刷票接口（7.8节）。`authorization`内部有账号与设备信息，调用7.1-7.6接口时，把`authorization`填入`header.user.authorization`。如果填入`header.user.authorization`，那么`header.guid`,`header.user`其他字段都不需要填写。
+调用时机： 设备侧第一次拿到手机端传过来的clientid，需要调用本接口换取对应的`tvsRefreshToken`和`authorization`，`tvsRefreshToken`用于刷票接口（5.7节）。`authorization`内部有账号与设备信息，调用5.1-5.5接口时，把`authorization`填入`header.user.authorization`。如果填入`header.user.authorization`，那么`header.guid`与`header.user`的其他字段都不需要填写。
 
 ### 5.6.2 请求参数
 
