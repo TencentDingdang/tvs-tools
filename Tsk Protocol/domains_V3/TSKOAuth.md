@@ -9,7 +9,7 @@
 | tsk_oauth | get_bind_state | 查询技能的账号绑定状态 |
 
 ### get_bind_state
-DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权类型：使用微信授权、使用QQ授权、使用QQ音乐授权。
+DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权类型：使用微信扫码授权、使用QQ扫码授权、使用QQ音乐授权。
 
 #### request
 
@@ -27,6 +27,8 @@ DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权
 |------|-----|----------|----|
 | `operType` | 操作类型，值同`payload.intent`，固定为`get_bind_state` | `string` | YES |
 | `skillId` | 技能ID，QQ音乐技能填：`caabf231-e655-11e7-8130-68cc6ea8c1f8` | `string` | YES |
+
+> **为方便接入，接口原参数`deviceBaseInfo`已经去掉，原有的终端不受影响，新接入终端忽略本条说明即可。**
 
 #### response
 
