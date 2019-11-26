@@ -17,13 +17,7 @@ DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权
 ```json
 {
     "operType": "get_bind_state",
-    "skillId": "caabf231-e655-11e7-8130-68cc6ea8c1f8",
-    "deviceBaseInfo": {
-        "appKey": "",
-        "appAccessToken": "",
-        "guid": "",
-        "dsn": ""
-    }
+    "skillId": "caabf231-e655-11e7-8130-68cc6ea8c1f8"
 }
 ```
 
@@ -33,11 +27,6 @@ DMSDK查询音箱的账号绑定状态，对于音乐技能会返回当前授权
 |------|-----|----------|----|
 | `operType` | 操作类型，值同`payload.intent`，固定为`get_bind_state` | `string` | YES |
 | `skillId` | 技能ID，QQ音乐技能填：`caabf231-e655-11e7-8130-68cc6ea8c1f8` | `string` | YES |
-| `deviceBaseInfo` | 设备信息 | `object` | YES |
-| `deviceBaseInfo.appKey` | 云小微设备开放平台申请的AppKey | `string` | YES |
-| `deviceBaseInfo.appAccessToken` | 音箱在开放平台申请的AccessToken | `string` | YES |
-| `deviceBaseInfo.guid` | 音箱的guid | `string` | YES |
-| `deviceBaseInfo.dsn` | 音箱的dsn | `string` | YES |
 
 #### response
 
