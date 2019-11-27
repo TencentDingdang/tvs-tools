@@ -150,6 +150,21 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 
 签名示例见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/signature.py>
 
+### 3.5 Q&A
+
+假如后台返回签名出现问题
+
+可以按照下面步骤check：
+
+1. 检查签名用的密钥是否为AccessToken。
+
+2. 检查签名用的body与发送请求的body是否一致。
+
+3. 如果是手写的http协议请求，请务必保证http header有content-length，并且content-length是正确的。
+
+
+
+
 # 4 API接口能力
 
 | 接口名称      | 能力                                |
