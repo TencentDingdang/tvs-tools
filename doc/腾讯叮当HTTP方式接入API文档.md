@@ -250,6 +250,10 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
                 }
             ],
         },
+        "current_scene":{
+          "domain":"{{STRING}}",
+          "intent":"{{STRING}}"
+         }
         "semantic_extra": {
             "cmd": "{{STRING}}"
         },
