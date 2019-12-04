@@ -12,8 +12,9 @@
   - [3.1 接入前置条件](#31-接入前置条件)
   - [3.2 协议支持](#32-协议支持)
   - [3.3 HTTP Header要求](#33-http-Header要求)
-  - [3.4 签名方法](#32-签名方法)
-  
+  - [3.4 签名方法](#34-签名方法)
+  - [3.5 Q&A](#35-qa)
+
 - [4 API接口能力](#4-api接口能力)
 - [5 API列表](#5-api列表)
   - [5.1 语义请求](#51-语义请求接口)
@@ -150,6 +151,29 @@ Authorization: TVS-HMAC-SHA256-BASIC CredentialKey = 39ba87a1-2we3-4345-8d26-e63
 
 签名示例见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/signature.py>
 
+### 3.5 Q&A
+
+假如后台返回签名出现问题
+
+可以按照下面步骤check：
+1. Appkey，AccessToken应该为云小微开发平台申请、并且*发布*过的，否则会校验不过。
+
+2. 如果云小微开放平台申请的应用，刚刚发布，请过五分钟再请求。
+
+3. 检查签名用的HMAC_SHA256密钥是否为AccessToken。
+
+4. 检查签名用的body与发送请求的body是否一致。
+
+5. 如果是手写的http协议请求，请务必保证http header有content-length，并且content-length是正确的。
+
+6. 签名时，是否有拼接body和时间戳。按照规则，需要拼接。
+
+7. 时间戳仅支持东八区与零区时间，并且，与真实时间差距不能超过五分钟，否则会返回签名过期的错误。
+
+
+
+
+
 # 4 API接口能力
 
 | 接口名称      | 能力                                |
@@ -226,6 +250,10 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
                 }
             ],
         },
+        "current_scene":{
+          "domain":"{{STRING}}",
+          "intent":"{{STRING}}"
+         }
         "semantic_extra": {
             "cmd": "{{STRING}}"
         },
@@ -453,7 +481,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | 类型     | 说明                                                         |
 | -------- | ------------------------------------------------------------ |
 | 流式合成 | 当payload.single_request=false时，TTS引擎将会分多次返回语音合成结果，最终结果是多次数据的拼接。优点是终端可以迅速收到TTS部分回包，进行TTS播放，体验较好。缺点是终端代码逻辑复杂。建议使用这种方式。 |
-| 一次合成 | 当payload.single_request=true时，TTS引擎将语音合成结果一次性返回。 优点是终端代码逻辑简单，缺点是合成速度较慢 |
+| 一次合成 | 当payload.single_request=true时，TTS引擎将语音合成结果一次性返回。 优点是终端代码逻辑简单，缺点是合成速度较慢。如果文本很长，不要使用一次合成的方式，否则后台会返回错误。 |
 
 
 ### 5.3.2 请求参数
@@ -743,7 +771,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/uniAccess`
 
 提供终端ClientId票据授权接口。
 
-调用时机： 设备侧第一次拿到手机端传过来的clientid，需要调用本接口换取对应的`tvsRefreshToken`和`authorization`，`tvsRefreshToken`用于刷票接口（7.8节）。`authorization`内部有账号与设备信息，调用7.1-7.6接口时，把`authorization`填入`header.user.authorization`。如果填入`header.user.authorization`，那么`header.guid`,`header.user`其他字段都不需要填写。
+调用时机： 设备侧第一次拿到手机端传过来的clientid，需要调用本接口换取对应的`tvsRefreshToken`和`authorization`，`tvsRefreshToken`用于刷票接口（5.7节）。`authorization`内部有账号与设备信息，调用5.1-5.5接口时，把`authorization`填入`header.user.authorization`。如果填入`header.user.authorization`，那么`header.guid`与`header.user`的其他字段都不需要填写。
 
 ### 5.6.2 请求参数
 
