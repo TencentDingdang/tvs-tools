@@ -21,14 +21,21 @@
 		},
 		"battery": {
 			"power": {{LONG}}
-		}
+		},
 		"activeApplication": {
 			"id": "{{STRING}}",
+			"version": "{{STRING}}",
 			"activity": "{{STRING}}"
 		},
 		"allApplications": [
-			"{{STRING}}",
-			"{{STRING}}"
+			{
+				"id": "{{STRING}}",
+				"version": "{{STRING}}"
+			},
+			{
+				"id": "{{STRING}}",
+				"version": "{{STRING}}"
+			}
 		]
     }
 }
@@ -50,8 +57,11 @@
 |	battery.power						|	long		|	Yes	|	电池电量						|
 |   activeApplication              	|   object 	|    No 	|    活跃应用             			|
 |   activeApplication.id            	|   string 	|    No   	|    应用ID                         	|
+|   activeApplication.version    	|   string 	|    No   	|    应用版本                      	|
 |   activeApplication.activity     |   string  	|    No 	|    应用状态		             	|
 |   allApplications              		|   array  	|    No 	|    所有应用             			|
+|   allApplications[].id         		|   string  	|    No 	|    应用ID	             			|
+|   allApplications[].version  		|   string  	|    No 	|    应用版本             			|
 
 ### 设置亮度指令
 ```json
@@ -829,7 +839,11 @@
             "messageId": "{{STRING}}"
         },
         "payload": {
-            "token": "{{STRING}}"
+            "token": "{{STRING}}",
+			"error": {
+				"type": "{{STRING}}",
+				"message": "{{STRING}}"
+			}
         }
     }
 }
@@ -843,9 +857,21 @@
 
 ***Payload Paramters***
 
-|    Parameter                    |    Type        |    必选    |    描述                                        |
-|    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
-|    token                        |    string    |    Yes    |    token                                    |
+|    Parameter               		|    Type  	|    必选	|    描述                                 	|
+|    :--------------------------------  	|    :-------- 	|    :-----	|    :---------------------------------------  	|
+|    token                        	|    string 	|    Yes 	|    token                                  	|
+|    error                        		|    object 	|    Yes 	|    error information                   	|
+|    error.type                 		|    string 	|    Yes 	|    error type			                   	|
+|    error.message          		|    string 	|    Yes 	|    error message                   	|
+
+***Error Types***
+
+|    Value		               		|    Description  							|
+|    :--------------------------------  	|    :----------------------------------------- 	|
+|    NO_MEDIA                  	|    no media 								|
+|    MEDIA_NOT_PLAYING	|    media is not playing 				|
+|    NOT_SUPPORTED   		|    not support						 	|
+|    UNKNOWN_ERROR  	|    unknown error					 	|
 
 ### 清除定时时间指令
 ```json
@@ -1117,7 +1143,8 @@
         },
         "payload": {
 			"type": "{{STRING}}",
-			"uri": "{{STRING}}"
+			"uri": "{{STRING}}",
+			"version": "{{STRING}}"
         }
     }
 }
@@ -1135,7 +1162,8 @@
 |    Parameter                    |    Type        |    必选    |    描述                                        |
 |    :---------------------------    |    :--------    |    :-----    |    :---------------------------------------    |
 |    type                        |    string    |    Yes    |    类型:<br>URL,普通URL;<br>AndroidActivity,Android APP Activity;<br>AndroidBroadcast,Android APP Broadcast                                    |
-|    uri                        |    string    |    Yes    |    token                                    |
+|    uri                       	|    string    |    Yes  	|    URI                                    |
+|    version                 	|    string    |    No    	|    版本信息                                    |
 
 ### 第三方APP播控(播放)
 ```json
