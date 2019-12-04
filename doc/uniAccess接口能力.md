@@ -274,7 +274,7 @@
 |	Parameter							|	Type		|	必选	|	描述																	|
 |	:------------------------------------	|	:--------	|	:-----	|	:--------------------------------------------------------------------	|
 |	businessType						|	string	|	Yes	|	类型(必须为"E_REPORT_PHONE_UPLOAD")		|
-|	contactList						|	array		|	Yes	|	联系人信息														|
+|	contactList						|	array		|	Yes	|	联系人信息，最大3000条														|
 |	contactList[].name				|	string	|	Yes	|	联系人名称														|
 
 
