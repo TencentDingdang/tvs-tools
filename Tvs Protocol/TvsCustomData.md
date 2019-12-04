@@ -45,7 +45,7 @@
 					"value": "{{STRING}}"
 				},
 				{
-					"type": "emotion",
+					"type": "action",
 					"value": "{{STRING}}"
 				}
 			]
