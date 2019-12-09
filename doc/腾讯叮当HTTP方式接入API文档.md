@@ -300,6 +300,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 | `payload.semantic.domain`   | `string` |    否    | 领域信息                                                     |
 | `payload.semantic.intent`   | `string` |    否    | 意图信息                                                     |
 | `payload.semantic.slots`    |    -     |    否    | 语义参数信息（语义槽位）                                          |
+| `payload.current_scene`    |    -     |    否    | 终端上传当前领域意图，明确当前所处领域意图时需要。详见: https://github.com/MrAndMrswang/tvs-tools/blob/master/doc/richanswer%E8%AF%AD%E4%B9%89current_scene%E8%AF%B4%E6%98%8E.md                     |
+| `payload.current_scene.domain`    | `string` |    否    | 领域信息                                                 |
+| `payload.current_scene.intent`    | `string` |    否    | 意图信息                                                 |
 | `payload.semantic_extra`    |    -     |    否    | 附加语义信息                                                 |
 | `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               <br>|
 | `payload.extra_data`              |    -     |  否   | 额外数据信息，特殊能力才需要                                   |
