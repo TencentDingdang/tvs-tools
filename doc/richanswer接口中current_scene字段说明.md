@@ -1,4 +1,4 @@
-# richanswer语义slots说明
+# richanswer接口中current_scene字段说明
 
 在payload中增加
 
