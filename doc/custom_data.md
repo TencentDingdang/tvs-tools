@@ -6,8 +6,7 @@
 {
   "skill_vedio":{
       "qqvedio_session_info":{
-          "session_id":"session_id",
-          "session_data":"session_data"
+          "session_id":"session_id"
       }
   }
 }
