@@ -19,4 +19,4 @@
 | `skill_vedio.qqvedio_session_info.session_id`    | `string` |    -     | 腾讯视频session id     |
 
 
-![视频技能数据](img/custom_data1.jpg)
+![视频技能数据](img/custom_data2.jpg)
