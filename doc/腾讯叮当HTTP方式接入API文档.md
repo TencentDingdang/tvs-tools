@@ -257,6 +257,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
         "semantic_extra": {
             "cmd": "{{STRING}}"
         },
+        "custom_data": {
+        
+        },
         "extra_data":[          
             {
                 "type":"IMAGE",
@@ -305,6 +308,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 | `payload.current_scene.intent`    | `string` |    否    | 意图信息                                                 |
 | `payload.semantic_extra`    |    -     |    否    | 附加语义信息                                                 |
 | `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               <br>|
+| `payload.custom_data`              |    -     |  否   | 传递技能需要的定制数据，例如视频技能可能需要的腾讯视频session_info，具体结构见[文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/custom_data.md) |
 | `payload.extra_data`              |    -     |  否   | 额外数据信息，特殊能力才需要                                   |
 | `payload.extra_data{type}`        |    -     |  否   | 额外数据类型：<br>`IMAGE`：图片；<br>`AUDIO`：语音；<br>`VIDEO`：视频； |
 | `payload.extra_data{data_base64}` | `string` |  否   | 额外数据`Base64`编码                           |
