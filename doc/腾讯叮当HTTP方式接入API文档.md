@@ -253,7 +253,11 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
         "current_scene":{
           "domain":"{{STRING}}",
           "intent":"{{STRING}}"
-         }
+         },
+        "router":{
+          "mac":"{{STRING}}",
+          "ssid":"{{STRING}}"
+        },
         "semantic_extra": {
             "cmd": "{{STRING}}"
         },
@@ -306,6 +310,9 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 | `payload.current_scene`    |    -     |    否    | 明确终端的领域意图时需要带。详见[richanswer中current_scene字段说明](./richanswer接口中current_scene字段说明.md)                     |
 | `payload.current_scene.domain`    | `string` |    否    | 领域信息                                                 |
 | `payload.current_scene.intent`    | `string` |    否    | 意图信息                                                 |
+|`payload.router`|-|否|路由器属性|
+|`payload.router.mac`|`string`|否|路由器的MAC|
+|`payload.router.ssid`|`string`|否|路由器的SSID|
 | `payload.semantic_extra`    |    -     |    否    | 附加语义信息                                                 |
 | `payload.semantic_extra.cmd`         | `string` |  否   | 语义命令字<br>`SEMANTIC_CMD_FORCE_SESSION_COMPLETE`:强制语义结束当前的session(清除多轮)<br>`SEMANTIC_CMD_FORCE_CLEAR_SESSION`:强制清除session<br>`SEMANTIC_CMD_FORCE_CLEAR_PREV_SESSION`:清除上一个session数据<br>`SEMANTIC_CMD_NOT_SAVE_CURRENT_SESSION`:当次请求不保存session数据               <br>|
 | `payload.custom_data`              |    -     |  否   | 传递技能需要的定制数据，例如视频技能可能需要的腾讯视频session_info，具体结构见[文档](https://github.com/TencentDingdang/tvs-tools/blob/master/doc/custom_data.md) |
