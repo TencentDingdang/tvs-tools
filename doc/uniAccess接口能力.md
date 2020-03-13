@@ -266,7 +266,7 @@
 |	Parameter							|	Type		|	必选	|	描述								|
 |	:------------------------------------	|	:--------	|	:-----	|	:---------------------------------	|
 |	domain								|	string	|	Yes	|	领域信息(必须为"1")		|
-|	domain								|	string	|	Yes	|	意图信息(必须为"1")		|
+|	intent								|	string	|	Yes	|	意图信息(必须为"1")		|
 |	jsonBlobInfo						|	string	|	Yes	|	业务信息						|
 
 ***jsonBlobInfo Parameters***  (***注：jsonBlobInfo必须为序列化成string类型的参数***)
