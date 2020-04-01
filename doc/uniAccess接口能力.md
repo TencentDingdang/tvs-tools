@@ -296,3 +296,74 @@
 |	:------------------------------------	|	:--------	|	:-----	|	:---------------------------------	|
 |	retCode								|	long		|	Yes	|	返回码(0,无错误)			|
 |	errMsg								|	string	|	Yes	|	错误信息						|
+# 6.音乐设备License查询
+
+## 6.1 说明
+
+音乐设备License查询
+
+## 6.2 参数
+
+`payload.domain`: music_offline
+
+`payload.intent`: get_license
+
+`payload.jsonBlobInfo`:
+
+
+```json
+{
+	"app_key":"{{STRING}}",
+	"sn":"{{STRING}}"
+}
+```
+***jsonBlobInfo Parameters***
+
+| 参数名     | 类型     | 是否必选 | 描述                 |
+| ---------- | -------- | -------- | -------------------- |
+| `app_key ` | `string` | Yes      | 开放平台分配的端标识 |
+| `sn `      | `string` | Yes      | 设备唯一序列号       |
+
+## 6.3 返回jsonBlobInfo 参数
+
+```json
+{
+  "app_key": "{{STRING}}",
+  "license_end": 0,
+  "license_start": 0,
+  "msg": "{{STRING}}",
+  "ret": 0,
+  "sn": "{{STRING}}"
+}
+```
+***jsonBlobInfo Parameters***
+
+| 参数名    | 类型  | 是否必选 | 描述                                                         |
+| --------- | ----- | -------- | ------------------------------------------------------------ |
+| `ret` | `int` | YES | 0:调用接口成功 其他:调用接口失败 |
+| `msg` | `string` | YES | 提示语 |
+| `app_key` | `string` | YES | 开放平台分配的端标识 |
+| `sn`  | `string` | YES | 设备唯一序列号 |
+| `license_start`  | `long` | YES | license开始时间，单位毫秒 |
+| `license_end`  | `long` | YES | license到期时间，单位毫秒 |
+
+## 6.4 payload示例
+
+### 6.4.1 请求payload数据
+```json
+{
+	"domain": "music_offline",
+	"intent": "get_license",
+	"jsonBlobInfo": "{\"app_key\":\"string\",\"sn\":\"string\"}"
+
+}
+```
+
+### 6.4.2 返回payload数据
+
+```json
+{
+	"jsonBlobInfo": "{ \"app_key\": \"string\", \"license_end\": 0, \"license_start\": 0, \"msg\": \"ok\", \"ret\": 0, \"sn\": \"string\" }"
+}
+```
+
