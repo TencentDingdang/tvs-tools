@@ -1004,7 +1004,7 @@ check一下几项：
 | PP   | **是** | String | com.company.product | 终端软件包名 | 例如：com.tencent.ai.tvs。                   |
 | VE   | 否     | String | P,GA,RC,B1...B9     | 终端版本名  | P: 预览版<br>GA: 正式版<br>RC: 发布候选<br>BN: BetaN<br> |
 | CHID | 否     | Number | 10020               | 渠道号    | 用于区分不同的渠道，如：线上渠道，线下渠道。                   |
-| MO | 否     | String | MI8  | 设备型号    | 用于区分设备型号，如小米8，荣耀9  |
+| env | 否     | String | sandbox  | 是否要进入语义沙箱环境    | 线上产品禁止使用。只用于调试新开通技能  |
 
 
    **示例**: QV=3&VE=GA&VN=1.0.1000&PP=com.tencent.ai.tvs&CHID=10020
