@@ -648,6 +648,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 
 #### 5.3.2.1 state_report
 
+
 | 参数名                      | 类型       | 是否必选 | 描述                                       |
 | ------------------------ | -------- | ---- | ---------------------------------------- |
 | `type`                   | `string` | 是    | 填"state_report"                          |
@@ -663,6 +664,8 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/report`
 | `detail.exposure_reason` | `string` | 否    | 曝光原因                                     |
 | `detail.state_reason`    | `string` | 否    | 进入状态原因                                   |
 
+
+**注意**：只能上报通过richanswer接口返回的**最新**媒体列表中的数据，并且设备唯一序列号、user_id、qua要与richanswer一致。例如分别请求了“我要听周杰伦的歌曲”，“我要听刘德华的歌曲”，那么只能上报“我要听刘德华的歌曲”返回的音乐播放进度
 
 ### 5.4.3 返回数据
 
