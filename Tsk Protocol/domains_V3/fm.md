@@ -209,3 +209,36 @@
         }
 ```
 
+**image字段说明**
+
+
+字段|类型|含义
+-|-|-
+sources|object|-
+sources.heightPixels|int|图片像素高度（目前无数据，仅预留）
+sources.size|int|图片大小（目前无数据，仅预留）
+sources.url|string| 已废弃
+sources.widthPixels|int|图片像素宽度（目前无数据，仅预留）
+
+
+**selfData字段说明**
+
+字段|类型|含义
+-|-|-
+iAccurateMatch|int|已废弃
+iLine|int|节目序号，用于节目内容排序
+iOffSet|int|音频内容的偏移量，用于续播跳转
+iPlayCount|int| 已废弃
+iShowNum|int|专辑下节目的总数
+lUpdateTime|int|已废弃
+sAlbum|string|专辑名称
+sAlbumId|string|专辑ID
+sAnchor|string|主播名
+sArea|string|已废弃
+sShowName|string|节目名
+sSource|string|内容来源
+vLive|array|已废弃
+
+
+
+
