@@ -422,6 +422,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
             "offset":0
         },
         "open_vad": true,
+        "vad_threshold": 500,
         "session_id": "{{STRING}}",
         "index": 0,
         "voice_finished": false,
@@ -452,6 +453,7 @@ __URL__：`POST https://aiwx.html5.qq.com/api/asr`
 | `payload.voice_meta.model`    | `int` |  否   | asr模型标识。|
 | `payload.voice_meta.offset`      |  `int`   |  否   | 语音片偏移量                                   |
 | `payload.open_vad`               |  `bool`  |  是   | 是否打开VAD                                  |
+| `payload.vad_threshold`          |  `int`  |  否   | 云端VAD阈值, 范围[500, 1500], 不在此范围内则为默认值500, 单位ms |
 | `payload.session_id`             | `string` |  否   | 流式识别过程中必填                                |
 | `payload.index`                  |  `int`   |  是   | 语音片偏移量(英文时为语音包序号)                        |
 | `payload.voice_finished`         |  `bool`  |  是   | 语音是否结束                                   |
