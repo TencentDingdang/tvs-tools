@@ -380,6 +380,20 @@ __URL__：`POST https://aiwx.html5.qq.com/api/v1/richanswerV2`
 
 示例代码见：<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/richanswerv2.py>，<https://github.com/TencentDingdang/tvs-tools/blob/master/doc/samples/richanswerv2_ext.py>
 
+<b>备注</b>
+
+针对语义接口我们进行了限频，具体的限频策略（分三个维度）：
+
+1. guid限频，单guid：5QPS
+2. ip限频（分云端接入和非云端接入）
+   普通ip：15QPS
+   ip白名单里的不限制；
+3. bot总量限频是300QPS，如果业务有大的放量，需要通知我们；
+
+
+压测申请方法：
+https://dingdang.qq.com/doc/page/338
+
 ## 5.2 语音识别
 感谢大家对腾讯云小微基础API的支持，我们针对语音识别接口进行了升级，新版接口文档详见: [语音识别_ASR](https://kael.tvs.qq.com/ability/latest/2) 。同时我们也会持续对旧版语音识别接口提供服务。
 
