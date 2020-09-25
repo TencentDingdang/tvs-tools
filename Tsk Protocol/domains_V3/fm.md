@@ -12,6 +12,7 @@
 | search_album          | 搜索专辑                      |
 | play_radio             | 查询广播                   |
 |search_radio             | 搜索广播                   |
+|playmore             | 加载更多                   |
 
 ### 数据示例
 
