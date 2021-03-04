@@ -53,7 +53,7 @@
                  "sPlace": "", 
                  "vecCityWeatherInfo": [
                      {
-                         "iDayIndex": 0, 
+                         "iDayIndex": 0, //标识的是当前query的天数，0-今天，1-明天，2-后天，依次类推，-1表示未来多天
                          "sCityID": "", 
                          "sCounty": "南山区", 
                          "sDisplayTips": "南山区今天多云，气温和昨天差不多，28度到31度，空气质量优。不过今天晚上9点左右会开始下小雨，出门别忘了带伞。", 
