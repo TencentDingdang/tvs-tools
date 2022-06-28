@@ -78,7 +78,7 @@
 
 |          |                                                              |
 | -------- | ------------------------------------------------------------ |
-| 传输方式 | 为保证交易安全性，采用<font color="red">**HTTPS**</font>传输                          |
+| 传输方式 | 为保证交易安全性，采用<font color="red">**HTTPS**</font>传输，务必使用<font color="red">**TLS1.2**</font>及以上的版本，否则会握手失败。                          |
 | 请求方式 | 采用<font color="red">**POST**</font>方法请求                                         |
 | 数据格式 | 请求和返回数据都为<font color="red">**JSON**</font>格式                               |
 | 字符编码 | 统一采用<font color="red">**UTF-8**</font>字符编码                                    |
